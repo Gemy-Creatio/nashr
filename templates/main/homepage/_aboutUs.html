@@ -1,0 +1,24 @@
+    <section class="content-section bg-dark" id="about">
+            <div class="container px-4 px-lg-5 text-center">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-lg-10">
+                        {% if LANGUAGE_CODE == 'ar' %}
+  <h2 class="text-white">{{ content.what_we_offer_ar|safe }}</h2>
+                        <p class="lead mb-5 text-white">
+                           {{ content.what_we_offer_sub_ar |safe}}
+
+                        </p>
+                        <a class="btn btn-outline-info btn-xl text-white" href="#services">{{ content.what_we_offer_btn_txt_ar|safe }}</a>
+                            {% else %}
+                          <h2 class="text-white">{{ content.what_we_offer_en|upper |safe }}</h2>
+                        <p class="lead mb-5 text-white">
+                           {{ content.what_we_offer_sub_en |safe | upper}}
+
+                        </p>
+                        <a class="btn btn-outline-info btn-xl text-white" href="#services">{{ content.what_we_offer_btn_txt_en|safe }}</a>
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+        </section>

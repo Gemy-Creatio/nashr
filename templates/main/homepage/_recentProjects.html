@@ -1,0 +1,31 @@
+{% load static %}
+        <section class="content-section" id="portfolio">
+            <div class="container px-4 px-lg-5">
+                <div class="content-section-heading text-center">
+                                                                {% if LANGUAGE_CODE == 'ar' %}
+                                                                    <h3 class="text-secondary mb-0">أعمالنا</h3>
+                    <h2 class="mb-5 pt-2">أحدث أعمالنا</h2>
+ {% else %}
+                                                                    <h3 class="text-secondary mb-0">Portfolio</h3>
+                    <h2 class="mb-5">Most Recent</h2>
+
+                    {% endif %}
+
+                </div>
+                <div class="row gx-0">
+                    {% for book in content.last_projects %}
+                    <div class="col-lg-6">
+                        <a class="portfolio-item" href="#!">
+                            <div class="caption">
+                                <div class="caption-content">
+                                    <div class="h2">{{ book.book_address|safe }}</div>
+                                </div>
+                            </div>
+                            <img class="img-fluid" src="{{ book.book_cover.url }}" alt="..." />
+                        </a>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </section>

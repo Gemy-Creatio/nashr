@@ -1,0 +1,63 @@
+<section class="content-section bg-dark text-white text-center" id="services">
+            <div class="container px-4 px-lg-5">
+                <div class="content-section-heading">
+                                            {% if LANGUAGE_CODE == 'ar' %}
+ <h3 class="text-secondary mb-0">خدماتنا</h3>
+                    <h2 class="mb-5">ما نقدمة</h2>
+                     {% else %}
+                                                 <h3 class="text-secondary mb-0">Services</h3>
+                    <h2 class="mb-5">What We Offer</h2>
+                    {% endif %}
+
+                </div>
+                                                        {% if LANGUAGE_CODE == 'ar' %}
+                                                            <div class="row gx-4 gx-lg-5">
+                    <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                        <span class="service-icon rounded-circle mx-auto mb-3 d-flex justify-content-center"><i class="icon-screen-smartphone services-bar"></i></span>
+                        <h4><strong>{{ content.service_one_title_ar|safe }}</strong></h4>
+                        <p class="text-faded mb-0">{{ content.service_one_summary_ar|safe }}</p>
+                    </div>
+                   <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                        <span class="service-icon rounded-circle mx-auto mb-3 d-flex justify-content-center"><i class="icon-screen-smartphone services-bar"></i></span>
+                        <h4><strong>{{ content.service_two_title_ar|safe }}</strong></h4>
+                        <p class="text-faded mb-0">{{ content.service_two_summary_ar|safe }}</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                        <span class="service-icon rounded-circle mx-auto mb-3 d-flex justify-content-center"><i class="icon-screen-smartphone services-bar"></i></span>
+                        <h4><strong>{{ content.service_three_title_ar|safe }}</strong></h4>
+                        <p class="text-faded mb-0">{{ content.service_three_summary_ar|safe }}</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                        <span class="service-icon rounded-circle mx-auto mb-3 d-flex justify-content-center"><i class="icon-screen-smartphone services-bar"></i></span>
+                        <h4><strong>{{ content.service_four_title_ar|safe }}</strong></h4>
+                        <p class="text-faded mb-0">{{ content.service_four_summary_ar|safe }}</p>
+                    </div>
+                </div>
+
+              {% else %}
+                            <div class="row gx-4 gx-lg-5">
+                    <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                        <span class="service-icon rounded-circle mx-auto mb-3 d-flex justify-content-center"><i class="icon-screen-smartphone services-bar"></i></span>
+                        <h4><strong>{{ content.service_one_title_en|safe }}</strong></h4>
+                        <p class="text-faded mb-0">{{ content.service_one_summary_en|safe }}</p>
+                    </div>
+                   <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                        <span class="service-icon rounded-circle mx-auto mb-3 d-flex justify-content-center"><i class="icon-screen-smartphone services-bar"></i></span>
+                        <h4><strong>{{ content.service_two_title_en|safe }}</strong></h4>
+                        <p class="text-faded mb-0">{{ content.service_two_summary_en|safe }}</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                        <span class="service-icon rounded-circle mx-auto mb-3 d-flex justify-content-center"><i class="icon-screen-smartphone services-bar"></i></span>
+                        <h4><strong>{{ content.service_three_title_en|safe }}</strong></h4>
+                        <p class="text-faded mb-0">{{ content.service_three_summary_en|safe }}</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+                        <span class="service-icon rounded-circle mx-auto mb-3 d-flex justify-content-center"><i class="icon-screen-smartphone services-bar"></i></span>
+                        <h4><strong>{{ content.service_four_title_en|safe }}</strong></h4>
+                        <p class="text-faded mb-0">{{ content.service_four_summary_en|safe }}</p>
+                    </div>
+                </div>
+
+            {% endif %}
+            </div>
+        </section>
