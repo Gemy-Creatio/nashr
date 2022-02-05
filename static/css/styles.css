@@ -11585,6 +11585,34 @@ footer.footer .social-link:hover {
   }
 }
 
+.go-to-whatsapp {
+  position: fixed;
+  display: none;
+  background: #f4f4f4;
+  color: #000000;
+  padding: 6px 12px 9px 12px;
+  font-size: 30px;
+  border-radius: 50px;
+  right: 15px;
+  bottom: 15px;
+  transition: background 0.5s;
+}
+
+.go-to-whatsapp:focus {
+  background: #000000;
+  color: #fff;
+  outline: none;
+}
+
+.go-to-whatsapp:hover {
+  background: #000000;
+  color: #fff;
+}
+@media (max-width: 768px) {
+   .go-to-whatsapp {
+    bottom: 15px;
+  }
+}
 .portfolio-item {
   display: block;
   position: relative;
