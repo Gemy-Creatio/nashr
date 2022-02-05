@@ -1,0 +1,20 @@
+<section class="content-section bg-light" id="about">
+            <div class="container px-4 px-lg-5 text-center">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-lg-10">
+                                                             {% if LANGUAGE_CODE == 'ar' %}
+                        <h2>{{ content.goals_heading_ar | safe }}</h2>
+                        <h4 class="lead mb-5">
+                           {{ content.section_goals_ar | safe  }}
+                        </h4>
+                        {% else %}
+   <h2>{{ content.goals_heading_en | safe | capfirst}}</h2>
+                        <h4 class="lead mb-5">
+                           {{ content.section_goals_en | safe |capfirst  }}
+                        </h4>
+
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </section>

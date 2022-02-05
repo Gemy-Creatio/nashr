@@ -1,19 +1,26 @@
   <section class="content-section bg-dark text-white">
             <div class="container px-4 px-lg-5 text-center">
-                  <div class="map" id="contact">
-            <iframe src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A&amp;output=embed"></iframe>
-            <br />
-            <small><a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A"></a></small>
-        </div>
+
                 <div class="row pt-3">
-                                                                {% if LANGUAGE_CODE == 'ar' %}
+                                         <div class="col-lg-4 col-12 d-flex flex-column align-content-center pt-lg-5">
+                                                                    {% if LANGUAGE_CODE == 'ar' %}
+
                                                                      <h2 class="mb-4">{{ content.contact_title_ar |safe }}</h2>
                        <p class="text-white">{{ content.address_ar|safe }}</p>
 {% else %}
                         <h2 class="mb-4">{{ content.contact_title_en |safe }}</h2>
                        <p class="text-white">{{ content.address_en|safe }}</p>
                     {% endif %}
-                                          <p class="text-white">{{ content.phone_nashr }}</p>
+
+                          <p class="text-white">{{ content.phone_nashr }}</p>
+                                         </div>
+     <div class="col-lg-8 col-12">
+                <div class="map" id="contact">
+            <iframe src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A&amp;output=embed"></iframe>
+            <br />
+            <small><a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;aq=0&amp;oq=twitter&amp;sll=28.659344,-81.187888&amp;sspn=0.128789,0.264187&amp;ie=UTF8&amp;hq=Twitter,+Inc.,+Market+Street,+San+Francisco,+CA&amp;t=m&amp;z=15&amp;iwloc=A"></a></small>
+        </div>
+     </div>
 
                 </div>
             </div>

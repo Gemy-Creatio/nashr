@@ -1,0 +1,8 @@
+{% extends 'masterpage.html' %}
+
+{% block content %}
+{% include 'main/about/_aboutIntro.html' with content=content %}
+{% include 'main/about/_goals.html' with content=content %}
+{% include 'main/about/_terms.html' with content=content %}
+
+{% endblock content %}

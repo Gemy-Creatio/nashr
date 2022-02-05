@@ -7,15 +7,15 @@
         </li>
         {% if LANGUAGE_CODE == 'ar' %}
             <li class="sidebar-nav-item"><a href="{% url 'home-page' %}">الرئيسية</a></li>
-            <li class="sidebar-nav-item"><a href="#about">عن ناشر</a></li>
+            <li class="sidebar-nav-item"><a href="{% url 'about-page' %}">عن ناشر</a></li>
             <li class="sidebar-nav-item"><a href="#services">خدماتنا</a></li>
-            <li class="sidebar-nav-item"><a href="#portfolio">من نحن</a></li>
+            <li class="sidebar-nav-item"><a href="{% url 'whous-page' %}">من نحن</a></li>
             <li class="sidebar-nav-item"><a href="#contact">الشروط والأحكام </a></li>
         {% else %}
             <li class="sidebar-nav-item"><a href="{% url 'home-page' %}">Home</a></li>
-            <li class="sidebar-nav-item"><a href="#about">About Nashr</a></li>
+            <li class="sidebar-nav-item"><a href="{% url 'about-page' %}">About Nashr</a></li>
             <li class="sidebar-nav-item"><a href="#services">Services</a></li>
-            <li class="sidebar-nav-item"><a href="#portfolio">Who us</a></li>
+            <li class="sidebar-nav-item"><a href="{% url 'whous-page' %}">Who us</a></li>
             <li class="sidebar-nav-item"><a href="#contact">Privacy </a></li>
         {% endif %}
 

@@ -1,0 +1,22 @@
+        <section class="content-section" id="portfolio">
+            <div class="container px-4 px-lg-5">
+                <div class="content-section-heading text-center">
+                        <h2 class="mx-auto mb-5">
+                     {% if LANGUAGE_CODE == 'ar' %}
+                    <em>{{ content.heading_ar | safe }}</em>
+                    {% else %}
+                     <em>{{ content.heading_en | safe |capfirst }}</em>
+                    {% endif %}
+                </h2>
+                </div>
+                <div class="row d-flex gx-0 justify-content-center text-center">
+                                         {% if LANGUAGE_CODE == 'ar' %}
+
+                    <p class="text-black">{{content.content_ar |safe }}</p>
+                    {% else %}
+                                             <p class="text-black">{{content.content_en | safe | capfirst }}</p>
+
+                    {% endif %}
+                </div>
+            </div>
+        </section>

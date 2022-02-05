@@ -49,8 +49,6 @@ class About(SingletonModel):
     section_roaya_ar = RichTextField(null=True, help_text=_('Section for Roaya Page [Arabic]'))
     goals_heading_en = models.CharField(max_length=255, null=True, help_text=_('Title for goals Section [English]'))
     goals_heading_ar = models.CharField(max_length=255, null=True, help_text=_('Title for goals Section [Arabic]'))
-    goals_sub_en = models.CharField(max_length=255, null=True, help_text=_('SubTitle for goals Section [English]'))
-    goals_sub_ar = models.CharField(max_length=255, null=True, help_text=_('SubTitle for goals Section [Arabic]'))
     section_goals_en = RichTextField(null=True, help_text=_('Section for goals Page [English]'))
     section_goals_ar = RichTextField(null=True, help_text=_('Section for goals Page [Arabic]'))
     roles_heading_en = models.CharField(max_length=255, null=True, help_text=_('Title for roles Section [English]'))

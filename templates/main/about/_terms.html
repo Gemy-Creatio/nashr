@@ -1,0 +1,20 @@
+<section class="terms">
+            <div class="container px-4 px-lg-5 text-center">
+                                                             {% if LANGUAGE_CODE == 'ar' %}
+ <h1 class="mx-auto mb-5">
+                  {{ content.roles_heading_ar|safe }}
+                </h1>
+                                                                 <h5 class="text-black">{{ content.roles_sub_ar|safe  }}</h5>
+                                                                 <p class="text-black " dir="rtl">{{ content.section_roles_ar|safe  }}</p>
+
+                {% else %}
+           <h1 class="mx-auto mb-5">
+                  {{ content.roles_heading_en|safe | capfirst }}
+                </h1>
+                                                                 <h5 class="text-black">{{ content.roles_sub_en|safe |capfirst  }}</h5>
+                                                                 <p class="text-black">{{ content.section_roles_en|safe |capfirst  }}</p>
+
+
+                {% endif %}
+            </div>
+        </section>

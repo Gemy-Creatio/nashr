@@ -1,0 +1,19 @@
+<header class="abouthead d-flex align-items-center">
+            <div class="container px-4 px-lg-5">
+                                     {% if LANGUAGE_CODE == 'ar' %}
+                <h1 class="mb-1">{{ content.roaya_heading_ar|safe }}</h1>
+                <h3 class="mb-5">{{ content.roaya_sub_ar|safe }}</h3>
+                                         <div class="row justify-content-center">
+                                                                                  <p class="mb-5 text-start">{{ content.section_roaya_ar|safe |capfirst}}</p>
+
+                                         </div>
+                {% else %}
+                                           <h1 class="mb-1">{{ content.roaya_heading_en|safe|capfirst }}</h1>
+                <h3 class="mb-5">{{ content.roaya_sub_en|safe|capfirst }}</h3>
+                                         <div class="row justify-content-start">
+                                                                                  <p class="mb-5 text-start">{{ content.section_roaya_en|safe |capfirst}}</p>
+
+                                         </div>
+                {% endif %}
+            </div>
+        </header>
