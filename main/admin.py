@@ -1,7 +1,6 @@
 from django.contrib import admin
 from solo.admin import SingletonModelAdmin
 from main.models import (
-    About,
     WhoUS,
     MembershipTerms,
     Privacy,
@@ -11,10 +10,6 @@ from main.models import (
 
 # Register your models here.
 
-
-@admin.register(About)
-class AboutAdmin(SingletonModelAdmin):
-    list_display = ("__str__",)
 
 
 @admin.register(Homepage)

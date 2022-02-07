@@ -1,63 +1,83 @@
 <section class="content-section bg-dark text-white text-center" id="services">
-            <div class="container px-4 px-lg-5">
-                <div class="content-section-heading">
-                                            {% if LANGUAGE_CODE == 'ar' %}
- <h3 class="text-secondary mb-0">خدماتنا</h3>
-                    <h2 class="mb-5">ما نقدمة</h2>
-                     {% else %}
-                                                 <h3 class="text-secondary mb-0">Services</h3>
-                    <h2 class="mb-5">What We Offer</h2>
-                    {% endif %}
-
-                </div>
-                                                        {% if LANGUAGE_CODE == 'ar' %}
-                                                            <div class="row gx-4 gx-lg-5">
-                    <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-                        <span class="service-icon rounded-circle mx-auto mb-3 d-flex justify-content-center"><i class="icon-screen-smartphone services-bar"></i></span>
-                        <h4><strong>{{ content.service_one_title_ar|safe }}</strong></h4>
-                        <p class="text-faded mb-0">{{ content.service_one_summary_ar|safe }}</p>
-                    </div>
-                   <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-                        <span class="service-icon rounded-circle mx-auto mb-3 d-flex justify-content-center"><i class="icon-screen-smartphone services-bar"></i></span>
-                        <h4><strong>{{ content.service_two_title_ar|safe }}</strong></h4>
-                        <p class="text-faded mb-0">{{ content.service_two_summary_ar|safe }}</p>
-                    </div>
-                    <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-                        <span class="service-icon rounded-circle mx-auto mb-3 d-flex justify-content-center"><i class="icon-screen-smartphone services-bar"></i></span>
-                        <h4><strong>{{ content.service_three_title_ar|safe }}</strong></h4>
-                        <p class="text-faded mb-0">{{ content.service_three_summary_ar|safe }}</p>
-                    </div>
-                    <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-                        <span class="service-icon rounded-circle mx-auto mb-3 d-flex justify-content-center"><i class="icon-screen-smartphone services-bar"></i></span>
-                        <h4><strong>{{ content.service_four_title_ar|safe }}</strong></h4>
-                        <p class="text-faded mb-0">{{ content.service_four_summary_ar|safe }}</p>
-                    </div>
-                </div>
-
-              {% else %}
-                            <div class="row gx-4 gx-lg-5">
-                    <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-                        <span class="service-icon rounded-circle mx-auto mb-3 d-flex justify-content-center"><i class="icon-screen-smartphone services-bar"></i></span>
-                        <h4><strong>{{ content.service_one_title_en|safe }}</strong></h4>
-                        <p class="text-faded mb-0">{{ content.service_one_summary_en|safe }}</p>
-                    </div>
-                   <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-                        <span class="service-icon rounded-circle mx-auto mb-3 d-flex justify-content-center"><i class="icon-screen-smartphone services-bar"></i></span>
-                        <h4><strong>{{ content.service_two_title_en|safe }}</strong></h4>
-                        <p class="text-faded mb-0">{{ content.service_two_summary_en|safe }}</p>
-                    </div>
-                    <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-                        <span class="service-icon rounded-circle mx-auto mb-3 d-flex justify-content-center"><i class="icon-screen-smartphone services-bar"></i></span>
-                        <h4><strong>{{ content.service_three_title_en|safe }}</strong></h4>
-                        <p class="text-faded mb-0">{{ content.service_three_summary_en|safe }}</p>
-                    </div>
-                    <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
-                        <span class="service-icon rounded-circle mx-auto mb-3 d-flex justify-content-center"><i class="icon-screen-smartphone services-bar"></i></span>
-                        <h4><strong>{{ content.service_four_title_en|safe }}</strong></h4>
-                        <p class="text-faded mb-0">{{ content.service_four_summary_en|safe }}</p>
-                    </div>
-                </div>
-
+    <div class="container px-4 px-lg-5">
+        <div class="content-section-heading">
+            {% if LANGUAGE_CODE == 'ar' %}
+                <h3 class="text-secondary mb-0">{{ content.services_heading_ar|safe }}</h3>
+                <h2 class="mb-5">{{ content.services_sub_heading_ar |safe }}</h2>
+            {% else %}
+                <h3 class="text-secondary mb-0">{{ content.services_heading_en|safe |capfirst }}</h3>
+                <h2 class="mb-5">{{ content.services_sub_heading_en |safe | capfirst }}</h2>
             {% endif %}
+
+        </div>
+        {% if LANGUAGE_CODE == 'ar' %}
+            <div class="row gx-4 gx-lg-5 text-center justify-content-center">
+                <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+                    <span class="service-icon  mx-auto mb-3 d-flex justify-content-center"><img
+                            src="{{ content.first_services_logo.url }}"/></span>
+                    <h4><strong>{{ content.first_section_Service_title_ar|safe }}</strong></h4>
+                    <p class="text-faded mb-0">{{ content.first_sub_heading_ar|safe }}</p>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+                    <span class="service-icon  mx-auto mb-3 d-flex justify-content-center"><img
+                            src="{{ content.second_services_logo.url }}"/></span>
+                    <h4><strong>{{ content.second_section_Service_title_ar|safe }}</strong></h4>
+                    <p class="text-faded mb-0">{{ content.second_sub_heading_ar|safe }}</p>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+                    <span class="service-icon  mx-auto mb-3 d-flex justify-content-center"><img
+                            src="{{ content.third_services_logo.url }}"/></span>
+                    <h4><strong>{{ content.third_section_Service_title_ar|safe }}</strong></h4>
+                    <p class="text-faded mb-0">{{ content.third_sub_heading_ar|safe }}</p>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+                    <span class="service-icon  mx-auto mb-3 d-flex justify-content-center"><img
+                            src="{{ content.fourth_services_logo.url }}"/></span>
+                    <h4><strong>{{ content.fourth_section_Service_title_ar|safe }}</strong></h4>
+                    <p class="text-faded mb-0">{{ content.fourth_sub_heading_ar|safe }}</p>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+                    <span class="service-icon  mx-auto mb-3 d-flex justify-content-center"><img
+                            src="{{ content.substraction_logo.url }}"/></span>
+                    <h4><strong>{{ content.substraction_heading_ar|safe }}</strong></h4>
+                    <p class="text-faded mb-0">{{ content.sub_subsraction_ar|safe }}</p>
+                </div>
             </div>
-        </section>
+
+        {% else %}
+               <div class="row gx-4 gx-lg-5 text-center justify-content-center">
+                <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+                    <span class="service-icon  mx-auto mb-3 d-flex justify-content-center"><img
+                            src="{{ content.first_services_logo.url }}"/></span>
+                    <h4><strong>{{ content.first_section_Service_title_en|safe |capfirst}}</strong></h4>
+                    <p class="text-faded mb-0">{{ content.first_sub_heading_en|safe|capfirst }}</p>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+                    <span class="service-icon  mx-auto mb-3 d-flex justify-content-center"><img
+                            src="{{ content.second_services_logo.url }}"/></span>
+                    <h4><strong>{{ content.second_section_Service_title_en|safe|capfirst }}</strong></h4>
+                    <p class="text-faded mb-0">{{ content.second_sub_heading_en|safe|capfirst }}</p>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+                    <span class="service-icon  mx-auto mb-3 d-flex justify-content-center"><img
+                            src="{{ content.third_services_logo.url }}"/></span>
+                    <h4><strong>{{ content.third_section_Service_title_en|safe|capfirst }}</strong></h4>
+                    <p class="text-faded mb-0">{{ content.third_sub_heading_en|safe|capfirst }}</p>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+                    <span class="service-icon  mx-auto mb-3 d-flex justify-content-center"><img
+                            src="{{ content.fourth_services_logo.url }}"/></span>
+                    <h4><strong>{{ content.fourth_section_Service_title_en|safe|capfirst }}</strong></h4>
+                    <p class="text-faded mb-0">{{ content.fourth_sub_heading_en|safe|capfirst }}</p>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-5 mb-lg-0">
+                    <span class="service-icon  mx-auto mb-3 d-flex justify-content-center"><img
+                            src="{{ content.substraction_logo.url }}"/></span>
+                    <h4><strong>{{ content.substraction_heading_en|safe|capfirst }}</strong></h4>
+                    <p class="text-faded mb-0">{{ content.sub_subsraction_en|safe |capfirst}}</p>
+                </div>
+            </div>
+
+        {% endif %}
+    </div>
+</section>

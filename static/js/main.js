@@ -17,7 +17,7 @@ jQuery(document).ready(function ($) {
     return false;
   });
     $('.go-to-whatsapp').click(function () {
-  window.location.href = "https://api.whatsapp.com/send?phone=00966531360894"
+  window.location.href = "https://api.whatsapp.com/send?phone=966531360894"
   });
 
   // Stick the header at top on scroll

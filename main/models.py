@@ -9,8 +9,19 @@ from ckeditor.fields import RichTextField
 class WhoUS(SingletonModel):
     heading_en = models.CharField(max_length=255, null=True, help_text=_('Title for Who Us Page [English]'))
     heading_ar = models.CharField(max_length=255, null=True, help_text=_('Title for Who Us Page [Arabic]'))
-    content_en = RichTextField(help_text=_('Content for Who Us Page [English]'))
-    content_ar = RichTextField(help_text=_('Content for Who Us Page [Arabic]'))
+    content_en = RichTextField(help_text=_('Content for Who Us Page [English]'), null=True)
+    content_ar = RichTextField(help_text=_('Content for Who Us Page [Arabic]'), null=True)
+    roaya_heading_en = models.CharField(max_length=255, null=True, help_text=_('Title for Roaya Section [English]'))
+    roaya_heading_ar = models.CharField(max_length=255, null=True, help_text=_('Title for Roaya Section [Arabic]'))
+
+    roaya_sub_en = models.CharField(max_length=255, null=True, help_text=_('SubTitle for Roaya Section [English]'))
+    roaya_sub_ar = models.CharField(max_length=255, null=True, help_text=_('SubTitle for Roaya Section [Arabic]'))
+    roaya_content_ar = RichTextField(help_text=_('Content for Who Us Page [English]'), null=True)
+    roaya_content_en = RichTextField(help_text=_('Content for Who Us Page [English]'), null=True)
+    goals_heading_en = models.CharField(max_length=255, null=True, help_text=_('Title for goals Section [English]'))
+    goals_heading_ar = models.CharField(max_length=255, null=True, help_text=_('Title for goals Section [Arabic]'))
+    section_goals_en = RichTextField(null=True, help_text=_('Section for goals Page [English]'))
+    section_goals_ar = RichTextField(null=True, help_text=_('Section for goals Page [Arabic]'))
 
     class Meta:
         pass
@@ -40,26 +51,7 @@ class Privacy(SingletonModel):
         pass
 
 
-class About(SingletonModel):
-    roaya_heading_en = models.CharField(max_length=255, null=True, help_text=_('Title for Roaya Section [English]'))
-    roaya_heading_ar = models.CharField(max_length=255, null=True, help_text=_('Title for Roaya Section [Arabic]'))
-    roaya_sub_en = models.CharField(max_length=255, null=True, help_text=_('SubTitle for Roaya Section [English]'))
-    roaya_sub_ar = models.CharField(max_length=255, null=True, help_text=_('SubTitle for Roaya Section [Arabic]'))
-    section_roaya_en = RichTextField(null=True, help_text=_('Section for Roaya Page [English]'))
-    section_roaya_ar = RichTextField(null=True, help_text=_('Section for Roaya Page [Arabic]'))
-    goals_heading_en = models.CharField(max_length=255, null=True, help_text=_('Title for goals Section [English]'))
-    goals_heading_ar = models.CharField(max_length=255, null=True, help_text=_('Title for goals Section [Arabic]'))
-    section_goals_en = RichTextField(null=True, help_text=_('Section for goals Page [English]'))
-    section_goals_ar = RichTextField(null=True, help_text=_('Section for goals Page [Arabic]'))
-    roles_heading_en = models.CharField(max_length=255, null=True, help_text=_('Title for roles Section [English]'))
-    roles_heading_ar = models.CharField(max_length=255, null=True, help_text=_('Title for roles Section [Arabic]'))
-    roles_sub_en = models.CharField(max_length=255, null=True, help_text=_('SubTitle for roles Section [English]'))
-    roles_sub_ar = models.CharField(max_length=255, null=True, help_text=_('SubTitle for roles Section [Arabic]'))
-    section_roles_en = RichTextField(null=True, help_text=_('Section for roles Page [English]'))
-    section_roles_ar = RichTextField(null=True, help_text=_('Section for roles Page [Arabic]'))
 
-    class Meta:
-        pass
 
 
 class MembershipTerms(SingletonModel):
@@ -89,82 +81,55 @@ class MembershipTerms(SingletonModel):
 
 
 class Homepage(SingletonModel):
-    what_we_offer_en = models.CharField(max_length=255, null=True,
-                                        help_text=_('Title for What we offers section [English]'))
-    what_we_offer_ar = models.CharField(max_length=255, null=True,
-                                        help_text=_('Title for What we offers section  [Arabic]'))
-    what_we_offer_sub_en = models.CharField(max_length=255, null=True,
-                                            help_text=_('Subitle for What we offers section [English]'))
-    what_we_offer_sub_ar = models.CharField(max_length=255, null=True,
-                                            help_text=_('Subitle for What we offers section  [Arabic]'))
-    what_we_offer_btn_txt_en = models.CharField(max_length=255, null=True,
-                                                help_text=_('text for button in What we offers section [English]'))
-    what_we_offer_btn_txt_ar = models.CharField(max_length=255, null=True,
-                                                help_text=_('text for button in What we offers section [Arabic]'))
-    SERVICES_CHOICES_AR = (
-        ('تصميم الغلاف', 'تصميم الغلاف'),
-        ('تنسيق الكتاب', 'تنسيق الكتاب'),
-        ('السترجة', 'السترجة'),
-        ('النسخ الصوتى', 'النسخ الصوتى'),
-    )
-    SERVICES_CHOICES_EN = (
-        ('Cover design', 'Cover design'),
-        ('Book format', 'Book format'),
-        ('Subtraction', 'Subtraction'),
-        ('Audio transcription', 'Audio transcription'),
-    )
-    service_one_title_en = models.CharField(max_length=255, null=True,
-                                            help_text=_('Title for Services section [English]'),
-                                            choices=SERVICES_CHOICES_EN)
-    service_one_title_ar = models.CharField(max_length=255, null=True,
-                                            help_text=_('Title for Services section  [Arabic]'),
-                                            choices=SERVICES_CHOICES_AR)
-    service_one_summary_en = RichTextField(null=True,
-                                           help_text=_('Summary Services section [English]'))
-    service_one_summary_ar = RichTextField(null=True,
-                                           help_text=_('Summary for Services section  [Arabic]'))
-    service_two_title_en = models.CharField(max_length=255, null=True,
-                                            help_text=_('Title for Services section [English]'),
-                                            choices=SERVICES_CHOICES_EN)
-    service_two_title_ar = models.CharField(max_length=255, null=True,
-                                            help_text=_('Title for Services section  [Arabic]'),
-                                            choices=SERVICES_CHOICES_AR)
-    service_two_summary_en = RichTextField(null=True,
-                                           help_text=_('Summary Services section [English]'))
-    service_two_summary_ar = RichTextField(null=True,
-                                           help_text=_('Summary for Services section  [Arabic]'))
-    service_three_title_en = models.CharField(max_length=255, null=True,
-                                              help_text=_('Title for Services section [English]'),
-                                              choices=SERVICES_CHOICES_EN)
-    service_three_title_ar = models.CharField(max_length=255, null=True,
-                                              help_text=_('Title for Services section  [Arabic]'),
-                                              choices=SERVICES_CHOICES_AR)
-    service_three_summary_en = RichTextField(null=True,
-                                             help_text=_('Summary Services section [English]'))
-    service_three_summary_ar = RichTextField(null=True,
-                                             help_text=_('Summary for Services section  [Arabic]'))
-    service_four_title_en = models.CharField(max_length=255, null=True,
-                                             help_text=_('Title for Services section [English]'),
-                                             choices=SERVICES_CHOICES_EN)
-    service_four_title_ar = models.CharField(max_length=255, null=True,
-                                             help_text=_('Title for Services section  [Arabic]'),
-                                             choices=SERVICES_CHOICES_AR)
-    service_four_summary_en = RichTextField(null=True,
-                                            help_text=_('Summary Services section [English]'))
-    service_four_summary_ar = RichTextField(null=True,
-                                            help_text=_('Summary for Services section  [Arabic]'))
-    contact_title_en = models.CharField(max_length=255, null=True,
-                                        help_text=_('Title for Contact section [English]'))
-    address_en = RichTextField(null=True,
-                               help_text=_('Address Contact section [English]'))
-    contact_title_ar = models.CharField(max_length=255, null=True,
-                                        help_text=_('Title for Contact section [Arabic]'))
-    address_ar = RichTextField(null=True,
-                               help_text=_('Address Contact section [Arabic]'))
-    phone_nashr = models.CharField(max_length=255, null=True,
-                                   help_text=_('Phone Number for Contact section [Arabic]'))
+    heading_ar = models.CharField(max_length=255, null=True, blank=True, help_text=_('Heading for Home Page [Arabic]'))
+    heading_en = models.CharField(max_length=255, null=True, blank=True, help_text=_('Heading for Home Page [English]'))
+    sub_heading_ar = RichTextField(null=True, help_text=_('sub Heading for Home Page [Arabic]'))
+    sub_heading_en = RichTextField(null=True, help_text=_('sub Heading for Home Page [English]'))
+    services_heading_ar = models.CharField(max_length=255, null=True, blank=True,
+                                           help_text=_('Heading for Service Section Home Page [Arabic]'))
+    services_heading_en = models.CharField(max_length=255, null=True, blank=True,
+                                           help_text=_('Heading for Service Section Page [English]'))
+    services_sub_heading_ar = RichTextField(null=True, help_text=_('sub Heading for Services Home Page [Arabic]'))
+    services_sub_heading_en = RichTextField(null=True, help_text=_('sub Heading for Services Home Page [English]'))
+    first_section_Service_title_ar = models.CharField(max_length=255, null=True, blank=True,
+                                                      help_text=_('title For Service for Home Page [Arabic]'))
+    first_sub_heading_ar = RichTextField(null=True, help_text=_('sub Heading for service section [Arabic]'))
+    first_services_logo = models.ImageField(upload_to='logos/', null=True)
+    second_section_Service_title_ar = models.CharField(max_length=255, null=True, blank=True,
+                                                       help_text=_('title For Service for Home Page [Arabic]'))
+    second_sub_heading_ar = RichTextField(null=True, help_text=_('sub Heading for service section [Arabic]'))
+    second_services_logo = models.ImageField(upload_to='logos/', null=True)
+    third_section_Service_title_ar = models.CharField(max_length=255, null=True, blank=True,
+                                                      help_text=_('title For Service for Home Page [Arabic]'))
+    third_sub_heading_ar = RichTextField(null=True, help_text=_('sub Heading for service section [Arabic]'))
+    third_services_logo = models.ImageField(upload_to='logos/', null=True)
+    fourth_section_Service_title_ar = models.CharField(max_length=255, null=True, blank=True,
+                                                       help_text=_('title For Service for Home Page [Arabic]'))
+    fourth_sub_heading_ar = RichTextField(null=True, help_text=_('sub Heading for service section [Arabic]'))
+    fourth_services_logo = models.ImageField(upload_to='logos/', null=True)
+    substraction_heading_ar = models.CharField(max_length=255, null=True, blank=True,
+                                               help_text=_('Substraction Heading for Home Page [Arabic]'))
+    substraction_heading_ar = models.CharField(max_length=255, null=True, blank=True,
+                                               help_text=_('substraction Heading for Home Page [English]'))
+    sub_subsraction_ar = RichTextField(null=True, help_text=_('sub Heading for Home Page [Arabic]'))
+    sub_subsraction_en = RichTextField(null=True, help_text=_('sub Heading for Home Page [English]'))
 
-    def last_projects(self):
-        from books.models import Book
-        books = Book.objects.filter(is_completed=True)[:4]
-        return books
+    first_section_Service_title_en = models.CharField(max_length=255, null=True, blank=True,
+                                                      help_text=_('title For Service for Home Page [Arabic]'))
+    first_sub_heading_en = RichTextField(null=True, help_text=_('sub Heading for service section [Arabic]'))
+    second_section_Service_title_en = models.CharField(max_length=255, null=True, blank=True,
+                                                       help_text=_('title For Service for Home Page [Arabic]'))
+    second_sub_heading_en = RichTextField(null=True, help_text=_('sub Heading for service section [Arabic]'))
+    third_section_Service_title_en = models.CharField(max_length=255, null=True, blank=True,
+                                                      help_text=_('title For Service for Home Page [Arabic]'))
+    third_sub_heading_en = RichTextField(null=True, help_text=_('sub Heading for service section [Arabic]'))
+    fourth_section_Service_title_en = models.CharField(max_length=255, null=True, blank=True,
+                                                       help_text=_('title For Service for Home Page [Arabic]'))
+    fourth_sub_heading_en = RichTextField(null=True, help_text=_('sub Heading for service section [Arabic]'))
+
+    substraction_heading_en = models.CharField(max_length=255, null=True, blank=True,
+                                               help_text=_('title For Substraction for Home Page [English]'))
+
+    substraction_logo = models.ImageField(upload_to='logos/', null=True)
+    class Meta:
+        pass

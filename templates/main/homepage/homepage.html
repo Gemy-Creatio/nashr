@@ -1,11 +1,11 @@
 {% extends 'masterpage.html' %}
 
 {% block content %}
-{% include 'main/homepage/_pageIntro.html' %}
-{% include 'main/homepage/_aboutUs.html' with content=content %}
-{% include 'main/homepage/_services.html' with content=content  %}
-{% include 'main/homepage/_contactUs.html' %}
-{% include 'main/homepage/_recentProjects.html' with content=content %}
+{% include 'main/homepage/_pageIntro.html' with content=content %}
+    {% include 'main/homepage/_services.html' with content=content %}
+{% include 'main/homepage/_membership.html' %}
+    {% include 'main/homepage/_contactUs.html' %}
+{% include 'main/homepage/_aboutUs.html' with content=who %}
 {% include 'main/homepage/_locateUs.html' %}
 
 
