@@ -1,6 +1,7 @@
 {% extends 'masterpage.html' %}
 
 {% block content %}
-{% include 'main/whous/_whosection.html' with content=content %}
+{% include 'main/whous/_whointro.html' with content=who %}
+{% include 'main/whous/_aboutUs.html' with content=who %}
 
 {% endblock content %}

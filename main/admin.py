@@ -2,9 +2,10 @@ from django.contrib import admin
 from solo.admin import SingletonModelAdmin
 from main.models import (
     WhoUS,
-    MembershipTerms,
+    TranslatorMembershipTerms,
     Privacy,
-    Homepage
+    Homepage,
+PublishingBook
 )
 
 
@@ -22,8 +23,13 @@ class WhoUSAdmin(SingletonModelAdmin):
     list_display = ("__str__",)
 
 
-@admin.register(MembershipTerms)
+@admin.register(TranslatorMembershipTerms)
 class MembershipTermsAdmin(SingletonModelAdmin):
+    list_display = ("__str__",)
+
+
+@admin.register(PublishingBook)
+class PublishingBookAdmin(SingletonModelAdmin):
     list_display = ("__str__",)
 
 

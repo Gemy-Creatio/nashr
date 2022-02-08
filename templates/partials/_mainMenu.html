@@ -7,11 +7,11 @@
         </li>
         {% if LANGUAGE_CODE == 'ar' %}
             <li class="sidebar-nav-item"><a href="{% url 'home-page' %}">الرئيسية</a></li>
-            <li class="sidebar-nav-item"><a href="#services">خدماتنا</a></li>
+            <li class="sidebar-nav-item"><a href="{% url 'whous-page' %}">من نحن</a></li>
             <li class="sidebar-nav-item"><a href="#contact">الشروط والأحكام </a></li>
         {% else %}
             <li class="sidebar-nav-item"><a href="{% url 'home-page' %}">Home</a></li>
-            <li class="sidebar-nav-item"><a href="#services">Services</a></li>
+            <li class="sidebar-nav-item"><a href="{% url 'whous-page' %}">Who Us</a></li>
             <li class="sidebar-nav-item"><a href="#contact">Privacy </a></li>
         {% endif %}
 
