@@ -96,7 +96,7 @@ class BookContract(OrderedModel):
         (False, 'لا')
     )
     book = models.ForeignKey(Book, on_delete=models.CASCADE, null=True)
-    author_name = models.ForeignKey(User, on_delete=models.CASCADE, null=True, choices=User.objects.filter(user_type=3))
+    author_name = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     contract = models.FileField(upload_to='contract/')
     is_accepted = models.BooleanField(null=True, blank=True, default=False, choices=BOOLEAN_CHOICES)
     is_entered = models.BooleanField(null=True, blank=True, default=False, choices=BOOLEAN_CHOICES)

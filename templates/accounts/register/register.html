@@ -1,0 +1,18 @@
+{% extends 'masterpage.html' %}
+{% block style %}
+<style>
+label {
+        display: flex;
+    justify-content: end;
+}
+</style>
+{% endblock style %}
+{% block content %}
+
+{% include 'accounts/register/_registerIntro.html' %}
+
+{% include 'accounts/register/_registerForm.html' %}
+
+{% endblock content %}
+
+

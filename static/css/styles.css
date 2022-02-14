@@ -10,6 +10,30 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+.text-sm {
+      margin-inline: 0.2rem;
+    font-size: 11px;
+}
+.nav-sign {
+      align-items: baseline !important;
+    cursor: pointer !important;
+    text-decoration: none !important;
+   color: unset !important;
+}
+.sign-up {
+  padding: 0.4rem;
+  position: fixed;
+    left: 15px;
+    top: 15px;
+    width: 200px;
+    height: 70px;
+    text-align: center;
+    color: #fff;
+    background: rgba(52, 58, 64, 0.5);
+    line-height: 50px;
+    z-index: 999;
+}
+
 @font-face {
   font-family: TheSansArab-Plain;
   src: url('./fonts/TheSansArab-Plain.ttf');

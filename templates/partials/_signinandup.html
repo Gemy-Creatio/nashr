@@ -1,0 +1,28 @@
+{% if request.user.first_name %}
+    <div class="sign-up rounded d-flex justify-content-between text-center" style="width: auto">
+ <a class="d-flex nav-sign" href="{% url 'logout' %}">
+<i class="fa-solid fa-power-off"></i> <p class="text-sm text-center">{{ request.user.first_name }} {{ request.user.last_name }}</p>
+</a>
+    </div>
+
+
+{% else %}
+<div class="sign-up rounded d-flex justify-content-between text-center">
+    {% if LANGUAGE_CODE == 'ar' %}
+  <a class="d-flex nav-sign" href="{% url 'register' %}">
+  <i class="fa-solid fa-user-large"></i> <p class="text-sm">إنشاء حساب</p>
+  </a>
+          <a class="d-flex nav-sign" href="{% url 'login' %}">
+  <i class="fa-solid fa-right-to-bracket"></i> <p class="text-sm">تسجيل دخول</p>
+  </a>
+        {% else %}
+  <a class="d-flex nav-sign" href="{% url 'register' %}">
+  <i class="fa-solid fa-user-large"></i> <p class="text-sm">Sign up</p>
+  </a>
+               <a class="d-flex nav-sign" href="{% url 'login' %}">
+  <i class="fa-solid fa-right-to-bracket"></i> <p class="text-sm">sign in</p>
+  </a>
+{% endif %}
+</div>
+
+{% endif %}

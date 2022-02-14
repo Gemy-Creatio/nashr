@@ -30,11 +30,11 @@ class UserManager(BaseUserManager):
         )
 
         user.set_password(password)
-        user.is_secondary_emp = False
+        user.is_publisher = False
+        user.is_translator = False
         user.is_active = True
         user.is_admin = False
         user.is_staff = False
-        user.is_helper_employee = False
         if commit:
             user.save(using=self._db)
         return user
@@ -55,9 +55,6 @@ class UserManager(BaseUserManager):
         )
         user.is_staff = True
         user.is_admin = True
-        user.is_publisher = False
-        user.is_translator = False
-        user.user_type = 1
         user.save(using=self._db)
         return user
 
@@ -75,15 +72,11 @@ class UserManager(BaseUserManager):
             address=address,
             commit=False,
         )
-        user.is_admin = False
-        user.is_staff = False
         user.is_publisher = True
-        user.is_translator = False
         user.is_active = True
         user.user_type = 2
         user.save(using=self._db)
         return user
-
 
     def create_translator(self, email, first_name, last_name, phone, address, password):
         """
@@ -99,12 +92,47 @@ class UserManager(BaseUserManager):
             address=address,
             commit=False,
         )
-        user.is_admin = False
-        user.is_staff = False
         user.is_translator = True
-        user.is_publisher = False
         user.is_active = True
         user.user_type = 3
+        user.save(using=self._db)
+        return user
+
+    def create_proof_reader(self, email, first_name, last_name, phone, address, password):
+        """
+        Creates and saves a Secondary Employee USer with the given email, first name,
+        last name and password.
+        """
+        user = self.create_user(
+            email,
+            password=password,
+            first_name=first_name,
+            last_name=last_name,
+            phone=phone,
+            address=address,
+            commit=False,
+        )
+        user.is_active = True
+        user.user_type = 4
+        user.save(using=self._db)
+        return user
+
+    def create_designer(self, email, first_name, last_name, phone, address, password):
+        """
+        Creates and saves a Secondary Employee USer with the given email, first name,
+        last name and password.
+        """
+        user = self.create_user(
+            email,
+            password=password,
+            first_name=first_name,
+            last_name=last_name,
+            phone=phone,
+            address=address,
+            commit=False,
+        )
+        user.is_active = True
+        user.user_type = 5
         user.save(using=self._db)
         return user
 
@@ -122,17 +150,17 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_admin = models.BooleanField(_('Admin'), default=False, help_text=_(
         'Designates whether this user should be treated as an Admin. '
     ))
-    is_translator = models.BooleanField(_('Employee'), default=False, help_text=_(
+    is_translator = models.BooleanField(_('translator'), default=False, help_text=_(
         'Designates whether this user should be treated as an Secondary Employee. '
     ))
-    is_publisher = models.BooleanField(_('Client'), default=False, help_text=_(
-        'Designates whether this user should be treated as a Client. '
+    is_publisher = models.BooleanField(_('publisher'), default=False, help_text=_(
+        'Designates whether this user should be treated as a publisher. '
     ))
     USER_TYPE_CHOICES = (
-        (1, 'أدمن'),
         (2, 'دار نشر'),
         (3, 'مترجم'),
-
+        (4, 'مدقق لغوي'),
+        (5, 'مصمم'),
     )
 
     user_type = models.PositiveSmallIntegerField(choices=USER_TYPE_CHOICES, null=True, verbose_name=_('User Type'),

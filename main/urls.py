@@ -1,7 +1,7 @@
 from django.urls import path
 from main.views import (
     HomepageView,
-WhopageView
+    WhopageView
 )
 
 urlpatterns = [
