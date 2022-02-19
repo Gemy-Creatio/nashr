@@ -5,8 +5,14 @@ from books.models import (
     Book,
     BookVoucher,
     ContractFollow,
+    UserProfile,
 
 )
+
+
+@admin.register(UserProfile)
+class UserProfileAdmin(OrderedModelAdmin):
+    list_display = ("__str__",)
 
 
 # Register your models here.

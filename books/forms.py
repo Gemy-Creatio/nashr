@@ -1,5 +1,9 @@
 from django import forms
-from .models import UserProfile
+from .models import (
+    UserProfile,
+    Book,
+
+)
 
 
 class ProfileForm(forms.ModelForm):
@@ -8,8 +12,8 @@ class ProfileForm(forms.ModelForm):
         fields = '__all__'
         exclude = ('user',)
         labels = {
-            'about_you':'نبذه عنك ',
-            'contact_info':'رقم التواصل',
+            'about_you': 'نبذه عنك ',
+            'contact_info': 'رقم التواصل',
             'city': 'المدينة',
             'source': 'النص المصدر',
             'study': 'مؤهلك التعليمي',
@@ -17,3 +21,10 @@ class ProfileForm(forms.ModelForm):
             'field_concern': 'مجال الاهتمام',
 
         }
+
+
+class BookForm(forms.ModelForm):
+    class Meta:
+        model = Book
+        fields = '__all__'
+        exclude = ('user', 'is_completed', 'is_open_download')

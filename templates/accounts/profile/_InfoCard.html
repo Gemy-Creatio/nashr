@@ -1,0 +1,123 @@
+<section class="content-section bg-light" id="about">
+            <div class="container px-4 px-lg-5 text-center">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-lg-10">
+               <div class="card">
+                   <div class="card-header">
+                       <h5 class="text-center">{{ content.first_name }} {{ content.last_name }}</h5>
+                   </div>
+                   <div class="card-body">
+                       <div class="col-10 justify-content-center">
+                       <div class="row d-flex justify-content-between">
+                             <div class="col-4">
+                                   {% if LANGUAGE_CODE == 'ar' %}
+                               <p>الهاتف</p>
+                               {% else %}
+                               <p>Phone</p>
+
+                               {% endif %}
+                           </div>
+                           <div class="col-6">
+                               <p>{{ content.phone }}</p>
+                           </div>
+                       </div>
+
+                                              <div class="row d-flex justify-content-between">
+                         <div class="col-4">
+                                   {% if LANGUAGE_CODE == 'ar' %}
+                               <p>البريد الألكترونى</p>
+                               {% else %}
+                               <p>Email</p>
+
+                               {% endif %}
+                           </div>
+                           <div class="col-6">
+                               <p>{{ content.email }}</p>
+                           </div>
+                                              </div>
+                                              <div class="row d-flex justify-content-between">
+                         <div class="col-4">
+                                   {% if LANGUAGE_CODE == 'ar' %}
+                               <p>العنوان</p>
+                               {% else %}
+                               <p>address</p>
+
+                               {% endif %}
+                           </div>
+                           <div class="col-6">
+                               <p>{{ content.address }}</p>
+                           </div>
+                                              </div>
+                                              <div class="row d-flex justify-content-between">
+                        <div class="col-4">
+                                   {% if LANGUAGE_CODE == 'ar' %}
+                               <p>اللغة الأم</p>
+                               {% else %}
+                               <p>Mother Language</p>
+
+                               {% endif %}
+                           </div>
+                           <div class="col-6">
+                               <p>{{ content.profile.get_mother_language_display }}</p>
+                           </div>
+                                              </div>
+                                              <div class="row d-flex justify-content-between">
+                            <div class="col-4">
+                                   {% if LANGUAGE_CODE == 'ar' %}
+                               <p>نبذة</p>
+                               {% else %}
+                               <p>About You</p>
+
+                               {% endif %}
+                           </div>
+                           <div class="col-6">
+                               <p>{{ content.profile.about_you | safe }}</p>
+                           </div>
+                                              </div>
+                                              <div class="row d-flex justify-content-between">
+  <div class="col-4">
+                                   {% if LANGUAGE_CODE == 'ar' %}
+                               <p>التواصل</p>
+                               {% else %}
+                               <p>Contact info</p>
+
+                               {% endif %}
+                           </div>
+                           <div class="col-6">
+                               <p>{{ content.profile.contact_info | safe }}</p>
+                           </div>
+                                              </div>
+                                              <div class="row d-flex justify-content-between">
+                         <div class="col-4">
+                                   {% if LANGUAGE_CODE == 'ar' %}
+                               <p>المجال</p>
+                               {% else %}
+                               <p>Filed Concern</p>
+
+                               {% endif %}
+                           </div>
+                           <div class="col-6">
+                               <p>{{ content.profile.get_field_concern_display | safe }}</p>
+                           </div>
+                                              </div>
+                                              <div class="row d-flex justify-content-between">
+                        <div class="col-4">
+                                   {% if LANGUAGE_CODE == 'ar' %}
+                               <p>التخصص</p>
+                               {% else %}
+                               <p>Study</p>
+
+                               {% endif %}
+                           </div>
+                           <div class="col-6">
+                               <p>{{ content.profile.study | safe }}</p>
+                           </div>
+                                              </div>
+                       </div>
+                   </div>
+
+               </div>
+                    </div>
+                </div>
+            </div>
+        </section>

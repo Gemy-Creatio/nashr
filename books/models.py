@@ -34,7 +34,7 @@ class UserProfile(OrderedModel):
     city = models.CharField(max_length=255, null=True, blank=True)
     source = models.CharField(max_length=255, null=True, blank=True)
     study = models.CharField(max_length=255, null=True, blank=True)
-    user = models.OneToOneField(User, unique=True, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, unique=True, on_delete=models.CASCADE, related_name='profile')
 
     def __str__(self):
         return self.contact_info

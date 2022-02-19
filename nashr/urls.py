@@ -13,6 +13,7 @@ urlpatterns += i18n_patterns(
     path('admin/', admin.site.urls),
     path('', include('main.urls')),
     path('user/', include('accounts.urls')),
+    path('book/', include('books.urls')),
 
 ) 
 

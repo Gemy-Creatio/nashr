@@ -1,0 +1,28 @@
+{% extends 'masterpage.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<header class="masthead d-flex align-items-center" style="height: auto;background-image: url('../../static/assets/img/white-back.jpg')">
+            <div class="container px-4 px-lg-5 text-center">
+                    {% if LANGUAGE_CODE == 'ar' %}
+                <h1 class="mb-1">إضافة كتاب </h1>
+                {% else %}
+                                <h1 class="mb-1"> Add Book </h1>
+
+                {% endif %}
+            </div>
+        </header>
+
+<div class="card">
+<div class="card-body">
+    <div class="row col-10 justify-content-center">
+          <form method="post" enctype="multipart/form-data">
+                             {% csrf_token %}
+                                                   {{ form|crispy }}
+          </form>
+    </div>
+</div>
+</div>
+
+{% endblock content %}

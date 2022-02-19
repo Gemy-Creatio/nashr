@@ -1,0 +1,16 @@
+{% load static %}
+<a class="menu-toggle rounded" href="#"><i class="fas fa-bars menu-bars"></i></a>
+<nav id="sidebar-wrapper" style="background-color: #f4f4f4;">
+    <ul class="sidebar-nav">
+        <li class="sidebar-brand"><a href="{% url 'home-page' %}"><img src="{% static 'assets/img/nashr_logo.png' %}" class="logo"/></a>
+        </li>
+        <li class="sidebar-nav-item"><a href="#"><img class="logo_publish" src="{% static 'assets/img/icons/notification.png' %}"/></a></li>
+        <li class="sidebar-nav-item"><a href="{% url 'user-details' request.user.pk %}"><img class="logo_publish" src="{% static 'assets/img/icons/user.png' %}"/></a></li>
+        <li class="sidebar-nav-item"><a href="{% url 'add-book' %}"><img class="logo_publish" src="{% static 'assets/img/icons/open-book.png' %}"/></a></li>
+        <li class="sidebar-nav-item"><a href="#"><img class="logo_publish" src="{% static 'assets/img/icons/followers.png' %}"/></a></li>
+        <li class="sidebar-nav-item"><a href="#"><img class="logo_publish" src="{% static 'assets/img/icons/printer.png' %}"/></a></li>
+        <li class="sidebar-nav-item"><a href="#"><img class="logo_publish" src="{% static 'assets/img/icons/agreement.png' %}"/></a></li>
+        <li class="sidebar-nav-item"><a href="#"><img class="logo_publish" src="{% static 'assets/img/icons/wallet.png' %}"/></a></li>
+        <li>{% include 'partials/_language.html' %}</li>
+    </ul>
+</nav>

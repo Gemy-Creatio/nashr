@@ -2,6 +2,8 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.views import View
+from django.views.generic import DetailView
+
 from .forms import (
     RegisterForm,
     LoginForm
@@ -9,12 +11,24 @@ from .forms import (
 from .models import (
     User
 )
+
 from books.forms import (
     ProfileForm
 )
 
 
 #
+class UserDetails(DetailView):
+    # specify the model to use
+    model = User
+    template_name = 'accounts/profile/profile.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(UserDetails,
+                        self).get_context_data(*args, **kwargs)
+        return context
+
+
 class RegisterView(View):
     profileForm = ProfileForm()
     registerForm = RegisterForm()

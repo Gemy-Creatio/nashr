@@ -1,4 +1,10 @@
+    {% if LANGUAGE_CODE == 'ar' %}
+<html lang="ar" dir="rtl">
+{% else %}
 <html lang="en">
+
+{% endif %}
+
 {% load static %}
 {% load crispy_forms_tags %}
 {% load i18n %}
@@ -24,7 +30,12 @@
     {%  endblock style %}
     </head>
 <body>
+{% if request.user.user_type == 2 %}
+{% include 'partials/_publisherMenu.html' %}
+{% else %}
 {% include 'partials/_mainMenu.html' %}
+
+{% endif %}
 {% include 'partials/_signinandup.html' %}
 {% block content %}
 
