@@ -5,6 +5,10 @@
                     <div class="col-lg-10 d-flex justify-content-center">
                                {% if messages %}
               {% include 'partials/_messages.html' %}
+                          <a class="text-center pt-3"  href="{% url 'login' %}">
+                           حاول مرة اخرى
+                          </a>
+
                         {% else %}
                           <form method="post">
                             {% csrf_token %}
