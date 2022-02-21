@@ -1,16 +1,20 @@
 from django.contrib import admin
 from solo.admin import SingletonModelAdmin
+from ordered_model.admin import OrderedModelAdmin
 from main.models import (
     WhoUS,
     TranslatorMembershipTerms,
     Privacy,
     Homepage,
-PublishingBook
+PublishingBook,
+    FAQ
 )
 
 
 # Register your models here.
-
+@admin.register(FAQ)
+class FAQAdmin(OrderedModelAdmin):
+    list_display = ("__str__",)
 
 
 @admin.register(Homepage)

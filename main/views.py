@@ -2,8 +2,7 @@ from django.shortcuts import render
 from main.models import (
     Homepage,
     WhoUS,
-    PublishingBook,
-    TranslatorMembershipTerms
+    FAQ
 )
 # Create your views here.
 from django.views import View
@@ -12,11 +11,9 @@ from django.views import View
 class HomepageView(View):
     def get(self, request):
         home_content = Homepage.get_solo()
-        publish_content = PublishingBook.get_solo()
-        translator_content = TranslatorMembershipTerms.get_solo()
-
+        faqs = FAQ.objects.filter(home_page_show=True)
         return render(request, 'main/homepage/homepage.html',
-                      {"content": home_content, "publish": publish_content, "translator": translator_content})
+                      {"content": home_content, "faqs": faqs})
 
 
 class WhopageView(View):
