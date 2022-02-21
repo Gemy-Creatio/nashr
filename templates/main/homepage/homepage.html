@@ -1,12 +1,13 @@
 {% extends 'masterpage.html' %}
 
 {% block content %}
-    {% include 'main/homepage/_pageIntro.html' %}
-{% include 'main/homepage/_WhoUs.html' with content=content %}
-    {% include 'main/homepage/_services.html' with content=content %}
-{% include 'main/homepage/_membership.html' %}
-{% include 'main/homepage/_publishbooksection.html' with content=publish %}
-{% include 'main/homepage/_translatormembership.html' with content=translator %}
+    {% include 'main/homepage/_pageIntro.html' with content=content %}
+   <main id="main">
+     {% include 'main/homepage/_services.html' with content=content %}
+    {% include 'main/homepage/_translatormembership.html' %}
+     {% include 'main/homepage/_publishbooksection.html' %}
+     {% include 'main/homepage/_FAQ.html' with faqs=faqs %}
+   </main>
 
 
 {% endblock content %}

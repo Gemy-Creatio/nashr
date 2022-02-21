@@ -1,0 +1,42 @@
+  <section id="faq" class="faq">
+      <div class="container">
+
+        <div class="section-title" data-aos="fade-up">
+                                      {% if LANGUAGE_CODE == 'ar' %}
+            <h2>الأسئلة الشائعة</h2>
+
+            {% else %}
+         <h2>Frequently Asked Questions</h2>
+
+            {% endif %}
+        </div>
+
+        <ul class="faq-list">
+   {% for content in faqs %}
+                                             {% if LANGUAGE_CODE == 'ar' %}
+          <li>
+            <div data-bs-toggle="collapse" class="collapsed question" href="#faq{{ content.pk }}">{{ content.question_ar |safe }} <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+            <div id="faq{{ content.pk }}" class="collapse" data-bs-parent=".faq-list">
+              <p>
+                  {{ content.answer_ar |safe }}
+              </p>
+            </div>
+          </li>
+       {% else %}
+
+               <li>
+            <div data-bs-toggle="collapse" class="collapsed question" href="#faq{{ content.pk }}">{{ content.question_en |safe |capfirst}} <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+            <div id="faq{{ content.pk }}" class="collapse" data-bs-parent=".faq-list">
+              <p>
+                  {{ content.answer_en |safe |capfirst}}
+              </p>
+            </div>
+          </li>
+
+       {% endif %}
+      {% endfor %}
+
+        </ul>
+
+      </div>
+    </section>

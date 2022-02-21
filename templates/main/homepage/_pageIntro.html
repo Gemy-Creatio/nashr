@@ -1,4 +1,22 @@
-<header class="masthead d-flex align-items-center" style="background-image: url('{{ content.homepage_background.url }}')">
-            <div class="container px-4 px-lg-5">
-            </div>
-        </header>
+  <section id="hero" class="pt-lg-4">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="fade-up">
+          <div>
+                  {% if LANGUAGE_CODE == 'ar' %}
+            <h1>{{ content.heading_ar |safe }}</h1>
+            <h2>{{ content.sub_heading_ar |safe }}</h2>
+              {% else %}
+             <h1>{{ content.heading_en |safe |capfirst }}</h1>
+            <h2>{{ content.sub_heading_en |safe |capfirst }}</h2>
+              {% endif %}
+          </div>
+        </div>
+        <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left">
+          <img src="{{ content.homepage_background.url }}" class="img-fluid" alt="">
+        </div>
+      </div>
+    </div>
+
+  </section>

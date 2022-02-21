@@ -2,6 +2,7 @@ from django.db import models
 from solo.models import SingletonModel
 from django.utils.translation import gettext_lazy as _
 from ckeditor.fields import RichTextField
+from ordered_model.models import OrderedModel
 
 
 # Create your models here.
@@ -96,6 +97,18 @@ class TranslatorMembershipTerms(SingletonModel):
         pass
 
 
+class FAQ(OrderedModel):
+    question_en = models.CharField(max_length=255, null=True, blank=True,
+                                   help_text=_('question for FAQ Page [English]'))
+    question_ar = models.CharField(max_length=255, null=True, blank=True, help_text=_('question for FAQ Page [Arabic]'))
+    answer_en = RichTextField(help_text=_('Answer for question  [English]'))
+    answer_ar = RichTextField(help_text=_('Answer for question  [Arabic]'))
+    home_page_show = models.BooleanField(default=False, help_text=_('Appear in home Page [Arabic]'))
+
+    class Meta:
+        pass
+
+
 class Homepage(SingletonModel):
     homepage_background = models.ImageField(upload_to='backgrounds/', null=True)
     heading_ar = models.CharField(max_length=255, null=True, blank=True, help_text=_('Heading for Home Page [Arabic]'))
@@ -126,7 +139,7 @@ class Homepage(SingletonModel):
     fourth_services_logo = models.ImageField(upload_to='logos/', null=True)
     substraction_heading_ar = models.CharField(max_length=255, null=True, blank=True,
                                                help_text=_('Substraction Heading for Home Page [Arabic]'))
-    substraction_heading_ar = models.CharField(max_length=255, null=True, blank=True,
+    substraction_heading_en = models.CharField(max_length=255, null=True, blank=True,
                                                help_text=_('substraction Heading for Home Page [English]'))
     sub_subsraction_ar = RichTextField(null=True, help_text=_('sub Heading for Home Page [Arabic]'))
     sub_subsraction_en = RichTextField(null=True, help_text=_('sub Heading for Home Page [English]'))
@@ -144,8 +157,7 @@ class Homepage(SingletonModel):
                                                        help_text=_('title For Service for Home Page [Arabic]'))
     fourth_sub_heading_en = RichTextField(null=True, help_text=_('sub Heading for service section [Arabic]'))
 
-    substraction_heading_en = models.CharField(max_length=255, null=True, blank=True,
-                                               help_text=_('title For Substraction for Home Page [English]'))
+
 
     substraction_logo = models.ImageField(upload_to='logos/', null=True)
 

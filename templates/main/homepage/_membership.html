@@ -1,52 +1,69 @@
 {% load static %}
-<section class="content-section bg-white text-white text-center" id="services" style="background-color: #f4f4f4">
-    <div class="container px-4 px-lg-5">
-        <div class="content-section-heading">
-            {% if LANGUAGE_CODE == 'ar' %}
-                <h3 class="text-secondary mb-0">العضوية</h3>
+
+
+
+
+ <div class="page-section features">
+      <div class="container">
+          <div class="text-center wow fadeInUp">
+                {% if LANGUAGE_CODE == 'ar' %}
+                                                  <div class="subhead">العضوية</div>
             {% else %}
-                <h3 class="text-secondary mb-0">Membership</h3>
+                              <div class="subhead">Membership</div>
+            {% endif %}
+          <div class="divider mx-auto"></div>
+        </div>
+        <div class="row justify-content-center">
+                    {% if LANGUAGE_CODE == 'ar' %}
+
+                  <div class="col-md-6 col-lg-6 py-3 wow fadeInUp">
+            <div class="d-flex flex-row">
+              <div class="img-fluid mr-3">
+                <img src="{% static 'assets/img/book-logo.jpeg' %}" alt="">
+              </div>
+              <div>
+                <h5>عضوية دار النشر</h5>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-6 py-3 wow fadeInUp">
+            <div class="d-flex flex-row">
+              <div class="img-fluid mr-3">
+                <img src="{% static 'assets/img/ae-logo.jpeg' %}" alt="">
+              </div>
+              <div>
+                <h5>عضوية المترجم </h5>
+              </div>
+            </div>
+          </div>
+            {% else %}
+                 <div class="col-md-6 col-lg-6 py-3 wow fadeInUp">
+            <div class="d-flex flex-row">
+              <div class="img-fluid mr-3">
+                <img src="{% static 'assets/img/book-logo.jpeg' %}" alt="">
+              </div>
+              <div>
+                <h5>Publishing house membership</h5>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-6 py-3 wow fadeInUp">
+            <div class="d-flex flex-row">
+              <div class="img-fluid mr-3">
+                <img src="{% static 'assets/img/ae-logo.jpeg' %}" alt="">
+              </div>
+              <div>
+                <h5>Translator membership </h5>
+              </div>
+            </div>
+          </div>
             {% endif %}
 
+
         </div>
-        {% if LANGUAGE_CODE == 'ar' %}
-            <div class="row gx-4 gx-lg-5 text-center justify-content-center pt-2">
-                <div class="col-lg-6 col-md-6 mb-5 mb-lg-0">
-                    <a style="text-decoration: none; cursor: pointer">
-                        <span class="service-icon  mx-auto mb-3 d-flex justify-content-center"><img
-                            src="{% static 'assets/img/book-logo.jpeg' %}"/></span>
-                    <h4 class="text-black"><strong>عضوية دار النشر</strong></h4>
-                    </a>
-                </div>
-                <div class="col-lg-6 col-md-6 mb-5 mb-lg-0">
-                                        <a style="text-decoration: none; cursor: pointer">
-                    <span class="service-icon  mx-auto mb-3 d-flex justify-content-center"><img
-                            src="{% static 'assets/img/ae-logo.jpeg' %}"/></span>
-                    <h4 class="text-black"><strong>عضوية المترجم </strong></h4>
-                                        </a>
-                </div>
-
-            </div>
-
-        {% else %}
-            <div class="row gx-4 gx-lg-5 text-center justify-content-center pt-2">
-                <div class="col-lg-6 col-md-6 mb-5 mb-lg-0">
-                                        <a style="text-decoration: none; cursor: pointer">
-                    <span class="service-icon  mx-auto mb-3 d-flex justify-content-center"><img
-                            src="{% static 'assets/img/book-logo.jpeg' %}"/></span>
-                    <h4 class="text-black"><strong>Publishing house membership</strong></h4>
-                                        </a>
-                </div>
-                <div class="col-lg-6 col-md-6 mb-5 mb-lg-0">
-                                        <a style="text-decoration: none; cursor: pointer">
-                    <span class="service-icon  mx-auto mb-3 d-flex justify-content-center"><img
-                            src="{% static 'assets/img/ae-logo.jpeg' %}"/></span>
-                    <h4 class="text-black"><strong>Translator membership </strong></h4>
-                                        </a>
-                </div>
-
-            </div>
-
-        {% endif %}
+      </div>
     </div>
-</section>
+
+

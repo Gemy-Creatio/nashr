@@ -1,124 +1,97 @@
 {% load static %}
-<section class="content-section bg-white text-white text-center" id="services" style="background-color: #f4f4f4">
-    <div class="container px-4 px-lg-5">
-        {% if LANGUAGE_CODE == 'ar' %}
-            <div class="row gx-4 gx-lg-5 text-center justify-content-center pt-2">
-              <div class="col-lg-4 col-md-4 mb-5 mb-lg-0">
-                 <div class="card card-body text-center justify-content-center">
-                    <ol>
-                        <li>      <h4 class="text-black"><strong>{{ content.first_rule_ar|safe }}</strong></h4>
-                     <p class="text-black">{{ content.sub_first_rule_ar |safe }}</p>
-                        </li>
-                         <li>      <h4 class="text-black"><strong>{{ content.second_rule_ar|safe }}</strong></h4>
-                     <p class="text-black">{{ content.sub_second_rule_ar |safe }}</p>
-                        </li>
-                             <li>      <h4 class="text-black"><strong>{{ content.third_rule_ar|safe }}</strong></h4>
-                     <p class="text-black">{{ content.sub_third_rule_ar |safe }}</p>
-                        </li>
-                    </ol>
-                 </div>
-                </div>
-                                     <div class="col-lg-6 col-md-6 mb-5 mb-lg-0">
-                   <div class="card card-body">
-                        <a style="text-decoration: none; cursor: pointer">
-                        <span class="service-icon  mx-auto mb-3 d-flex justify-content-center"><img
-                            src="{% static 'assets/img/book-logo.jpeg' %}"/></span>
-                    <h4 class="text-black"><strong>{{ content.heading_ar|safe  }}</strong></h4>
-                     <span class="text-secondary">{{ content.sub_heading_ar|safe }}</span>
-                    </a>
-                   </div>
-                </div>
 
+ <section id="features" class="features">
+      <div class="container">
+                          {% if LANGUAGE_CODE == 'ar' %}
+                                    <div class="row">
+          <div class="col-lg-6 mt-2 mb-tg-0 order-2 order-lg-1">
+            <ul class="nav nav-tabs flex-column">
+              <li class="nav-item" data-aos="fade-up">
+                <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">
+                  <h4>التنوع</h4>
+                  <p>دور نشر عالمية ومحلية </p>
+                </a>
+              </li>
+              <li class="nav-item mt-2" data-aos="fade-up" data-aos-delay="100">
+                <a class="nav-link" data-bs-toggle="tab" href="#tab-2">
+                  <h4>عقود موثقة</h4>
+                  <p>عقود إلكترونية</p>
+                </a>
+              </li>
+              <li class="nav-item mt-2" data-aos="fade-up" data-aos-delay="200">
+                <a class="nav-link" data-bs-toggle="tab" href="#tab-3">
+                  <h4>النشر والتوزيع</h4>
+                  <p>   النشر والتوزيع في المحافل العربية والعالمية</p>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in">
+            <div class="tab-content">
+              <div class="tab-pane active show" id="tab-1">
+                <figure>
+                  <img src="{% static 'assets/img/tab-1.jpeg' %}" alt="" class="img-fluid">
+                </figure>
+              </div>
+              <div class="tab-pane" id="tab-2">
+                <figure>
+                  <img src="{% static 'assets/img/tab-2.jpeg'%}" alt="" class="img-fluid">
+                </figure>
+              </div>
+              <div class="tab-pane" id="tab-3">
+                <figure>
+                  <img src="{% static 'assets/img/tab-3.jpeg'%}" alt="" class="img-fluid">
+                </figure>
+              </div>
             </div>
-            <div class="row gx-4 gx-lg-5 text-center justify-content-center pt-2">
-                <div class="col-lg-4 col-md-4 mb-5 mb-lg-0">
-                                       <div class="card card-body">
-                 <div class="text-center justify-content-center">
-                     <h4 class="text-black">{{ content.general_roles_ar |safe }}</h4>
-                     <span class="text-black">{{ content.general_content_ar |safe }}</span>
-                 </div>
-                                       </div>
-                </div>
-                                           <div class="col-lg-4 col-md-4 mb-5 mb-lg-0">
-                 <div class="text-center justify-content-center">
-                                        <div class="card card-body">
-                        <h4 class="text-black"><strong>{{ content.roles_heading_ar|safe }}</strong></h4>
-                     <span class="text-black">{{ content.roles_content_ar |safe }}</span>
-                                        </div>
-                 </div>
-                </div>
+          </div>
+        </div>
 
-
-                <div class="col-lg-4 col-md-4 mb-5 mb-lg-0">
-                                       <div class="card card-body">
-                 <div class="text-center justify-content-center">
-                    <h4 class="text-black"><strong>{{ content.join_head_ar|safe }}</strong></h4>
-                     <span class="text-black">{{ content.join_content_ar | safe }}</span>
-                 </div>
-                                       </div>
-                </div>
-
+{% else %}
+  <div class="row ">
+          <div class="col-lg-6 mt-2 mb-tg-0 order-2 order-lg-1">
+            <ul class="nav nav-tabs flex-column">
+              <li class="nav-item" data-aos="fade-up">
+                <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">
+                  <h4>Diversity </h4>
+                  <p>International and local publishing houses  </p>
+                </a>
+              </li>
+              <li class="nav-item mt-2" data-aos="fade-up" data-aos-delay="100">
+                <a class="nav-link" data-bs-toggle="tab" href="#tab-2">
+                  <h4>documented contracts </h4>
+                  <p> electronic contracts </p>
+                </a>
+              </li>
+              <li class="nav-item mt-2" data-aos="fade-up" data-aos-delay="200">
+                <a class="nav-link" data-bs-toggle="tab" href="#tab-3">
+                  <h4>publication and distribution </h4>
+                  <p> publishing and distribution in Arab and international forums </p>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in">
+            <div class="tab-content">
+              <div class="tab-pane active show" id="tab-1">
+                <figure>
+                  <img src="{% static 'assets/img/tab-1.jpeg' %}" alt="" class="img-fluid">
+                </figure>
+              </div>
+              <div class="tab-pane" id="tab-2">
+                <figure>
+                  <img src="{% static 'assets/img/tab-2.jpeg'%}" alt="" class="img-fluid">
+                </figure>
+              </div>
+              <div class="tab-pane" id="tab-3">
+                <figure>
+                  <img src="{% static 'assets/img/tab-3.jpeg'%}" alt="" class="img-fluid">
+                </figure>
+              </div>
             </div>
-        {% else %}
-      <div class="row gx-4 gx-lg-5 text-center justify-content-center pt-2">
-                                     <div class="col-lg-6 col-md-6 mb-5 mb-lg-0">
-                                                            <div class="card card-body">
-                    <a style="text-decoration: none; cursor: pointer">
-                        <span class="service-icon  mx-auto mb-3 d-flex justify-content-center"><img
-                            src="{% static 'assets/img/book-logo.jpeg' %}"/></span>
-                    <h4 class="text-black"><strong>{{ content.heading_en |capfirst|safe  }}</strong></h4>
-                     <span class="text-secondary">{{ content.sub_heading_en |capfirst|safe }}</span>
-                    </a>
-                                                            </div>
-                </div>
-              <div class="col-lg-4 col-md-4 mb-5 mb-lg-0">
-                 <div class="text-center justify-content-center">
-                                        <div class="card card-body">
-                    <ol>
-                        <li>      <h4 class="text-black"><strong>{{ content.first_rule_en |capfirst|safe }}</strong></h4>
-                     <p class="text-black">{{ content.sub_first_rule_en |capfirst |safe }}</p>
-                        </li>
-                         <li>      <h4 class="text-black"><strong>{{ content.second_rule_en |capfirst|safe }}</strong></h4>
-                     <p class="text-black">{{ content.sub_second_rule_en |capfirst |safe }}</p>
-                        </li>
-                             <li>      <h4 class="text-black"><strong>{{ content.third_rule_en |capfirst|safe }}</strong></h4>
-                     <p class="text-black">{{ content.sub_third_rule_en |capfirst |safe }}</p>
-                        </li>
-                    </ol>
-                                        </div>
-                 </div>
-                </div>
+          </div>
+        </div>
+          {% endif %}
 
-            </div>
-            <div class="row gx-4 gx-lg-5 text-center justify-content-center pt-2">
-                <div class="col-lg-4 col-md-4 mb-5 mb-lg-0">
-                                       <div class="card card-body">
-                 <div class="text-center justify-content-center">
-                     <h4 class="text-black">{{ content.general_roles_en |capfirst |safe }}</h4>
-                     <span class="text-black">{{ content.general_content_en |capfirst |safe }}</span>
-                 </div>
-                                       </div>
-                </div>
-                                           <div class="col-lg-4 col-md-4 mb-5 mb-lg-0">
-                 <div class="text-center justify-content-center">
-                                        <div class="card card-body">
-                        <h4 class="text-black"><strong>{{ content.roles_heading_en |capfirst|safe }}</strong></h4>
-                     <span class="text-black">{{ content.roles_content_en |capfirst |safe }}</span>
-                                        </div>
-                 </div>
-                </div>
-
-
-                <div class="col-lg-4 col-md-4 mb-5 mb-lg-0">
-                                       <div class="card card-body">
-                 <div class="text-center justify-content-center">
-                    <h4 class="text-black"><strong>{{ content.join_head_en |capfirst|safe }}</strong></h4>
-                     <span class="text-black">{{ content.join_content_en |capfirst | safe }}</span>
-                 </div>
-                                       </div>
-                </div>
-
-            </div>
-        {% endif %}
-    </div>
-</section>
+      </div>
+    </section>

@@ -20,6 +20,15 @@
           <form method="post" enctype="multipart/form-data">
                              {% csrf_token %}
                                                    {{ form|crispy }}
+                  {% if LANGUAGE_CODE == 'ar' %}
+                      <div class="text-center">
+                  <button type="submit" class="btn btn-outline-dark  my-4 mb-2"> إضافة كتاب </button>
+                </div>
+              {% else %}
+                 <div class="text-center">
+                  <button type="submit" class="btn btn-outline-dark  my-4 mb-2"> Add Book  </button>
+                </div>
+              {% endif %}
           </form>
     </div>
 </div>
