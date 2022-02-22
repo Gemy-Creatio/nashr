@@ -1,0 +1,90 @@
+{% load static %}
+<section id="about" class="about">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-6 aos-init aos-animate" data-aos="zoom-in">
+                <img src="{% static 'assets/img/ae-logo.jpeg' %}" class="img-fluid" alt="">
+            </div>
+            <div class="col-lg-6 d-flex flex-column justify-contents-center aos-init aos-animate" data-aos="fade-left">
+                <div class="content pt-4 pt-lg-0">
+                    {% if LANGUAGE_CODE == 'ar' %}
+                        <h3>اعلان الكتب</h3>
+                        <p class="fst-italic">
+                            الخدمات مقدمة من أعضاء الموقع وليس موظفين لدى ناشر للترجمة
+                        </p>
+                        <h5 class="fst-italic">
+                            <strong>أولاً</strong> شروط ترجمة الكتب </h5>
+                    {% else %}
+                        <h3>Book advertisement</h3>
+                        <p class="fst-italic">
+                            The services are provided by site members and not employees of Nashr for translation
+                        </p>
+                        <h5 class="fst-italic">
+                            <strong>First</strong> Document Translation Conditions </h5>
+                    {% endif %}
+                    {% if LANGUAGE_CODE == 'ar' %}
+                        <ul>
+                            <li><i class="bi bi-check-circle"></i> فهو يمتلك حقوق التأليف والنشر للترجمة للكتاب المدرج
+                                ولا يتحمل ناشر للتسويق الإلكتروني-ناشر للترجمة المسؤولية الكاملة أمام الناشر الأصلي كما
+                                أمام المحاكم المحلية بخصوص حقوق التأليف والنشر للترجمة
+                            </li>
+                            <li><i class="bi bi-check-circle"></i> يتحمل صحة جميع البيانات المدخلة أمام المحاكم في
+                                المملكة العربية السعودية
+                            </li>
+                            <li><i class="bi bi-check-circle"></i> يلتزم بعدم إضافة محتوى يتضمن بعض الملاحظات أو
+                                المحاذير الاجتماعية أو الدينية أو السياسية التي قد تتعارض مع أعراف وأنظمة النشر في الدول
+                                العربية عامة وفي المملكة العربية السعودية خاصة
+                            </li>
+                            <li><i class="bi bi-check-circle"></i> وكذلك أي إيحاءات أو صور أو رسومات مخالفة. وإذا تم
+                                مخالفة ذلك سيتم إيقاف العضو ولن يتم استرداد أي مبالغ مالية
+                                ناشر للتسويق الإلكتروني لا يتحمل أي مسؤولية أمام المحاكم في المملكة العربية السعودية عن
+                                جودة الترجمة المقدمة من المترجم
+                            </li>
+                            <li><i class="bi bi-check-circle"></i>إذا تم اختيار الكتاب للترجمة يتعهد ويقر بتسديد أجرة
+                                المترجم كاملة في المدة الزمنية المحددة لانتهاء الكتاب المراد ترجمته
+                            </li>
+                            <li><i class="bi bi-check-circle"></i>يتعهد بتحديد أجرة المترجم كاملة ومدة الانتهاء من العمل
+                                واختيار لغة العمل المراد الترجمة إليها بما يتوافق مع الأعراف المتداولة بالمهنة
+                            </li>
+
+                        </ul>
+                        <p>
+                            يلتزم الدار بذكر اسم المترجم في الغلاف الخارجي للكتاب (الرفرف) ولا يتحمل ناشر للتسويق
+                            الإلكتروني المسؤولية -ناشر للترجمة المسؤولية الكاملة أمام المحاكم في المملكة العربية
+                            السعودية
+                        </p>
+                        <h4>مدة الأنتهاء من المشروع</h4>
+                       <ol>
+                        <li> شهرين</li>
+                        <li> ثلاث أشهر</li>
+                        <li> ستة أشهر</li>
+                        <li> قد تقل المدة أو تزيد حسب متطلبات العمل</li>
+                        </ol>
+ <h5>ثالثاً: التكلفة المالية</h5>
+</ol>
+<li>تكلفة ترجمة الكتاب يتم تحديدها من دار نشر</li>
+</ol>
+
+
+
+                    {% else %}
+<ul>
+<li><i class="bi bi-check-circle"></i> Shall bear the validity of all data entered before the courts in the Kingdom of Saudi Arabia</li>
+<li><i class="bi bi-check-circle"></i> It is committed not to add content that includes some social, religious or political observations or caveats that may conflict with publishing customs and regulations in Arab countries in general and in Saudi Arabia in particular as well as any contrary revelations, images or drawings. If this is violated, no money will be refunded </li>
+
+</ul>
+<p>The duration of completion of work </p>
+                        <ol>
+<li> one hour </li>
+<li> four hours </li>
+<li> The duration may decrease or increase depending on the requirements of working on the document </li>
+</ol>
+
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

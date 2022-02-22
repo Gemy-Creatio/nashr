@@ -1,0 +1,65 @@
+{% load static %}
+<section id="about" class="about pt-4">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-6 aos-init aos-animate" data-aos="zoom-in">
+                <img src="{% static 'assets/img/nashr-book-logo.jpeg' %}" class="img-fluid" alt="">
+            </div>
+            <div class="col-lg-6 d-flex flex-column justify-contents-center aos-init aos-animate" data-aos="fade-left">
+                <div class="content pt-4 pt-lg-0">
+                    {% if LANGUAGE_CODE == 'ar' %}
+                        <h3>اولاً: شروط التصميم</h3>
+                    {% else %}
+                        <h3>First: Design terms</h3>
+                    {% endif %}
+                    {% if LANGUAGE_CODE == 'ar' %}
+                        <ul>
+                        	<li><i class="bi bi-check-circle"></i> غلاف الكتاب المترجم يتم تصميمه مطابقاً لغلاف المستخدم للأصل الأجنبي ما لم يتضمن صوراً أو أشكالا تخالف السياسة المتبعة لدينا </li>
+	<li><i class="bi bi-check-circle"></i> يتم تقديم تصميم أول الغلاف وفي حال عدم إعجاب العميل بالتصميم كلياً، يمكنه طلب تصميم ثاني دون دفع أي مقابل </li>
+	<li><i class="bi bi-check-circle"></i> في حال تم العمل بالتصميم الأول يحق له إجراء طلب تعديلات (بحد أقصى 4 تعديلات) وما زاد عن ذلك يتك احتسابه بقيمة (50) خمسين ريال للتصميم الواحد </li>
+	<li><i class="bi bi-check-circle"></i> بعد الانتهاء من التصميم واعتماد الطلب من العميل يتم إرسال ملف التصميم بقيمة pdf وبصيغة psd مفتوح باستثناء كتلة التصميم بالإضافة إلى صور عالية التصميم </li>
+<li><i class="bi bi-check-circle"></i> لا يسمح بطلب أي تعديل بعد التعديل النهائي إلا بمقابل يبدأ من (١٠٠) مئة ريال للتعديل الواحد</li>
+
+                        </ul>
+                                          <h3>ثانياً: مدة الانتهاء من العمل </h3>
+<ul>
+<li><i class="bi bi-check-circle"></i> (٧) سبعة أيام من استلام العمل</li>
+<li><i class="bi bi-check-circle"></i> قد تقل المدة أو تزيد حسب متطلبات العمل على الغلاف</li>
+     <li><i class="bi bi-check-circle"></i> يتم البدء الفعلي في التصميم واحتساب مدة العمل بعد دفع </li>
+</ul>
+                                          <h3>ثالثاً: التكلفة المالية  </h3>
+<ul>
+<li><i class="bi bi-check-circle"></i>تكلفة تصميم الغلاف (٥٠٠) خمسمئة ريال سعودي</li>
+<li><i class="bi bi-check-circle"></i>لا يسترد المبلغ المدفوع أو جزء منه بمجرد البدء في العمل </li>
+</ul>
+
+
+                    {% else %}
+	<ul>
+	<li><i class="bi bi-check-circle"></i> The translated book cover is designed to match the user's cover of foreign origin unless it contains images or forms that are contrary to our policy &nbsp;</li>
+	<li><i class="bi bi-check-circle"></i> The first cover design is presented and if the customer does not fully like the design, he can request a second design without paying any payment&nbsp;</li>
+	<li><i class="bi bi-check-circle"></i> If the first design is introduced, it is entitled to request modifications (up to a maximum of 4 modifications) and more than that, it will be calculated at50riyals per design</li>
+	<li><i class="bi bi-check-circle"></i> After the design is completed and the request is adopted from the client, the design file is sent in pdf value and in an open psd format except for the design block in addition to high-design images &nbsp;</li>
+<li><i class="bi bi-check-circle"></i> Any amendment after the final amendment is permitted only for a fee starting from (100) 100 riyals per amendment&nbsp;</li>
+</ul>
+<h3>secondly: Completion period </h3>
+<ul>
+<li><i class="bi bi-check-circle"></i> (7) Seven days from the receipt of the work ..The duration may decrease or increase depending on the requirements of working on the cover &nbsp;</li>
+<li><i class="bi bi-check-circle"></i> The actual start of the design and the duration of the work is calculated after payment &nbsp;</li>
+
+</ul>
+<h3>thirdly: Financial cost </h3>
+                        <ul>
+	<li><i class="bi bi-check-circle"></i> Cost of designing the cover (500) 500 Saudi riyals &nbsp;</li>
+	<li><i class="bi bi-check-circle"></i> The amount paid or part of it is not refunded once you start working&nbsp;</li>
+
+</ul>
+
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

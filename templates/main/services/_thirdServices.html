@@ -1,0 +1,73 @@
+{% load static %}
+<section id="about" class="about pt-4">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-6 aos-init aos-animate" data-aos="zoom-in">
+                <img src="{% static 'assets/img/cc-logo.jpeg' %}" class="img-fluid" alt="">
+            </div>
+            <div class="col-lg-6 d-flex flex-column justify-contents-center aos-init aos-animate" data-aos="fade-left">
+                <div class="content pt-4 pt-lg-0">
+                    {% if LANGUAGE_CODE == 'ar' %}
+                        <h3>اولاً: شروط التنسيق والتحرير</h3>
+                    {% else %}
+                        <h3>First: Coordination and editing conditions</h3>
+                    {% endif %}
+                    {% if LANGUAGE_CODE == 'ar' %}
+             <ul>
+	<li><i class="bi bi-check-circle"></i> يجب ذكر مصدر الصور والأشكال والرسوم البيانية</li>
+	<li><i class="bi bi-check-circle"></i> يجب عدم إدراج صور أو أشكال في الكتاب يتضمن أي ملاحظات أو محاذير اجتماعية أو دينية أو سياسية التي قد تتعارض مع أعراف وأنظمة النشر العامة في الدول العربية والخاصة في المملكة العربية السعودية </li>
+	<li><i class="bi bi-check-circle"></i> يجب ألا تقل دقة الصور والأشكال والرسوم البيانية عن ٤٠٠dpi  </li>
+	<li><i class="bi bi-check-circle"></i> يجب أن تكون صيغة الصور والأشكال والرسوم البيانية بامتداد PSD أو AI أو TIFF </li>
+	<li><i class="bi bi-check-circle"></i> يجب أن تحفظ الصور والأشكال والرسوم البيانية غير الملونة بصيغة Grayscale أو Bitmap </li>
+	<li><i class="bi bi-check-circle"></i> يجب أن تحفظ الصور والأشكال والرسوم البيانية الملونة بصيغة CMYK </li>
+	<li><i class="bi bi-check-circle"></i> يجب تحرير المعادلات بحجم وبنط مناسبين لمتن الكتاب وإدراجاها آلياً بإستخدام برنامج Math Type أو برنامجEquation Editor </li>
+	<li><i class="bi bi-check-circle"></i> يتم إرسال التنسيق المعتمد للعميل ويحق له إجراء طلب تعديلات (بحد أقصى 4 تعديلات) وما زاد عن ذلك يتك احتسابه بقيمة (50) خمسين ريال للتعديل الواحد</li>
+	<li><i class="bi bi-check-circle"></i> يتم إرسال التنسيق المعتمد للعميل ويحق له إجراء طلب تعديلات (بحد أقصى 4 تعديلات) وما زاد عن ذلك يتك احتسابه بقيمة (50) خمسين ريال للتعديل الواحد</li>
+<li><i class="bi bi-check-circle"></i> بعد الانتهاء من التنسيق والتحرير واعتماد الطلب من العميل يتم إرسال ملف بصيغة Word   وبصيغة Pdf لا يسمح بطلب أي تعديل بعد التعديل النهائي إلا بمقابل يبدأ من (١٠٠) مئة ريال للتعديل الواحد</li>
+</ul>
+
+
+                                          <h3>ثانياً: مدة الانتهاء من العمل  </h3>
+<ul>
+	<li><i class="bi bi-check-circle"></i>(١٤) أربعة عشر يوما من استلام العمل قد تقل المدة أو تزيد حسب متطلبات العمل على التنسيق والتحرير</li>
+	<li><i class="bi bi-check-circle"></i> يتم البدء الفعلي في التنسيق والتحرير واحتساب مدة العمل بعد دفع </li>
+</ul>
+
+                                          <h3>ثالثاً: التكلفة المالية   </h3>
+<ol>
+	<li><i class="bi bi-check-circle"></i> تكلفة التنسيق والتحرير (٧٠٠) سبعمائة ريال سعودي</li>
+	<li><i class="bi bi-check-circle"></i> لا يسترد المبلغ المدفوع أو جزء منه بمجرد البدء في العمل </li>
+</ol>
+
+
+
+                    {% else %}
+                        <ul>
+                        <li><i class="bi bi-check-circle"></i> The source of images, shapes and graphs must be mentioned&nbsp;</li>
+	<li><i class="bi bi-check-circle"></i> No photographs or forms should be included in the book containing any social, religious or political observations or caveats that may conflict with public and publishing norms and regulations in Arab and private countries in Saudi Arabia.&nbsp;</li>
+	<li><i class="bi bi-check-circle"></i> The resolution of images, shapes and graphs should not be less than 400dpi </li>
+	<li><i class="bi bi-check-circle"></i> The image, shapes, and graphs should be formed in the extension of PSD  AI or TIFF&nbsp;</li>
+	<li><i class="bi bi-check-circle"></i> You should save non-grayscale  or Bitmap images, shapes and graphs&nbsp;</li>
+	<li><i class="bi bi-check-circle"></i> CmyK-colored images, shapes and graphs should be preserved&nbsp;</li>
+	<li><i class="bi bi-check-circle"></i> Equations of a size and jump suitable for the book's content should be edited and automatically included using Math Type or Equation Editor </li>
+	<li><i class="bi bi-check-circle"></i> The approved coordination is sent to the customer and he is entitled to make an adjustment request (up to a maximum of 4 adjustments) and more is calculated at the value of (50) fifty riyals per adjustment&nbsp;</li>
+	<li><i class="bi bi-check-circle"></i> After the coordination, editing and request approval of the client, a file is sent in Word   and Pdf format &nbsp;</li>
+	<li><i class="bi bi-check-circle"></i> Any amendment after the final amendment is permitted only for a fee starting from (100) 100 riyals per amendment&nbsp;</li>
+</ul>
+<h3>secondly: Completion period  </h3>
+   <ul>
+		<li><i class="bi bi-check-circle"></i> Fourteen days of work
+Duration may be reduced or increased according to coordination and editing requirements&nbsp;</li>
+		<li><i class="bi bi-check-circle"></i> The actual start of coordination and editing and calculating the duration of the work after payment &nbsp;</li>
+
+</ul>
+
+
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

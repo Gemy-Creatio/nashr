@@ -117,6 +117,9 @@ h1, h2, h3, h4, h5, h6 {
   color: #576971;
   text-decoration: none;
 }
+.pt-8 {
+  padding-top: 6.5rem;
+}
 #header .logo img {
      width: auto;
     padding: 0;

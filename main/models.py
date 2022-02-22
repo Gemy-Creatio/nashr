@@ -157,8 +157,6 @@ class Homepage(SingletonModel):
                                                        help_text=_('title For Service for Home Page [Arabic]'))
     fourth_sub_heading_en = RichTextField(null=True, help_text=_('sub Heading for service section [Arabic]'))
 
-
-
     substraction_logo = models.ImageField(upload_to='logos/', null=True)
 
     class Meta:
@@ -212,6 +210,16 @@ class PublishingBook(SingletonModel):
                                     help_text=_('How To Join Title for MemberShipTerms Page [English]'))
     join_content_ar = RichTextField(null=True, help_text=_('How To Join Content for MemberShipTerms Page [Arabic]'))
     join_content_en = RichTextField(null=True, help_text=_('How To Join Content for MemberShipTerms Page [English]'))
+
+    class Meta:
+        pass
+
+
+class ContactUs(OrderedModel):
+    name = models.CharField(max_length=255, null=True, blank=True)
+    email = models.EmailField(null=True, blank=True)
+    phone = models.CharField(max_length=255, null=True, blank=True)
+    message = RichTextField(null=True)
 
     class Meta:
         pass

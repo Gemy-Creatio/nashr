@@ -6,14 +6,20 @@ from main.models import (
     TranslatorMembershipTerms,
     Privacy,
     Homepage,
-PublishingBook,
-    FAQ
+    PublishingBook,
+    FAQ,
+    ContactUs
 )
 
 
 # Register your models here.
 @admin.register(FAQ)
 class FAQAdmin(OrderedModelAdmin):
+    list_display = ("__str__",)
+
+
+@admin.register(ContactUs)
+class ContactUsAdmin(OrderedModelAdmin):
     list_display = ("__str__",)
 
 

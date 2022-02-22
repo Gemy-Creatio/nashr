@@ -10,12 +10,12 @@
         <ul>
                 {% if LANGUAGE_CODE == 'ar' %}
                     <li><a class="nav-link scrollto active" href="{% url 'home-page' %}">الرئيسية</a></li>
-           <li><a class="nav-link scrollto " href="#">من نحن</a></li>
-          <li><a class="nav-link scrollto" href="#services">خدماتنتا</a></li>
+           <li><a class="nav-link scrollto " href="{% url 'whous-page' %}">من نحن</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'services-page' %}">خدماتنتا</a></li>
          <li class="dropdown"><a href="#"><span> العضويات     </span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a class="nav-link scrollto" href="#">عضوية دار نشر  </a></li>
-              <li><a class="nav-link scrollto" href="#team">عضوية </a></li>
+              <li><a class="nav-link scrollto" href="#team">عضوية مترجم</a></li>
             </ul>
           </li>
 {% if user.is_authenticated %}
@@ -23,13 +23,13 @@
 
               {% else %}
               <li><a class="nav-link scrollto" href="{% url 'login' %}">تسجيل دخول</a></li>
-              <li><a class="nav-link scrollto" href="#services">تسجيل جديد</a></li>
+              <li><a class="nav-link scrollto" href="{% url 'register' %}">تسجيل جديد</a></li>
 
               {% endif %}
             {% else %}
      <li><a class="nav-link scrollto active" href="{% url 'home-page' %}">Home</a></li>
-           <li><a class="nav-link scrollto " href="#">Who Us</a></li>
-          <li><a class="nav-link scrollto" href="#services">Services</a></li>
+           <li><a class="nav-link scrollto " href="{% url 'whous-page' %}">Who Us</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'services-page' %}">Services</a></li>
           <li class="dropdown"><a href="#"><span>Membership</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a class="nav-link scrollto" href="#">Publisher</a></li>
@@ -41,7 +41,7 @@
 
               {% else %}
               <li><a class="nav-link scrollto" href="{% url 'login' %}">Login</a></li>
-              <li><a class="nav-link scrollto" href="#services">Sign Up</a></li>
+              <li><a class="nav-link scrollto" href="{% url 'register' %}">Sign Up</a></li>
 
               {% endif %}
             {% endif %}

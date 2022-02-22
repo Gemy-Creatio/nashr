@@ -1,0 +1,12 @@
+{% extends 'masterpage.html' %}
+
+{% block content %}
+<main id="main">
+{% include 'main/services/_servicesSection.html' with content=services %}
+{% include 'main/services/_bookAdvertise.html' %}
+{% include 'main/services/_designservice.html' %}
+{% include 'main/services/_thirdServices.html' %}
+
+</main>
+
+{% endblock content %}
