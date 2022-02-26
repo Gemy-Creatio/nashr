@@ -1,0 +1,21 @@
+{% extends 'masterpage.html' %}
+{% block style %}
+<style>
+section {
+    padding: 325px 0;
+}
+</style>
+{% endblock style %}
+{% block content %}
+<secttion id="clients" class="clients pt-8">
+{% if request.user.user_type == 5 %}
+{% include 'dashboard/_designerDashMenu.html' %}
+{% else %}
+
+{% endif %}
+
+</secttion>
+
+
+
+{% endblock content %}

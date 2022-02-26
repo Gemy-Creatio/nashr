@@ -60,6 +60,7 @@
 
             <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch" data-aos="fade-left">
                 <form method="post" role="form" class="php-email-form">
+                  {% csrf_token %}
                     <div class="row">
                         <div class="form-group col-md-6">
                                                 {% if LANGUAGE_CODE == 'ar' %}
@@ -89,7 +90,8 @@
                                               <label for="name">Message</label>
                         {% endif %}
                         <textarea class="form-control" name="message" rows="10" required></textarea>
-                    </div.
+                    </div>
+
                     <div class="text-center justify-content-center d-flex">
                                                    {% if LANGUAGE_CODE == 'ar' %}
                                       <button type="submit">إرسال</button>

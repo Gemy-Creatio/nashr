@@ -3,18 +3,21 @@
 
 
 {% block content %}
-<header class="masthead d-flex align-items-center" style="height: auto;background-image: url('../../../static/assets/img/white-back.jpg')">
-            <div class="container px-4 px-lg-5 text-center">
-                    {% if LANGUAGE_CODE == 'ar' %}
+<section class="clients pt-8" id="clients" style="padding: 140px 0 ;">
+            <div class="container">
+                 <div class="section-title">
+                        {% if LANGUAGE_CODE == 'ar' %}
                 <h1 class="mb-1">المعلومات الشخصية </h1>
                 {% else %}
                                 <h1 class="mb-1">Profile</h1>
 
                 {% endif %}
-            </div>
-        </header>
+                 </div>
+            {% include 'accounts/profile/_InfoCard.html' with content=object %}
 
-{% include 'accounts/profile/_InfoCard.html' with content=object %}
+            </div>
+        </section>
+
 
 
 {% endblock content %}

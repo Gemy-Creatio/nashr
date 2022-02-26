@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'accounts',
     'books',
     'main',
+    'services',
 
 ]
 AUTH_USER_MODEL = 'accounts.User'

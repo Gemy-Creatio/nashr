@@ -14,6 +14,7 @@ urlpatterns += i18n_patterns(
     path('', include('main.urls')),
     path('user/', include('accounts.urls')),
     path('book/', include('books.urls')),
+    path('services/', include('services.urls')),
 
 ) 
 

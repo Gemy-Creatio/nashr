@@ -12,10 +12,13 @@
                     <li><a class="nav-link scrollto active" href="{% url 'home-page' %}">الرئيسية</a></li>
            <li><a class="nav-link scrollto " href="{% url 'whous-page' %}">من نحن</a></li>
           <li><a class="nav-link scrollto" href="{% url 'services-page' %}">خدماتنتا</a></li>
-         <li class="dropdown"><a href="#"><span> العضويات     </span> <i class="bi bi-chevron-down"></i></a>
+         <li class="dropdown"><a href="#"><span> تسجيل جديد     </span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a class="nav-link scrollto" href="#">عضوية دار نشر  </a></li>
-              <li><a class="nav-link scrollto" href="#team">عضوية مترجم</a></li>
+              <li><a class="nav-link scrollto" href="{% url 'register-publisher' %}">عضوية دار نشر  </a></li>
+              <li><a class="nav-link scrollto" href="{% url 'register-translator' %}">عضوية مترجم</a></li>
+              <li><a class="nav-link scrollto" href="{% url 'register-design' %}">عضوية مصمم</a></li>
+                <li><a class="nav-link scrollto" href="{% url 'register-proof' %}">عضوية مدقق لغوى</a></li>
+
             </ul>
           </li>
 {% if user.is_authenticated %}
@@ -23,25 +26,27 @@
 
               {% else %}
               <li><a class="nav-link scrollto" href="{% url 'login' %}">تسجيل دخول</a></li>
-              <li><a class="nav-link scrollto" href="{% url 'register' %}">تسجيل جديد</a></li>
 
               {% endif %}
             {% else %}
      <li><a class="nav-link scrollto active" href="{% url 'home-page' %}">Home</a></li>
            <li><a class="nav-link scrollto " href="{% url 'whous-page' %}">Who Us</a></li>
           <li><a class="nav-link scrollto" href="{% url 'services-page' %}">Services</a></li>
-          <li class="dropdown"><a href="#"><span>Membership</span> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a href="#"><span>Sign Up</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a class="nav-link scrollto" href="#">Publisher</a></li>
-              <li><a class="nav-link scrollto" href="#team">Translator</a></li>
+              <li><a class="nav-link scrollto" href="{% url 'register-publisher' %}">Publisher</a></li>
+              <li><a class="nav-link scrollto" href="{% url 'register-translator' %}">Translator</a></li>
+                <li><a class="nav-link scrollto" href="{% url 'register-design' %}">Designer</a></li>
+              <li><a class="nav-link scrollto" href="{% url 'register-proof' %}">Proof Reader</a></li>
+
             </ul>
           </li>
 {% if user.is_authenticated %}
                    <li><a class="nav-link scrollto" href="{% url 'logout' %}">Logout</a></li>
+                   <li><a class="nav-link scrollto" href="{% url 'dashboard' %}">Dashboard</a></li>
 
               {% else %}
               <li><a class="nav-link scrollto" href="{% url 'login' %}">Login</a></li>
-              <li><a class="nav-link scrollto" href="{% url 'register' %}">Sign Up</a></li>
 
               {% endif %}
             {% endif %}
@@ -51,9 +56,9 @@
       </nav><!-- .navbar -->
 
       <div class="header-social-links d-flex align-items-center">
-        <a href="https://www.instagram.com/Naashr_sa" class="twitter"><i class="bi bi-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-        <a href="https://twitter.com/Naashr_sa" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="https://twitter.com/Naashr_sa" class="twitter"><i class="bi bi-twitter"></i></a>
+        <a href="" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.instagram.com/Naashr_sa" class="instagram"><i class="bi bi-instagram"></i></a>
       </div>
 
     </div>

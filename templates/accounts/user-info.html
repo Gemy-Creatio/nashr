@@ -1,0 +1,40 @@
+{% extends 'masterpage.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<section id="contact" class="contact section-bg " style="padding-top: 12rem;">
+    <div class="container justify-content-center">
+
+        <div class="section-title" data-aos="fade-up">
+                                       {% if LANGUAGE_CODE == 'ar' %}
+                                           <h4 class="text-muted">تقديم طلب ترجمة</h4>
+                   {% else %}
+                                           <h4 class="text-muted">translate Request</h4>
+
+            {% endif %}
+        </div>
+    </div>
+            <div style="margin: 0 auto;" class="col-lg-10 mt-5 mt-lg-0 d-flex align-items-stretch justify-content-center" data-aos="fade-left">
+                <form method="post" role="form" class="form">
+                  {% csrf_token %}
+                                                  <div style="margin: 0 auto;" class="form-group flex-column d-flex col-6 justify-content-center">
+                                                       {{ form|crispy }}
+                                                  </div>
+
+
+                    <div class="text-center justify-content-center d-flex">
+                                                   {% if LANGUAGE_CODE == 'ar' %}
+                                      <button type="submit">إرسال</button>
+                        {% else %}
+              <button type="submit">Send Message</button>
+                        {% endif %}
+                    </div>
+                </form>
+            </div>
+
+</section>
+
+
+
+
+{% endblock content %}

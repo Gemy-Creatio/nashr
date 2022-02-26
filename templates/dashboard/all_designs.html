@@ -1,0 +1,30 @@
+{% extends 'masterpage.html' %}
+{% block style %}
+<style>
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #000000;
+    border-color: #000000;
+}
+.pt-8 {
+    padding-top: 20rem;
+}
+</style>
+
+{% endblock style %}
+{% block content %}
+<section class="clients pt-8" id="clients">
+<div class="container">
+        <div class="row no-gutters clients-wrap clearfix wow fadeInUp justify-content-center">
+        {% for design in designs %}
+        {% include 'dashboard/_designCard.html' with content=design %}
+        {% endfor %}
+    </div>
+     {% include 'partials/_pagination.html' with page_obj=designs %}
+
+</div>
+</section>
+
+
+{% endblock content %}

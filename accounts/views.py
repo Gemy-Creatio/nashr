@@ -29,88 +29,76 @@ class UserDetails(DetailView):
         return context
 
 
-class RegisterView(View):
-    profileForm = ProfileForm()
-    registerForm = RegisterForm()
-
+class RegisterPublisherView(View):
     def get(self, request):
-        return render(request, 'accounts/register/register.html',
-                      context={'profileForm': self.profileForm, 'registerForm': self.registerForm})
+        return render(request, 'accounts/register/register_publisher.html')
 
     def post(self, request):
-        profileForm = ProfileForm(request.POST)
-        registerForm = RegisterForm(request.POST)
-        if profileForm.is_valid() and registerForm.is_valid():
-            user_type = registerForm.cleaned_data['user_type']
-            email = registerForm.cleaned_data['email']
-            password = registerForm.cleaned_data['password']
-            first_name = registerForm.cleaned_data['first_name']
-            last_name = registerForm.cleaned_data['last_name']
-            phone = registerForm.cleaned_data['phone']
-            address = registerForm.cleaned_data['address']
-            if user_type == 1:
-                user = User.objects.create_superuser(email=email, last_name=last_name,
-                                                     first_name=first_name, phone=phone,
-                                                     password=password, address=address)
-                profile = profileForm.save(commit=False)
-                profile.user = user
-                profile.save()
-                login(request, user)
-                messages.success(request,
-                                 "لقد تمت العملية بنجاح")
-                return redirect('home-page')
-            elif user_type == 2:
-                user = User.objects.create_publisher(email=email, last_name=last_name,
-                                                     first_name=first_name, phone=phone,
-                                                     password=password, address=address)
-                profile = profileForm.save(commit=False)
-                profile.user = user
-                profile.save()
-                login(request, user)
-                messages.success(request,
-                                 "لقد تمت العملية بنجاح")
-                return redirect('home-page')
-            elif user_type == 3:
-                user = User.objects.create_translator(email=email, last_name=last_name,
-                                                      first_name=first_name, phone=phone,
-                                                      password=password, address=address)
-                profile = profileForm.save(commit=False)
-                profile.user = user
-                profile.save()
-                login(request, user)
-                messages.success(request,
-                                 "لقد تمت العملية بنجاح")
-                return redirect('home-page')
-            elif user_type == 4:
-                user = User.objects.create_proof_reader(email=email, last_name=last_name,
-                                                        first_name=first_name, phone=phone,
-                                                        password=password, address=address)
-                profile = profileForm.save(commit=False)
-                profile.user = user
-                profile.save()
-                login(request, user)
-                messages.success(request,
-                                 "لقد تمت العملية بنجاح")
-                return redirect('home-page')
-            elif user_type == 5:
-                user = User.objects.create_designer(email=email, last_name=last_name,
-                                                    first_name=first_name, phone=phone,
-                                                    password=password, address=address)
-                profile = profileForm.save(commit=False)
-                profile.user = user
-                profile.save()
-                login(request, user)
-                messages.success(request,
-                                 "لقد تمت العملية بنجاح")
-                return redirect('home-page')
-            else:
-                messages.error(request,
-                               "لم تختار نوع الحساب !! حدث خطأ")
-                return redirect('register')
-        else:
-            messages.error(request,
-                           "يرجى إدخال البيانات مره اخرى !! حدث خطأ")
-            return redirect('register')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        phone = request.POST.get('phone')
+        address = request.POST.get('address')
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        user = User.objects.create_publisher(email=email, first_name=first_name, last_name=last_name,
+                                             address=address, password=password, phone=phone)
+        if user is not None:
+            login(request, user)
+            return redirect('dashboard')
+
+
+class RegisterTranslatorView(View):
+    def get(self, request):
+        return render(request, 'accounts/register/register_translator.html')
+
+    def post(self, request):
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        phone = request.POST.get('phone')
+        address = request.POST.get('address')
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        user = User.objects.create_translator(email=email, first_name=first_name, last_name=last_name,
+                                              address=address, password=password, phone=phone)
+        if user is not None:
+            login(request, user)
+            return redirect('dashboard')
+
+
+class RegisterDesignerView(View):
+    def get(self, request):
+        return render(request, 'accounts/register/register_designer.html')
+
+    def post(self, request):
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        phone = request.POST.get('phone')
+        address = request.POST.get('address')
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        user = User.objects.create_designer(email=email, first_name=first_name, last_name=last_name,
+                                            address=address, password=password, phone=phone)
+        if user is not None:
+            login(request, user)
+            return redirect('dashboard')
+
+
+class RegisterProofView(View):
+    def get(self, request):
+        return render(request, 'accounts/register/register_proofReader.html')
+
+    def post(self, request):
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        phone = request.POST.get('phone')
+        address = request.POST.get('address')
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        user = User.objects.create_proof_reader(email=email, first_name=first_name, last_name=last_name,
+                                                address=address, password=password, phone=phone)
+        if user is not None:
+            login(request, user)
+            return redirect('dashboard')
 
 
 class LoginView(View):
@@ -125,7 +113,7 @@ class LoginView(View):
         user = authenticate(request, username=email, password=password)
         if user is not None:
             login(request, user)
-            return redirect('home-page')
+            return redirect('dashboard')
         else:
             messages.error(request,
                            "كلمة المرور او البريد غير صحيح !! حدث خطأ")
@@ -135,3 +123,8 @@ class LoginView(View):
 def logoutUser(request):
     logout(request)
     return redirect('login')
+
+
+class DashboardView(View):
+    def get(self, request):
+        return render(request, 'dashboard/dash-users.html')

@@ -1,0 +1,24 @@
+<section id="cta" class="cta pt-8" style="padding: 164px 0 ;">
+      <div class="container">
+
+        <div class="row aos-init aos-animate" data-aos="zoom-in">
+          <div class="col-lg-9 text-center ">
+                                              {% if LANGUAGE_CODE == 'ar' %}
+            <h3>ناشر للترجمة </h3>
+             <p>نقدم لك كل ما تحتاجة </p>
+          </div>
+          <div class="col-lg-3 cta-btn-container text-center">
+            <a class="cta-btn align-middle" href="{% url 'home-page' %}">رجوع للصفحة الرئيسية</a>
+          </div>
+            {% else %}
+           <h3>Nashr For Translation </h3>
+             <p>We provide you will all you need </p>
+          </div>
+          <div class="col-lg-3 cta-btn-container text-center">
+            <a class="cta-btn align-middle" href="{% url 'home-page' %}">Back To Home</a>
+          </div>
+            {% endif %}
+        </div>
+
+      </div>
+    </section>

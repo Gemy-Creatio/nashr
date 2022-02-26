@@ -18,7 +18,7 @@
                     <div class="icon-box icon-box-pink">
                         <div class="icon"><img
                                 src="{{ content.first_services_logo.url }}" class="logo"/></div>
-                        <h4 class="title"><a href="">{{ content.first_section_Service_title_ar|safe }}</a></h4>
+                        <h4 class="title"><a href="{% url 'request-translate' %}">{{ content.first_section_Service_title_ar|safe }}</a></h4>
                         <p class="description">{{ content.first_sub_heading_ar|safe }}</p>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
                     <div class="icon-box icon-box-blue">
                         <div class="icon"><img
                                 src="{{ content.fourth_services_logo.url }}" class="logo"/></div>
-                        <h4 class="title"><a href="">{{ content.fourth_section_Service_title_ar|safe }}</a></h4>
+                        <h4 class="title"><a href="{% url 'request-design' %}">{{ content.fourth_section_Service_title_ar|safe }}</a></h4>
                         <p class="description">{{ content.fourth_sub_heading_ar|safe }}</p>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
                     <div class="icon-box icon-box-pink">
                         <div class="icon"><img
                                 src="{{ content.first_services_logo.url }}" class="logo"/></div>
-                        <h4 class="title"><a href="">{{ content.first_section_Service_title_en|safe|capfirst }}</a></h4>
+                        <h4 class="title"><a href="{% url 'request-translate' %}">{{ content.first_section_Service_title_en|safe|capfirst }}</a></h4>
                         <p class="description">{{ content.first_sub_heading_en|safe |capfirst }}</p>
                     </div>
                 </div>
@@ -99,7 +99,7 @@
                     <div class="icon-box icon-box-blue">
                         <div class="icon"><img
                                 src="{{ content.fourth_services_logo.url }}" class="logo"/></div>
-                        <h4 class="title"><a href="">{{ content.fourth_section_Service_title_en|capfirst|safe }}</a>
+                        <h4 class="title"><a href="{% url 'request-design' %}">{{ content.fourth_section_Service_title_en|capfirst|safe }}</a>
                         </h4>
                         <p class="description">{{ content.fourth_sub_heading_en|capfirst|safe }}</p>
                     </div>

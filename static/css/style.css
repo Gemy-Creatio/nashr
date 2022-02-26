@@ -788,7 +788,7 @@ font-family: 'Almarai', sans-serif;
 # Cta
 --------------------------------------------------------------*/
 .cta {
-  background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url("../img/cta-bg.jpg") center center;
+  background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url("../assets/img/nashr_logo.jpeg") center center;
   background-size: cover;
   padding: 80px 0;
 }
@@ -1229,17 +1229,17 @@ font-family: 'Almarai', sans-serif;
   background: #000000;
   color: #fff;
 }
-.contact .php-email-form {
+.contact .form {
   width: 100%;
   padding: 30px;
   background: #fff;
   border: 2px solid #e9ecee;
   border-radius: 4px;
 }
-.contact .php-email-form .form-group {
+.contact .form .form-group {
   padding-bottom: 8px;
 }
-.contact .php-email-form .error-message {
+.contact .form .error-message {
   display: none;
   color: #fff;
   background: #555;
@@ -1247,10 +1247,10 @@ font-family: 'Almarai', sans-serif;
   padding: 15px;
   font-weight: 600;
 }
-.contact .php-email-form .error-message br + br {
+.contact .form .error-message br + br {
   margin-top: 25px;
 }
-.contact .php-email-form .sent-message {
+.contact .form .sent-message {
   display: none;
   color: #fff;
   background: #555;
@@ -1258,13 +1258,13 @@ font-family: 'Almarai', sans-serif;
   padding: 15px;
   font-weight: 600;
 }
-.contact .php-email-form .loading {
+.contact .form .loading {
   display: none;
   background: #fff;
   text-align: center;
   padding: 15px;
 }
-.contact .php-email-form .loading:before {
+.contact .form .loading:before {
   content: "";
   display: inline-block;
   border-radius: 50%;
@@ -1276,18 +1276,18 @@ font-family: 'Almarai', sans-serif;
   -webkit-animation: animate-loading 1s linear infinite;
   animation: animate-loading 1s linear infinite;
 }
-.contact .php-email-form input, .contact .php-email-form textarea {
+.contact .form input, .contact .form textarea {
   border-radius: 0;
   box-shadow: none;
   font-size: 14px;
 }
-.contact .php-email-form input {
+.contact .form input {
   height: 44px;
 }
-.contact .php-email-form textarea {
+.contact .form textarea {
   padding: 10px 12px;
 }
-.contact .php-email-form button[type=submit] {
+.contact .form button[type=submit] {
   background: #000000;
   border: 0;
   padding: 10px 24px;
@@ -1295,7 +1295,7 @@ font-family: 'Almarai', sans-serif;
   transition: 0.4s;
   border-radius: 4px;
 }
-.contact .php-email-form button[type=submit]:hover {
+.contact .form button[type=submit]:hover {
   background: #555;
 }
 @-webkit-keyframes animate-loading {

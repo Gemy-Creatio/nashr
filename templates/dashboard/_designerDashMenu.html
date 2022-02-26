@@ -1,0 +1,40 @@
+{% load static %}
+<section id="clients" class="clients">
+    <div class="container">
+
+        <div class="section-title aos-init aos-animate" data-aos="fade-up">
+            <h2>{{ request.user.first_name }}</h2>
+            <p>{{ request.user.get_user_type_display }}</p>
+        </div>
+
+        <div class="row no-gutters clients-wrap clearfix wow fadeInUp justify-content-center">
+
+
+            <div class="col-lg-3 col-md-4 col-xs-6">
+                <div class="client-logo aos-init aos-animate" data-aos="zoom-in" data-aos-delay="100">
+                    <a href="{% url 'user-details' request.user.pk %}">
+                        <img src="{% static 'assets/img/icons/user.png' %}" class="img-fluid" alt="">
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-xs-6">
+                <div class="client-logo aos-init aos-animate" data-aos="zoom-in" data-aos-delay="150">
+                    <a href="{% url 'all-designs' %}">
+                        <img src="{% static 'assets/img/icons/open-book.png' %}" class="img-fluid" alt="">
+                    </a></div>
+            </div>
+
+
+            <div class="col-lg-3 col-md-4 col-xs-6">
+                <div class="client-logo aos-init aos-animate" data-aos="zoom-in" data-aos-delay="250">
+                    <a>
+                        <img src="{% static 'assets/img/icons/wallet.png' %}" class="img-fluid" alt="">
+                    </a></div>
+            </div>
+
+
+        </div>
+
+    </div>
+</section>
