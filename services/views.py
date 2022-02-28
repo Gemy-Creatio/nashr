@@ -3,13 +3,19 @@ from django.shortcuts import render, redirect
 from django.core.files.storage import FileSystemStorage
 from django.urls import reverse
 from django.views import View
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DetailView
 from services.models import (
     TranslateService,
     RequestDesignService
 )
 from services.forms import (
     TrnaslateServiceForm
+)
+from designs.forms import (
+    TakeDesignForm
+)
+from designs.models import (
+    TakeDesign
 )
 
 
@@ -69,3 +75,23 @@ class AllServicesForDesignView(View):
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
         return render(request, 'dashboard/all_designs.html', context={"designs": page_obj})
+
+
+class RequestServiceDetails(DetailView):
+    model = RequestDesignService
+    template_name = 'designs/design_detail.html'
+
+
+class CreateTakeDesignRequest(CreateView):
+    model = TakeDesign
+    form_class = TakeDesignForm
+    template_name = 'designs/TakeDesign.html'
+
+    def form_valid(self, form):
+        take_Design = form.save(commit=True)
+        take_Design.user = self.request.user
+        take_Design.save
+        return super(CreateTakeDesignRequest, self).form_valid(form)
+
+    def get_success_url(self):
+        return reverse('dashboard')

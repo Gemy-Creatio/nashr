@@ -2,12 +2,16 @@ from django.urls import path
 from services.views import (
     RequestTranslateServiceView,
     RequestDesignServiceView,
-    AllServicesForDesignView
+    AllServicesForDesignView,
+    CreateTakeDesignRequest,
+    RequestServiceDetails
 )
 
 urlpatterns = [
     path('request/translate', RequestTranslateServiceView.as_view(), name='request-translate'),
     path('request/design', RequestDesignServiceView.as_view(), name='request-design'),
-    path('all/designs', AllServicesForDesignView.as_view(), name='all-designs')
+    path('all/designs', AllServicesForDesignView.as_view(), name='all-designs'),
+    path('add/design', CreateTakeDesignRequest.as_view(), name='take-design'),
+    path('design/details/<int:pk>', RequestServiceDetails.as_view(), name='detail-design'),
 
 ]

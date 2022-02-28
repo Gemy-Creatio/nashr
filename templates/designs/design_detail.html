@@ -1,0 +1,249 @@
+{% extends 'masterpage.html' %}
+
+
+{% block content %}
+
+    <section id="features" class="features pt-8">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-lg-6 mt-2 mb-tg-0 order-2 order-lg-1">
+                    <ul class="nav nav-tabs flex-column">
+                        <li class="nav-item aos-init aos-animate" data-aos="fade-up">
+                            <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">
+                                {% if LANGUAGE_CODE == 'ar' %}
+                                    <h4>مقاسات الكتاب</h4>
+                                {% else %}
+                                    <h4>book size</h4>
+                                {% endif %}
+                            </a>
+                        </li>
+                        <li class="nav-item mt-2 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+                            <a class="nav-link" data-bs-toggle="tab" href="#tab-2">
+                                {% if LANGUAGE_CODE == 'ar' %}
+                                    <h4>الوجة الأمامى</h4>
+                                {% else %}
+                                    <h4>The front cover</h4>
+                                {% endif %}
+                            </a>
+                        </li>
+                        <li class="nav-item mt-2 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
+                            <a class="nav-link" data-bs-toggle="tab" href="#tab-3">
+                                     {% if LANGUAGE_CODE == 'ar' %}
+                                    <h4>كعب الغلاف</h4>
+                                {% else %}
+                                    <h4>cover tail</h4>
+                                {% endif %}
+                            </a>
+                        </li>
+                        <li class="nav-item mt-2 aos-init aos-animate" data-aos="fade-up" data-aos-delay="300">
+                            <a class="nav-link" data-bs-toggle="tab" href="#tab-4">
+   {% if LANGUAGE_CODE == 'ar' %}
+                                    <h4>الوجه الخلفي</h4>
+                                {% else %}
+                                    <h4>back cover</h4>
+                                {% endif %}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-6 order-1 order-lg-2 aos-init aos-animate" data-aos="zoom-in">
+                    <div class="tab-content">
+                        <div class="tab-pane active show" id="tab-1">
+                            <h3>{{ object.book_size }}</h3>
+                        </div>
+                        <div class="tab-pane" id="tab-2">
+                            <div class="d-flex flex-row justify-content-between">
+                                {% if LANGUAGE_CODE == 'ar' %}
+                                    <h4>عنوان الكتاب</h4>
+
+                                {% else %}
+                                    <h4>The title of the book</h4>
+
+                                {% endif %}
+                                <p>{{ object.title_book }}</p>
+                            </div>
+                            <div class="d-flex flex-row justify-content-between">
+                                {% if LANGUAGE_CODE == 'ar' %}
+                                    <h4>اسم المؤلف</h4>
+
+                                {% else %}
+                                    <h4>Author Name</h4>
+
+                                {% endif %}
+                                <p>{{ object.author_name }}</p>
+                            </div>
+                            <div class="d-flex flex-row justify-content-between">
+                                {% if LANGUAGE_CODE == 'ar' %}
+                                    <h4>اسم المترجم</h4>
+
+                                {% else %}
+                                    <h4>Translator Name</h4>
+
+                                {% endif %}
+                                <p>{{ object.translator_name }}</p>
+                            </div>
+                            <div class="d-flex flex-row justify-content-between">
+                                {% if LANGUAGE_CODE == 'ar' %}
+                                    <h4>الرتبة العلمية</h4>
+
+                                {% else %}
+                                    <h4>scientific rank</h4>
+
+                                {% endif %}
+                                <p>{{ object.scientific_rank }}</p>
+                            </div>
+                            <div class="d-flex flex-row justify-content-between">
+                                {% if LANGUAGE_CODE == 'ar' %}
+                                    <h4> رقم الجزء</h4>
+                                {% else %}
+                                    <h4>Part number</h4>
+                                {% endif %}
+                                <p>{{ object.part_number }}</p>
+                            </div>
+                            <div class="d-flex flex-row justify-content-between">
+                                {% if LANGUAGE_CODE == 'ar' %}
+                                    <h4>رقم الإصدار وسنتة</h4>
+                                {% else %}
+                                    <h4>Version number and year</h4>
+                                {% endif %}
+                                <p>{{ object.version_number }}</p>
+                            </div>
+                            <div class="d-flex flex-row justify-content-between">
+                                {% if LANGUAGE_CODE == 'ar' %}
+                                    <h4>رقم الإصدار وسنتة</h4>
+                                {% else %}
+                                    <h4>Version number and year</h4>
+                                {% endif %}
+                                <p>{{ object.version_number }}</p>
+                            </div>
+                       <div class="d-flex flex-row justify-content-between">
+                                {% if LANGUAGE_CODE == 'ar' %}
+                                    <h4> شعار الدار </h4>
+                                {% else %}
+                                    <h4>house logo</h4>
+                                {% endif %}
+                                <p>{{ object.house_logo }}</p>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tab-3">
+                            <div class="d-flex flex-row justify-content-between">
+                                {% if LANGUAGE_CODE == 'ar' %}
+                                    <h4>اسم المؤلف</h4>
+
+                                {% else %}
+                                    <h4>Author Name</h4>
+
+                                {% endif %}
+                                <p>{{ object.author_name_tail }}</p>
+                            </div>
+                            <div class="d-flex flex-row justify-content-between">
+                                {% if LANGUAGE_CODE == 'ar' %}
+                                    <h4>اسم المترجم</h4>
+
+                                {% else %}
+                                    <h4>Translator Name</h4>
+
+                                {% endif %}
+                                <p>{{ object.translator_name_tail }}</p>
+                            </div>
+                            <div class="d-flex flex-row justify-content-between">
+                                {% if LANGUAGE_CODE == 'ar' %}
+                                    <h4>الرتبة العلمية</h4>
+
+                                {% else %}
+                                    <h4>scientific rank</h4>
+
+                                {% endif %}
+                                <p>{{ object.scientific_rank_tail }}</p>
+                            </div>
+                            <div class="d-flex flex-row justify-content-between">
+                                {% if LANGUAGE_CODE == 'ar' %}
+                                    <h4> رقم الجزء</h4>
+                                {% else %}
+                                    <h4>Part number</h4>
+                                {% endif %}
+                                <p>{{ object.part_number_tail }}</p>
+                            </div>
+                            <div class="d-flex flex-row justify-content-between">
+                                {% if LANGUAGE_CODE == 'ar' %}
+                                    <h4>رقم الإصدار وسنتة</h4>
+                                {% else %}
+                                    <h4>Version number and year</h4>
+                                {% endif %}
+                                <p>{{ object.version_number_tail }}</p>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tab-4">
+                  <div class="d-flex flex-row justify-content-between">
+                                {% if LANGUAGE_CODE == 'ar' %}
+                                    <h4>نبذة الكتاب التسويقية</h4>
+
+                                {% else %}
+                                    <h4>About the marketing book</h4>
+
+                                {% endif %}
+                                <p>{{ object.about_book | safe }}</p>
+                            </div>
+                            <div class="d-flex flex-row justify-content-between">
+                                {% if LANGUAGE_CODE == 'ar' %}
+                                    <h4>رقم الردمك</h4>
+
+                                {% else %}
+                                    <h4>ISBN number</h4>
+
+                                {% endif %}
+                                <p>{{ object.isbn_number }}</p>
+                            </div>
+                            <div class="d-flex flex-row justify-content-between">
+                                {% if LANGUAGE_CODE == 'ar' %}
+                                    <h4> معلومات الدار</h4>
+
+                                {% else %}
+                                    <h4>House information</h4>
+
+                                {% endif %}
+                                <p>{{ object.house_info }}</p>
+                            </div>
+                            <div class="d-flex flex-row justify-content-between">
+                                {% if LANGUAGE_CODE == 'ar' %}
+                                    <h4>وسائل التواصل</h4>
+                                {% else %}
+                                    <h4>communication</h4>
+                                {% endif %}
+                                <p>{{ object.communication }}</p>
+                            </div>
+                                                     <div class="d-flex flex-row justify-content-between">
+                                {% if LANGUAGE_CODE == 'ar' %}
+                                    <h4>ملاحظات</h4>
+                                {% else %}
+                                    <h4>Notes</h4>
+                                {% endif %}
+                                <p>{{ object.note | safe }}</p>
+                            </div>
+
+                            <div class="d-flex flex-row justify-content-between">
+                               <figure>
+                  <img src="{{ object.images.url }}" alt="" class="img-fluid">
+                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <div class="text-center">
+                 <a class="nav-link" href="{% url 'take-design' %}">
+                           {% if LANGUAGE_CODE == 'ar' %}
+                                    <h4>أخذ التصميم</h4>
+                                    <p>سيتم التواصل معك فى أقرب وقت</p>
+
+                                {% else %}
+                                    <h4> Take Design</h4>
+                                    <p>we will contact you in a while</p>
+                                {% endif %}
+
+                 </a>
+             </div>
+        </div>
+    </section>
+{% endblock content %}

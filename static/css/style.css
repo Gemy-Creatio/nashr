@@ -8,9 +8,56 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+@font-face {
+  font-family: "alarabiya";
+  src: url("./fonts/alarabiyaBoutros2020-ExtraBold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "alarabiya";
+  src: url("./fonts/alarabiyaBoutros2020-Regular.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: "Noto Naskh Arabic Bold";
+  src: url("./fonts/NotoNaskhArabic-Bold.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    scroll-behavior: smooth;
+  }
+}
+.mal-color {
+    color: #aa952d !important;
+}
 body {
-  font-family: 'Almarai', sans-serif;
-  color: #444444;
+    margin: 0;
+    font-family: 'alarabiya'!important;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #67748e;
+    background-color: #fff;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    height: 100%;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
 }
 
 a {
@@ -24,7 +71,7 @@ a:hover {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Almarai', sans-serif;
+    font-family: 'alarabiya'!important;
 }
 
 /*--------------------------------------------------------------
@@ -111,7 +158,7 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 0;
   font-weight: 600;
   letter-spacing: 1px;
-  font-family: 'Almarai', sans-serif;
+    font-family: 'alarabiya'!important;
 }
 #header .logo h1 a, #header .logo h1 a:hover {
   color: #576971;
@@ -175,7 +222,7 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: space-between;
   padding: 10px 0 10px 30px;
   font-size: 15px;
-  font-family: "Poppins", sans-serif;
+    font-family: 'alarabiya'!important;
   color: #7b909a;
   white-space: nowrap;
   transition: 0.3s;
@@ -187,7 +234,7 @@ h1, h2, h3, h4, h5, h6 {
   justify-content: space-between;
   padding: 10px 0 10px 30px;
   font-size: 15px;
-  font-family: 'Almarai', sans-serif;
+    font-family: 'alarabiya'!important;
   color: #7b909a;
   white-space: nowrap;
   transition: 0.3s;
@@ -386,7 +433,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 24px;
 }
 #hero .btn-get-started {
-font-family: 'Almarai', sans-serif;
+    font-family: 'alarabiya'!important;
   font-weight: 600;
   font-size: 13px;
   text-transform: uppercase;
@@ -443,7 +490,7 @@ section {
   font-weight: 400;
   margin-bottom: 20px;
   padding-bottom: 0;
-font-family: 'Almarai', sans-serif;
+    font-family: 'alarabiya'!important;
   color: #627680;
 }
 .section-title p {
@@ -470,7 +517,8 @@ font-family: 'Almarai', sans-serif;
   font-weight: 400;
   font-size: 32px;
   color: #364146;
-font-family: 'Almarai', sans-serif;
+    font-family: 'alarabiya'!important;
+
 }
 .about .content ul {
   list-style: none;
@@ -643,7 +691,8 @@ font-family: 'Almarai', sans-serif;
   color: #444444;
   margin-bottom: 5px;
   transition: all 0.3s ease-in-out;
-  font-family: 'Almarai', sans-serif;
+      font-family: 'alarabiya'!important;
+
 }
 .portfolio #portfolio-flters li:hover, .portfolio #portfolio-flters li.filter-active {
   color: #000000;
@@ -801,7 +850,8 @@ font-family: 'Almarai', sans-serif;
   color: #576971;
 }
 .cta .cta-btn {
-  font-family: 'Almarai', sans-serif;
+      font-family: 'alarabiya'!important;
+
   font-weight: 500;
   font-size: 15px;
   letter-spacing: 1px;
@@ -1041,7 +1091,8 @@ font-family: 'Almarai', sans-serif;
   font-size: 36px;
   color: #000000;
   font-weight: 600;
-  font-family: 'Almarai', sans-serif;
+      font-family: 'alarabiya'!important;
+
   margin-bottom: 20px;
 }
 .pricing h4 sup {
@@ -1085,7 +1136,8 @@ font-family: 'Almarai', sans-serif;
   border-radius: 4px;
   color: #fff;
   font-size: 13px;
-  font-family: 'Almarai', sans-serif;
+      font-family: 'alarabiya'!important;
+
   font-weight: 600;
   text-transform: uppercase;
 }
@@ -1131,7 +1183,8 @@ font-family: 'Almarai', sans-serif;
 .faq .faq-list .question {
   display: block;
   position: relative;
-  font-family: 'Almarai', sans-serif;
+      font-family: 'alarabiya'!important;
+
   font-size: 18px;
   line-height: 24px;
   font-weight: 400;
@@ -1375,7 +1428,8 @@ font-family: 'Almarai', sans-serif;
   font-size: 14px;
   line-height: 24px;
   margin-bottom: 0;
-  font-family: 'Almarai', sans-serif;
+      font-family: 'alarabiya'!important;
+
   color: #576971;
 }
 #footer .footer-top .social-links a {
