@@ -1,5 +1,7 @@
 from django.db import models
-
+from accounts.models import (
+    User
+)
 from ordered_model.models import OrderedModel
 from ckeditor.fields import RichTextField
 from django.utils.translation import gettext_lazy as _
@@ -67,3 +69,16 @@ class RequestDesignService(OrderedModel):
 
     class Meta:
         pass
+
+
+class RequestProofReader(OrderedModel):
+    about_book = RichTextField(null=True, blank=True)
+    user_requested = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    is_shown = models.BooleanField(null=True, blank=True, default=False)
+
+    class Meta:
+        pass
+
+
+
+
