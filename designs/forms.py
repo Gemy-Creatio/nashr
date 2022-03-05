@@ -1,7 +1,20 @@
 from django import forms
 from designs.models import (
-    TakeDesign
+    TakeDesign,
+    PrintBookRequest
 )
+
+
+class PrintBookForm(forms.ModelForm):
+    class Meta:
+        model = PrintBookRequest
+        fields = '__all__'
+        labels = {
+            'book': 'الكتاب',
+            'number_of_pages': 'عدد الصفحات',
+            'number_of_colors': 'عدد الألوان',
+            'number_of_copies': 'عدد النسخ',
+        }
 
 
 class TakeDesignForm(forms.ModelForm):
@@ -13,4 +26,4 @@ class TakeDesignForm(forms.ModelForm):
             'max_price': 'السعر الأقصى',
             'min_price': 'السعر الأدنى',
         }
-        exclude = ('user' , )
+        exclude = ('user',)

@@ -7,7 +7,8 @@ from .views import (
     RegisterProofView,
     RegisterDesignerView,
     RegisterPublisherView,
-DashboardView
+DashboardView ,
+RegisterTypesView
 )
 from books.views import AddUserInfoView
 
@@ -17,6 +18,7 @@ urlpatterns = [
     path('register/design', RegisterDesignerView.as_view(), name='register-design'),
     path('register/publisher', RegisterPublisherView.as_view(), name='register-publisher'),
     path('login', LoginView.as_view(), name='login'),
+    path('register', RegisterTypesView.as_view(), name='register'),
     path('logout', logoutUser, name='logout'),
     path('details/<int:pk>', UserDetails.as_view(), name='user-details'),
     path('dashabord', DashboardView.as_view(), name='dashboard'),

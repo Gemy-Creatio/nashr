@@ -2,6 +2,7 @@ from django import forms
 from .models import (
     UserProfile,
     Book,
+    PublisherNeeds
 
 )
 
@@ -20,6 +21,15 @@ class ProfileForm(forms.ModelForm):
             'mother_language': 'اللغة الأم',
             'field_concern': 'مجال الاهتمام',
 
+        }
+
+
+class PublisherNeedsForm(forms.ModelForm):
+    class Meta:
+        model = PublisherNeeds
+        exclude = ('publisher',)
+        labels = {
+            'needs': 'الوظيفة'
         }
 
 

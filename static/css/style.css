@@ -8,6 +8,9 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+.body {
+  background-color: #FFFFFF !important;
+}
 @font-face {
   font-family: "alarabiya";
   src: url("./fonts/alarabiyaBoutros2020-ExtraBold.woff2") format("woff2");
@@ -478,7 +481,7 @@ section {
 }
 
 .section-bg {
-  background-color: #f7f8f9;
+  background-color: #ffffff;
 }
 
 .section-title {

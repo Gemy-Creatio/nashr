@@ -10,7 +10,8 @@ section {
 <secttion id="clients" class="clients pt-8">
 {% if request.user.user_type == 5 %}
 {% include 'dashboard/_designerDashMenu.html' %}
-{% else %}
+{% elif request.user.user_type == 2  %}
+{% include 'dashboard/_publisherDashMenu.html' %}
 
 {% endif %}
 

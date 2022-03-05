@@ -3,12 +3,14 @@ from django.urls import reverse
 
 from books.models import (
     Book,
-    UserProfile
+    UserProfile,
+PublisherNeeds
 )
 
 from books.forms import (
     BookForm,
-    ProfileForm
+    ProfileForm,
+PublisherNeedsForm
 )
 # Create your views here.
 from django.views.generic import CreateView
@@ -37,6 +39,20 @@ class AddUserInfoView(CreateView):
         profile = form.save(commit=True)
         profile.user = self.request.user
         return super(AddUserInfoView, self).form_valid(form)
+
+    def get_success_url(self):
+        return reverse('dashboard')
+
+
+class AddNeedsView(CreateView):
+    model = PublisherNeeds
+    form_class = PublisherNeedsForm
+    template_name = 'books/add-needs.html'
+
+    def form_valid(self, form):
+        needs = form.save(commit=True)
+        needs.publisher = self.request.user
+        return super(AddNeedsView, self).form_valid(form)
 
     def get_success_url(self):
         return reverse('dashboard')

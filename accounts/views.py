@@ -101,6 +101,11 @@ class RegisterProofView(View):
             return redirect('dashboard')
 
 
+class RegisterTypesView(View):
+    def get(self, request):
+        return render(request, 'accounts/register/register.html')
+
+
 class LoginView(View):
     loginForm = LoginForm()
 

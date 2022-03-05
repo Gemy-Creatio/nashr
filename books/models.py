@@ -44,6 +44,10 @@ class UserProfile(OrderedModel):
 
 
 class Book(OrderedModel):
+    BOOK_OPERATION = (
+        (1, 'بيع حقوق نشر'),
+        (2, 'بيع حقوق ترجمة'),
+    )
     BOOK_LANGUAGE = (
         ('اللغة العربية', 'اللغة العربية'),
         ('اللغة الإنجليزية', 'اللغة الإنجليزية'),
@@ -81,6 +85,8 @@ class Book(OrderedModel):
     translator_fees = models.IntegerField(null=True, blank=True)
     project_time = models.CharField(choices=PROJECT_TIME, blank=True, max_length=200)
     book_category = models.CharField(null=True, max_length=255, choices=BOOK_CATEGORY)
+    book_option = models.SmallIntegerField(null=True, choices=BOOK_OPERATION)
+    dropbox_link = models.URLField(null=True, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
     class Meta:
@@ -88,6 +94,20 @@ class Book(OrderedModel):
 
     def __str__(self):
         return self.book_address
+
+
+class PublisherNeeds(OrderedModel):
+    publisher = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    NEEDS_CHOICES = (
+        ('مدقق لغوى', 'مدقق لغوى'),
+        ('مترجم ', ' مترجم'),
+        ('مصمم ', ' مصمم'),
+
+    )
+    needs = models.CharField(max_length=255, null=True, blank=True, choices=NEEDS_CHOICES)
+
+    class Meta:
+        pass
 
 
 class BookContract(OrderedModel):
