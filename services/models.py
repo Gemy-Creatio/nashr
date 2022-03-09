@@ -9,6 +9,26 @@ from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
 
+class Vouchers(OrderedModel):
+    PAID_CHOICES = (
+        (True , 'تم الدفع'),
+        (False , 'لم يتم الدفع '),
+        
+    )
+    user = models.ForeignKey(User , on_delete=models.SET_NULL , null=True , related_name='paid_vouchers')
+    amount = models.IntegerField(null=True , blank=True)
+    description = models.TextField(null=True , blank=True)
+    get_paid =  models.ForeignKey(User , on_delete=models.SET_NULL , null=True , blank=True , related_name="Paid")
+    is_paid = models.BooleanField(null=True , blank=True , default=False,choices=PAID_CHOICES)
+    class Meta:
+        pass
+
+
+class PaidVoucher(OrderedModel):
+    voucher =  models.ForeignKey(Vouchers , on_delete=models.SET_NULL , null=True)
+    date = models.DateField(auto_now_add=True)
+    class Meta:
+            pass
 
 class TranslateService(OrderedModel):
     text_file = models.FileField(_("Text File"), max_length=255, null=True, blank=True)

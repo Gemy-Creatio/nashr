@@ -2,8 +2,12 @@
 from django.contrib import admin
 from ordered_model.admin import OrderedModelAdmin
 from services.models import (
+    PaidVoucher,
     RequestDesignService,
-    TranslateService
+    Vouchers,
+    TranslateService,
+    Vouchers ,
+    PaidVoucher,
 )
 
 
@@ -15,3 +19,18 @@ class RequestDesignServiceAdmin(OrderedModelAdmin):
 @admin.register(TranslateService)
 class TranslateServiceAdmin(OrderedModelAdmin):
     list_display = ("__str__",)
+
+
+@admin.register(Vouchers)
+class VouchersAdmin(OrderedModelAdmin):
+    list_display = ("__str__",)
+    
+    
+
+@admin.register(PaidVoucher)
+class PaidVoucherAdmin(OrderedModelAdmin):
+    list_display = ("__str__",)
+
+
+
+

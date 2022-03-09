@@ -6,9 +6,13 @@ from books.models import (
     BookVoucher,
     ContractFollow,
     UserProfile,
+    PublisherNeeds
 
 )
 
+@admin.register(PublisherNeeds)
+class PublisherNeedsAdmin(OrderedModelAdmin):
+    list_display = ("__str__",)
 
 @admin.register(UserProfile)
 class UserProfileAdmin(OrderedModelAdmin):

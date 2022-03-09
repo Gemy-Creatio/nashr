@@ -4,9 +4,20 @@ from django.core.files.storage import FileSystemStorage
 from django.urls import reverse
 from django.views import View
 from django.views.generic import CreateView, DetailView
+from nashr.settings import PROFILE_KEY, PAYTAB_API_SERVERKEY, API_ENDPOINT
+import json
+import requests
+from django.contrib import messages
+
+
+
+
+
 from services.models import (
     TranslateService,
-    RequestDesignService
+    RequestDesignService,
+    Vouchers,
+    PaidVoucher
 )
 from services.forms import (
     TrnaslateServiceForm
@@ -18,6 +29,49 @@ from designs.models import (
     TakeDesign
 )
 
+
+def AllVouchers(request):
+    vouchers = Vouchers.objects.filter(user = request.user.pk , is_paid = False)
+    return render(request , 'services/all_vouchers.html' , context={"vouchers":vouchers})
+        
+     
+def PayVoucher(request , pk):
+    try:
+        voucher = Vouchers.objects.get(pk=pk)
+        paid =  PaidVoucher(voucher = voucher)
+        paid.save()
+        payload = {
+            "profile_id": PROFILE_KEY,
+            "tran_type": "sale",
+            "tran_class": "ecom",
+            "cart_description": f"{voucher.description}",
+            "cart_id": "50",
+            "cart_currency": "sar",
+            "cart_amount": int(voucher.amount),
+            "callback": "https://naashr.co",
+            "return": "https://naashr.co/"
+        }
+        headers = {
+            "authorization": PAYTAB_API_SERVERKEY,
+            "Content-Type": 'application/json; charset=utf-8'
+        }
+        r = requests.post(API_ENDPOINT, data=json.dumps(payload), headers=headers)
+        data = json.dumps(r.json())
+        content = json.loads(data)
+        voucher.is_paid = True
+        voucher.save()
+        return redirect(content['redirect_url'])
+    except:
+        messages.error(request,
+                             "حدث خطأ ")
+        return redirect('all-vouchers')
+    
+
+        
+        
+    
+
+   
 
 class RequestTranslateServiceView(CreateView):
     model = TranslateService

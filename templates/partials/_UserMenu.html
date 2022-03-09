@@ -23,6 +23,8 @@
 {#          </li>#}
 {% if user.is_authenticated %}
                    <li><a class="nav-link scrollto" href="{% url 'logout' %}">تسجيل خروج</a></li>
+                   <li><a class="nav-link scrollto" href="{% url 'dashboard' %}">لوحة التحكم</a></li>
+
 
               {% else %}
               <li><a class="nav-link scrollto" href="{% url 'login' %}">تسجيل دخول</a></li>

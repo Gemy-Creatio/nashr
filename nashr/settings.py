@@ -167,3 +167,10 @@ LOGOUT_REDIRECT_URL = '/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+API_ENDPOINT = 'https://secure.paytabs.sa/payment/request'
+PAYTAB_API_SERVERKEY = 'SWJNB9T6HN-J2ZLGHLDD9-JN6MLH2DRK'
+PAYTAB_API_CLIENTKEY = 'CRKMPT-6KGG6M-9BTHBD-DNDPQ2'
+PROFILE_KEY = 86514

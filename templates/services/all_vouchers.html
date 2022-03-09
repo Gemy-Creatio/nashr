@@ -1,0 +1,80 @@
+{% extends 'masterpage.html' %}
+
+{% block content %}
+<section id="services" class="services section-bg pt-8">
+    <div class="container">
+
+        <div class="section-title aos-init aos-animate" data-aos="fade-up">
+            {% if LANGUAGE_CODE == 'ar' %}
+            <h2> الفواتير</h2>
+
+            {% else %}
+            <h2> Vouchers</h2>
+
+            {% endif %}
+
+        </div>
+
+        <div class="row  justify-content-center">
+           
+            <table
+            style="margin: 0 auto"
+            class="table table-max table-bordered align-items-center mb-auto"
+          >
+            <thead class="text_black">
+              <tr>
+                  {% if LANGUAGE_CODE == 'ar' %}
+                <th class="text-center text-xxs" style="width: 1.5rem">#</th>
+                <th class="text-center text-xxs" style="width: 1.2rem">وصف الفاتورة</th>
+                
+                <th class="text-center text-xxs" style="width: 1.2rem">السعر </th>
+                <th class="text-center text-xxs" style="width: 1.2rem">حالة الفاتورة </th>
+
+                {% else %}
+                <th class="text-center text-xxs" style="width: 1.5rem">#</th>
+                <th class="text-center text-xxs" style="width: 1.2rem">Description</th>
+                <th class="text-center text-xxs" style="width: 1.2rem">Status</th>                
+                <th class="text-center text-xxs" style="width: 1.2rem">Price </th>
+          
+                {% endif %}
+          
+                <th class="text-center text-xxs" style="width: 0.2rem"></th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for voucher in vouchers  %}
+            <tr>
+              <td style="justify-content: space-around">
+                  <p class="text-center text-xxs">{{ voucher.pk }}</p>
+              </td>
+              <td class="align-middle text-center text-xxs" style="width: 1.2rem">
+                  <p class="text-xxs">{{ voucher.description }}</p>
+              </td>
+              <td class="align-middle text-center text-xxs" style="width: 1.2rem">
+                <p class="text-xxs mb-0">{{ voucher.amount }}</p>
+              </td>
+              <td class="align-middle text-center text-xxs" style="width: 1.2rem">
+                  <p class="text-xxs mb-0">{{ voucher.get_is_paid_display }}</p>
+              </td>
+              <td class="align-middle text-center text-xxs" style="width: 1.2rem">
+            {% if voucher.is_paid != True %}
+            <a href="{% url 'pay-voucher' voucher.pk %}" class="btn btn-dark text-white btn-rounded"> دفع </a>
+            {% endif %}
+            </td>
+          
+       
+          
+            </tr>
+            {% endfor %}
+          
+            </tbody>
+          </table>
+            
+        </div>
+
+    </div>
+</section>
+
+
+
+{% endblock content %}

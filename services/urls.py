@@ -4,7 +4,9 @@ from services.views import (
     RequestDesignServiceView,
     AllServicesForDesignView,
     CreateTakeDesignRequest,
-    RequestServiceDetails
+    RequestServiceDetails , 
+    AllVouchers,
+    PayVoucher
 )
 
 urlpatterns = [
@@ -13,5 +15,7 @@ urlpatterns = [
     path('all/designs', AllServicesForDesignView.as_view(), name='all-designs'),
     path('add/design', CreateTakeDesignRequest.as_view(), name='take-design'),
     path('design/details/<int:pk>', RequestServiceDetails.as_view(), name='detail-design'),
+    path('all/vouchers', AllVouchers, name='all-vouchers'),
+    path('all/vouchers/<int:pk>', PayVoucher, name='pay-voucher'),
 
 ]

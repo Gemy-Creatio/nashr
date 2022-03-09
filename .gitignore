@@ -1,2 +1,3 @@
 media/
-requirements
+requirements.txt 
+.venv/
