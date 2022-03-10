@@ -1,11 +1,36 @@
 {% load i18n %}
+{% load static %}
 <form action="{% url 'set_language' %}" method="post">
     {% csrf_token %}
     {% get_current_language as LANGUAGE_CODE %}
     <input name="next" type="hidden" value="{{ request.get_full_path|slice:'3:' }}">
     {% if LANGUAGE_CODE == 'ar' %}
-                  <li><button   type='submit' name='language' value='en' class="nav-link scrollto lang-btn">English</button></li>
+    <li class="nav-item">
+        <button  type='submit' name='language' value='en' class="nav-link no-btn">
+          <div
+            class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center ms-2 d-flex align-items-center justify-content-center"
+          >
+            <img
+              class="img-fluid"
+              src="{% static 'assets/img/ae-logo.jpeg' %}"
+            />
+          </div>
+          <span class="nav-link-text me-1"> English</span>
+        </button>
+      </li>
     {% else %}
-                          <li><button  type='submit' name='language' value='ar' class="nav-link scrollto lang-btn">عربي</button></li>
+    <li class="nav-item">
+        <button  type='submit' name='language' value='ar' class="nav-link no-btn">
+          <div
+            class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center ms-2 d-flex align-items-center justify-content-center"
+          >
+            <img
+              class="img-fluid"
+              src="{% static 'assets/img/ae-logo.jpeg' %}"
+            />
+          </div>
+          <span class="nav-link-text me-1"> عربي</span>
+        </button>
+      </li>
     {% endif %}
 </form>

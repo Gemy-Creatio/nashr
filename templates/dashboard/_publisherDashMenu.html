@@ -5,6 +5,8 @@
         <div class="section-title aos-init aos-animate" data-aos="fade-up">
             <h2>{{ request.user.first_name }}</h2>
             <p>{{ request.user.get_user_type_display }}</p>
+            <p> عدد الكتب: <span class="text-danger">{{ request.user.books.all.count }} </span></p>
+
         </div>
 
         <div class="row no-gutters clients-wrap clearfix wow fadeInUp justify-content-center">

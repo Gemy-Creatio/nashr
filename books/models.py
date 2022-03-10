@@ -87,7 +87,7 @@ class Book(OrderedModel):
     book_category = models.CharField(null=True, max_length=255, choices=BOOK_CATEGORY)
     book_option = models.SmallIntegerField(null=True, choices=BOOK_OPERATION)
     dropbox_link = models.URLField(null=True, blank=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True,related_name='books')
 
     class Meta:
         pass
