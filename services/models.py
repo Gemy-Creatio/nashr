@@ -9,6 +9,9 @@ from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
 
+
+
+
 class Vouchers(OrderedModel):
     PAID_CHOICES = (
         (True , 'تم الدفع'),

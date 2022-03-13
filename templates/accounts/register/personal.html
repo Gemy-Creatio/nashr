@@ -1,0 +1,132 @@
+{% extends 'masterpage.html' %} {% block content %}
+<main id="main">
+  <section id="services" class="services section-bg pt-8">
+    <div class="container">
+      <div class="section-title aos-init aos-animate" data-aos="fade-up">
+        {% if LANGUAGE_CODE == 'ar' %}
+        <h2>هل انت ؟</h2>
+        <p>إختر نوع الحساب</p>
+        {% else %}
+        <h2>Who you are?</h2>
+        <p>Choose Type of Account</p>
+        {% endif %}
+      </div>
+      <div class="row justify-content-center">
+        {% if LANGUAGE_CODE == 'ar' %}
+        <div
+          class="col-md-6 col-lg-3 justify-content-center d-flex align-items-stretch mb-5 mb-lg-0 aos-init aos-animate"
+          data-aos="zoom-in"
+        >
+          <div class="icon-box icon-box-pink">
+            <div class="icon-box icon-box-pink">
+              <h4 class="title">
+                <a href="{% url 'register-translator' %}">مترجم</a>
+              </h4>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="col-md-6 col-lg-3 justify-content-center d-flex align-items-stretch mb-5 mb-lg-0 aos-init aos-animate"
+          data-aos="zoom-in"
+          data-aos-delay="100"
+        >
+          <div class="icon-box icon-box-cyan">
+            <div class="icon-box icon-box-pink">
+              <h4 class="title">
+                <a href="{% url 'register-writer' %}"> كاتب </a>
+              </h4>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="col-md-63 col-lg-3 justify-content-center d-flex align-items-stretch mb-5 mb-lg-0 aos-init aos-animate"
+          data-aos="zoom-in"
+          data-aos-delay="200"
+        >
+          <div class="icon-box icon-box-green">
+            <div class="icon-box icon-box-pink">
+              <h4 class="title">
+                <a href="{% url 'register-proof' %}">مدقق لغوى</a>
+              </h4>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="col-md-6 col-lg-3 justify-content-center d-flex align-items-stretch mb-5 mb-lg-0 aos-init aos-animate"
+          data-aos="zoom-in"
+          data-aos-delay="300"
+        >
+          <div class="icon-box icon-box-blue">
+            <div class="icon-box icon-box-pink">
+              <h4 class="title">
+                <a href="{% url 'register-design' %}">مصمم</a>
+              </h4>
+            </div>
+          </div>
+        </div>
+        {% else %}
+        <div
+          class="col-md-6 col-lg-3 justify-content-center d-flex align-items-stretch mb-5 mb-lg-0 aos-init aos-animate"
+          data-aos="zoom-in"
+        >
+          <div class="icon-box icon-box-pink">
+            <div class="icon-box icon-box-pink">
+              <h4 class="title">
+                <a href="{% url 'register-translator' %}">Translator</a>
+              </h4>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="col-md-6 col-lg-3 justify-content-center d-flex align-items-stretch mb-5 mb-lg-0 aos-init aos-animate"
+          data-aos="zoom-in"
+          data-aos-delay="100"
+        >
+          <div class="icon-box icon-box-cyan">
+            <div class="icon-box icon-box-pink">
+              <h4 class="title">
+                <a href="{% url 'register-writer' %}"> Writer </a>
+              </h4>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="col-md-63 col-lg-3 justify-content-center d-flex align-items-stretch mb-5 mb-lg-0 aos-init aos-animate"
+          data-aos="zoom-in"
+          data-aos-delay="200"
+        >
+          <div class="icon-box icon-box-green">
+            <div class="icon-box icon-box-pink">
+              <h4 class="title">
+                <a href="{% url 'register-proof' %}">Proof Reader</a>
+              </h4>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="col-md-6 col-lg-3 justify-content-center d-flex align-items-stretch mb-5 mb-lg-0 aos-init aos-animate"
+          data-aos="zoom-in"
+          data-aos-delay="300"
+        >
+          <div class="icon-box icon-box-blue">
+            <div class="icon-box icon-box-pink">
+              <h4 class="title">
+                <a href="{% url 'register-design' %}">Designer</a>
+              </h4>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+     
+    </div>
+  </section>
+</main>
+
+{% endblock content %}

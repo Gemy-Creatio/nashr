@@ -45,6 +45,10 @@
     scroll-behavior: smooth;
   }
 }
+
+.rounded {
+ border-radius: 5rem;
+}
 .mal-color {
     color: #aa952d !important;
 }

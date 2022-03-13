@@ -10,9 +10,6 @@ import requests
 from django.contrib import messages
 
 
-
-
-
 from services.models import (
     TranslateService,
     RequestDesignService,

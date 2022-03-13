@@ -6,9 +6,21 @@ from books.models import (
     BookVoucher,
     ContractFollow,
     UserProfile,
-    PublisherNeeds
+    PublisherNeeds,
+    BookDistrubuting ,
+    Negotiation
 
 )
+
+
+@admin.register(BookDistrubuting)
+class BookDistrubutingAdmin(OrderedModelAdmin):
+    list_display = ("__str__",)
+
+
+@admin.register(Negotiation)
+class NegotiationAdmin(OrderedModelAdmin):
+    list_display = ("__str__",)
 
 @admin.register(PublisherNeeds)
 class PublisherNeedsAdmin(OrderedModelAdmin):

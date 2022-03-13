@@ -1,0 +1,73 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<div class="row pt-3">
+{% for book in books  %}
+<div class="col-lg-4 col-12">
+    <div class="card z-0">
+        <div class="card-header">
+            <h5>{{ book.user.first_name }} {{ book.user.last_name }}</h5>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            {% if LANGUAGE_CODE == 'ar' %}
+            <h5>اسم المؤلف </h5>
+             {% else %}
+             <h5> Author Name </h5>
+ 
+             {% endif %}
+             <p> {{book.auther_name}} </p>
+ 
+             <hr/>
+             {% if LANGUAGE_CODE == 'ar' %}
+             <h5>عدد الصفحات </h5>
+              {% else %}
+              <h5> Number Of Pages </h5>
+  
+              {% endif %}
+              <p> {{book.number_of_pages}} </p>
+  
+              <hr/>
+              {% if LANGUAGE_CODE == 'ar' %}
+              <h5>العنوان  </h5>
+               {% else %}
+               <h5> Address </h5>
+   
+               {% endif %}
+               <p> {{book.address}} </p>
+   
+               <hr/>
+               {% if LANGUAGE_CODE == 'ar' %}
+               <h5> سنة الإصدار  </h5>
+                {% else %}
+                <h5> Release Year </h5>
+    
+                {% endif %}
+                <p> {{book.year}} </p>
+    
+                <hr/>
+                {% if LANGUAGE_CODE == 'ar' %}
+                <h5> السعر  </h5>
+                 {% else %}
+                 <h5>  Price </h5>
+     
+                 {% endif %}
+                 <p> {{book.price}} </p>
+     
+                 <hr/>
+
+          </div>
+        </div>
+        <div class="card-footer">
+            <div class="text-center">
+                <a class="btn btn-dark text-white btn-sm" href="{% url 'neg-book' book.pk %}">تفاوض</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endfor %}
+
+</div>
+
+{% endblock content %}

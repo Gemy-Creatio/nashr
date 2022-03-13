@@ -28,7 +28,7 @@
                 </a>
             </li>
           <li class="nav-item">
-                <a class="nav-link " href="{% url 'add-book' %}">
+                <a class="nav-link " href="{% url 'book-choices' %}">
                     <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center ms-2 d-flex align-items-center justify-content-center">
                         <img class="img-fluid" src="{% static 'assets/img/icons/open-book.png' %}"/>
                     </div>
@@ -97,7 +97,33 @@
                     {% endif %}
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link " href="{% url 'all-books'  %}">
+                    <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center ms-2 d-flex align-items-center justify-content-center">
+                       <img class="img-fluid" src="{% static 'assets/img/tab-1.jpeg' %}"/>
+                                        </div>
+                    {% if LANGUAGE_CODE == 'ar' %}
+                    <span class="nav-link-text me-1"> حقوق النشر</span>
+                    {% else %}
+                    <span class="nav-link-text me-1"> Publisher Rights  </span>
+
+                    {% endif %}
+                </a>
+            </li>
             {% include 'partials/_language.html' %}
+       
+       
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
         </ul>
         <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; right: 235px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div></div>
     </div>

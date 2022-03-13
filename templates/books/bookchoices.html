@@ -1,0 +1,60 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+<div class="row pt-3 d-flex justify-content-center" >
+    <div class="col-lg-3 col-sm-6 mb-lg-0 mb-4">
+       
+        <div class="card">
+            <div class="card-body p-3">
+                <div class="row">
+                    <div class="col-8">
+                       <a href="{% url 'add-book' %}">
+                        <div class="numbers">
+                            <p class="text-lg mb-0 text-capitalize font-weight-bold"> 
+                                {% if LANGUAGE_CODE == 'ar' %}
+                               ترجمة - إعلان كتاب
+    {% else %}
+    Translate Book
+    
+    {% endif %}
+                                </p>
+    
+                        </div>
+                       </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="col-lg-3 col-sm-6 mb-lg-0 mb-4">
+       
+        <div class="card">
+            <div class="card-body p-3">
+                <div class="row">
+                    <div class="col-8">
+                       <a href="{% url 'add-rights' %}">
+                        <div class="numbers">
+                            <p class="text-lg mb-0 text-capitalize font-weight-bold"> 
+                                {% if LANGUAGE_CODE == 'ar' %}
+                              حقوق نشر
+    {% else %}
+    Publisher Rights
+    
+    {% endif %}
+                                </p>
+    
+                        </div>
+                       </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+

@@ -44,9 +44,9 @@ class UserProfile(OrderedModel):
 
 
 class Book(OrderedModel):
-    BOOK_OPERATION = (
-        (1, 'بيع حقوق نشر'),
-        (2, 'بيع حقوق ترجمة'),
+    BOOK_PAY_CHOICES = (
+        ('عمل خيرى','عمل خيرى'),
+        ('عمل مدفوع','عمل مدفوع'),        
     )
     BOOK_LANGUAGE = (
         ('اللغة العربية', 'اللغة العربية'),
@@ -85,15 +85,51 @@ class Book(OrderedModel):
     translator_fees = models.IntegerField(null=True, blank=True)
     project_time = models.CharField(choices=PROJECT_TIME, blank=True, max_length=200)
     book_category = models.CharField(null=True, max_length=255, choices=BOOK_CATEGORY)
-    book_option = models.SmallIntegerField(null=True, choices=BOOK_OPERATION)
     dropbox_link = models.URLField(null=True, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True,related_name='books')
-
+    pay_chocies =models.CharField(max_length=255 , null=True , blank=True , choices=BOOK_PAY_CHOICES)
     class Meta:
         pass
 
     def __str__(self):
         return self.book_address
+
+class BookDistrubuting(OrderedModel):
+    DISTRUB_CHOICES = (
+        ('ورقى' , 'ورقى') ,
+        ('إلكتروني' , 'إلكتروني') ,
+    )
+    user = models.ForeignKey(User , on_delete=models.CASCADE , null=True)
+    auther_name = models.CharField(max_length=255 , null=True , blank=True)
+    address = models.TextField( null=True , blank=True)
+    number_of_pages = models.CharField(max_length=255 , null=True , blank=True)
+    distrub_choices = models.CharField(max_length=255 , choices=DISTRUB_CHOICES)
+    year = models.CharField(max_length=255 , null=True , blank=True)
+    language = models.CharField(max_length=255 , null=True , blank=True)
+    book_price = models.SmallIntegerField(null=True , blank=True)
+    about_book = models.TextField( null=True , blank=True)
+    time_finish = models.CharField(max_length=255 , null=True , blank=True)
+    author_rights = models.CharField(max_length=255 , null=True , blank=True)
+    auther_profit = models.CharField(max_length=255 , null=True , blank=True)
+    number_of_copies = models.CharField(max_length=255 , null=True , blank=True)
+    time_own = models.CharField(max_length=255 , null=True , blank=True)
+    price = models.SmallIntegerField(null=True , blank=True)
+    class Meta:
+        pass
+
+
+
+class Negotiation(OrderedModel):
+    book = models.ForeignKey(User , on_delete=models.CASCADE ,null=True)
+    author_rights = models.CharField(max_length=255 , null=True , blank=True)
+    author_ratio = models.CharField(max_length=255 , null=True , blank=True)
+    number_of_copies = models.CharField(max_length=255 , null=True , blank=True)
+    price = models.IntegerField(null=True , blank=True)
+    time_finish = models.CharField(max_length=255 , null=True , blank=True)
+    class Meta:
+        pass
+
+
 
 
 class PublisherNeeds(OrderedModel):

@@ -55,6 +55,7 @@ class UserManager(BaseUserManager):
         )
         user.is_staff = True
         user.is_admin = True
+        user.user_type = 1
         user.save(using=self._db)
         return user
 
@@ -112,6 +113,7 @@ class UserManager(BaseUserManager):
             address=address,
             commit=False,
         )
+        user.is_proof_reader = True
         user.is_active = True
         user.user_type = 4
         user.save(using=self._db)
@@ -131,12 +133,72 @@ class UserManager(BaseUserManager):
             address=address,
             commit=False,
         )
+        user.is_designer = True
         user.is_active = True
         user.user_type = 5
         user.save(using=self._db)
         return user
 
+    def create_writer(self, email, first_name, last_name, phone, address, password):
+        """
+        Creates and saves a Secondary Employee USer with the given email, first name,
+        last name and password.
+        """
+        user = self.create_user(
+            email,
+            password=password,
+            first_name=first_name,
+            last_name=last_name,
+            phone=phone,
+            address=address,
+            commit=False,
+        )
+        user.is_writer = True
+        user.is_active = True
+        user.user_type = 6
+        user.save(using=self._db)
+        return user
+    def create_printer(self, email, first_name, last_name, phone, address, password):
+        """
+        Creates and saves a Secondary Employee USer with the given email, first name,
+        last name and password.
+        """
+        user = self.create_user(
+            email,
+            password=password,
+            first_name=first_name,
+            last_name=last_name,
+            phone=phone,
+            address=address,
+            commit=False,
+        )
+        user.is_printer = True
+        user.is_active = True
+        user.user_type = 7
+        user.save(using=self._db)
+        return user
+    def create_request_service(self, email, first_name, last_name, phone, address, password):
+        """
+        Creates and saves a Secondary Employee USer with the given email, first name,
+        last name and password.
+        """
+        user = self.create_user(
+            email,
+            password=password,
+            first_name=first_name,
+            last_name=last_name,
+            phone=phone,
+            address=address,
+            commit=False,
+        )
+        user.is_writer = True
+        user.is_active = True
+        user.user_type =8
+        user.save(using=self._db)
+        return user
 
+
+    
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(
         verbose_name=_('email address'), max_length=255, unique=True
@@ -156,11 +218,30 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_publisher = models.BooleanField(_('publisher'), default=False, help_text=_(
         'Designates whether this user should be treated as a publisher. '
     ))
+    is_designer = models.BooleanField(_('Designer'), default=False, help_text=_(
+        'Designates whether this user should be treated as a Designer. '
+    ))
+    is_writer = models.BooleanField(_('Writer'), default=False, help_text=_(
+        'Designates whether this user should be treated as a Request Service. '
+    ))
+    is_request_service = models.BooleanField(_('Request Service'), default=False, help_text=_(
+        'Designates whether this user should be treated as a Request Service. '
+    ))
+    is_proof_reader = models.BooleanField(_('Proof Reader'), default=False, help_text=_(
+        'Designates whether this user should be treated as a Proof Reader. '
+    ))
+    is_printer = models.BooleanField(_('Printer'), default=False, help_text=_(
+        'Designates whether this user should be treated as a Request Service. '
+    ))
     USER_TYPE_CHOICES = (
+        (1, 'أدمن'),
         (2, 'دار نشر'),
         (3, 'مترجم'),
         (4, 'مدقق لغوي'),
         (5, 'مصمم'),
+        (6, 'كاتب'),
+        (7, 'مطبعة'),
+        (8, 'طالب خدمة'),
     )
 
     user_type = models.PositiveSmallIntegerField(choices=USER_TYPE_CHOICES, null=True, verbose_name=_('User Type'),
@@ -205,7 +286,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         return full_name.strip()
 
     def __str__(self):
-        return '{} <{}>'.format(self.get_full_name(), self.email)
+        return self.first_name
 
     def has_perm(self, perm, obj=None):
         """Does the user have a specific permission?"""

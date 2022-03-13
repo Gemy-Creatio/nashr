@@ -82,6 +82,57 @@ class RegisterDesignerView(View):
             login(request, user)
             return redirect('dashboard')
 
+class RegisterPrinterView(View):
+    def get(self, request):
+        return render(request, 'accounts/register/register_printer.html')
+
+    def post(self, request):
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        phone = request.POST.get('phone')
+        address = request.POST.get('address')
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        user = User.objects.create_printer(email=email, first_name=first_name, last_name=last_name,
+                                                address=address, password=password, phone=phone)
+        if user is not None:
+            login(request, user)
+            return redirect('dashboard')
+
+
+class RegisterWriterView(View):
+    def get(self, request):
+        return render(request, 'accounts/register/register_writer.html')
+
+    def post(self, request):
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        phone = request.POST.get('phone')
+        address = request.POST.get('address')
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        user = User.objects.create_writer(email=email, first_name=first_name, last_name=last_name,
+                                                address=address, password=password, phone=phone)
+        if user is not None:
+            login(request, user)
+            return redirect('dashboard')
+class RegisterRequestServiceView(View):
+    def get(self, request):
+        return render(request, 'accounts/register/register_service.html')
+
+    def post(self, request):
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        phone = request.POST.get('phone')
+        address = request.POST.get('address')
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        user = User.objects.create_request_service(email=email, first_name=first_name, last_name=last_name,
+                                                address=address, password=password, phone=phone)
+        if user is not None:
+            login(request, user)
+            return redirect('home-page')            
+
 
 class RegisterProofView(View):
     def get(self, request):
@@ -104,6 +155,16 @@ class RegisterProofView(View):
 class RegisterTypesView(View):
     def get(self, request):
         return render(request, 'accounts/register/register.html')
+
+
+
+class RegisterFoundationView(View):
+    def get(self, request):
+        return render(request, 'accounts/register/foundation.html')
+
+class RegisterPersonnalView(View):
+    def get(self, request):
+        return render(request, 'accounts/register/personal.html')
 
 
 class LoginView(View):

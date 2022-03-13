@@ -1,0 +1,85 @@
+{% extends 'main.html' %} {% block content %}
+<section id="contact" class="contact section-bg">
+  <div class="container justify-content-center">
+    <div class="section-title" data-aos="fade-up">
+      {% if LANGUAGE_CODE == 'ar' %}
+      <h4 class="text-muted">تفاوض</h4>
+      {% else %}
+      <h4 class="text-muted">Negotiate - Approval</h4>
+
+      {% endif %}
+    </div>
+  </div>
+  <div
+    style="margin: 0 auto"
+    class="col-lg-10 mt-5 mt-lg-0 d-flex align-items-stretch justify-content-center"
+    data-aos="fade-left"
+  >
+    <form method="post" role="form" class="form">
+      {% csrf_token %}
+
+      <div class="form-group row">
+        <div class="col-lg-6 col-12">
+          {% if LANGUAGE_CODE == 'ar' %}
+          <label>مدة الانتهاء من العمل </label>
+          {% else %}
+          <label>Completion period</label>
+          {% endif %}
+          <input type="text" class="form-control" name="period" id="period " />
+        </div>
+        <div class="col-lg-6 col-12">
+          {% if LANGUAGE_CODE == 'ar' %}
+          <label>حقوق المؤلف</label>
+          {% else %}
+          <label>Author Rights</label>
+          {% endif %}
+          <input type="text" class="form-control" name="rights" id="rights " />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <div class="col-lg-6 col-12">
+          {% if LANGUAGE_CODE == 'ar' %}
+          <label>نسبة المؤلف </label>
+          {% else %}
+          <label>Author Raito</label>
+          {% endif %}
+          <input type="text" class="form-control" name="ratio" id="ratio " />
+        </div>
+        <div class="col-lg-6 col-12">
+          {% if LANGUAGE_CODE == 'ar' %}
+          <label>عدد نسخ الطباعة </label>
+          {% else %}
+          <label>Number Of Copies</label>
+          {% endif %}
+          <input type="text" class="form-control" name="copies" id="copies" />
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-lg-6 col-12">
+          {% if LANGUAGE_CODE == 'ar' %}
+          <label>السعر </label>
+          {% else %}
+          <label> Price</label>
+          {% endif %}
+          <input
+            type="text"
+            class="form-control"
+            name="price"
+            id="price "
+          />
+        </div>
+      </div>
+
+      <div class="text-center justify-content-center d-flex">
+        {% if LANGUAGE_CODE == 'ar' %}
+        <button type="submit">إرسال</button>
+        {% else %}
+        <button type="submit">Send Message</button>
+        {% endif %}
+      </div>
+    </form>
+  </div>
+</section>
+
+{% endblock content %}

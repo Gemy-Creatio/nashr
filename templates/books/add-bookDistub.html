@@ -1,0 +1,146 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<section id="contact" class="contact section-bg ">
+    <div class="container justify-content-center">
+
+        <div class="section-title" data-aos="fade-up">
+                                       {% if LANGUAGE_CODE == 'ar' %}
+                                           <h4 class="text-muted">   إضافة حقوق نشر </h4>
+                   {% else %}
+                                           <h4 class="text-muted">Add Publishing Rights </h4>
+
+            {% endif %}
+        </div>
+    </div>
+            <div style="margin: 0 auto;" class="col-lg-10 mt-5 mt-lg-0 d-flex align-items-stretch justify-content-center" data-aos="fade-left">
+                <form method="post" role="form" class="form">
+                  {% csrf_token %}
+                        
+                  <div class="form-group row">
+                 <div class="col-lg-6 col-12">
+                    {% if LANGUAGE_CODE == 'ar' %}
+                   <label>اسم المؤلف</label>
+                   {%  else %}
+                   <label>Author Name</label>
+                   {% endif %}
+                   <input type="text" class="form-control" name="author_name" id="author_name "/>
+                 </div>
+                 <div class="col-lg-6 col-12">
+                    {% if LANGUAGE_CODE == 'ar' %}
+                   <label>العنوان</label>
+                   {%  else %}
+                   <label>Address</label>
+                   {% endif %}
+                   <input type="text" class="form-control" name="address" id="address "/>
+                 </div>
+                  </div>
+          
+                  <div class="form-group row">
+                    <div class="col-lg-6 col-12">
+                       {% if LANGUAGE_CODE == 'ar' %}
+                      <label>عدد الصفحات </label>
+                      {%  else %}
+                      <label>Number Of Pages</label>
+                      {% endif %}
+                      <input type="text" class="form-control" name="number_of_pages" id="number_of_pages "/>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                       {% if LANGUAGE_CODE == 'ar' %}
+                      <label>سنة الأصدار</label>
+                      {%  else %}
+                      <label>Year of release</label>
+                      {% endif %}
+                      <input type="text" class="form-control" name="year_of_release" id="year_of_release"/>
+                    </div>
+                     </div>
+                     <div class="form-group row">
+                        <div class="col-lg-6 col-12">
+                           {% if LANGUAGE_CODE == 'ar' %}
+                          <label>اللغة  </label>
+                          {%  else %}
+                          <label> Language</label>
+                          {% endif %}
+                          <input type="text" class="form-control" name="language" id="language "/>
+                        </div>
+                        <div class="col-lg-6 col-12">
+                           {% if LANGUAGE_CODE == 'ar' %}
+                          <label>سعر البيع</label>
+                          {%  else %}
+                          <label>Book price</label>
+                          {% endif %}
+                          <input type="text" class="form-control" name="book_price" id="book_price"/>
+                        </div>
+                         </div>
+
+                         <div class="form-group row">
+                            <div class="col-lg-6 col-12">
+                               {% if LANGUAGE_CODE == 'ar' %}
+                              <label>مدة الانتهاء من العمل  </label>
+                              {%  else %}
+                              <label> Completion period</label>
+                              {% endif %}
+                              <input type="text" class="form-control" name="time_finish" id="time_finish "/>
+                            </div>
+                            <div class="col-lg-6 col-12">
+                               {% if LANGUAGE_CODE == 'ar' %}
+                              <label>حقوق المؤلف</label>
+                              {%  else %}
+                              <label>Author Rights</label>
+                              {% endif %}
+                              <input type="text" class="form-control" name="rights" id="rights"/>
+                            </div>
+                             </div>
+
+                             <div class="form-group row">
+                                <div class="col-lg-6 col-12">
+                                   {% if LANGUAGE_CODE == 'ar' %}
+                                  <label>نسبة المؤلف  </label>
+                                  {%  else %}
+                                  <label> Author Raito</label>
+                                  {% endif %}
+                                  <input type="text" class="form-control" name="author_ratio" id="author_ratio "/>
+                                </div>
+                                <div class="col-lg-6 col-12">
+                                   {% if LANGUAGE_CODE == 'ar' %}
+                                  <label>عدد نسخ الطباعة</label>
+                                  {%  else %}
+                                  <label>Number of print copies</label>
+                                  {% endif %}
+                                  <input type="text" class="form-control" name="print_copies" id="print_copies"/>
+                                </div>
+                                 </div>
+                                 <div class="form-group row">
+                                    <div class="col-lg-6 col-12">
+                                       {% if LANGUAGE_CODE == 'ar' %}
+                                      <label>مدة امتلاك الحقوق للناشر الجديد  </label>
+                                      {%  else %}
+                                      <label> Duration of ownership of rights for the new publisher</label>
+                                      {% endif %}
+                                      <input type="text" class="form-control" name="time_own" id="time_own "/>
+                                    </div>
+                                    <div class="col-lg-6 col-12">
+                                       {% if LANGUAGE_CODE == 'ar' %}
+                                      <label>التكلفة</label>
+                                      {%  else %}
+                                      <label>Price</label>
+                                      {% endif %}
+                                      <input type="text" class="form-control" name="price" id="price"/>
+                                    </div>
+                                     </div>
+                    <div class="text-center justify-content-center d-flex">
+                                                   {% if LANGUAGE_CODE == 'ar' %}
+                                      <button type="submit">إرسال</button>
+                        {% else %}
+              <button type="submit">Send Message</button>
+                        {% endif %}
+                    </div>
+                </form>
+            </div>
+
+</section>
+
+
+
+
+{% endblock content %}

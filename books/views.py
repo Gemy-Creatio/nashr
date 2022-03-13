@@ -1,10 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.urls import reverse
+from django.views import View
 
 from books.models import (
     Book,
     UserProfile,
-PublisherNeeds
+PublisherNeeds ,
+BookDistrubuting ,
+Negotiation
 )
 
 from books.forms import (
@@ -43,6 +46,15 @@ class AddUserInfoView(CreateView):
     def get_success_url(self):
         return reverse('dashboard')
 
+class AddBookDistrubView(View):
+    def get(self,request):
+        return render(request , 'books/add-bookDistub.html')
+
+
+class BookChoicesView(View):
+    def get(self,request):
+        return render(request , 'books/bookchoices.html')
+
 
 class AddNeedsView(CreateView):
     model = PublisherNeeds
@@ -56,3 +68,27 @@ class AddNeedsView(CreateView):
 
     def get_success_url(self):
         return reverse('dashboard')
+
+class NegtiationBookDistrubView(View):
+    def get(self , request ,pk):
+        book = BookDistrubuting.objects.get(pk=pk)
+        return render(request , 'books/neg-book.html')
+    def post(self , request , pk):
+        book = BookDistrubuting.objects.get(pk=pk)
+        period = request.POST.get('period')
+        rights = request.POST.get('rights')
+        ratio = request.POST.get('ratio')
+        copies = request.POST.get('copies')
+        price = request.POST.get('price')
+        neg = Negotiation(book = book ,author_rights= rights ,author_ratio = ratio , number_of_copies = copies ,price = price )
+        neg.save()
+        return redirect('all-books')
+
+
+
+
+class AllBookDistrubView(View):
+    def get(self,request):
+        context = {"books":BookDistrubuting.objects.exclude(user=request.user)}
+        return render(request , 'books/alldistrub.html' , context=context)
+
