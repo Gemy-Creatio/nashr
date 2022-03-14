@@ -1,0 +1,117 @@
+{% extends 'masterpage.html' %}
+
+{% block content %}
+{% load static %}
+<section class="services pt-8" id="services">
+    <div class="container">
+
+        <div class="row justify-content-center">
+            <div class="col-lg-12 d-flex flex-column justify-contents-center aos-init aos-animate" data-aos="fade-left">
+                <div class="content pt-4 pt-lg-0">
+                    {% if LANGUAGE_CODE == 'ar' %}
+                        <h3>شروط العضوية للمترجم</h3>
+                        <h5 class="fst-italic">
+                            <strong>الشروط العامة</strong>  </h5>
+                          <hr/>
+                          <ol>
+                            <li> إذا تم اختيار الكتاب سيتم دفع رسوم وقدرها (١٠٠) مئة ريال </li> 
+                            <li> تعبئة البيانات الكاملة والصحيحة في الموقع الإلكتروني</li>
+                            </ol>
+                            <hr/>
+
+                        <h5 class="fst-italic">
+                            <strong>الشروط الخاصة</strong>  </h5>
+                            <ol>
+                                <li> إ بناءاً على طلب الدار - سيتم التحقق من البيانات الخاصة بالمترجم - عبر البريد الإلكتروني </li> 
+                                <li> مثل: صورة من اخر شهادة علمية – بيانات الهوية لمطابقتها مع المعلومات المدخلة</li>
+
+                            </ol>
+                  
+
+
+                    {% else %}
+                    <h3>Terms of membership for the translator  </h3>
+                    <h5 class="fst-italic">
+                        <strong>General conditions</strong>  </h5>
+                      <hr/>
+                      <ol>
+                        <li> If the book is selected, a fee of 100 riyals will be paid &nbsp;</li>
+                        <li> Fill out full and correct data on the website&nbsp;</li>	
+                        </ol>
+                        
+                        <hr/>
+
+                    <h5 class="fst-italic">
+                        <strong>Special conditions </strong>  </h5>
+                        <ol>
+                            <li> Publishing house data will be verified - by email &nbsp;</li>
+                            <li> As: Image from the commercial register - identity data to match it with the information entered&nbsp;</li>
+                            </ol>
+                            
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="row pt-2">
+              <ul class="nav nav-tabs flex-column">
+                {% if LANGUAGE_CODE == 'ar' %}
+  <li class="nav-item aos-init aos-animate" data-aos="fade-up">
+      <h4>لمؤهل العلمي</h4>
+      <p>المؤهل العلمي المناسب</p>
+  </li>
+  <li class="nav-item mt-2 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+      <h4>عملاء أكثر</h4>
+      <p>منصتنا بتساعدك توصل لعلاء في أي مكان</p>
+  </li>
+  <li class="nav-item mt-2 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
+      <h4>خدماتك الاحترافية</h4>
+      <p>شارك العملاء خبراتك وعزز من نجاحك بنوفر لك تقارير وأدوات بتساعدك</p>
+  </li>
+
+    {% else %}
+  <li class="nav-item aos-init aos-animate" data-aos="fade-up">
+      <h4>Qualification</h4>
+  </li>
+  <li class="nav-item mt-2 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+      <h4>more clients</h4>
+      <p>Our platform helps you reach clients anywhere</p>
+  </li>
+  <li class="nav-item mt-2 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
+      <h4>Your professional services</h4>
+      <p>Share your experiences with customers and enhance your success by providing you with reports and tools that help you</p>
+  </li>
+    {% endif %}
+</ul>
+
+<div class="row justify-content-center">
+  {% if LANGUAGE_CODE == 'ar' %}
+  <ol>
+      <li>سجل معنا</li>
+      <li>اختار الكتاب</li>
+      <li>وقع العقد</li>
+      <li>ادفع الرسوم</li>
+  </ol>
+  
+  {% else %}
+  <ol>
+      <li>Register with us &nbsp;</li>
+      <li>Choose the book &nbsp;</li>
+      <li>sign a contract</li>
+      <li>Pay the fee &nbsp;</li>
+  </ol>
+  
+  {% endif %}
+  <div class="text-center">
+    <a href="{% url 'register-personal' %}" class="btn btn-dark text-white"> إنضم الينا </a>
+    
+                </div>
+</div>
+
+            </div>
+        </div>
+       
+      </div>
+
+</section>
+
+{% endblock content %}

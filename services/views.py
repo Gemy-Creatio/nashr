@@ -10,11 +10,16 @@ import requests
 from django.contrib import messages
 
 
+from books.models import (
+    Book
+)
+
 from services.models import (
     TranslateService,
     RequestDesignService,
     Vouchers,
-    PaidVoucher
+    PaidVoucher,
+    TranslationRequest
 )
 from services.forms import (
     TrnaslateServiceForm
@@ -64,9 +69,30 @@ def PayVoucher(request , pk):
         return redirect('all-vouchers')
     
 
-        
-        
-    
+class TranslationRequestView(View):
+    def get(self, request , pk):
+        return render(request, 'dashboard/addbooktranlation.html')
+    def post(self, request , pk):
+        book = Book.objects.get(pk =pk)
+        translator_intro = request.POST.get('translator_intro')
+        dedication_page = request.POST.get('dedication_page')
+        thank_page = request.POST.get('thank_page')
+        define_page = request.POST.get('define_page')
+        intro_page = request.POST.get('intro_page')
+        content_page = request.POST.get('content_page')
+        source_page = request.POST.get('source_page')
+        draw_page = request.POST.get('draw_page')
+        table_page = request.POST.get('table_page')
+        cmyk_page = request.POST.get('cmyk_page')
+        note = request.POST.get('note')
+        file = request.FILES['contract']
+        fs = FileSystemStorage()
+        filename = fs.save(file.name, file)
+        trans = TranslationRequest(book = book , translator_introduction = translator_intro , dedication_page =dedication_page ,
+                                      thank_you_page = thank_page , intro_page = intro_page , content_pages = content_page , source_page = source_page , 
+                                      supplements_page = define_page , page_images = draw_page , draw_page = table_page , CMYK_page = cmyk_page , note = note , contact = file  )
+        trans.save()
+        return redirect('dashboard')
 
    
 

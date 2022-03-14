@@ -6,7 +6,8 @@ from services.views import (
     CreateTakeDesignRequest,
     RequestServiceDetails , 
     AllVouchers,
-    PayVoucher
+    PayVoucher ,
+    TranslationRequestView
 )
 
 urlpatterns = [
@@ -17,5 +18,6 @@ urlpatterns = [
     path('design/details/<int:pk>', RequestServiceDetails.as_view(), name='detail-design'),
     path('all/vouchers', AllVouchers, name='all-vouchers'),
     path('all/vouchers/<int:pk>', PayVoucher, name='pay-voucher'),
+    path('add/book/translate/<int:pk>', TranslationRequestView.as_view(), name='complete-book'),
 
 ]

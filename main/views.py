@@ -38,3 +38,14 @@ class ServicesPageView(View):
     def get(self, request):
         home_content = Homepage.get_solo()
         return render(request, 'main/services/services.html', {"services": home_content})
+
+
+
+class PersonalPageView(View):
+    def get(self, request):
+        return render(request, 'main/membership/personal.html')
+
+
+class FoundationPageView(View):
+    def get(self, request):
+        return render(request, 'main/membership/foundation.html')

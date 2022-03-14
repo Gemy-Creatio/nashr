@@ -30,7 +30,7 @@ class AddBookView(CreateView):
         return super(AddBookView, self).form_valid(form)
 
     def get_success_url(self):
-        return reverse('home-page')
+        return reverse('complete-book',args=(self.object.pk,))
 
 
 class AddUserInfoView(CreateView):
