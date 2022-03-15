@@ -88,7 +88,7 @@ class Book(OrderedModel):
     )
     is_completed = models.BooleanField(null=True, default=False)
     is_open_download = models.BooleanField(null=True, default=False)
-    book_cover = models.ImageField(upload_to='covers/')
+    book_content = models.FileField(upload_to='books/', null=True, blank=True)
     book_address = models.CharField(null=True, blank=True, max_length=250)
     book_language = models.CharField(
         choices=BOOK_LANGUAGE, blank=True, max_length=200)
@@ -152,6 +152,10 @@ class Negotiation(OrderedModel):
 
 
 class PublisherNeeds(OrderedModel):
+    BOOLEAN_CHOICES = (
+        (True, 'نعم'),
+        (False, 'لا')
+    )
     publisher = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     NEEDS_CHOICES = (
         ('مدقق لغوى', 'مدقق لغوى'),
@@ -161,6 +165,13 @@ class PublisherNeeds(OrderedModel):
     )
     needs = models.CharField(max_length=255, null=True,
                              blank=True, choices=NEEDS_CHOICES)
+    name = models.CharField(max_length=255, null=True,
+                            blank=True)
+    email = models.EmailField(null=True, blank=True)
+    duration = models.CharField(max_length=255, null=True, blank=True)
+    price = models.FloatField(null=True, blank=True)
+    is_accepted = models.BooleanField(
+        null=True, blank=True, default=False, choices=BOOLEAN_CHOICES)
 
     class Meta:
         pass

@@ -19,10 +19,12 @@ from services.models import (
     RequestDesignService,
     Vouchers,
     PaidVoucher,
-    TranslationRequest
+    TranslationRequest,
+    SubtitleService
 )
 from services.forms import (
-    TrnaslateServiceForm
+    TrnaslateServiceForm,
+    SubttileServiceForm
 )
 from designs.forms import (
     TakeDesignForm
@@ -33,14 +35,14 @@ from designs.models import (
 
 
 def AllVouchers(request):
-    vouchers = Vouchers.objects.filter(user = request.user.pk , is_paid = False)
-    return render(request , 'services/all_vouchers.html' , context={"vouchers":vouchers})
-        
-     
-def PayVoucher(request , pk):
+    vouchers = Vouchers.objects.filter(user=request.user.pk, is_paid=False)
+    return render(request, 'services/all_vouchers.html', context={"vouchers": vouchers})
+
+
+def PayVoucher(request, pk):
     try:
         voucher = Vouchers.objects.get(pk=pk)
-        paid =  PaidVoucher(voucher = voucher)
+        paid = PaidVoucher(voucher=voucher)
         paid.save()
         payload = {
             "profile_id": PROFILE_KEY,
@@ -57,7 +59,8 @@ def PayVoucher(request , pk):
             "authorization": PAYTAB_API_SERVERKEY,
             "Content-Type": 'application/json; charset=utf-8'
         }
-        r = requests.post(API_ENDPOINT, data=json.dumps(payload), headers=headers)
+        r = requests.post(API_ENDPOINT, data=json.dumps(
+            payload), headers=headers)
         data = json.dumps(r.json())
         content = json.loads(data)
         voucher.is_paid = True
@@ -65,15 +68,16 @@ def PayVoucher(request , pk):
         return redirect(content['redirect_url'])
     except:
         messages.error(request,
-                             "حدث خطأ ")
+                       "حدث خطأ ")
         return redirect('all-vouchers')
-    
+
 
 class TranslationRequestView(View):
-    def get(self, request , pk):
+    def get(self, request, pk):
         return render(request, 'dashboard/addbooktranlation.html')
-    def post(self, request , pk):
-        book = Book.objects.get(pk =pk)
+
+    def post(self, request, pk):
+        book = Book.objects.get(pk=pk)
         translator_intro = request.POST.get('translator_intro')
         dedication_page = request.POST.get('dedication_page')
         thank_page = request.POST.get('thank_page')
@@ -88,13 +92,12 @@ class TranslationRequestView(View):
         file = request.FILES['contract']
         fs = FileSystemStorage()
         filename = fs.save(file.name, file)
-        trans = TranslationRequest(book = book , translator_introduction = translator_intro , dedication_page =dedication_page ,
-                                      thank_you_page = thank_page , intro_page = intro_page , content_pages = content_page , source_page = source_page , 
-                                      supplements_page = define_page , page_images = draw_page , draw_page = table_page , CMYK_page = cmyk_page , note = note , contact = file  )
+        trans = TranslationRequest(book=book, translator_introduction=translator_intro, dedication_page=dedication_page,
+                                   thank_you_page=thank_page, intro_page=intro_page, content_pages=content_page, source_page=source_page,
+                                   supplements_page=define_page, page_images=draw_page, draw_page=table_page, CMYK_page=cmyk_page, note=note, contact=file)
         trans.save()
         return redirect('dashboard')
 
-   
 
 class RequestTranslateServiceView(CreateView):
     model = TranslateService
@@ -102,7 +105,16 @@ class RequestTranslateServiceView(CreateView):
     template_name = 'services/design_service.html'
 
     def get_success_url(self):
-        return reverse('home-page')
+        return reverse('register-service')
+
+
+class RequestSubtitleServiceView(CreateView):
+    model = SubtitleService
+    form_class = SubttileServiceForm
+    template_name = 'designs/subtitle_service.html'
+
+    def get_success_url(self):
+        return reverse('register-service')
 
 
 class RequestDesignServiceView(View):
@@ -172,3 +184,29 @@ class CreateTakeDesignRequest(CreateView):
 
     def get_success_url(self):
         return reverse('dashboard')
+
+
+class HomeTranslationRequestView(View):
+    def get(self, request):
+        return render(request, 'services/add-bookadvertise.html')
+
+    def post(self, request):
+        translator_intro = request.POST.get('translator_intro')
+        dedication_page = request.POST.get('dedication_page')
+        thank_page = request.POST.get('thank_page')
+        define_page = request.POST.get('define_page')
+        intro_page = request.POST.get('intro_page')
+        content_page = request.POST.get('content_page')
+        source_page = request.POST.get('source_page')
+        draw_page = request.POST.get('draw_page')
+        table_page = request.POST.get('table_page')
+        cmyk_page = request.POST.get('cmyk_page')
+        note = request.POST.get('note')
+        file = request.FILES['contract']
+        fs = FileSystemStorage()
+        filename = fs.save(file.name, file)
+        trans = TranslationRequest(translator_introduction=translator_intro, dedication_page=dedication_page,
+                                   thank_you_page=thank_page, intro_page=intro_page, content_pages=content_page, source_page=source_page,
+                                   supplements_page=define_page, page_images=draw_page, draw_page=table_page, CMYK_page=cmyk_page, note=note, contact=file)
+        trans.save()
+        return redirect('register-service')

@@ -1,6 +1,7 @@
 from django import forms
 from services.models import (
-    TranslateService
+    TranslateService,
+    SubtitleService
 )
 from django.utils.translation import get_language
 
@@ -35,3 +36,17 @@ class TrnaslateServiceForm(forms.ModelForm):
         labels = label()
 
 
+class SubttileServiceForm(forms.ModelForm):
+    class Meta:
+        model = SubtitleService
+        fields = '__all__'
+        labels = {
+            'language': 'اللغة',
+            'translate_to': 'النص الهدف',
+            'filed': 'مجال النص ',
+            'finish_hours': 'الانتهاء من العمل',
+            'number_of_pages': 'عدد الصفحات',
+            'text_file': 'تحميل النص',
+            'video_url': 'رابط الفيديو'
+
+        }
