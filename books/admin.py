@@ -8,10 +8,14 @@ from books.models import (
     UserProfile,
     PublisherNeeds,
     BookDistrubuting ,
-    Negotiation
+    Negotiation , 
+    FoundtationUserProfile
 
 )
 
+@admin.register(FoundtationUserProfile)
+class FoundtationUserProfileAdmin(OrderedModelAdmin):
+    list_display = ("__str__",)
 
 @admin.register(BookDistrubuting)
 class BookDistrubutingAdmin(OrderedModelAdmin):

@@ -15,7 +15,6 @@ from services.models import (
 class RequestDesignServiceAdmin(OrderedModelAdmin):
     list_display = ("__str__",)
 
-
 @admin.register(TranslateService)
 class TranslateServiceAdmin(OrderedModelAdmin):
     list_display = ("__str__",)

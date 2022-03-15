@@ -13,7 +13,9 @@ RegisterPrinterView,
 RegisterRequestServiceView,
 RegisterWriterView ,
 RegisterFoundationView ,
-RegisterPersonnalView
+RegisterPersonnalView,
+AddFoundationProfileView ,
+FoundUserDetails
 )
 from books.views import AddUserInfoView
 
@@ -33,5 +35,7 @@ urlpatterns = [
     path('userinfo/add', AddUserInfoView.as_view(), name='user-info'),
     path('foundatation', RegisterFoundationView.as_view(), name='register-found'),
     path('personal', RegisterPersonnalView.as_view(), name='register-personal'),
+    path('add/found/profile', AddFoundationProfileView.as_view(), name='add-found-profile'),
+    path('found/profile/<int:pk>', FoundUserDetails.as_view(), name='found-profile'),
 
 ]

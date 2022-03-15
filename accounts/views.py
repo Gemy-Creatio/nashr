@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.urls import reverse
 from django.views import View
 from django.views.generic import DetailView
 
@@ -13,9 +14,13 @@ from .models import (
 )
 
 from books.forms import (
-    ProfileForm
+    ProfileForm , 
 )
 
+
+from books.models import (
+    FoundtationUserProfile
+)
 
 #
 class UserDetails(DetailView):
@@ -194,3 +199,25 @@ def logoutUser(request):
 class DashboardView(View):
     def get(self, request):
         return render(request, 'dashboard/dash-users.html')
+
+
+
+class AddFoundationProfileView(View):
+    def get(self, request):
+        return render(request, 'accounts/profile/addfoundprofile.html')
+    def post(self , request):
+        recordnumber = request.POST['recordnbr']
+        rec = FoundtationUserProfile(recordNumber = recordnumber , user = request.user)
+        rec.save()
+        return redirect('dashboard')
+
+
+
+class FoundUserDetails(DetailView):
+    model = User
+    template_name = 'accounts/profile/found-profile.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super(FoundUserDetails,
+                        self).get_context_data(*args, **kwargs)
+        return context

@@ -1,0 +1,16 @@
+{% extends 'main.html' %} {% load static %} {% block content %}
+<section class="clients" id="clients">
+  <div class="container">
+    <div class="section-title">
+      {% if LANGUAGE_CODE == 'ar' %}
+      <h1 class="mb-1">المعلومات الشخصية</h1>
+      {% else %}
+      <h1 class="mb-1">Profile</h1>
+
+      {% endif %}
+    </div>
+    {% include 'accounts/profile/_FoundUserProfile.html' with content=object %}
+  </div>
+</section>
+
+{% endblock content %}

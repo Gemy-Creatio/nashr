@@ -1,9 +1,17 @@
 {
     "files.autoSave": "onWindowChange",
+    "editor.formatOnSave": true,
+    "python.formatting.provider": "autopep8",
+    "python.linting.enabled": true,
+    "python.linting.lintOnSave": true,
     "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs":"active",
     "python.testing.pytestArgs": [
         "."
     ],
     "python.testing.unittestEnabled": false,
-    "python.testing.pytestEnabled": true
+    "python.testing.pytestEnabled": true,
+    "emmet.includeLanguages": {
+        "django-html": "html"
+    }
 }
