@@ -69,6 +69,8 @@ class TranslateService(OrderedModel):
         ('اللغة العربية', 'اللغة العربية'),
         ('اللغة الإنجليزية', 'اللغة الإنجليزية'),
     )
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, null=True, blank=True)
     language = models.CharField(
         _("Language"), max_length=255, choices=LANGUAGE_CHOICES, null=True, blank=True)
     number_of_pages = models.IntegerField(
@@ -120,6 +122,8 @@ class SubtitleService(OrderedModel):
         ('اللغة العربية', 'اللغة العربية'),
         ('اللغة الإنجليزية', 'اللغة الإنجليزية'),
     )
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, null=True, blank=True)
     language = models.CharField(
         _("Language"), max_length=255, choices=LANGUAGE_CHOICES, null=True, blank=True)
     video_url = models.URLField(
@@ -152,6 +156,8 @@ class SubtitleService(OrderedModel):
 
 
 class RequestDesignService(OrderedModel):
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, null=True, blank=True)
     book_size = models.CharField(max_length=255, null=True, blank=True)
     title_book = models.CharField(max_length=255, null=True, blank=True)
     author_name = models.CharField(max_length=255, null=True, blank=True)

@@ -1,118 +1,178 @@
 {% load static %}
 
 <section id="features" class="features pt-8">
-      <div class="container">
+  <div class="container">
+    <div class="section-title" data-aos="fade-up">
+      {% if LANGUAGE_CODE == 'ar' %}
+      <h2>{{ content.services_heading_ar|safe }}</h2>
+      <p>{{ content.services_sub_heading_ar |safe }}</p>
+      {% else %}
+      <h2>{{ content.services_heading_en|safe |capfirst }}</h2>
+      <p>{{ content.services_sub_heading_en |safe | capfirst }}</p>
+      {% endif %}
+    </div>
 
-        <div class="section-title" data-aos="fade-up">
-            {% if LANGUAGE_CODE == 'ar' %}
-                <h2>{{ content.services_heading_ar|safe }}</h2>
-                <p>{{ content.services_sub_heading_ar |safe }}</p>
-            {% else %}
-                <h2>{{ content.services_heading_en|safe |capfirst }}</h2>
-                <p>{{ content.services_sub_heading_en |safe | capfirst }}</p>
-            {% endif %}
+    <div class="row">
+      <div class="col-lg-6 mt-2 mb-tg-0 order-2 order-lg-1">
+        <ul class="nav nav-tabs flex-column">
+          {% if LANGUAGE_CODE == 'ar' %}
+          <li class="nav-item aos-init aos-animate" data-aos="fade-up">
+            <a class="nav-link show active" data-bs-toggle="tab" href="#tab-1">
+              <h4>{{ content.first_section_Service_title_ar|safe }}</h4>
+              <p>{{ content.first_sub_heading_ar|safe }}</p>
+            </a>
+          </li>
+          <li
+            class="nav-item mt-2 aos-init aos-animate"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <a class="nav-link" data-bs-toggle="tab" href="#tab-2">
+              <h4>{{ content.second_section_Service_title_ar|safe }}</h4>
+              <p>{{ content.second_sub_heading_ar|safe }}</p>
+            </a>
+          </li>
+          <li
+            class="nav-item mt-2 aos-init aos-animate"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <a class="nav-link" data-bs-toggle="tab" href="#tab-3">
+              <h4>{{ content.third_section_Service_title_ar|safe }}</h4>
+              <p>{{ content.third_sub_heading_ar|safe }}</p>
+            </a>
+          </li>
+          <li
+            class="nav-item mt-2 aos-init aos-animate"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <a class="nav-link" data-bs-toggle="tab" href="#tab-4">
+              <h4>{{ content.fourth_section_Service_title_ar|safe }}</h4>
+              <p>{{ content.fourth_sub_heading_ar|safe }}</p>
+            </a>
+          </li>
+          <li
+            class="nav-item mt-2 aos-init aos-animate"
+            data-aos="fade-up"
+            data-aos-delay="400"
+          >
+            <a class="nav-link" data-bs-toggle="tab" href="#tab-5">
+              <h4>{{ content.substraction_heading_ar|safe }}</h4>
+              <p>{{ content.sub_subsraction_ar|safe }}</p>
+            </a>
+          </li>
 
-        </div>
-
-        <div class="row">
-          <div class="col-lg-6 mt-2 mb-tg-0 order-2 order-lg-1">
-            <ul class="nav nav-tabs flex-column">
-                            {% if LANGUAGE_CODE == 'ar' %}
-              <li class="nav-item aos-init aos-animate" data-aos="fade-up">
-                <a class="nav-link show active" data-bs-toggle="tab" href="#tab-1">
-                  <h4>{{ content.first_section_Service_title_ar|safe }}</h4>
-                  <p>{{ content.first_sub_heading_ar|safe }}</p>
-                </a>
-              </li>
-              <li class="nav-item mt-2 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
-                <a class="nav-link" data-bs-toggle="tab" href="#tab-2">
-                  <h4>{{ content.second_section_Service_title_ar|safe }}</h4>
-                  <p>{{ content.second_sub_heading_ar|safe }}</p>
-                </a>
-              </li>
-              <li class="nav-item mt-2 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
-                <a class="nav-link" data-bs-toggle="tab" href="#tab-3">
-                  <h4>{{ content.third_section_Service_title_ar|safe }}</h4>
-                  <p>{{ content.third_sub_heading_ar|safe }}</p>
-                </a>
-              </li>
-              <li class="nav-item mt-2 aos-init aos-animate" data-aos="fade-up" data-aos-delay="300">
-                <a class="nav-link" data-bs-toggle="tab" href="#tab-4">
-                  <h4>{{ content.fourth_section_Service_title_ar|safe }}</h4>
-                  <p>{{ content.fourth_sub_heading_ar|safe }}</p>
-                </a>
-              </li>
-         <li class="nav-item mt-2 aos-init aos-animate" data-aos="fade-up" data-aos-delay="400">
-                <a class="nav-link" data-bs-toggle="tab" href="#tab-5">
-                  <h4>{{ content.substraction_heading_ar|safe }}</h4>
-                  <p>{{ content.sub_subsraction_ar|safe }}</p>
-                </a>
-              </li>
-
-                {% else %}
-              <li class="nav-item aos-init aos-animate" data-aos="fade-up">
-                <a class="nav-link show active" data-bs-toggle="tab" href="#tab-1">
-                  <h4>{{ content.first_section_Service_title_en|capfirst|safe }}</h4>
-                  <p>{{ content.first_sub_heading_en|capfirst|safe }}</p>
-                </a>
-              </li>
-              <li class="nav-item mt-2 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
-                <a class="nav-link" data-bs-toggle="tab" href="#tab-2">
-                  <h4>{{ content.second_section_Service_title_en|capfirst|safe }}</h4>
-                  <p>{{ content.second_sub_heading_en|capfirst|safe }}</p>
-                </a>
-              </li>
-              <li class="nav-item mt-2 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
-                <a class="nav-link" data-bs-toggle="tab" href="#tab-3">
-                  <h4>{{ content.third_section_Service_title_en|capfirst|safe }}</h4>
-                  <p>{{ content.third_sub_heading_en|capfirst|safe }}</p>
-                </a>
-              </li>
-              <li class="nav-item mt-2 aos-init aos-animate" data-aos="fade-up" data-aos-delay="300">
-                <a class="nav-link" data-bs-toggle="tab" href="#tab-4">
-                  <h4>{{ content.fourth_section_Service_title_en|capfirst|safe }}</h4>
-                  <p>{{ content.fourth_sub_heading_en|capfirst|safe }}</p>
-                </a>
-              </li>
-         <li class="nav-item mt-2 aos-init aos-animate" data-aos="fade-up" data-aos-delay="400">
-                <a class="nav-link" data-bs-toggle="tab" href="#tab-5">
-                  <h4>{{ content.substraction_heading_en|capfirst|safe }}</h4>
-                  <p>{{ content.sub_subsraction_en|capfirst|safe }}</p>
-                </a>
-              </li>
-                {% endif %}
-            </ul>
-          </div>
-          <div class="col-lg-6 order-1 order-lg-2 aos-init aos-animate" data-aos="zoom-in">
-            <div class="tab-content">
-              <div class="tab-pane show active" id="tab-1">
-                <figure>
-                  <img src="{{ content.first_services_logo.url }}" alt="" class="img-fluid">
-                </figure>
-              </div>
-              <div class="tab-pane" id="tab-2">
-                <figure>
-                  <img src="{{ content.second_services_logo.url }}" alt="" class="img-fluid">
-                </figure>
-              </div>
-              <div class="tab-pane" id="tab-3">
-                <figure>
-                  <img src="{{ content.third_services_logo.url }}" alt="" class="img-fluid">
-                </figure>
-              </div>
-              <div class="tab-pane" id="tab-4">
-                <figure>
-                  <img src="{{ content.fourth_services_logo.url }}" alt="" class="img-fluid">
-                </figure>
-              </div>
-              <div class="tab-pane" id="tab-5">
-                <figure>
-                  <img src="{{ content.substraction_logo.url }}" alt="" class="img-fluid">
-                </figure>
-              </div>
-            </div>
-          </div>
-        </div>
-
+          {% else %}
+          <li class="nav-item aos-init aos-animate" data-aos="fade-up">
+            <a class="nav-link show active" data-bs-toggle="tab" href="#tab-1">
+              <h4>
+                {{ content.first_section_Service_title_en|capfirst|safe }}
+              </h4>
+              <p>{{ content.first_sub_heading_en|capfirst|safe }}</p>
+            </a>
+          </li>
+          <li
+            class="nav-item mt-2 aos-init aos-animate"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <a class="nav-link" data-bs-toggle="tab" href="#tab-2">
+              <h4>
+                {{ content.second_section_Service_title_en|capfirst|safe }}
+              </h4>
+              <p>{{ content.second_sub_heading_en|capfirst|safe }}</p>
+            </a>
+          </li>
+          <li
+            class="nav-item mt-2 aos-init aos-animate"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <a class="nav-link" data-bs-toggle="tab" href="#tab-3">
+              <h4>
+                {{ content.third_section_Service_title_en|capfirst|safe }}
+              </h4>
+              <p>{{ content.third_sub_heading_en|capfirst|safe }}</p>
+            </a>
+          </li>
+          <li
+            class="nav-item mt-2 aos-init aos-animate"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <a class="nav-link" data-bs-toggle="tab" href="#tab-4">
+              <h4>
+                {{ content.fourth_section_Service_title_en|capfirst|safe }}
+              </h4>
+              <p>{{ content.fourth_sub_heading_en|capfirst|safe }}</p>
+            </a>
+          </li>
+          <li
+            class="nav-item mt-2 aos-init aos-animate"
+            data-aos="fade-up"
+            data-aos-delay="400"
+          >
+            <a class="nav-link" data-bs-toggle="tab" href="#tab-5">
+              <h4>{{ content.substraction_heading_en|capfirst|safe }}</h4>
+              <p>{{ content.sub_subsraction_en|capfirst|safe }}</p>
+            </a>
+          </li>
+          {% endif %}
+        </ul>
       </div>
-    </section>
+      <div
+        class="col-lg-6 order-1 order-lg-2 aos-init aos-animate"
+        data-aos="zoom-in"
+      >
+        <div class="tab-content">
+          <div class="tab-pane show active" id="tab-1">
+            <figure>
+              <img
+                src="{{ content.first_services_logo.url }}"
+                alt=""
+                class="img-fluid"
+              />
+            </figure>
+          </div>
+          <div class="tab-pane" id="tab-2">
+            <figure>
+              <img
+                src="{{ content.second_services_logo.url }}"
+                alt=""
+                class="img-fluid"
+              />
+            </figure>
+          </div>
+          <div class="tab-pane" id="tab-3">
+            <figure>
+              <img
+                src="{{ content.third_services_logo.url }}"
+                alt=""
+                class="img-fluid"
+              />
+            </figure>
+          </div>
+          <div class="tab-pane" id="tab-4">
+            <figure>
+              <img
+                src="{{ content.fourth_services_logo.url }}"
+                alt=""
+                class="img-fluid"
+              />
+            </figure>
+          </div>
+          <div class="tab-pane" id="tab-5">
+            <figure>
+              <img
+                src="{{ content.substraction_logo.url }}"
+                alt=""
+                class="img-fluid"
+              />
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -20,13 +20,29 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body class="g-sidenav-show  bg-gray-100">
-    {% if request.user.user_type == 2  %}
-    {% include 'partials/_publisherMenu.html' %}
+    
+{% if request.user.user_type == 2 or request.user.is_publisher %} 
+{% include 'partials/_publisherMenu.html' %}
+{% endif %} 
+ {% if request.user.user_type == 5 or request.user.is_designer %} 
+ {% include 'dashboard/_designerDashMenu.html' %}
+ {% endif %} 
+ {% if request.user.user_type == 6 or request.user.is_writer %} 
+ {% include 'dashboard/_writerDashMenu.html' %} 
+ {% endif %} 
+ {% if request.user.user_type == 7  or request.user.is_printer %} 
+ {% include 'dashboard/_printerDashMenu.html' %} 
+ 
+ {% endif %} 
 
-    {% elif request.user.user_type == 5 %}
-    {% include 'dashboard/_designerDashMenu.html' %}
-
-    {% endif %}
+ {% if request.user.user_type == 8  or request.user.is_request_service %} 
+ {% include 'dashboard/_requestServiceDashMenu.html' %} 
+ 
+ {% endif %} 
+ {% if request.user.user_type == 3  or request.user.is_translator %} 
+ {% include 'partials/_translatorMenu.html' %} 
+ 
+ {% endif %} 
     <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
         {% include 'TopMenu.html' %}
         <div class="container-fluid py-4">

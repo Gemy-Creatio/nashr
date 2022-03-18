@@ -6,6 +6,7 @@ from accounts.models import User
 
 class FoundtationUserProfile(OrderedModel):
     recordNumber = models.CharField(max_length=255, null=True, blank=True)
+    facility_name =  models.CharField(max_length=255, null=True, blank=True)
     user = models.OneToOneField(
         User, null=True, blank=True, on_delete=models.CASCADE, related_name='found_profile')
 

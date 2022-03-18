@@ -20374,10 +20374,13 @@ label,
   top: -4px;
   font-size: .5rem;
 }
+.me-1 {
+  margin-inline:0.3rem;
+}
 
 .icon-sm {
-  width: 60px;
-  height: 63px;
+  width: 35px;
+  height: 35px;
 }
 
 .icon-sm i {

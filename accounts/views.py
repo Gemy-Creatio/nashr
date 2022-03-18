@@ -207,9 +207,17 @@ class AddFoundationProfileView(View):
         return render(request, 'accounts/profile/addfoundprofile.html')
     def post(self , request):
         recordnumber = request.POST['recordnbr']
-        rec = FoundtationUserProfile(recordNumber = recordnumber , user = request.user)
-        rec.save()
-        return redirect('dashboard')
+        facility_name = request.POST['facility_name']
+        if FoundtationUserProfile.objects.filter(user=request.user).count() > 0: 
+            rec_updated = FoundtationUserProfile.objects.get(user=request.user)
+            rec_updated.recordNumber = recordnumber
+            rec_updated.facility_name = facility_name
+            rec_updated.save()
+            return redirect('dashboard')
+        else:
+            rec = FoundtationUserProfile(recordNumber = recordnumber ,facility_name = facility_name  , user = request.user)
+            rec.save()
+            return redirect('dashboard')
 
 
 

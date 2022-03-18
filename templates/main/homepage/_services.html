@@ -90,7 +90,9 @@
             <img src="{{ content.substraction_logo.url }}" class="logo" />
           </div>
           <h4 class="title">
-            <a href="">{{ content.substraction_heading_ar|safe }}</a>
+            <a href="{% url 'request-subtitle' %}"
+              >{{ content.substraction_heading_ar|safe }}</a
+            >
           </h4>
           <p class="description">{{ content.sub_subsraction_ar|safe }}</p>
         </div>
@@ -126,7 +128,7 @@
             <img src="{{ content.second_services_logo.url }}" class="logo" />
           </div>
           <h4 class="title">
-            <a href=""
+            <a href="{% url 'home-advertise' %}"
               >{{ content.second_section_Service_title_en|safe|capfirst }}</a
             >
           </h4>

@@ -104,8 +104,18 @@ class RequestTranslateServiceView(CreateView):
     form_class = TrnaslateServiceForm
     template_name = 'services/design_service.html'
 
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        if self.request.user != None:
+            self.object.user = self.request.user
+        self.object.save()
+        return super().form_valid(form)
+
     def get_success_url(self):
-        return reverse('register-service')
+        if self.request.user != None:
+            return reverse('dashboard')
+        else:
+            return reverse('register-service')
 
 
 class RequestSubtitleServiceView(CreateView):
@@ -113,8 +123,18 @@ class RequestSubtitleServiceView(CreateView):
     form_class = SubttileServiceForm
     template_name = 'designs/subtitle_service.html'
 
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        if self.request.user != None:
+            self.object.user = self.request.user
+        self.object.save()
+        return super().form_valid(form)
+
     def get_success_url(self):
-        return reverse('register-service')
+        if self.request.user != None:
+            return reverse('dashboard')
+        else:
+            return reverse('register-service')
 
 
 class RequestDesignServiceView(View):
@@ -153,6 +173,9 @@ class RequestDesignServiceView(View):
                                               isbn_number=isbn, images=file,
                                               house_info=house_information, communication=email, note=notes
                                               )
+        design_request.save()
+        if self.request.user != None:
+            design_request.user = self.request.user
         design_request.save()
         return redirect('home-page')
 
