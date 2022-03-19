@@ -20,7 +20,8 @@ from services.models import (
     Vouchers,
     PaidVoucher,
     TranslationRequest,
-    SubtitleService
+    SubtitleService,
+    ContactRequestServices
 )
 from services.forms import (
     TrnaslateServiceForm,
@@ -37,6 +38,12 @@ from designs.models import (
 def AllVouchers(request):
     vouchers = Vouchers.objects.filter(user=request.user.pk, is_paid=False)
     return render(request, 'services/all_vouchers.html', context={"vouchers": vouchers})
+
+
+class AllMessagesView(View):
+    def get(self, request):
+        msgs = ContactRequestServices.objects.filter(user=request.user)
+        return render(request, "services/all-msgs.html", context={"msgs": msgs})
 
 
 def PayVoucher(request, pk):

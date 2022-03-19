@@ -33,6 +33,7 @@ tzdata = "==2021.5"
 async_generator = "==1.10"
 Django = "==4.0.1"
 Pillow = "==9.0.0"
+requests = "*"
 
 [dev-packages]
 autopep8 = "*"

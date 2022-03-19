@@ -7,15 +7,29 @@ from books.models import (
     ContractFollow,
     UserProfile,
     PublisherNeeds,
-    BookDistrubuting ,
-    Negotiation , 
-    FoundtationUserProfile
+    BookDistrubuting,
+    Negotiation,
+    FoundtationUserProfile,
+    AdvertisePresent,
+    NeedsPresent
 
 )
+
+
+@admin.register(NeedsPresent)
+class NeedsPresentAdmin(OrderedModelAdmin):
+    list_display = ("__str__",)
+
+
+@admin.register(AdvertisePresent)
+class AdvertisePresentProfileAdmin(OrderedModelAdmin):
+    list_display = ("__str__",)
+
 
 @admin.register(FoundtationUserProfile)
 class FoundtationUserProfileAdmin(OrderedModelAdmin):
     list_display = ("__str__",)
+
 
 @admin.register(BookDistrubuting)
 class BookDistrubutingAdmin(OrderedModelAdmin):
@@ -26,9 +40,11 @@ class BookDistrubutingAdmin(OrderedModelAdmin):
 class NegotiationAdmin(OrderedModelAdmin):
     list_display = ("__str__",)
 
+
 @admin.register(PublisherNeeds)
 class PublisherNeedsAdmin(OrderedModelAdmin):
     list_display = ("__str__",)
+
 
 @admin.register(UserProfile)
 class UserProfileAdmin(OrderedModelAdmin):

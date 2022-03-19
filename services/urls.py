@@ -9,7 +9,8 @@ from services.views import (
     PayVoucher,
     TranslationRequestView,
     RequestSubtitleServiceView,
-    HomeTranslationRequestView
+    HomeTranslationRequestView,
+    AllMessagesView
 )
 
 urlpatterns = [
@@ -28,4 +29,6 @@ urlpatterns = [
          TranslationRequestView.as_view(), name='complete-book'),
     path('add/translate/home',
          HomeTranslationRequestView.as_view(), name='home-advertise'),
+    path('all/msgs/home',
+         AllMessagesView.as_view(), name='all-msgs'),
 ]

@@ -6,7 +6,7 @@ from accounts.models import User
 
 class FoundtationUserProfile(OrderedModel):
     recordNumber = models.CharField(max_length=255, null=True, blank=True)
-    facility_name =  models.CharField(max_length=255, null=True, blank=True)
+    facility_name = models.CharField(max_length=255, null=True, blank=True)
     user = models.OneToOneField(
         User, null=True, blank=True, on_delete=models.CASCADE, related_name='found_profile')
 
@@ -267,3 +267,25 @@ class ContractFollow(OrderedModel):
 
     def __str__(self):
         return self.contract.author_name
+
+
+class AdvertisePresent(OrderedModel):
+    publisher = models.ForeignKey(
+        User, on_delete=models.CASCADE, null=True, blank=True)
+    book = models.ForeignKey(
+        Book, on_delete=models.CASCADE, null=True, blank=True)
+    created_at = models.DateField(auto_now_add=True)
+
+    class Meta:
+        pass
+
+
+class NeedsPresent(OrderedModel):
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, null=True, blank=True)
+    needs = models.ForeignKey(
+        PublisherNeeds, on_delete=models.CASCADE, null=True, blank=True)
+    created_at = models.DateField(auto_now_add=True)
+
+    class Meta:
+        pass

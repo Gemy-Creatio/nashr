@@ -6,12 +6,14 @@ from django.core.files.storage import FileSystemStorage
 
 from books.models import (
     Book,
+    NeedsPresent,
     UserProfile,
     PublisherNeeds,
     BookDistrubuting,
     Negotiation,
     BookContract,
-    CopyRightContract
+    CopyRightContract,
+    AdvertisePresent
 )
 
 from books.forms import (
@@ -21,6 +23,30 @@ from books.forms import (
 )
 # Create your views here.
 from django.views.generic import CreateView
+
+
+class AddIntersetView(View):
+    def get(self, request, pk):
+        book = Book.objects.get(pk=pk)
+        user = request.user
+        advertise = AdvertisePresent(publisher=user, book=book)
+        advertise.save()
+        return reverse('all-books')
+
+
+class ApplyNeedsView(View):
+    def get(self, request, pk):
+        book = Book.objects.get(pk=pk)
+        user = request.user
+        needs = NeedsPresent(user=user, needs=book)
+        needs.save()
+        return reverse('all-proof-requests')
+
+
+class AllBookView(View):
+    def get(self, request):
+        books = Book.objects.exclude(user=request.user)
+        return render(request, 'books/allbooks.html')
 
 
 class AddBookView(CreateView):
@@ -116,7 +142,7 @@ class AllBookDistrubView(View):
     def get(self, request):
         context = {"books": BookDistrubuting.objects.exclude(
             user=request.user)}
-        return render(request, 'books/alldistrub.html', context=context)
+        return render(request, 'books/all-contract-copyrightsl', context=context)
 
 
 class AllBookContracts(View):
@@ -174,3 +200,9 @@ class AllCopyrightsContracts(View):
 class ContractsChoices(View):
     def get(self, request):
         return render(request, 'books/contract-cohices.html')
+
+
+class PublisherNeedsProofView(View):
+    def get(self, request):
+        needs = PublisherNeeds.objects.filter(needs='مدقق لغوى')
+        return render(request, 'services/allneedsproof.html', context={"needs": needs})

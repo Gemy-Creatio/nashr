@@ -1,40 +1,38 @@
-{% extends 'main.html' %}
-{% load crispy_forms_tags %}
+{% extends 'main.html' %} {% load crispy_forms_tags %} {% block content %}
+<section id="contact" class="contact section-bg pt-4">
+  <div class="container justify-content-center">
+    <div class="section-title" data-aos="fade-up">
+      {% if LANGUAGE_CODE == 'ar' %}
+      <h4 class="text-muted">إضافة كتاب</h4>
+      {% else %}
+      <h4 class="text-muted">Add Book</h4>
 
-{% block content %}
-<section id="contact" class="contact section-bg ">
-    <div class="container justify-content-center">
-
-        <div class="section-title" data-aos="fade-up">
-                                       {% if LANGUAGE_CODE == 'ar' %}
-                                           <h4 class="text-muted"> إضافة كتاب</h4>
-                   {% else %}
-                                           <h4 class="text-muted">Add Book</h4>
-
-            {% endif %}
-        </div>
+      {% endif %}
     </div>
-            <div style="margin: 0 auto;" class="col-lg-10 mt-5 mt-lg-0 d-flex align-items-stretch justify-content-center" data-aos="fade-left">
-                <form method="post" role="form" class="form">
-                  {% csrf_token %}
-                                                  <div style="margin: 0 auto;" class="form-group flex-column d-flex col-6 justify-content-center">
-                                                       {{ form|crispy }}
-                                                  </div>
+  </div>
+  <div
+    style="margin: 0 auto"
+    class="col-lg-10 mt-5 mt-lg-0 d-flex align-items-stretch justify-content-center"
+    data-aos="fade-left"
+  >
+    <form method="post" role="form" class="form">
+      {% csrf_token %}
+      <div
+        style="margin: 0 auto"
+        class="form-group flex-column d-flex col-6 justify-content-center"
+      >
+        {{ form|crispy }}
+      </div>
 
-
-                    <div class="text-center justify-content-center d-flex">
-                                                   {% if LANGUAGE_CODE == 'ar' %}
-                                      <button type="submit">التالى</button>
-                        {% else %}
-              <button type="submit"> Next</button>
-                        {% endif %}
-                    </div>
-                </form>
-            </div>
-
+      <div class="text-center justify-content-center d-flex">
+        {% if LANGUAGE_CODE == 'ar' %}
+        <button type="submit">التالى</button>
+        {% else %}
+        <button type="submit">Next</button>
+        {% endif %}
+      </div>
+    </form>
+  </div>
 </section>
-
-
-
 
 {% endblock content %}

@@ -12,6 +12,15 @@ from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
 
+class ContactRequestServices(OrderedModel):
+    message = models.TextField(null=True, blank=True)
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, null=True, blank=True)
+    time_sent = models.DateField(auto_now_add=True, null=True, blank=True)
+
+    class Meta:
+        pass
+
 
 class TranslationRequest(OrderedModel):
     book = models.ForeignKey(
