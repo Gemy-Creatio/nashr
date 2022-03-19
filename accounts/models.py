@@ -8,7 +8,7 @@ from django.utils.translation import gettext_lazy as _
 
 class UserManager(BaseUserManager):
     def create_user(
-            self, email, first_name, last_name, phone, address, password=None,
+            self, email, first_name, phone, address, password=None,
             commit=True):
         """
         Creates and saves a User with the given email, first name, last name
@@ -18,13 +18,10 @@ class UserManager(BaseUserManager):
             raise ValueError(_('Users must have an email address'))
         if not first_name:
             raise ValueError(_('Users must have a first name'))
-        if not last_name:
-            raise ValueError(_('Users must have a last name'))
 
         user = self.model(
             email=self.normalize_email(email),
             first_name=first_name,
-            last_name=last_name,
             phone=phone,
             address=address,
         )
@@ -39,7 +36,7 @@ class UserManager(BaseUserManager):
             user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, first_name, last_name, password, address, phone):
+    def create_superuser(self, email, first_name, password, address, phone):
         """
         Creates and saves a superuser with the given email, first name,
         last name and password.
@@ -48,7 +45,6 @@ class UserManager(BaseUserManager):
             email,
             password=password,
             first_name=first_name,
-            last_name=last_name,
             address=address,
             phone=phone,
             commit=False,
@@ -59,7 +55,7 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_publisher(self, email, first_name, last_name, phone, address, password):
+    def create_publisher(self, email, first_name, phone, address, password):
         """
         Creates and saves a Secondary Employee USer with the given email, first name,
         last name and password.
@@ -68,7 +64,6 @@ class UserManager(BaseUserManager):
             email,
             password=password,
             first_name=first_name,
-            last_name=last_name,
             phone=phone,
             address=address,
             commit=False,
@@ -79,7 +74,7 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_translator(self, email, first_name, last_name, phone, address, password):
+    def create_translator(self, email, first_name, phone, address, password):
         """
         Creates and saves a Secondary Employee USer with the given email, first name,
         last name and password.
@@ -88,7 +83,6 @@ class UserManager(BaseUserManager):
             email,
             password=password,
             first_name=first_name,
-            last_name=last_name,
             phone=phone,
             address=address,
             commit=False,
@@ -99,7 +93,7 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_proof_reader(self, email, first_name, last_name, phone, address, password):
+    def create_proof_reader(self, email, first_name, phone, address, password):
         """
         Creates and saves a Secondary Employee USer with the given email, first name,
         last name and password.
@@ -108,7 +102,6 @@ class UserManager(BaseUserManager):
             email,
             password=password,
             first_name=first_name,
-            last_name=last_name,
             phone=phone,
             address=address,
             commit=False,
@@ -119,7 +112,7 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_designer(self, email, first_name, last_name, phone, address, password):
+    def create_designer(self, email, first_name, phone, address, password):
         """
         Creates and saves a Secondary Employee USer with the given email, first name,
         last name and password.
@@ -128,7 +121,6 @@ class UserManager(BaseUserManager):
             email,
             password=password,
             first_name=first_name,
-            last_name=last_name,
             phone=phone,
             address=address,
             commit=False,
@@ -139,7 +131,7 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_writer(self, email, first_name, last_name, phone, address, password):
+    def create_writer(self, email, first_name, phone, address, password):
         """
         Creates and saves a Secondary Employee USer with the given email, first name,
         last name and password.
@@ -148,7 +140,6 @@ class UserManager(BaseUserManager):
             email,
             password=password,
             first_name=first_name,
-            last_name=last_name,
             phone=phone,
             address=address,
             commit=False,
@@ -158,7 +149,8 @@ class UserManager(BaseUserManager):
         user.user_type = 6
         user.save(using=self._db)
         return user
-    def create_printer(self, email, first_name, last_name, phone, address, password):
+
+    def create_printer(self, email, first_name, phone, address, password):
         """
         Creates and saves a Secondary Employee USer with the given email, first name,
         last name and password.
@@ -167,7 +159,6 @@ class UserManager(BaseUserManager):
             email,
             password=password,
             first_name=first_name,
-            last_name=last_name,
             phone=phone,
             address=address,
             commit=False,
@@ -177,7 +168,8 @@ class UserManager(BaseUserManager):
         user.user_type = 7
         user.save(using=self._db)
         return user
-    def create_request_service(self, email, first_name, last_name, phone, address, password):
+
+    def create_request_service(self, email, first_name, phone, address, password):
         """
         Creates and saves a Secondary Employee USer with the given email, first name,
         last name and password.
@@ -186,19 +178,17 @@ class UserManager(BaseUserManager):
             email,
             password=password,
             first_name=first_name,
-            last_name=last_name,
             phone=phone,
             address=address,
             commit=False,
         )
         user.is_writer = True
         user.is_active = True
-        user.user_type =8
+        user.user_type = 8
         user.save(using=self._db)
         return user
 
 
-    
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(
         verbose_name=_('email address'), max_length=255, unique=True
@@ -208,7 +198,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     last_name = models.CharField(_('last name'), max_length=150, blank=True)
     phone = models.CharField(max_length=255, null=True, blank=True)
     timestamp = models.DateTimeField(auto_now_add=True)
-    address = models.CharField(_('Address'), max_length=255, null=True, blank=True)
+    address = models.CharField(
+        _('Address'), max_length=255, null=True, blank=True)
     is_admin = models.BooleanField(_('Admin'), default=False, help_text=_(
         'Designates whether this user should be treated as an Admin. '
     ))
@@ -247,7 +238,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     user_type = models.PositiveSmallIntegerField(choices=USER_TYPE_CHOICES, null=True, verbose_name=_('User Type'),
                                                  help_text=_(
                                                      'User Role in A system '
-                                                 ))
+    ))
 
     is_active = models.BooleanField(
         _('active'),

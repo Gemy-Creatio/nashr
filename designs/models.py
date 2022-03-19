@@ -47,10 +47,9 @@ class PrintBookRequest(OrderedModel):
     )
     print_face = models.CharField(
         max_length=255, null=True, blank=True, choices=PRINT_FACES)
-    book = models.ForeignKey(Book, on_delete=models.SET_NULL, null=True)
     number_of_pages = models.IntegerField(null=True, blank=True)
     number_of_colors = models.IntegerField(null=True, blank=True)
     number_of_copies = models.IntegerField(null=True, blank=True)
-
+    book = models.FileField(upload_to='books_print/' , null=True , blank=True)
     class Meta:
         pass

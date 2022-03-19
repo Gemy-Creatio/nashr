@@ -1,47 +1,130 @@
 {% load crispy_forms_tags %}
 <section class="content-section bg-light" id="about">
-            <div class="container px-4 px-lg-5 text-center">
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-lg-10 d-flex justify-content-center">
-                                  <form class="form" action="#" method="post">
-                            {% csrf_token %}
-               <div class="form-group row">
-                                <div class="col-md-6 mb-4 mb-lg-0">
-                                    <input type="text" name="first_name" class="form-control" placeholder="الأسم الأول">
-                                </div>
-                                <div class="col-md-6">
-                                    <input type="text" name="last_name" class="form-control" placeholder="إسم العائله">
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <div class="col-md-12">
-                                    <input type="email" name="email" class="form-control"
-                                           placeholder="البريد الألكترونى">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-md-12">
-                                    <input type="password" name="password" class="form-control" placeholder="كلمة السر">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-md-12">
-                                    <input type="text" name="address" class="form-control" placeholder="العنوان">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-md-12">
-                                    <input type="number" name="phone" class="form-control" placeholder="رقم الجوال">
-                                </div>
-                            </div>
-                            <center>
-                                    <input type="submit" class="btn btn-dark mb-0 "
-                                           value="إنشاء حساب">
-                                </center>
-
-                        </form>
-                    </div>
-                </div>
+  <div class="container px-4 px-lg-5 text-center">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-lg-10 d-flex justify-content-center">
+        <form class="form" action="#" method="post">
+          {% csrf_token %} {% if LANGUAGE_CODE == 'ar' %}
+          <div class="form-group row">
+            <div class="col-md-12 mb-4 mb-lg-0">
+              <input
+                type="text"
+                name="first_name"
+                class="form-control"
+                placeholder="الأسم الثلاثى"
+              />
             </div>
-        </section>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-md-12">
+              <input
+                type="email"
+                name="email"
+                class="form-control"
+                placeholder="البريد الألكترونى"
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-12">
+              <input
+                type="password"
+                name="password"
+                class="form-control"
+                placeholder="كلمة السر"
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-12">
+              <input
+                type="text"
+                name="address"
+                class="form-control"
+                placeholder="العنوان"
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-12">
+              <input
+                type="number"
+                name="phone"
+                class="form-control"
+                placeholder="رقم الجوال"
+              />
+            </div>
+          </div>
+          <div class="text-center pt-3">
+            <input
+              type="submit"
+              class="btn btn-dark mb-0 pt-3"
+              value="إنشاء حساب "
+            />
+          </div>
+          {% else %}
+          <div class="form-group row">
+            <div class="col-md-12">
+              <input
+                type="text"
+                name="first_name"
+                class="form-control"
+                placeholder="Full Name"
+              />
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-md-12">
+              <input
+                type="email"
+                name="email"
+                class="form-control"
+                placeholder="Email "
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-12">
+              <input
+                type="password"
+                name="password"
+                class="form-control"
+                placeholder="Password"
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-12">
+              <input
+                type="text"
+                name="address"
+                class="form-control"
+                placeholder="Address"
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-12">
+              <input
+                type="number"
+                name="phone"
+                class="form-control"
+                placeholder=" Phone"
+              />
+            </div>
+          </div>
+          <div class="text-center pt-3">
+            <input
+              type="submit"
+              class="btn btn-dark mb-0 pt-3"
+              value="Sign up "
+            />
+          </center>
+          {% endif %}
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,329 +1,369 @@
-{% extends 'masterpage.html' %}
-{% load crispy_forms_tags %}
+{% extends 'masterpage.html' %} {% load crispy_forms_tags %} {% block content %}
+<section id="contact" class="contact section-bg">
+  <div class="container justify-content-center">
+    <div class="section-title" data-aos="fade-up" style="padding-top: 3rem">
+      {% if LANGUAGE_CODE == 'ar' %}
+      <h4 class="text-muted">تقديم طلب تصميم غلاف</h4>
+      {% else %}
+      <h4 class="text-muted">Design Request</h4>
 
-{% block content %}
-    <section id="contact" class="contact section-bg">
-        <div class="container justify-content-center">
+      {% endif %}
+    </div>
+  </div>
+  <div
+    style="margin: 0 auto"
+    class="col-lg-10 mt-5 mt-lg-0 d-flex align-items-stretch justify-content-center"
+    data-aos="fade-left"
+  >
+    <form
+      action="{% url 'request-design' %}"
+      method="post"
+      class="form"
+      enctype="multipart/form-data"
+    >
+      {% csrf_token %}
 
-            <div class="section-title" data-aos="fade-up">
-                {% if LANGUAGE_CODE == 'ar' %}
-                    <h4 class="text-muted">تقديم طلب ترجمة</h4>
-                {% else %}
-                    <h4 class="text-muted">Translate Request</h4>
+      <div class="form-group col-lg-6 col-12">
+        {% if LANGUAGE_CODE == 'ar' %}
+        <label for="book_sizes">مقاسات الكتاب </label>
+        {% else %}
+        <label for="book_sizes">book sizes </label>
+        {% endif %}
 
-                {% endif %}
-            </div>
-        </div>
-        <div style="margin: 0 auto;" class="col-lg-10 mt-5 mt-lg-0 d-flex align-items-stretch justify-content-center"
-             data-aos="fade-left">
-            <form action="{% url 'request-design' %}" method="post" class="form" enctype="multipart/form-data">
-                {% csrf_token %}
+        <select class="form-control" name="book_sizes" id="book_sizes">
+          ]
+          <option value="17cm-12cm">17 cm - 12 cm</option>
+          <option value="17cm-24cm">17 cm - 24 cm</option>
+          <option value="14cm-20cm">14 cm - 20 cm</option>
+        </select>
+      </div>
+      <div class="form-group col-lg-6 col-12">
+        {% if LANGUAGE_CODE == 'ar' %}
+        <h3>الوجة الأمامى</h3>
+        <label>عنوان الكتاب</label>
+        {% else %}
+        <h3>The Front Cover</h3>
+        <label>Book title</label>
+        {% endif %}
 
-                <div class="form-group col-lg-6 col-12">
-                    {% if LANGUAGE_CODE == 'ar' %}
-                        <label for="book_sizes">مقاسات الكتاب </label>
-                    {% else %}
-                        <label for="book_sizes">book sizes </label>
-                    {% endif %}
+        <select class="form-control" name="book_title" id="book_title">
+          {% if LANGUAGE_CODE == 'ar' %}
+          <option value="نعم">نعم</option>
+          <option value="لا">لا</option>
+          {% else %}
+          <option value="نعم">Yes</option>
+          <option value="لا">No</option>
+          {% endif %}
+        </select>
+      </div>
 
-                    <select class="form-control" name="book_sizes" id="book_sizes">]
-                        <option value="17cm-12cm">17 cm - 12 cm</option>
-                        <option value="17cm-24cm">17 cm - 24 cm</option>
-                        <option value="14cm-20cm">14 cm - 20 cm</option>
-                    </select>
-                </div>
-                <div class="form-group col-lg-6 col-12">
-                    {% if LANGUAGE_CODE == 'ar' %}
-                        <h3>الوجة الأمامى</h3>
-                        <label>عنوان الكتاب</label>
-                    {% else %}
-                        <h3>The Front Cover</h3>
-                        <label>Book title</label>
-                    {% endif %}
+      <div class="form-group col-lg-6 col-12">
+        {% if LANGUAGE_CODE == 'ar' %}
+        <label>اسم المؤلف</label>
+        {% else %}
+        <label>Author Name</label>
+        {% endif %}
 
-                    <select class="form-control" name="book_title" id="book_title">
+        <select class="form-control" name="author_name" id="author_name">
+          {% if LANGUAGE_CODE == 'ar' %}
+          <option value="نعم">نعم</option>
+          <option value="لا">لا</option>
+          {% else %}
+          <option value="نعم">Yes</option>
+          <option value="لا">No</option>
+          {% endif %}
+        </select>
+      </div>
+      <div class="form-group col-lg-6 col-12">
+        {% if LANGUAGE_CODE == 'ar' %}
+        <label>اسم المترجم </label>
+        {% else %}
+        <label>translator name</label>
+        {% endif %}
 
-                        {% if LANGUAGE_CODE == 'ar' %}
-                            <option value="نعم">نعم</option>
-                            <option value="لا">لا</option>
-                        {% else %}
-                            <option value="نعم">Yes</option>
-                            <option value="لا">No</option>
-                        {% endif %}
-                    </select>
-                </div>
+        <select
+          class="form-control"
+          name="translator_name"
+          id="translator_name"
+        >
+          {% if LANGUAGE_CODE == 'ar' %}
+          <option value="نعم">نعم</option>
+          <option value="لا">لا</option>
+          {% else %}
+          <option value="نعم">Yes</option>
+          <option value="لا">No</option>
+          {% endif %}
+        </select>
+      </div>
 
-                <div class="form-group col-lg-6 col-12">
-                    {% if LANGUAGE_CODE == 'ar' %}
-                        <label>اسم المؤلف</label>
-                    {% else %}
-                        <label>Author Name</label>
-                    {% endif %}
+      <div class="form-group col-lg-6 col-12">
+        {% if LANGUAGE_CODE == 'ar' %}
+        <label>الرتبة العلمية</label>
+        {% else %}
+        <label>scientific rank</label>
+        {% endif %}
 
-                    <select class="form-control" name="author_name" id="author_name">
-                        {% if LANGUAGE_CODE == 'ar' %}
-                            <option value="نعم">نعم</option>
-                            <option value="لا">لا</option>
-                        {% else %}
-                            <option value="نعم">Yes</option>
-                            <option value="لا">No</option>
-                        {% endif %}
-                    </select>
-                </div>
-                <div class="form-group col-lg-6 col-12">
-                    {% if LANGUAGE_CODE == 'ar' %}
-                        <label>اسم المترجم </label>
-                    {% else %}
-                        <label>translator name</label>
-                    {% endif %}
+        <select
+          class="form-control"
+          name="scientific_rank"
+          id="scientific_rank"
+        >
+          {% if LANGUAGE_CODE == 'ar' %}
+          <option value="نعم">نعم</option>
+          <option value="لا">لا</option>
+          {% else %}
+          <option value="نعم">Yes</option>
+          <option value="لا">No</option>
+          {% endif %}
+        </select>
+      </div>
 
-                    <select class="form-control" name="translator_name" id="translator_name">
-                        {% if LANGUAGE_CODE == 'ar' %}
-                            <option value="نعم">نعم</option>
-                            <option value="لا">لا</option>
-                        {% else %}
-                            <option value="نعم">Yes</option>
-                            <option value="لا">No</option>
-                        {% endif %}
-                    </select>
-                </div>
+      <div class="form-group col-lg-6 col-12">
+        {% if LANGUAGE_CODE == 'ar' %}
+        <label>رقم الإصدار وسنتة </label>
+        {% else %}
+        <label>Version number and year</label>
+        {% endif %}
 
-                <div class="form-group col-lg-6 col-12">
-                    {% if LANGUAGE_CODE == 'ar' %}
-                        <label>الرتبة العلمية</label>
-                    {% else %}
-                        <label>scientific rank</label>
-                    {% endif %}
+        <select class="form-control" name="version_number" id="version_number">
+          {% if LANGUAGE_CODE == 'ar' %}
+          <option value="نعم">نعم</option>
+          <option value="لا">لا</option>
+          {% else %}
+          <option value="نعم">Yes</option>
+          <option value="لا">No</option>
+          {% endif %}
+        </select>
+      </div>
 
-                    <select class="form-control" name="scientific_rank" id="scientific_rank">
-                        {% if LANGUAGE_CODE == 'ar' %}
-                            <option value="نعم">نعم</option>
-                            <option value="لا">لا</option>
-                        {% else %}
-                            <option value="نعم">Yes</option>
-                            <option value="لا">No</option>
-                        {% endif %}
-                    </select>
-                </div>
+      <div class="form-group col-lg-6 col-12">
+        {% if LANGUAGE_CODE == 'ar' %}
+        <label>شعار الدار </label>
+        {% else %}
+        <label>house logo</label>
+        {% endif %}
 
+        <select class="form-control" name="house_logo" id="house_logo">
+          {% if LANGUAGE_CODE == 'ar' %}
+          <option value="نعم">نعم</option>
+          <option value="لا">لا</option>
+          {% else %}
+          <option value="نعم">Yes</option>
+          <option value="لا">No</option>
+          {% endif %}
+        </select>
+      </div>
 
-                <div class="form-group col-lg-6 col-12">
-                    {% if LANGUAGE_CODE == 'ar' %}
-                        <label>رقم الإصدار وسنتة </label>
-                    {% else %}
-                        <label>Version number and year</label>
-                    {% endif %}
+      <div class="form-group col-lg-6 col-12">
+        {% if LANGUAGE_CODE == 'ar' %}
+        <h3>كعب الغلاف</h3>
+        <label>عنوان الكتاب</label>
+        {% else %}
+        <h3>cover tail</h3>
+        <label>Author Name</label>
+        {% endif %}
 
-                    <select class="form-control" name="version_number" id="version_number">
-                        {% if LANGUAGE_CODE == 'ar' %}
-                            <option value="نعم">نعم</option>
-                            <option value="لا">لا</option>
-                        {% else %}
-                            <option value="نعم">Yes</option>
-                            <option value="لا">No</option>
-                        {% endif %}
-                    </select>
-                </div>
+        <select
+          class="form-control"
+          name="author_name_tail"
+          id="author_name_tail"
+        >
+          {% if LANGUAGE_CODE == 'ar' %}
+          <option value="نعم">نعم</option>
+          <option value="لا">لا</option>
+          {% else %}
+          <option value="نعم">Yes</option>
+          <option value="لا">No</option>
+          {% endif %}
+        </select>
+      </div>
+      <div class="form-group col-lg-6 col-12">
+        {% if LANGUAGE_CODE == 'ar' %}
+        <label>اسم المترجم </label>
+        {% else %}
+        <label>translator name</label>
+        {% endif %}
 
+        <select
+          class="form-control"
+          name="translator_name_tail"
+          id="translator_name_tail"
+        >
+          {% if LANGUAGE_CODE == 'ar' %}
+          <option value="نعم">نعم</option>
+          <option value="لا">لا</option>
+          {% else %}
+          <option value="نعم">Yes</option>
+          <option value="لا">No</option>
+          {% endif %}
+        </select>
+      </div>
 
-                <div class="form-group col-lg-6 col-12">
-                    {% if LANGUAGE_CODE == 'ar' %}
-                        <label>شعار الدار </label>
-                    {% else %}
-                        <label>house logo</label>
-                    {% endif %}
+      <div class="form-group col-lg-6 col-12">
+        {% if LANGUAGE_CODE == 'ar' %}
+        <label>الرتبة العلمية</label>
+        {% else %}
+        <label>scientific rank</label>
+        {% endif %}
 
-                    <select class="form-control" name="house_logo" id="house_logo">
-                        {% if LANGUAGE_CODE == 'ar' %}
-                            <option value="نعم">نعم</option>
-                            <option value="لا">لا</option>
-                        {% else %}
-                            <option value="نعم">Yes</option>
-                            <option value="لا">No</option>
-                        {% endif %}
-                    </select>
-                </div>
+        <select
+          class="form-control"
+          name="scientific_rank_tail"
+          id="scientific_rank_tail"
+        >
+          {% if LANGUAGE_CODE == 'ar' %}
+          <option value="نعم">نعم</option>
+          <option value="لا">لا</option>
+          {% else %}
+          <option value="نعم">Yes</option>
+          <option value="لا">No</option>
+          {% endif %}
+        </select>
+      </div>
 
+      <div class="form-group col-lg-6 col-12">
+        {% if LANGUAGE_CODE == 'ar' %}
+        <label>رقم الجزء</label>
+        {% else %}
+        <label>Part Number</label>
+        {% endif %}
 
-                <div class="form-group col-lg-6 col-12">
-                    {% if LANGUAGE_CODE == 'ar' %}
-                        <h3>كعب الغلاف</h3>
-                        <label>عنوان الكتاب</label>
-                    {% else %}
-                        <h3>cover tail</h3>
-                        <label>Author Name</label>
-                    {% endif %}
+        <select class="form-control" name="part_number" id="part_number">
+          {% if LANGUAGE_CODE == 'ar' %}
+          <option value="نعم">نعم</option>
+          <option value="لا">لا</option>
+          {% else %}
+          <option value="نعم">Yes</option>
+          <option value="لا">No</option>
+          {% endif %}
+        </select>
+      </div>
 
-                    <select class="form-control" name="author_name_tail" id="author_name_tail">
+      <div class="form-group col-lg-6 col-12">
+        {% if LANGUAGE_CODE == 'ar' %}
+        <label>قم الإصدار وسنتة </label>
+        {% else %}
+        <label>Version number and year</label>
+        {% endif %}
 
-                        {% if LANGUAGE_CODE == 'ar' %}
-                            <option value="نعم">نعم</option>
-                            <option value="لا">لا</option>
-                        {% else %}
-                            <option value="نعم">Yes</option>
-                            <option value="لا">No</option>
-                        {% endif %}
-                    </select>
-                </div>
-                <div class="form-group col-lg-6 col-12">
-                    {% if LANGUAGE_CODE == 'ar' %}
-                        <label>اسم المترجم </label>
-                    {% else %}
-                        <label>translator name</label>
-                    {% endif %}
+        <select
+          class="form-control"
+          name="version_number_tail"
+          id="version_number_tail"
+        >
+          {% if LANGUAGE_CODE == 'ar' %}
+          <option value="نعم">نعم</option>
+          <option value="لا">لا</option>
+          {% else %}
+          <option value="نعم">Yes</option>
+          <option value="لا">No</option>
+          {% endif %}
+        </select>
+      </div>
 
-                    <select class="form-control" name="translator_name_tail" id="translator_name_tail">
-                        {% if LANGUAGE_CODE == 'ar' %}
-                            <option value="نعم">نعم</option>
-                            <option value="لا">لا</option>
-                        {% else %}
-                            <option value="نعم">Yes</option>
-                            <option value="لا">No</option>
-                        {% endif %}
-                    </select>
-                </div>
+      <div class="form-group col-lg-6 col-12">
+        {% if LANGUAGE_CODE == 'ar' %}
+        <h3>الوجه الخلفي</h3>
+        <label>نبذة الكتاب التسويقية</label>
+        {% else %}
+        <h3>back cover</h3>
+        <label>About the marketing book</label>
+        {% endif %}
+        <textarea
+          class="form-control"
+          id="about_book"
+          name="about_book"
+          rows="4"
+          cols="50"
+        ></textarea>
+      </div>
+      <div class="form-group col-lg-6 col-12">
+        {% if LANGUAGE_CODE == 'ar' %}
+        <label>رقم الردمك</label>
+        {% else %}
+        <label>ISBN number</label>
+        {% endif %}
+        <input
+          type="text"
+          name="isbn"
+          data-model-name="isbn"
+          class="form-control"
+        />
+      </div>
+      <div class="form-group col-lg-6 col-12">
+        {% if LANGUAGE_CODE == 'ar' %}
+        <label>معلومات الدار</label>
+        {% else %}
+        <label>House information</label>
+        {% endif %}
 
-                <div class="form-group col-lg-6 col-12">
-                    {% if LANGUAGE_CODE == 'ar' %}
-                        <label>الرتبة العلمية</label>
-                    {% else %}
-                        <label>scientific rank</label>
-                    {% endif %}
+        <select
+          class="form-control"
+          name="house_information"
+          id="house_information"
+        >
+          {% if LANGUAGE_CODE == 'ar' %}
+          <option value="نعم">نعم</option>
+          <option value="لا">لا</option>
+          {% else %}
+          <option value="نعم">Yes</option>
+          <option value="لا">No</option>
+          {% endif %}
+        </select>
+      </div>
+      <div class="form-group col-lg-6 col-12">
+        {% if LANGUAGE_CODE == 'ar' %}
+        <label>البريد الإلكتروني</label>
+        {% else %}
+        <label>Communication</label>
+        {% endif %}
 
-                    <select class="form-control" name="scientific_rank_tail" id="scientific_rank_tail">
-                        {% if LANGUAGE_CODE == 'ar' %}
-                            <option value="نعم">نعم</option>
-                            <option value="لا">لا</option>
-                        {% else %}
-                            <option value="نعم">Yes</option>
-                            <option value="لا">No</option>
-                        {% endif %}
-                    </select>
-                </div>
-
-
-                <div class="form-group col-lg-6 col-12">
-                    {% if LANGUAGE_CODE == 'ar' %}
-                        <label>رقم الجزء</label>
-                    {% else %}
-                        <label>Part Number</label>
-                    {% endif %}
-
-                    <select class="form-control" name="part_number" id="part_number">
-                        {% if LANGUAGE_CODE == 'ar' %}
-                            <option value="نعم">نعم</option>
-                            <option value="لا">لا</option>
-                        {% else %}
-                            <option value="نعم">Yes</option>
-                            <option value="لا">No</option>
-                        {% endif %}
-                    </select>
-                </div>
-
-
-                <div class="form-group col-lg-6 col-12">
-                    {% if LANGUAGE_CODE == 'ar' %}
-                        <label>قم الإصدار وسنتة </label>
-                    {% else %}
-                        <label>Version number and year</label>
-                    {% endif %}
-
-                    <select class="form-control" name="version_number_tail" id="version_number_tail">
-                        {% if LANGUAGE_CODE == 'ar' %}
-                            <option value="نعم">نعم</option>
-                            <option value="لا">لا</option>
-                        {% else %}
-                            <option value="نعم">Yes</option>
-                            <option value="لا">No</option>
-                        {% endif %}
-                    </select>
-                </div>
-
-    <div class="form-group col-lg-6 col-12">
-                                                                           {% if LANGUAGE_CODE == 'ar' %}
-                                  <h3>الوجه الخلفي</h3>
- <label>نبذة الكتاب التسويقية</label>
-                  {% else %}
-                             <h3>back cover</h3>
- <label>About the marketing book</label>
-                  {% endif %}
-<textarea class="form-control" id="about_book" name="about_book" rows="4" cols="50">
-</textarea>
-
-              </div>
-    <div class="form-group col-lg-6 col-12">
-                                                                           {% if LANGUAGE_CODE == 'ar' %}
- <label>رقم الردمك</label>
-                  {% else %}
- <label>ISBN number</label>
-                  {% endif %}
-<input type="text" name="isbn" data-model-name="isbn" class="form-control"/>
-              </div>
-                <div class="form-group col-lg-6 col-12">
-                    {% if LANGUAGE_CODE == 'ar' %}
-                        <label>معلومات الدار</label>
-                    {% else %}
-                        <label>House information</label>
-                    {% endif %}
-
-                    <select class="form-control" name="house_information" id="house_information">
-                        {% if LANGUAGE_CODE == 'ar' %}
-                            <option value="نعم">نعم</option>
-                            <option value="لا">لا</option>
-                        {% else %}
-                            <option value="نعم">Yes</option>
-                            <option value="لا">No</option>
-                        {% endif %}
-                    </select>
-                </div>
-                <div class="form-group col-lg-6 col-12">
-                    {% if LANGUAGE_CODE == 'ar' %}
-                        <label>البريد الإلكتروني</label>
-                    {% else %}
-                        <label>Communication</label>
-                    {% endif %}
-
-                    <select class="form-control" name="email" id="email">
-                        {% if LANGUAGE_CODE == 'ar' %}
-                            <option value="نعم">نعم</option>
-                            <option value="لا">لا</option>
-                        {% else %}
-                            <option value="نعم">Yes</option>
-                            <option value="لا">No</option>
-                        {% endif %}
-                    </select>
-                </div>
-    <div class="form-group col-lg-6 col-12">
-                                                                           {% if LANGUAGE_CODE == 'ar' %}
- <label>ملاحظات</label>
-                  {% else %}
- <label>Notes</label>
-                  {% endif %}
-<textarea class="form-control" id="notes" name="notes" rows="4" cols="50">
-</textarea>
-
-              </div>
-    <div class="form-group col-lg-6 col-12">
-                                                                           {% if LANGUAGE_CODE == 'ar' %}
- <label>إدراج صورة</label>
-                  {% else %}
- <label>Upload Photo</label>
-                  {% endif %}
-<input type="file" name="photo" data-model-name="photo" class="form-control"/>
-              </div>
-                <div class="text-center justify-content-center d-flex">
-                    {% if LANGUAGE_CODE == 'ar' %}
-                       <input type="submit" class="btn btn-dark text-white" value="إرسال"/>
-                    {% else %}
-                        <input type="submit" class="btn btn-dark text-white" value="Send"/>
-                    {% endif %}
-                </div>
-            </form>
-        </div>
-
-    </section>
-
-
-
+        <select class="form-control" name="email" id="email">
+          {% if LANGUAGE_CODE == 'ar' %}
+          <option value="نعم">نعم</option>
+          <option value="لا">لا</option>
+          {% else %}
+          <option value="نعم">Yes</option>
+          <option value="لا">No</option>
+          {% endif %}
+        </select>
+      </div>
+      <div class="form-group col-lg-6 col-12">
+        {% if LANGUAGE_CODE == 'ar' %}
+        <label>ملاحظات</label>
+        {% else %}
+        <label>Notes</label>
+        {% endif %}
+        <textarea
+          class="form-control"
+          id="notes"
+          name="notes"
+          rows="4"
+          cols="50"
+        ></textarea>
+      </div>
+      <div class="form-group col-lg-6 col-12">
+        {% if LANGUAGE_CODE == 'ar' %}
+        <label>إدراج صورة</label>
+        {% else %}
+        <label>Upload Photo</label>
+        {% endif %}
+        <input
+          type="file"
+          name="photo"
+          data-model-name="photo"
+          class="form-control"
+        />
+      </div>
+      <div class="text-center justify-content-center d-flex">
+        {% if LANGUAGE_CODE == 'ar' %}
+        <input type="submit" class="btn btn-dark text-white" value="إرسال" />
+        {% else %}
+        <input type="submit" class="btn btn-dark text-white" value="Send" />
+        {% endif %}
+      </div>
+    </form>
+  </div>
+</section>
 
 {% endblock content %}

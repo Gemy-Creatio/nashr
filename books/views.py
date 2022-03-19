@@ -206,3 +206,21 @@ class PublisherNeedsProofView(View):
     def get(self, request):
         needs = PublisherNeeds.objects.filter(needs='مدقق لغوى')
         return render(request, 'services/allneedsproof.html', context={"needs": needs})
+
+
+class AllWriterNeeds(View):
+    def get(self, request):
+        needs = PublisherNeeds.objects.filter(needs='كاتب')
+        return render(request, 'services/allneedsproof.html', context={"needs": needs})
+
+
+class AllDesignerNeeds(View):
+    def get(self, request):
+        needs = PublisherNeeds.objects.filter(needs='مصمم')
+        return render(request, 'services/allneedsproof.html', context={"needs": needs})
+
+
+class AllTranslatorNeeds(View):
+    def get(self, request):
+        needs = PublisherNeeds.objects.filter(needs='مترجم')
+        return render(request, 'services/allneedsproof.html', context={"needs": needs})

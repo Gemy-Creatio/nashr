@@ -113,16 +113,16 @@ class RequestTranslateServiceView(CreateView):
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
-        if self.request.user != None:
+        if self.request.user.is_anonymous == False:
             self.object.user = self.request.user
         self.object.save()
         return super().form_valid(form)
 
     def get_success_url(self):
-        if self.request.user != None:
-            return reverse('dashboard')
-        else:
+        if self.request.user.is_anonymous:
             return reverse('register-service')
+        else:
+            return reverse('dashboard')
 
 
 class RequestSubtitleServiceView(CreateView):
@@ -132,7 +132,7 @@ class RequestSubtitleServiceView(CreateView):
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
-        if self.request.user != None:
+        if self.request.user.is_anonymous == False:
             self.object.user = self.request.user
         self.object.save()
         return super().form_valid(form)
@@ -181,10 +181,10 @@ class RequestDesignServiceView(View):
                                               house_info=house_information, communication=email, note=notes
                                               )
         design_request.save()
-        if self.request.user != None:
+        if self.request.user.is_anonymous == False:
             design_request.user = self.request.user
         design_request.save()
-        return redirect('home-page')
+        return redirect('register-service')
 
 
 class AllServicesForDesignView(View):
@@ -237,6 +237,6 @@ class HomeTranslationRequestView(View):
         filename = fs.save(file.name, file)
         trans = TranslationRequest(translator_introduction=translator_intro, dedication_page=dedication_page,
                                    thank_you_page=thank_page, intro_page=intro_page, content_pages=content_page, source_page=source_page,
-                                   supplements_page=define_page, page_images=draw_page, draw_page=table_page, CMYK_page=cmyk_page, note=note, contact=file)
+                                   supplements_page=define_page, page_images=draw_page, table_page=table_page, CMYK_page=cmyk_page, note=note, contact=file)
         trans.save()
         return redirect('register-service')

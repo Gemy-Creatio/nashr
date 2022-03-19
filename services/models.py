@@ -30,6 +30,7 @@ class TranslationRequest(OrderedModel):
     dedication_page = models.CharField(max_length=255, null=True, blank=True)
     thank_you_page = models.CharField(max_length=255, null=True, blank=True)
     define_page = models.CharField(max_length=255, null=True, blank=True)
+    table_page = models.CharField(max_length=255, null=True, blank=True)
     intro_page = models.CharField(max_length=255, null=True, blank=True)
     content_pages = models.CharField(max_length=255, null=True, blank=True)
     source_page = models.CharField(max_length=255, null=True, blank=True)

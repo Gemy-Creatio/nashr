@@ -30,5 +30,5 @@ urlpatterns = [
     path('add/translate/home',
          HomeTranslationRequestView.as_view(), name='home-advertise'),
     path('all/msgs/home',
-         AllMessagesView.as_view(), name='all-msgs'),
+         AllMessagesView.as_view(), name='all-msg'),
 ]

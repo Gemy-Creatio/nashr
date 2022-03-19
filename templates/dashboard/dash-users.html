@@ -1,26 +1,20 @@
 {% extends 'main.html' %} 
-{% block title %}لوحة التحكم{% endblock title %} 
-{%block content %} 
+{% block title %}لوحة التحكم{% endblock title %}
 
-{% if request.user.user_type == 2 or request.user.is_publisher %} 
-{% include 'dashboard/_publisherDashMenu.html' %}
- {% endif %} 
- {% if request.user.user_type == 5 or request.user.is_designer %} 
- {%include 'dashboard/_designerDashMenu.html' %} 
- {% endif %} 
+{%block content %}
+ {% if request.user.user_type == 2 or request.user.is_publisher %} 
+ {% include 'dashboard/_publisherDashMenu.html' %}
+{% endif %} 
+{% if request.user.user_type == 5 or request.user.is_designer %}
+{%include 'dashboard/_designerDashMenu.html' %} {% endif %}
  {% if request.user.user_type == 6 or request.user.is_writer %} 
  {% include 'dashboard/_writerDashMenu.html' %} 
- {% endif %} 
- {% if request.user.user_type == 7  or request.user.is_printer %} 
- {% include 'dashboard/_printerDashMenu.html' %} 
- {% endif %} 
-
- {% if request.user.user_type == 8  or request.user.is_request_service %} 
- {% include 'dashboard/_requestServiceDashMenu.html' %} 
- {% endif %} 
-
- {% if request.user.user_type == 3  or request.user.is_translator %} 
- {% include 'dashboard/_TranslatorDashMenu.html' %} 
- {% endif %} 
- 
- {% endblock content %}
+ {% endif %} {% if request.user.user_type == 7 or request.user.is_printer %} 
+{% include 'dashboard/_printerDashMenu.html' %}
+{% endif %} 
+{% if request.user.user_type == 8 or request.user.is_request_service%} 
+{% include 'dashboard/_requestServiceDashMenu.html' %} {% endif %}
+ {% if request.user.user_type == 3 or request.user.is_translator %} 
+ {% include 'dashboard/_TranslatorDashMenu.html' %} {% endif %} 
+ {% if request.user.user_type == 4 or request.user.is_proof_reader %} 
+ {% include 'dashboard/_proofReaderMenu.html' %} {% endif %} {% endblock content %}

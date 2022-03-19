@@ -60,7 +60,25 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'all-writer-requests' %}">
+        <a class="nav-link" href="{% url 'all-designs' %}">
+          <div
+            class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center ms-2 d-flex align-items-center justify-content-center"
+          >
+          <img
+          src="{% static 'assets/img/icons/open-book.png' %}"
+          class="img-fluid"
+          alt=""
+        />
+          </div>
+          {% if LANGUAGE_CODE == 'ar' %}
+          <span class="nav-link-text me-1"> التصميمات</span>
+          {% else %}
+          <span class="nav-link-text me-1">Designs </span>
+          {% endif %}
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'all-desginer-requests' %}">
           <div
             class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center ms-2 d-flex align-items-center justify-content-center"
           >
@@ -70,9 +88,9 @@
             />
           </div>
           {% if LANGUAGE_CODE == 'ar' %}
-          <span class="nav-link-text me-1"> طلبات كاتب</span>
+          <span class="nav-link-text me-1"> طلبات مصمم</span>
           {% else %}
-          <span class="nav-link-text me-1"> Writer Requests </span>
+          <span class="nav-link-text me-1"> Designer Requests </span>
           {% endif %}
         </a>
       </li>

@@ -162,6 +162,7 @@ class PublisherNeeds(OrderedModel):
         ('مدقق لغوى', 'مدقق لغوى'),
         ('مترجم ', ' مترجم'),
         ('مصمم ', ' مصمم'),
+        ('كاتب ', ' كاتب'),
 
     )
     needs = models.CharField(max_length=255, null=True,

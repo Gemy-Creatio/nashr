@@ -14,7 +14,10 @@ from books.views import (
     AllBookView,
     AddIntersetView,
     PublisherNeedsProofView,
-    ApplyNeedsView
+    ApplyNeedsView,
+AllWriterNeeds,
+AllDesignerNeeds ,
+AllTranslatorNeeds
 )
 
 urlpatterns = [
@@ -37,5 +40,11 @@ urlpatterns = [
     path('add/interest', AddIntersetView.as_view(), name='add-interest'),
     path('all/proof-needs', PublisherNeedsProofView.as_view(),
          name='all-proof-requests'),
+    path('all/writer-needs', AllWriterNeeds.as_view(),
+         name='all-writer-requests'),
 
+   path('all/designer-needs', AllDesignerNeeds.as_view(),
+         name='all-desginer-requests'),
+   path('all/translator', AllTranslatorNeeds.as_view(),
+         name='all-translator-requests'),
 ]

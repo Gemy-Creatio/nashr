@@ -14,7 +14,7 @@ from .models import (
 )
 
 from books.forms import (
-    ProfileForm , 
+    ProfileForm,
 )
 
 
@@ -23,6 +23,8 @@ from books.models import (
 )
 
 #
+
+
 class UserDetails(DetailView):
     # specify the model to use
     model = User
@@ -44,8 +46,8 @@ class RegisterPublisherView(View):
         phone = request.POST.get('phone')
         address = request.POST.get('address')
         first_name = request.POST.get('first_name')
-        last_name = request.POST.get('last_name')
-        user = User.objects.create_publisher(email=email, first_name=first_name, last_name=last_name,
+
+        user = User.objects.create_publisher(email=email, first_name=first_name,
                                              address=address, password=password, phone=phone)
         if user is not None:
             login(request, user)
@@ -62,8 +64,7 @@ class RegisterTranslatorView(View):
         phone = request.POST.get('phone')
         address = request.POST.get('address')
         first_name = request.POST.get('first_name')
-        last_name = request.POST.get('last_name')
-        user = User.objects.create_translator(email=email, first_name=first_name, last_name=last_name,
+        user = User.objects.create_translator(email=email, first_name=first_name,
                                               address=address, password=password, phone=phone)
         if user is not None:
             login(request, user)
@@ -80,12 +81,13 @@ class RegisterDesignerView(View):
         phone = request.POST.get('phone')
         address = request.POST.get('address')
         first_name = request.POST.get('first_name')
-        last_name = request.POST.get('last_name')
-        user = User.objects.create_designer(email=email, first_name=first_name, last_name=last_name,
+
+        user = User.objects.create_designer(email=email, first_name=first_name,
                                             address=address, password=password, phone=phone)
         if user is not None:
             login(request, user)
             return redirect('dashboard')
+
 
 class RegisterPrinterView(View):
     def get(self, request):
@@ -97,9 +99,9 @@ class RegisterPrinterView(View):
         phone = request.POST.get('phone')
         address = request.POST.get('address')
         first_name = request.POST.get('first_name')
-        last_name = request.POST.get('last_name')
-        user = User.objects.create_printer(email=email, first_name=first_name, last_name=last_name,
-                                                address=address, password=password, phone=phone)
+
+        user = User.objects.create_printer(email=email, first_name=first_name,
+                                           address=address, password=password, phone=phone)
         if user is not None:
             login(request, user)
             return redirect('dashboard')
@@ -115,12 +117,14 @@ class RegisterWriterView(View):
         phone = request.POST.get('phone')
         address = request.POST.get('address')
         first_name = request.POST.get('first_name')
-        last_name = request.POST.get('last_name')
-        user = User.objects.create_writer(email=email, first_name=first_name, last_name=last_name,
-                                                address=address, password=password, phone=phone)
+
+        user = User.objects.create_writer(email=email, first_name=first_name,
+                                          address=address, password=password, phone=phone)
         if user is not None:
             login(request, user)
             return redirect('dashboard')
+
+
 class RegisterRequestServiceView(View):
     def get(self, request):
         return render(request, 'accounts/register/register_service.html')
@@ -131,12 +135,12 @@ class RegisterRequestServiceView(View):
         phone = request.POST.get('phone')
         address = request.POST.get('address')
         first_name = request.POST.get('first_name')
-        last_name = request.POST.get('last_name')
-        user = User.objects.create_request_service(email=email, first_name=first_name, last_name=last_name,
-                                                address=address, password=password, phone=phone)
+
+        user = User.objects.create_request_service(email=email, first_name=first_name,
+                                                   address=address, password=password, phone=phone)
         if user is not None:
             login(request, user)
-            return redirect('home-page')            
+            return redirect('home-page')
 
 
 class RegisterProofView(View):
@@ -149,8 +153,8 @@ class RegisterProofView(View):
         phone = request.POST.get('phone')
         address = request.POST.get('address')
         first_name = request.POST.get('first_name')
-        last_name = request.POST.get('last_name')
-        user = User.objects.create_proof_reader(email=email, first_name=first_name, last_name=last_name,
+
+        user = User.objects.create_proof_reader(email=email, first_name=first_name,
                                                 address=address, password=password, phone=phone)
         if user is not None:
             login(request, user)
@@ -162,10 +166,10 @@ class RegisterTypesView(View):
         return render(request, 'accounts/register/register.html')
 
 
-
 class RegisterFoundationView(View):
     def get(self, request):
         return render(request, 'accounts/register/foundation.html')
+
 
 class RegisterPersonnalView(View):
     def get(self, request):
@@ -201,24 +205,24 @@ class DashboardView(View):
         return render(request, 'dashboard/dash-users.html')
 
 
-
 class AddFoundationProfileView(View):
     def get(self, request):
         return render(request, 'accounts/profile/addfoundprofile.html')
-    def post(self , request):
+
+    def post(self, request):
         recordnumber = request.POST['recordnbr']
         facility_name = request.POST['facility_name']
-        if FoundtationUserProfile.objects.filter(user=request.user).count() > 0: 
+        if FoundtationUserProfile.objects.filter(user=request.user).count() > 0:
             rec_updated = FoundtationUserProfile.objects.get(user=request.user)
             rec_updated.recordNumber = recordnumber
             rec_updated.facility_name = facility_name
             rec_updated.save()
             return redirect('dashboard')
         else:
-            rec = FoundtationUserProfile(recordNumber = recordnumber ,facility_name = facility_name  , user = request.user)
+            rec = FoundtationUserProfile(
+                recordNumber=recordnumber, facility_name=facility_name, user=request.user)
             rec.save()
             return redirect('dashboard')
-
 
 
 class FoundUserDetails(DetailView):

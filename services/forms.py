@@ -32,21 +32,21 @@ def label():
 class TrnaslateServiceForm(forms.ModelForm):
     class Meta:
         model = TranslateService
-        fields = '__all__'
+        exclude = ('user',)
         labels = label()
 
 
 class SubttileServiceForm(forms.ModelForm):
     class Meta:
         model = SubtitleService
-        fields = '__all__'
+        exclude = ('user',)
         labels = {
             'language': 'اللغة',
             'translate_to': 'النص الهدف',
-            'filed': 'مجال النص ',
+            'filed': 'مجال الفيديو ',
             'finish_hours': 'الانتهاء من العمل',
             'number_of_pages': 'عدد الصفحات',
-            'text_file': 'تحميل النص',
+            'text_file': 'تحميل الفيديو',
             'video_url': 'رابط الفيديو'
 
         }
