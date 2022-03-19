@@ -1,5 +1,6 @@
+from django.shortcuts import render
 from django.urls import reverse
-from django.views.generic import CreateView
+from django.views.generic import CreateView , View
 from designs.models import (
     PrintBookRequest
 )
@@ -15,3 +16,11 @@ class CreatePrintRequestView(CreateView):
 
     def get_success_url(self):
         return reverse('dashboard')
+
+
+
+class AllPrintRequestView(View):
+    def get(self ,request):
+        prints = PrintBookRequest.objects.all()
+        return render(request , 'designs/all-prints.html' , context={"prints":prints})
+        
