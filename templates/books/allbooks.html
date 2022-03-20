@@ -9,44 +9,66 @@
       <div class="row pt-3">
        
         {% for book in books  %}
-         <div class="card h-100">
-          <div class="card-header">
-              <h5 class="text-center">{{ book.book_address|safe }}/<h5>
-          </div>
-          <div class="card-body">
-            {% if LANGUAGE_CODE == 'ar' %}
-            <h5 class="text-center">لغة الكتاب<h5>
-                <p>{{ book.book_language|safe }}</p>
-                <hr/>
-                <h5 class="text-center">لغة الترجمة/<h5>
-                    <p>{{ book.translate_language|safe }}</p>
-                    <hr/>
-                    <h5 class="text-center">عدد الصفح <h5>
-                        <p>{{ book.pages_number|safe }}</p>
-                        <hr/>
-                        <h5 class="text-center">تصنيف الكتاب/<h5>
-                            <p>{{ book.book_category|safe }}</p>
-                            <hr/>
-                            {% else %}
-                            <h5 class="text-center">Book Language <h5>
-                                <p>{{ book.book_language|safe }}</p>
-                                <hr/>
-                                <h5 class="text-center"> Language Of Translation/<h5>
-                                    <p>{{ book.translate_language|safe }}</p>
+         <div class="col-4">
+            <div class="card h-100">
+                <div class="card-header">
+                    <h5 class="text-center">{{ book.book_address|safe }}<h5>
+                </div>
+                <div class="card-body">
+                  {% if LANGUAGE_CODE == 'ar' %}
+                  <h5 class="text-center">لغة الكتاب<h5>
+                      <p>{{ book.book_language|safe }}</p>
+                      <hr/>
+                      <h5 class="text-center">لغة الترجمة<h5>
+                          <p>{{ book.translate_language|safe }}</p>
+                          <hr/>
+                          <h5 class="text-center">عدد الصفح <h5>
+                              <p>{{ book.pages_number|safe }}</p>
+                              <hr/>
+                              <h5 class="text-center">تصنيف الكتاب<h5>
+                                  <p>{{ book.book_category|safe }}</p>
+                                  <hr/>
+                                  <h5 class="text-center"> مدة الأنتهاء من المشروع <h5>
+                                    <p>{{ book.project_time|safe }}</p>
                                     <hr/>
-                                    <h5 class="text-center"> Number of Pages <h5>
-                                        <p>{{ book.pages_number|safe }}</p>
+                                    <h5 class="text-center">  نوع العمل<h5>
+                                        <p>{{ book.get_pay_chocies_display|safe }}</p>
                                         <hr/>
-                                        <h5 class="text-center"> Book Category/<h5>
-                                            <p>{{ book.book_category|safe }}</p>
-                                            <hr/>
-                            {% endif %}
-        </div>
-        <div class="card-footer">
-            <div class="text-center">
-                <a class="btn btn-dark text-white" href="{% url 'add-interest' %}">تقديم طلب</a>
-            </div>
-        </div>
+                                <h5 class="text-center"> التكلفة<h5>
+                                    <p>{{ book.translator_fees|safe }}</p>
+                                    <hr/>
+                                  {% else %}
+                                  <h5 class="text-center">Book Language <h5>
+                                      <p>{{ book.book_language|safe }}</p>
+                                      <hr/>
+                                      <h5 class="text-center"> Language Of Translation<h5>
+                                          <p>{{ book.translate_language|safe }}</p>
+                                          <hr/>
+                                          <h5 class="text-center"> Number of Pages <h5>
+                                              <p>{{ book.pages_number|safe }}</p>
+                                              <hr/>
+                                              <h5 class="text-center"> Book Category<h5>
+                                                  <p>{{ book.book_category|safe }}</p>
+                                                  <hr/>
+                                                  <h5 class="text-center"> Project Time<h5>
+                                                    <p>{{ book.project_time|safe }}</p>
+                                                    <hr/>
+                                                    <h5 class="text-center"> Project Type<h5>
+                                                        <p>{{ book.get_pay_chocies_display|safe }}</p>
+                                                        <hr/>
+                                                <h5 class="text-center"> Price<h5>
+                                                    <p>{{ book.translator_fees|safe }}</p>
+                                                    <hr/>
+
+                                                    
+                                  {% endif %}
+              </div>
+              <div class="card-footer">
+                  <div class="text-center">
+                      <a class="btn btn-dark text-white" href="{% url 'add-interest' book.pk %}">تقديم طلب</a>
+                  </div>
+              </div>
+               </div>
          </div>
         {% endfor %}
       </div>

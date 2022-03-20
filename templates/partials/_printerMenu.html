@@ -76,25 +76,6 @@
           {% endif %}
         </a>
       </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'add-needs' %}">
-          <div
-            class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center ms-2 d-flex align-items-center justify-content-center"
-          >
-            <img
-              src="{% static 'assets/img/icons/followers.png' %}"
-              class="img-fluid"
-              alt=""
-            />
-          </div>
-          {% if LANGUAGE_CODE == 'ar' %}
-          <span class="nav-link-text me-1">متابعة </span>
-          {% else %}
-          <span class="nav-link-text me-1">Tracking </span>
-          {% endif %}
-        </a>
-      </li>
       <li class="nav-item">
         <a class="nav-link" href="{% url 'contract-choices' %}">
           <div
@@ -135,6 +116,7 @@
           {% endif %}
         </a>
       </li>
+      {% include 'partials/_logoutMenu.html' %}
       {% include 'partials/_language.html' %}
     </ul>
     <div class="ps__rail-x" style="left: 0px; bottom: 0px">

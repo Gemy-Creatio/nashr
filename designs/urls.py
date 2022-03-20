@@ -5,7 +5,7 @@ from designs.views import (
 )
 
 urlpatterns = [
-    path('request/print', CreatePrintRequestView.as_view(), name='print-request')
+    path('request/print', CreatePrintRequestView.as_view(), name='print-request'),
     path('all/prints', AllPrintRequestView.as_view(), name='all-prints')
 
 ]

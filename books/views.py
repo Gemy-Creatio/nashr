@@ -31,7 +31,7 @@ class AddIntersetView(View):
         user = request.user
         advertise = AdvertisePresent(publisher=user, book=book)
         advertise.save()
-        return reverse('all-books')
+        return redirect('all-books')
 
 
 class ApplyNeedsView(View):
@@ -40,7 +40,7 @@ class ApplyNeedsView(View):
         user = request.user
         needs = NeedsPresent(user=user, needs=book)
         needs.save()
-        return reverse('all-proof-requests')
+        return redirect('all-proof-requests')
 
 
 class AllBookView(View):
@@ -162,19 +162,21 @@ class AddBookContract(View):
         found = request.user
         book = request.POST.get('book')
         user = request.POST.get('user')
+        user_obj = User.objects.get(pk=user)
+        book_obj = Book.objects.get(pk=book)
         file = request.FILES['contract']
         fs = FileSystemStorage()
         filename = fs.save(file.name, file)
         contract = BookContract(
-            found=found, book__pk=book, user__pk=user, contract=file)
+            found=found, book=book_obj, author_name=user_obj, contract=file)
         contract.save()
-        return reverse('all-books-contract')
+        return redirect('all-books-contract')
 
 
 class AddCopyRightContract(View):
     def get(self, request):
         books = Book.objects.filter(user=request.user)
-        translators = User.objects.exclude(user_type__in=(1, 2, 7, 8))
+        translators = User.objects.filter(user_type=2).exclude(pk = request.user.pk)
         context = {"books": books, "translators": translators}
         return render(request, 'books/addcopyrightscontract.html', context=context)
 
@@ -182,11 +184,13 @@ class AddCopyRightContract(View):
         found = request.user
         book = request.POST.get('book')
         user = request.POST.get('user')
+        user_obj = User.objects.get(pk=user)
+        book_obj = Book.objects.get(pk=book)
         file = request.FILES['contract']
         fs = FileSystemStorage()
         filename = fs.save(file.name, file)
         contract = CopyRightContract(
-            found=found, book__pk=book, user__pk=user, contract=file)
+            found=found, book=book_obj, author_name=user_obj, contract=file)
         contract.save()
         return reverse('all-contracts-copyrights')
 

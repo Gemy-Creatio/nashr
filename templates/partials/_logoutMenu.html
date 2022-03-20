@@ -1,0 +1,16 @@
+<li class="nav-item">
+    <a class="nav-link" href="{% url 'logout' %}">
+      <div
+        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center ms-2 d-flex align-items-center justify-content-center"
+      >
+      <i class="fas fa-power-off text-lg" style="color:black;"></i>
+      </div>
+      {% if LANGUAGE_CODE == 'ar' %}
+      <span class="nav-link-text me-1">تسجيل خروج</span>
+
+      {% else %}
+      <span class="nav-link-text me-1">Logout</span>
+
+      {% endif %}
+    </a>
+  </li>

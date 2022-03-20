@@ -20,6 +20,7 @@
       type="image/png"
       href="{% static 'images/short_logo.png' %}"
     />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/fontawesome.css" rel="stylesheet" media="all">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -54,6 +55,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    {% block style %}{% endblock style %}
   </head>
   <body class="g-sidenav-show bg-gray-100">
     {% if request.user.user_type == 2 or request.user.is_publisher %} 
@@ -77,6 +79,7 @@
       <div class="container-fluid py-4">
         {% block content %} {% endblock content %}
       </div>
+     {% include '_footer.html' %}
     </main>
     <!--   Core JS Files   -->
     <script src="{% static 'js/core/popper.min.js' %}"></script>

@@ -1,22 +1,21 @@
 {% extends 'masterpage.html' %} {% load crispy_forms_tags %} {% block content %}
 <section id="contact" class="contact section-bg pt-4">
-  <div class="container justify-content-center">
+  <div class="container justify-content-center" style="padding-top:60px;">
     <div class="section-title" data-aos="fade-up">
       {% if LANGUAGE_CODE == 'ar' %}
-      <h4 class="text-muted">تسجيل عقد للكتاب</h4>
+      <h4 class="text-muted">تسجيل عقد حقوق نشر</h4>
       {% else %}
-      <h4 class="text-muted">Add Book Contract</h4>
+      <h4 class="text-muted">Add Book Copyrights</h4>
 
       {% endif %}
     </div>
   </div>
   <div
-    style="margin: 0 auto"
+    style="margin: 0 auto; padding-top:10px;"
     class="col-lg-10 mt-5 mt-lg-0 d-flex align-items-stretch justify-content-center"
     data-aos="fade-left"
   >
     <form
-      action="{% url 'request-design' %}"
       method="post"
       class="form"
       enctype="multipart/form-data"
@@ -45,7 +44,7 @@
 
         <select class="form-control" name="user" id="user">
           {% for user in translators %}
-          <option value="{{ user.pk }}">{{ user.get_full_name }}</option>
+          <option value="{{ user.pk }}">{{ user.get_full_name }} -- {{user.get_user_type_display}}</option>
           {% endfor %}
         </select>
       </div>
@@ -57,6 +56,13 @@
         <label>Contract</label>
         {% endif %}
         <input type="file" name="contract" id="contract" class="form-control" />
+      </div>
+      <div class="text-center">
+        {% if LANGUAGE_CODE == 'ar' %}
+         <input class="btn btn-dark text-white" value="ارسال" type="submit" />
+         {% else %}
+         <input class="btn btn-dark text-white" value="Send" type="submit" />
+         {% endif %}
       </div>
     </form>
   </div>

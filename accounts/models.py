@@ -277,7 +277,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         return full_name.strip()
 
     def __str__(self):
-        return self.first_name
+        return f"{self.first_name}"
 
     def has_perm(self, perm, obj=None):
         """Does the user have a specific permission?"""

@@ -37,7 +37,7 @@ urlpatterns = [
          name='all-contracts-copyrights'),
     path('choices/contract', ContractsChoices.as_view(), name='contract-choices'),
     path('all/avdertise', AllBookView.as_view(), name='all-books'),
-    path('add/interest', AddIntersetView.as_view(), name='add-interest'),
+    path('add/interest/<int:pk>', AddIntersetView.as_view(), name='add-interest'),
     path('all/proof-needs', PublisherNeedsProofView.as_view(),
          name='all-proof-requests'),
     path('all/writer-needs', AllWriterNeeds.as_view(),

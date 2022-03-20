@@ -15,6 +15,7 @@
 .contact .form .form-group {
   padding-bottom: 8px;
 }
+
 .contact .form .error-message {
   display: none;
   color: #fff;
@@ -9566,7 +9567,10 @@ fieldset:disabled .btn {
   padding-top: 1.5rem !important;
   padding-bottom: 1.5rem !important;
 }
+.footer-padding {
+ margin-block: 3rem !important;
 
+}
 .py-5 {
   padding-top: 3rem !important;
   padding-bottom: 3rem !important;
@@ -21053,12 +21057,13 @@ hr.horizontal.gray-light {
 }
 
 .navbar-vertical.navbar-expand-xs {
-  display: block;
-  position: fixed;
+  background-color: white;
+  display: flex;
+  position: absolute;
   top: 0;
   bottom: 0;
   width: 100%;
-  max-width: 15.625rem !important;
+  max-width: 12.625rem !important;
   overflow-y: auto;
   padding: 0;
   box-shadow: none;

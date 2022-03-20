@@ -10,7 +10,8 @@ from services.views import (
     TranslationRequestView,
     RequestSubtitleServiceView,
     HomeTranslationRequestView,
-    AllMessagesView
+    AllMessagesView,
+    AllBooksForTranslatorView
 )
 
 urlpatterns = [
@@ -31,4 +32,6 @@ urlpatterns = [
          HomeTranslationRequestView.as_view(), name='home-advertise'),
     path('all/msgs/home',
          AllMessagesView.as_view(), name='all-msg'),
+     path('all/books/translator',
+         AllBooksForTranslatorView.as_view(), name='all-books-trans'),
 ]

@@ -101,7 +101,7 @@ class TranslationRequestView(View):
         filename = fs.save(file.name, file)
         trans = TranslationRequest(book=book, translator_introduction=translator_intro, dedication_page=dedication_page,
                                    thank_you_page=thank_page, intro_page=intro_page, content_pages=content_page, source_page=source_page,
-                                   supplements_page=define_page, page_images=draw_page, draw_page=table_page, CMYK_page=cmyk_page, note=note, contact=file)
+                                   supplements_page=define_page, page_images=draw_page, draws_page=table_page, CMYK_page=cmyk_page, note=note, contact=file)
         trans.save()
         return redirect('dashboard')
 
@@ -142,6 +142,12 @@ class RequestSubtitleServiceView(CreateView):
             return reverse('dashboard')
         else:
             return reverse('register-service')
+
+class AllBooksForTranslatorView(View):
+    def get(slef ,request):
+        books = Book.objects.exclude(user = request.user)
+        return render(request , 'books/allbooks.html' , context={"books":books})
+
 
 
 class RequestDesignServiceView(View):

@@ -30,7 +30,7 @@
               المستفيد بالعقد
             </th>
             <th class="text-center text-xxs" style="width: 1.2rem">العقد</th>
-
+            <th class="text-center text-xxs" style="width: 1.2rem">الحالة</th>
             {% else %}
             <th class="text-center text-xxs" style="width: 1.5rem">#</th>
             <th class="text-center text-xxs" style="width: 1.2rem">
@@ -40,6 +40,8 @@
               Assigned To
             </th>
             <th class="text-center text-xxs" style="width: 1.2rem">Contract</th>
+            <th class="text-center text-xxs" style="width: 1.2rem">Status</th>
+
             {% endif %}
           </tr>
         </thead>
@@ -59,23 +61,13 @@
             </td>
             <td class="align-middle text-center text-xxs" style="width: 1.2rem">
               {% if LANGUAGE_CODE == 'ar' %}
-              <a
-                href="{{ voucher.contract.url }}"
-                class="btn btn-dark text-white"
-              >
-                إظهار</a
-              >
-
-              {% else %}
-
-              <a
-                href="{{ voucher.contract.url }}"
-                class="btn btn-dark text-white"
-              >
-                Show</a
-              >
-
-              {% endif %}
+              <a href="{{ contract.contract.url }}" class="btn btn-dark text-white"> العقد</a>
+             {% else %}
+             <a href="{{ contract.contract.url  }}" class="btn btn-dark text-white"> Contract</a>
+             {% endif %}
+            </td>
+            <td class="align-middle text-center text-xxs" style="width: 1.2rem">
+              <p>{{ contract.get_is_accepted_display }} </p>
             </td>
           </tr>
           {% endfor %}

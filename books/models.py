@@ -190,7 +190,7 @@ class BookContract(OrderedModel):
         Book, on_delete=models.CASCADE, null=True, related_name='book_contract')
     author_name = models.ForeignKey(
         User, on_delete=models.CASCADE, null=True, related_name='author_book_contract')
-    contract = models.FileField(upload_to='contract/')
+    contract = models.ImageField(upload_to='contract/')
     is_accepted = models.BooleanField(
         null=True, blank=True, default=False, choices=BOOLEAN_CHOICES)
     is_entered = models.BooleanField(
@@ -214,7 +214,7 @@ class CopyRightContract(OrderedModel):
                              null=True, related_name='copy_rights_found_contracts')
     author_name = models.ForeignKey(
         User, on_delete=models.CASCADE, null=True, related_name='author_contracts')
-    contract = models.FileField(upload_to='contract-copyright/')
+    contract = models.ImageField(upload_to='contract-copyright/')
     is_accepted = models.BooleanField(
         null=True, blank=True, default=False, choices=BOOLEAN_CHOICES)
     is_entered = models.BooleanField(
