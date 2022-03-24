@@ -5853,15 +5853,15 @@ fieldset:disabled .btn {
 .page-item.active .page-link {
   z-index: 3;
   color: #fff;
-  background-color: #aa952d;
-  border-color: #aa952d;
+  background-color: #000000;
+  border-color: #000000;
 }
 
 .page-item.disabled .page-link {
-  color: #6c757d;
+  color: #000000;
   pointer-events: none;
   background-color: #fff;
-  border-color: #dee2e6;
+  border-color: #000000;
 }
 
 .page-link {

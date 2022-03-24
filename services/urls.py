@@ -11,10 +11,18 @@ from services.views import (
     RequestSubtitleServiceView,
     HomeTranslationRequestView,
     AllMessagesView,
-    AllBooksForTranslatorView
+    AllBooksForTranslatorView , 
+    PersonalContractChoices ,
+    AllBookContractsForUser ,
+    AllCopyContractsForUser ,
+    AcceptBookContract ,
+    AcceptCopyrightContract,
+    AllWorks,
 )
 
 urlpatterns = [
+    path('all/works', AllWorks,
+         name='all-works'),
     path('request/translate', RequestTranslateServiceView.as_view(),
          name='request-translate'),
     path('request/design', RequestDesignServiceView.as_view(), name='request-design'),
@@ -34,4 +42,14 @@ urlpatterns = [
          AllMessagesView.as_view(), name='all-msg'),
      path('all/books/translator',
          AllBooksForTranslatorView.as_view(), name='all-books-trans'),
+     path('contract/choices',
+         PersonalContractChoices.as_view(), name='person-contract-choices'),
+     path('all/copy/contract',
+         AllCopyContractsForUser.as_view(), name='all-copycontract-user'),
+     path('all/books/contracs',
+         AllBookContractsForUser.as_view(), name='all-bookcontract-user'),
+      path('accept/copy-contract/<int:pk>',
+         AcceptCopyrightContract.as_view(), name='accept-copy'),
+      path('accept/book-contract/<int:pk>',
+         AcceptBookContract.as_view(), name='accept-book'),
 ]

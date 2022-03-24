@@ -11,6 +11,7 @@ from books.models import (
     PublisherNeeds,
     BookDistrubuting,
     Negotiation,
+    NegotiationBook,
     BookContract,
     CopyRightContract,
     AdvertisePresent
@@ -23,6 +24,7 @@ from books.forms import (
 )
 # Create your views here.
 from django.views.generic import CreateView
+from django.core.paginator import Paginator
 
 
 class AddIntersetView(View):
@@ -46,7 +48,10 @@ class ApplyNeedsView(View):
 class AllBookView(View):
     def get(self, request):
         books = Book.objects.exclude(user=request.user)
-        return render(request, 'books/allbooks.html')
+        paginator = Paginator(books, 30)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        return render(request, 'books/allbooks.html' , context={"books":page_obj})
 
 
 class AddBookView(CreateView):
@@ -127,7 +132,6 @@ class NegtiationBookDistrubView(View):
 
     def post(self, request, pk):
         book = BookDistrubuting.objects.get(pk=pk)
-        period = request.POST.get('period')
         rights = request.POST.get('rights')
         ratio = request.POST.get('ratio')
         copies = request.POST.get('copies')
@@ -135,20 +139,43 @@ class NegtiationBookDistrubView(View):
         neg = Negotiation(book=book, author_rights=rights,
                           author_ratio=ratio, number_of_copies=copies, price=price)
         neg.save()
-        return redirect('all-books')
+        return redirect('all-books-distrub')
+
+class NegtiationBookAdvertiseView(View):
+    def get(self, request, pk):
+        book = Book.objects.get(pk=pk)
+        return render(request, 'books/neg-book.html')
+
+    def post(self, request, pk):
+        book = Book.objects.get(pk=pk)
+        rights = request.POST.get('rights')
+        ratio = request.POST.get('ratio')
+        copies = request.POST.get('copies')
+        price = request.POST.get('price')
+        neg = NegotiationBook(book=book, author_rights=rights,
+                          author_ratio=ratio, number_of_copies=copies, price=price)
+        neg.save()
+        return redirect('all-books-contract')
+
 
 
 class AllBookDistrubView(View):
     def get(self, request):
-        context = {"books": BookDistrubuting.objects.exclude(
-            user=request.user)}
-        return render(request, 'books/all-contract-copyrightsl', context=context)
+        books = BookDistrubuting.objects.exclude(user=request.user)
+        paginator = Paginator(books, 30)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        context = {"books": page_obj}
+        return render(request, 'books/alldistrub.html', context=context)
 
 
 class AllBookContracts(View):
     def get(self, request):
         contracts = BookContract.objects.filter(found=request.user)
-        return render(request, 'books/all-books-contract.html', context={"contracts": contracts})
+        paginator = Paginator(contracts, 30)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        return render(request, 'books/all-books-contract.html', context={"contracts": page_obj})
 
 
 class AddBookContract(View):
@@ -198,6 +225,10 @@ class AddCopyRightContract(View):
 class AllCopyrightsContracts(View):
     def get(self, request):
         contracts = CopyRightContract.objects.filter(found=request.user)
+        paginator = Paginator(contracts, 30)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        context = {"books": page_obj}
         return render(request, 'books/all-contract-copyrights.html', context={"contracts": contracts})
 
 
@@ -209,22 +240,114 @@ class ContractsChoices(View):
 class PublisherNeedsProofView(View):
     def get(self, request):
         needs = PublisherNeeds.objects.filter(needs='مدقق لغوى')
-        return render(request, 'services/allneedsproof.html', context={"needs": needs})
+        paginator = Paginator(needs, 10)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        return render(request, 'services/allneedsproof.html', context={"needs": page_obj})
 
 
 class AllWriterNeeds(View):
     def get(self, request):
         needs = PublisherNeeds.objects.filter(needs='كاتب')
-        return render(request, 'services/allneedsproof.html', context={"needs": needs})
+        paginator = Paginator(needs, 10)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        return render(request, 'services/allneedsproof.html', context={"needs": page_obj})
 
 
 class AllDesignerNeeds(View):
     def get(self, request):
         needs = PublisherNeeds.objects.filter(needs='مصمم')
-        return render(request, 'services/allneedsproof.html', context={"needs": needs})
+        paginator = Paginator(needs, 10)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        return render(request, 'services/allneedsproof.html', context={"needs": page_obj})
 
 
 class AllTranslatorNeeds(View):
     def get(self, request):
         needs = PublisherNeeds.objects.filter(needs='مترجم')
-        return render(request, 'services/allneedsproof.html', context={"needs": needs})
+        paginator = Paginator(needs, 10)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        return render(request, 'services/allneedsproof.html', context={"needs": page_obj})
+
+
+
+
+class AllBookCopyrightsNegView(View):
+    def get(self ,request , pk):
+        copyrights = BookDistrubuting.objects.get(pk=pk)
+        negs = Negotiation.objects.filter(book=copyrights)
+        paginator = Paginator(negs, 5)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        return render(request , 'books/allneg-copyrights.html', context={"negs":page_obj})
+
+
+class AllBookAdvertisesNegView(View):
+    def get(self ,request , pk):
+        book = Book.objects.get(pk=pk)
+        negs = NegotiationBook.objects.filter(book=book)
+        paginator = Paginator(negs, 5)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        return render(request , 'books/allneg-advertise.html', context={"negs":page_obj})
+
+
+class AllBookCopyrightsForPublisher(View):
+    def get(self , request):
+        copyrights = BookDistrubuting.objects.filter(user=request.user)
+        paginator = Paginator(copyrights, 5)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        return render(request , 'books/allcopypublisher.html' , context={"books":page_obj})
+
+class BooksForPublisherView(View):
+    def get(self , request):
+        return render(request , 'books/bookspublisher.html')
+class AllBookAdvertiseForPublisher(View):
+    def get(self , request):
+        copyrights = Book.objects.filter(user=request.user)
+        paginator = Paginator(copyrights, 5)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        return render(request , 'books/alladpublisher.html' , context={"books":page_obj})
+
+
+class AcceptAdvertisetNeg(View):
+    def get(self , request , pk):
+        neg = NegotiationBook.objects.get(pk=pk)
+        neg.is_accepted = True
+        neg.save()
+        return redirect('neg-all-advertise')
+
+
+
+class AcceptCopyNeg(View):
+    def get(self , request , pk):
+        neg = Negotiation.objects.get(pk=pk)
+        neg.is_accepted = True
+        neg.save()
+        return redirect('neg-all-copy')
+
+
+
+
+class AllNegResultsAdvertise(View):
+    def get(self , request):
+        negs = NegotiationBook.objects.filter(user=request.user)
+        paginator = Paginator(negs, 10)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        return render(request , 'designs/allnegs-result.html' , context={"results":page_obj})
+
+
+
+class AllNegResultsCopy(View):
+    def get(self , request):
+        negs = Negotiation.objects.filter(user=request.user)
+        paginator = Paginator(negs, 10)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        return render(request , 'designs/allnegs-result.html' , context={"results":page_obj})

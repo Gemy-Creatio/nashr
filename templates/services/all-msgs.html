@@ -4,11 +4,37 @@
     <div class="section-title aos-init aos-animate" data-aos="fade-up">
       {% if LANGUAGE_CODE == 'ar' %}
       <h2>الأشعارات</h2>
-
       {% else %}
       <h2>Notifications</h2>
 
       {% endif %}
+     <div class="text-center ">
+      {% if request.user.user_type == 2 or request.user.is_publisher or request.user.user_type == 7 or request.user.is_printer  %} 
+      {% if LANGUAGE_CODE == 'ar' %}
+    <a class="btn btn-dark text-white" href="{% url 'copy-neg-results' %}">
+      المفاوضات
+    <a>
+       {% else %}
+       <a class="btn btn-dark text-white" href="{% url 'copy-neg-results' %}">
+         Negatations
+        <a>
+       {% endif %}
+
+      {% else %}
+      {% if LANGUAGE_CODE == 'ar' %}
+    <a class="btn btn-dark text-white" href="{% url 'advertise-neg-results' %}">
+      المفاوضات
+    <a>
+       {% else %}
+       <a class="btn btn-dark text-white" href="{% url 'advertise-neg-results' %}">
+         Negatations
+        <a>
+       {% endif %}
+
+      {% endif %}
+
+     </div>
+   
     </div>
 
     <div class="row justify-content-center">
@@ -54,6 +80,7 @@
           {% endfor %}
         </tbody>
       </table>
+      {% include 'partials/_pagination.html' with page_obj=msgs only %}
     </div>
   </div>
 </section>

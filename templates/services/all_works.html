@@ -1,0 +1,87 @@
+{% extends 'main.html' %} {% block content %}
+<section id="services" class="services section-bg">
+  <div class="container">
+    <div class="section-title aos-init aos-animate" data-aos="fade-up">
+      {% if LANGUAGE_CODE == 'ar' %}
+      <h2>الأعمال  <strong>{{ works.count }}</strong></h2>
+
+      {% else %}
+      <h2> Work  <strong>{{ works.count }}</strong></h2>
+
+      {% endif %}
+    </div>
+
+    <div class="row justify-content-center">
+      <table
+        style="margin: 0 auto"
+        class="table table-max table-bordered align-items-center mb-auto"
+      >
+        <thead class="text_black">
+          <tr>
+            {% if LANGUAGE_CODE == 'ar' %}
+            <th class="text-center text-xxs" style="width: 1.2rem">
+              رقم العمل
+            </th>
+            <th class="text-center text-xxs" style="width: 1.2rem">
+                تاريخ الأستلام
+            </th>
+            <th class="text-center text-xxs" style="width: 1.2rem">
+              تاريخ الأنتهاء
+            </th>
+            <th class="text-center text-xxs" style="width: 1.2rem">ابدا العمل</th>
+            <th class="text-center text-xxs" style="width: 1.2rem">
+               تقييم العمل
+            </th>
+
+            {% else %}
+            <th class="text-center text-xxs" style="width: 1.2rem">
+              Work Number
+            </th>
+            <th class="text-center text-xxs" style="width: 1.2rem">
+              Start Date
+            </th>
+            <th class="text-center text-xxs" style="width: 1.2rem">
+              End Date
+            </th>
+            <th class="text-center text-xxs" style="width: 1.2rem">Start</th>
+            <th class="text-center text-xxs" style="width: 1.2rem">
+               Rate
+            </th>
+            {% endif %}
+
+          </tr>
+        </thead>
+        <tbody>
+          {% for work in works %}
+          <tr>
+            <td style="justify-content: space-around">
+              <p class="text-center text-xxs">{{ work.pk }}</p>
+            </td>
+            <td style="justify-content: space-around">
+              <p class="text-center text-xxs">{{ work.start_date }}</p>
+            </td>
+            <td style="justify-content: space-around">
+              <p class="text-center text-xxs">{{ work.end_date }}</p>
+            </td>
+            <td class="align-middle text-center text-xxs" style="width: 1.2rem">
+                {% if LANGUAGE_CODE == 'ar' %}
+              <a class="btn btn-dark text-white" href="{{ work.dropbox }}">ابدأ</a>
+              {% else %}
+              <a class="btn btn-dark text-white" href="{{ work.dropbox }}">Start</a>
+
+              {% endif %}
+            </td>
+            <td style="justify-content: space-around">
+              <p class="text-center text-xxs">{{ work.rate }}</p>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% include 'partials/_pagination.html' with page_obj=works only %}
+
+    </div>
+  </div>
+</section>
+
+{% endblock content %}

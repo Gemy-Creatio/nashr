@@ -66,8 +66,11 @@
                         <div class="col-lg-6 col-12">
                            {% if LANGUAGE_CODE == 'ar' %}
                           <label>سعر البيع</label>
+                            <p class="text-xs text-muted">جميع المعاملات بالريال السعودى</p>
                           {%  else %}
                           <label>Book price</label>
+                          <p class="text-xs text-muted">  All transactions in SUR </p>
+
                           {% endif %}
                           <input type="number" class="form-control" name="book_price" id="book_price"/>
                         </div>

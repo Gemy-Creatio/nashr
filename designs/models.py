@@ -53,3 +53,32 @@ class PrintBookRequest(OrderedModel):
     book = models.FileField(upload_to='books_print/' , null=True , blank=True)
     class Meta:
         pass
+
+
+
+
+class BookFormating(OrderedModel):
+    book_size = models.CharField(max_length=255 , null=True , blank=True)
+    book_color = models.CharField(max_length=255 , null=True , blank=True)
+    font_type = models.CharField(max_length=255 , null=True , blank=True)
+    font_size = models.CharField(max_length=255 , null=True , blank=True)
+    drafts = models.CharField(max_length=255 , null=True , blank=True)
+    main_address = models.CharField(max_length=255 , null=True , blank=True)
+    main_font_type = models.CharField(max_length=255 , null=True , blank=True)
+    main_font_size = models.CharField(max_length=255 , null=True , blank=True)
+    main_font_color = models.CharField(max_length=255 , null=True , blank=True)
+    double_address = models.CharField(max_length=255 , null=True , blank=True)
+    sub_address = models.CharField(max_length=255 , null=True , blank=True)
+    sub_font_type = models.CharField(max_length=255 , null=True , blank=True)
+    sub_font_size = models.CharField(max_length=255 , null=True , blank=True)
+    sub_font_color = models.CharField(max_length=255 , null=True , blank=True)
+    book_intro = models.CharField(max_length=255 , null=True , blank=True)
+    ehda_page = models.CharField(max_length=255 , null=True , blank=True)
+    thank_page = models.CharField(max_length=255 , null=True , blank=True)
+    define_page = models.CharField(max_length=255 , null=True , blank=True)
+    intro_page = models.CharField(max_length=255 , null=True , blank=True)
+    book_file = models.FileField(upload_to='format-book/' , null=True , blank=True)
+    notes = models.TextField(null=True , blank=True)
+    class Meta:
+        pass
+

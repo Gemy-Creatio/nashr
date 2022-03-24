@@ -1,0 +1,64 @@
+{% extends 'main.html' %} {% block content %}
+<section id="services" class="services section-bg">
+  <div class="container">
+    <div class="section-title aos-init aos-animate" data-aos="fade-up">
+      {% if LANGUAGE_CODE == 'ar' %}
+      <h2>              حالة المفاوضات
+    </h2>
+
+      {% else %}
+      <h2>Negatation</h2>
+
+      {% endif %}
+    </div>
+
+    <div class="row justify-content-center">
+      <table
+        style="margin: 0 auto"
+        class="table table-max table-bordered align-items-center mb-auto"
+      >
+        <thead class="text_black">
+          <tr>
+            {% if LANGUAGE_CODE == 'ar' %}
+            <th class="text-center text-xxs" style="width: 1.5rem">#</th>
+            <th class="text-center text-xxs" style="width: 1.2rem">
+               الكتاب
+            </th>
+
+            <th class="text-center text-xxs" style="width: 1.2rem">
+              حالة المفاوضات
+            </th>
+
+            {% else %}
+            <th class="text-center text-xxs" style="width: 1.5rem">#</th>
+            <th class="text-center text-xxs" style="width: 1.2rem">
+              Book
+            </th>
+            <th class="text-center text-xxs" style="width: 1.2rem">Negatation Status</th>
+            {% endif %}
+
+          </tr>
+        </thead>
+        <tbody>
+          {% for result in results %}
+          <tr>
+            <td style="justify-content: space-around">
+              <p class="text-center text-xxs">{{ result.pk }}</p>
+            </td>
+            <td class="align-middle text-center text-xxs" style="width: 1.2rem">
+              <p class="text-xxs">{{ result.book.address }}</p>
+            </td>
+            <td class="align-middle text-center text-xxs" style="width: 1.2rem">
+              <p class="text-xxs mb-0">{{ result.get_is_accepted_display }}</p>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% include 'partials/_pagination.html' with page_obj=results only %}
+
+    </div>
+  </div>
+</section>
+
+{% endblock content %}

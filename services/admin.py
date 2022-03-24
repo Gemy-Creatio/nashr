@@ -8,8 +8,12 @@ from services.models import (
     TranslateService,
     Vouchers ,
     PaidVoucher,
+    PersonWork
 )
 
+@admin.register(PersonWork)
+class PersonWorkAdmin(OrderedModelAdmin):
+    list_display = ("__str__",)
 
 @admin.register(RequestDesignService)
 class RequestDesignServiceAdmin(OrderedModelAdmin):

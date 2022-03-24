@@ -1,0 +1,283 @@
+{% extends 'masterpage.html' %} {% load crispy_forms_tags %} {% block content %}
+<section id="contact" class="contact section-bg">
+  <div class="container justify-content-center">
+    <div class="section-title" data-aos="fade-up" style="padding-top: 3rem">
+      {% if LANGUAGE_CODE == 'ar' %}
+      <h4 class="text-muted">تقديم طلب تنسيق </h4>
+      {% else %}
+      <h4 class="text-muted">Formatation Request</h4>
+
+      {% endif %}
+    </div>
+  </div>
+  <div
+    style="margin: 0 auto"
+    class="col-lg-10 mt-5 mt-lg-0 d-flex align-items-stretch justify-content-center"
+    data-aos="fade-left"
+  >
+    <form
+      method="post"
+      class="form"
+      enctype="multipart/form-data"
+    >
+      {% csrf_token %}
+
+      <div class="form-group col-lg-6 col-12">
+        {% if LANGUAGE_CODE == 'ar' %}
+        <label for="book_sizes">مقاسات الكتاب </label>
+        {% else %}
+        <label for="book_sizes">book sizes </label>
+        {% endif %}
+
+        <select class="form-control" name="book_size" id="book_size">
+          ]
+          <option value="17cm-12cm">17 cm - 12 cm</option>
+          <option value="17cm-24cm">17 cm - 24 cm</option>
+          <option value="14cm-20cm">14 cm - 20 cm</option>
+        </select>
+      </div>
+      <div class="form-group col-lg-6 col-12">
+        {% if LANGUAGE_CODE == 'ar' %}
+        <h3>متن الكتاب </h3>
+        <label>لون الكتاب</label>
+        {% else %}
+        <h3>The Text </h3>
+        <label>Book Color</label>
+        {% endif %}
+        <input type="text" class="form-control" id="book_color" name="book_color" />
+      </div>
+
+      <div class="form-group col-lg-6 col-12">
+        {% if LANGUAGE_CODE == 'ar' %}
+        <label>نوع الخط</label>
+        {% else %}
+        <label>Font Type</label>
+        {% endif %}
+        <input type="text" class="form-control" id="font_type" name="font_type" />
+      </div>
+      <div class="form-group col-lg-6 col-12">
+        {% if LANGUAGE_CODE == 'ar' %}
+        <label> حجم الخط </label>
+        {% else %}
+        <label>Font Size</label>
+        {% endif %}
+        <input type="text" class="form-control" id="font_size" name="font_size" />
+      </div>
+
+      <div class="form-group col-lg-6 col-12">
+        {% if LANGUAGE_CODE == 'ar' %}
+        <label>الهوامش </label>
+        {% else %}
+        <label> Margins</label>
+        {% endif %}
+        <select class="form-control" name="drafts" id="drafts">
+            {% if LANGUAGE_CODE == 'ar' %}
+            <option value="نعم">نعم</option>
+            <option value="لا">لا</option>
+            {% else %}
+            <option value="نعم">Yes</option>
+            <option value="لا">No</option>
+            {% endif %}
+          </select>
+              </div>
+
+      <div class="form-group col-lg-6 col-12">
+        {% if LANGUAGE_CODE == 'ar' %}
+         <h3> العنوان الرئيسى</h3>
+        <label>العنوان </label>
+        {% else %}
+        <h3>  Main Title</h3>
+        <label> Address  </label>
+        {% endif %}
+        <input type="text" class="form-control" id="main_address" name="main_address" />
+      </div>
+
+      <div class="form-group col-lg-6 col-12">
+        {% if LANGUAGE_CODE == 'ar' %}
+        <label>توع الخط  </label>
+        {% else %}
+        <label> Font Family</label>
+        {% endif %}
+        <input type="text" class="form-control" id="main_font_type" name="main_font_type" />   
+      </div>
+
+      <div class="form-group col-lg-6 col-12">
+        {% if LANGUAGE_CODE == 'ar' %}
+        <label>حجم الخط  </label>
+        {% else %}
+        <label> Font Size</label>
+        {% endif %}
+        <input type="text" class="form-control" id="main_font_size" name="main_font_size" />   
+      </div>
+
+
+      <div class="form-group col-lg-6 col-12">
+        {% if LANGUAGE_CODE == 'ar' %}
+        <label>لون العنوان الرئيسى  </label>
+        {% else %}
+        <label> Main Title Color</label>
+        {% endif %}
+        <input type="text" class="form-control" id="main_font_color" name="main_font_color" />   
+      </div>
+
+
+      <div class="form-group col-lg-6 col-12">
+        {% if LANGUAGE_CODE == 'ar' %}
+        <label>عنوان الكتاب في الصفحات الزوجية</label>
+        {% else %}
+        <label>Book title on even pages</label>
+        {% endif %}
+
+        <select
+          class="form-control"
+          name="double_address"
+          id="double_address"
+        >
+          {% if LANGUAGE_CODE == 'ar' %}
+          <option value="نعم">نعم</option>
+          <option value="لا">لا</option>
+          {% else %}
+          <option value="نعم">Yes</option>
+          <option value="لا">No</option>
+          {% endif %}
+        </select>
+      </div>
+
+
+      <div class="form-group col-lg-6 col-12">
+        {% if LANGUAGE_CODE == 'ar' %}
+         <h3> العنوان الفرعى</h3>
+        <label>العنوان </label>
+        {% else %}
+        <h3>  Sub Title</h3>
+        <label> Address  </label>
+        {% endif %}
+        <input type="text" class="form-control" id="sub_address" name="sub_address" />
+      </div>
+
+      <div class="form-group col-lg-6 col-12">
+        {% if LANGUAGE_CODE == 'ar' %}
+        <label>توع الخط  </label>
+        {% else %}
+        <label> Font Family</label>
+        {% endif %}
+        <input type="text" class="form-control" id="sub_font_type" name="main_address" />   
+      </div>
+
+      <div class="form-group col-lg-6 col-12">
+        {% if LANGUAGE_CODE == 'ar' %}
+        <label>حجم الخط  </label>
+        {% else %}
+        <label> Font Size</label>
+        {% endif %}
+        <input type="text" class="form-control" id="sub_font_size" name="sub_font_size" />   
+      </div>
+
+
+      <div class="form-group col-lg-6 col-12">
+        {% if LANGUAGE_CODE == 'ar' %}
+        <label>لون العنوان الفرعى  </label>
+        {% else %}
+        <label> Sub Title Color</label>
+        {% endif %}
+        <input type="text" class="form-control" id="sub_font_color" name="sub_font_color" />   
+      </div>
+
+
+
+      <div class="form-group col-lg-6 col-12">
+        {% if LANGUAGE_CODE == 'ar' %}
+        <label>صفحة الإهداء من المترجم / المترجمين </label>
+        {% else %}
+        <label>Gift Page</label>
+        {% endif %}
+        <select class="form-control" name="ehda_page" id="ehda_page">
+          {% if LANGUAGE_CODE == 'ar' %}
+          <option value="نعم">نعم</option>
+          <option value="لا">لا</option>
+          {% else %}
+          <option value="نعم">Yes</option>
+          <option value="لا">No</option>
+          {% endif %}
+        </select>
+      </div>
+
+   
+      <div class="form-group col-lg-6 col-12">
+        {% if LANGUAGE_CODE == 'ar' %}
+        <label>صفحة الشكر من المترجم / المترجمين </label>
+        {% else %}
+        <label>Thank Page</label>
+        {% endif %}
+
+        <select class="form-control" name="thank_page" id="thank_page">
+          {% if LANGUAGE_CODE == 'ar' %}
+          <option value="نعم">نعم</option>
+          <option value="لا">لا</option>
+          {% else %}
+          <option value="نعم">Yes</option>
+          <option value="لا">No</option>
+          {% endif %}
+        </select>
+      </div>
+
+
+  
+      <div class="form-group col-lg-6 col-12">
+        {% if LANGUAGE_CODE == 'ar' %}
+        <label>صفحة المقدمة  </label>
+        {% else %}
+        <label>Intro Page</label>
+        {% endif %}
+
+        <select class="form-control" name="inro_page" id="intro_page">
+          {% if LANGUAGE_CODE == 'ar' %}
+          <option value="نعم">نعم</option>
+          <option value="لا">لا</option>
+          {% else %}
+          <option value="نعم">Yes</option>
+          <option value="لا">No</option>
+          {% endif %}
+        </select>
+      </div>
+
+
+      <div class="form-group col-lg-6 col-12">
+        {% if LANGUAGE_CODE == 'ar' %}
+        <label>ملاحظات</label>
+        {% else %}
+        <label>Notes</label>
+        {% endif %}
+        <textarea
+          class="form-control"
+          id="notes"
+          name="notes"
+          rows="4"
+          cols="50"
+        ></textarea>
+      </div>
+      <div class="form-group col-lg-6 col-12">
+        {% if LANGUAGE_CODE == 'ar' %}
+        <label>تحميل الكتاب الأصلي</label>
+        {% else %}
+        <label>Upload Book</label>
+        {% endif %}
+        <input
+          type="file"
+          name="book_file"
+          data-model-name="photo"
+          class="form-control"
+        />
+      </div>
+      <div class="text-center justify-content-center d-flex">
+        {% if LANGUAGE_CODE == 'ar' %}
+        <input type="submit" class="btn btn-dark text-white" value="إرسال" />
+        {% else %}
+        <input type="submit" class="btn btn-dark text-white" value="Send" />
+        {% endif %}
+      </div>
+    </form>
+  </div>
+</section>
+
+{% endblock content %}

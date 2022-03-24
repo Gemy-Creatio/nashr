@@ -7,6 +7,9 @@ from accounts.models import User
 class FoundtationUserProfile(OrderedModel):
     recordNumber = models.CharField(max_length=255, null=True, blank=True)
     facility_name = models.CharField(max_length=255, null=True, blank=True)
+    art_agent = models.CharField(max_length=255, null=True, blank=True)
+    id_number = models.CharField(max_length=255, null=True, blank=True)
+
     user = models.OneToOneField(
         User, null=True, blank=True, on_delete=models.CASCADE, related_name='found_profile')
 
@@ -141,13 +144,36 @@ class BookDistrubuting(OrderedModel):
 
 
 class Negotiation(OrderedModel):
-    book = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    BOOLEAN_CHOICES = (
+        (True, 'نعم'),
+        (False, 'لا')
+    )
+    book = models.ForeignKey(BookDistrubuting, on_delete=models.CASCADE, null=True)
     author_rights = models.CharField(max_length=255, null=True, blank=True)
     author_ratio = models.CharField(max_length=255, null=True, blank=True)
     number_of_copies = models.CharField(max_length=255, null=True, blank=True)
     price = models.IntegerField(null=True, blank=True)
     time_finish = models.CharField(max_length=255, null=True, blank=True)
+    is_accepted = models.BooleanField(null=True , blank=True , default=False , choices=BOOLEAN_CHOICES)
+    user = models.ForeignKey(User , on_delete=models.CASCADE , null=True , blank=True)
 
+    class Meta:
+        pass
+
+
+class NegotiationBook(OrderedModel):
+    BOOLEAN_CHOICES = (
+        (True, 'نعم'),
+        (False, 'لا')
+    )
+    book = models.ForeignKey(Book, on_delete=models.CASCADE, null=True)
+    author_rights = models.CharField(max_length=255, null=True, blank=True)
+    author_ratio = models.CharField(max_length=255, null=True, blank=True)
+    number_of_copies = models.CharField(max_length=255, null=True, blank=True)
+    price = models.IntegerField(null=True, blank=True)
+    time_finish = models.CharField(max_length=255, null=True, blank=True)
+    user = models.ForeignKey(User , on_delete=models.CASCADE , null=True , blank=True)
+    is_accepted = models.BooleanField(null=True , blank=True , default=False , choices=BOOLEAN_CHOICES)
     class Meta:
         pass
 

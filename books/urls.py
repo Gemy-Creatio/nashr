@@ -17,7 +17,18 @@ from books.views import (
     ApplyNeedsView,
 AllWriterNeeds,
 AllDesignerNeeds ,
-AllTranslatorNeeds
+AllTranslatorNeeds,
+NegtiationBookAdvertiseView,
+AcceptAdvertisetNeg ,
+AcceptCopyNeg ,
+AllBookAdvertiseForPublisher ,
+AllBookCopyrightsForPublisher ,
+AllBookAdvertisesNegView ,
+AllBookCopyrightsNegView,
+BooksForPublisherView ,
+AllNegResultsAdvertise ,
+AllNegResultsCopy
+
 )
 
 urlpatterns = [
@@ -27,7 +38,8 @@ urlpatterns = [
     path('add/rights', AddBookDistrubView.as_view(), name='add-rights'),
     path('choices', BookChoicesView.as_view(), name='book-choices'),
     path('negtiation/<int:pk>', NegtiationBookDistrubView.as_view(), name='neg-book'),
-    path('all', AllBookDistrubView.as_view(), name='all-books'),
+    path('negtiation/advertise/<int:pk>', NegtiationBookAdvertiseView.as_view(), name='neg-book-advertise'),
+    path('all', AllBookDistrubView.as_view(), name='all-books-distrub'),
     path('copyright/add-contract',
          AddCopyRightContract.as_view(), name='add-copyright-contract'),
     path('contract/add', AddBookContract.as_view(),
@@ -36,7 +48,7 @@ urlpatterns = [
     path('all/copyrights/contract', AllCopyrightsContracts.as_view(),
          name='all-contracts-copyrights'),
     path('choices/contract', ContractsChoices.as_view(), name='contract-choices'),
-    path('all/avdertise', AllBookView.as_view(), name='all-books'),
+    path('all/avdertise', AllBookView.as_view(), name='all-books-advertise'),
     path('add/interest/<int:pk>', AddIntersetView.as_view(), name='add-interest'),
     path('all/proof-needs', PublisherNeedsProofView.as_view(),
          name='all-proof-requests'),
@@ -47,4 +59,29 @@ urlpatterns = [
          name='all-desginer-requests'),
    path('all/translator', AllTranslatorNeeds.as_view(),
          name='all-translator-requests'),
+
+  path('publisher/choices', BooksForPublisherView.as_view(),
+         name='books-publisher-choices'),
+
+  path('publisher/books/advertise', AllBookAdvertiseForPublisher.as_view(),
+         name='dash-add-books'),
+
+  path('publisher/books/copy', AllBookCopyrightsForPublisher.as_view(),
+         name='dash-copy-books'),
+
+  path('publisher/neg/copy/<int:pk>', AllBookCopyrightsNegView.as_view(),
+         name='neg-all-copy'),
+  path('publisher/neg/advertise/<int:pk>', AllBookAdvertisesNegView.as_view(),
+         name='neg-all-advertise'),
+  path('publisher/accept/copy', AcceptCopyNeg.as_view(),
+         name='send-accept-copy'),
+ path('publisher/accept/advertise', AcceptAdvertisetNeg.as_view(),
+         name='send-accept-add'),
+  path('publisher/neg/advertise', AllBookAdvertisesNegView.as_view(),
+         name='neg-all-advertise'),
+  path('person/neg/results', AllNegResultsCopy.as_view(),
+         name='copy-neg-results'),
+  path('person/neg/results', AllNegResultsAdvertise.as_view(),
+         name='advertise-neg-results'),
+
 ]

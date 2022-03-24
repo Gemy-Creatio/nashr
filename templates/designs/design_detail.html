@@ -231,18 +231,15 @@
                     </div>
                 </div>
             </div>
-             <div class="text-center">
-                 <a class="nav-link" href="{% url 'take-design' %}">
+             <div class="text-center pt-3" style="padding-top:3rem;">
+                 <button class="btn text-white"  href="{% url 'take-design' %}" style=" background-color:black;">
                            {% if LANGUAGE_CODE == 'ar' %}
-                                    <h4>أخذ التصميم</h4>
-                                    <p>سيتم التواصل معك فى أقرب وقت</p>
+                                    <h4 style="color:white;">أخذ التصميم</h4>
 
                                 {% else %}
-                                    <h4> Take Design</h4>
-                                    <p>we will contact you in a while</p>
+                                    <h4 style="color:white;"> Take Design</h4>
                                 {% endif %}
-
-                 </a>
+                 </button>
              </div>
         </div>
     </section>

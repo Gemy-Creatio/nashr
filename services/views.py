@@ -11,7 +11,9 @@ from django.contrib import messages
 
 
 from books.models import (
-    Book
+    Book,
+    BookContract ,
+    CopyRightContract
 )
 
 from services.models import (
@@ -21,6 +23,7 @@ from services.models import (
     PaidVoucher,
     TranslationRequest,
     SubtitleService,
+    PersonWork , 
     ContactRequestServices
 )
 from services.forms import (
@@ -37,13 +40,26 @@ from designs.models import (
 
 def AllVouchers(request):
     vouchers = Vouchers.objects.filter(user=request.user.pk, is_paid=False)
-    return render(request, 'services/all_vouchers.html', context={"vouchers": vouchers})
+    paginator = Paginator(vouchers, 10)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'services/all_vouchers.html', context={"vouchers": page_obj})
 
+
+def AllWorks(request):
+    works = PersonWork.objects.filter(user=request.user.pk)
+    paginator = Paginator(works, 10)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'services/all_works.html', context={"works": page_obj})
 
 class AllMessagesView(View):
     def get(self, request):
         msgs = ContactRequestServices.objects.filter(user=request.user)
-        return render(request, "services/all-msgs.html", context={"msgs": msgs})
+        paginator = Paginator(msgs, 10)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        return render(request, "services/all-msgs.html", context={"msgs": page_obj})
 
 
 def PayVoucher(request, pk):
@@ -146,7 +162,10 @@ class RequestSubtitleServiceView(CreateView):
 class AllBooksForTranslatorView(View):
     def get(slef ,request):
         books = Book.objects.exclude(user = request.user)
-        return render(request , 'books/allbooks.html' , context={"books":books})
+        paginator = Paginator(books, 10)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        return render(request , 'books/allbooks.html' , context={"books":page_obj})
 
 
 
@@ -196,7 +215,7 @@ class RequestDesignServiceView(View):
 class AllServicesForDesignView(View):
     def get(self, request):
         requests = RequestDesignService.objects.filter(is_shown_designer=True)
-        paginator = Paginator(requests, 8)
+        paginator = Paginator(requests, 6)
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
         return render(request, 'dashboard/all_designs.html', context={"designs": page_obj})
@@ -246,3 +265,43 @@ class HomeTranslationRequestView(View):
                                    supplements_page=define_page, page_images=draw_page, table_page=table_page, CMYK_page=cmyk_page, note=note, contact=file)
         trans.save()
         return redirect('register-service')
+
+
+
+class PersonalContractChoices(View):
+    def get(self , request):
+        return render(request , 'services/personal-choices.html')
+
+
+class AllCopyContractsForUser(View):
+    def get(self , request):
+        contracts = CopyRightContract.objects.filter(author_name = request.user)
+        paginator = Paginator(contracts, 10)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        return render(request , 'services/copycontract-person.html' , context={"contracts":page_obj})
+
+
+class AllBookContractsForUser(View):
+    def get(self , request):
+        contracts = BookContract.objects.filter(author_name = request.user)
+        paginator = Paginator(contracts, 10)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        return render(request , 'services/bookcontract-person.html' , context={"contracts":page_obj})
+
+
+
+class AcceptCopyrightContract(View):
+    def get(self , request , pk):
+        contract = CopyRightContract.objects.get(pk=pk)
+        contract.is_accepted = True
+        contract.save()
+        return redirect('all-copycontract-user')
+
+class AcceptBookContract(View):
+    def get(self , request , pk):
+        contract = BookContract.objects.get(pk=pk)
+        contract.is_accepted = True
+        contract.save()
+        return redirect('all-bookcontract-user')

@@ -1,0 +1,63 @@
+{% extends 'main.html' %} {% block content %}
+<section id="services" class="services section-bg">
+  <div class="container">
+
+    <div class="row justify-content-center">
+      <table
+        style="margin: 0 auto"
+        class="table table-max table-bordered align-items-center mb-auto"
+      >
+        <thead class="text_black">
+          <tr>
+            {% if LANGUAGE_CODE == 'ar' %}
+            <th class="text-center text-xxs" style="width: 1.5rem">#</th>
+            <th class="text-center text-xxs" style="width: 1.2rem">المؤسسة</th>
+            <th class="text-center text-xxs" style="width: 1.2rem">العقد</th>
+            <th class="text-center text-xxs" style="width: 1.2rem">موافقة</th>
+
+            {% else %}
+            <th class="text-center text-xxs" style="width: 1.5rem">#</th>
+            <th class="text-center text-xxs" style="width: 1.2rem">
+              Foundtation
+            </th>
+            <th class="text-center text-xxs" style="width: 1.2rem">Contract</th>
+            <th class="text-center text-xxs" style="width: 1.2rem">Accept</th>
+
+            {% endif %}
+          </tr>
+        </thead>
+        <tbody>
+          {% for contract in contracts %}
+          <tr>
+            <td style="justify-content: space-around">
+              <p class="text-center text-xxs">{{ contract.pk }}</p>
+            </td>
+            <td class="align-middle text-center text-xxs" style="width: 1.2rem">
+              <p class="text-xxs">{{ contract.found.get_full_name }}</p>
+            </td>
+            <td class="align-middle text-center text-xxs" style="width: 1.2rem">
+              {% if LANGUAGE_CODE == 'ar' %}
+              <a href="{{ contract.contract.url }}" class="btn btn-dark text-white"> العقد</a>
+             {% else %}
+             <a href="{{ contract.contract.url  }}" class="btn btn-dark text-white"> Contract</a>
+             {% endif %}
+            </td>
+            <td class="align-middle text-center text-xxs" style="width: 1.2rem">
+              {% if LANGUAGE_CODE == 'ar' %}
+              <a class="btn btn-dark text-white" href="{% url 'accept-copy' contract.pk %}"> موافقة </a>
+              <p class="text-muted text-xxs"> عدم الضغط على الزر يعنى عدم الموافقة</p>
+              {% else %}
+              <a class="btn btn-dark text-white" href="{% url 'accept-copy' contract.pk %}"> Accept </a>
+              <p class="text-muted text-xxs"> Not press on button means refuse to sign</p>
+              {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% include 'partials/_pagination.html' with page_obj=contracts only %}
+    </div>
+  </div>
+</section>
+
+{% endblock content %}

@@ -67,7 +67,7 @@
 </div>
 
 {% endfor %}
-
+{% include 'partials/_pagination.html' with page_obj=books only %}
 </div>
 
 {% endblock content %}

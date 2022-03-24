@@ -19,7 +19,12 @@
          </ul>
         </li>
 {% if user.is_authenticated %}
-                   <li><a class="nav-link scrollto" href="{% url 'dashboard' %}">لوحة التحكم</a></li>
+<li class="dropdown"><a href="#"><span> لوحة التحكم      </span> <i class="bi bi-chevron-down"></i></a>
+  <ul>
+    <li><a class="nav-link scrollto" href="{% url 'dashboard' %}"> لوحة التحكم  </a></li>
+    <li><a class="nav-link scrollto" href="{% url 'logout' %}">تسجيل الخروج </a></li>
+</ul>
+</li>
 
 
               {% else %}
@@ -38,8 +43,12 @@
          </ul>
         </li>
 {% if user.is_authenticated %}
-                   <li><a class="nav-link scrollto" href="{% url 'dashboard' %}">Dashboard</a></li>
-
+<li class="dropdown"><a href="#"><span> Dashboard      </span> <i class="bi bi-chevron-down"></i></a>
+  <ul>
+    <li><a class="nav-link scrollto" href="{% url 'dashboard' %}"> Dashboard  </a></li>
+    <li><a class="nav-link scrollto" href="{% url 'logout' %}">Logout </a></li>
+</ul>
+</li>
               {% else %}
               <li><a class="nav-link scrollto" href="{% url 'login' %}">Login</a></li>
               <li><a class="nav-link scrollto" href="{% url 'register' %}">Sign Up</a></li>

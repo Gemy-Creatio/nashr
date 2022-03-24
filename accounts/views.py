@@ -212,6 +212,8 @@ class AddFoundationProfileView(View):
     def post(self, request):
         recordnumber = request.POST['recordnbr']
         facility_name = request.POST['facility_name']
+        art_agent = request.POST['art_agent']
+        id_number = request.POST['id_number']
         if FoundtationUserProfile.objects.filter(user=request.user).count() > 0:
             rec_updated = FoundtationUserProfile.objects.get(user=request.user)
             rec_updated.recordNumber = recordnumber
@@ -220,7 +222,7 @@ class AddFoundationProfileView(View):
             return redirect('dashboard')
         else:
             rec = FoundtationUserProfile(
-                recordNumber=recordnumber, facility_name=facility_name, user=request.user)
+                recordNumber=recordnumber, facility_name=facility_name, user=request.user , id_number=id_number , art_agent=art_agent)
             rec.save()
             return redirect('dashboard')
 

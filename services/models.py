@@ -206,3 +206,15 @@ class RequestProofReader(OrderedModel):
 
     class Meta:
         pass
+
+
+
+class PersonWork(OrderedModel):
+    user = models.ForeignKey(User , on_delete=models.CASCADE , null=True , blank=True)
+    start_date = models.DateField(null=True , blank=True)
+    end_date = models.DateField(null=True , blank=True)
+    rate = models.CharField(max_length=255,null=True , blank=True)
+    dropbox = models.URLField(null=True , blank=True)
+    book = models.ForeignKey(Book , on_delete=models.CASCADE , null=True , blank=True)
+    class Meta:
+        pass

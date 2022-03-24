@@ -1,0 +1,72 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+<section id="contact" class="contact section-bg ">
+    <div class="container justify-content-center">
+
+
+      <div class="row pt-3">
+       
+        {% for neg in negs  %}
+         <div class="col-4">
+            <div class="card h-100">
+                <div class="card-body">
+                  {% if LANGUAGE_CODE == 'ar' %}
+                  <h5 class="text-center"> حقوق النشر<h5>
+                      <p>{{ neg.author_rights|safe }}</p>
+                      <hr/>
+                      <h5 class="text-center">نسبة النشر <h5>
+                          <p>{{ neg.author_ratio|safe }}</p>
+                          <hr/>
+                          <h5 class="text-center">عدد الصفح <h5>
+                              <p>{{ neg.number_of_copies|safe }}</p>
+                              <hr/>
+                                  <h5 class="text-center"> مدة الأنتهاء من المشروع <h5>
+                                    <p>{{ neg.time_finish|safe }}</p>
+                                    <hr/>
+                                
+                                <h5 class="text-center"> التكلفة<h5>
+                                    <p>{{ neg.price|safe }}</p>
+                                    <hr/>
+                                  {% else %}
+                                  <h5 class="text-center">Coopyrights  <h5>
+                                      <p>{{ neg.author_rights|safe }}</p>
+                                      <hr/>
+                                      <h5 class="text-center"> Copyrights Ratio <h5>
+                                          <p>{{ neg.author_ratio|safe }}</p>
+                                          <hr/>
+                                          <h5 class="text-center"> Number of Copies <h5>
+                                              <p>{{ neg.number_of_copies|safe }}</p>
+                                              <hr/>
+                                              <h5 class="text-center"> Task Duration<h5>
+                                                  <p>{{ neg.time_finish|safe }}</p>
+                                                  <hr/>
+                                                  <h5 class="text-center"> Price <h5>
+                                                    <p>{{ neg.price|safe }}</p>
+                                                    <hr/>                         
+                                  {% endif %}
+              </div>
+              <div class="card-footer">
+                  <div class="text-center">
+                    {% if LANGUAGE_CODE == 'ar' %}
+                      <a class="btn btn-dark text-white" href="{% url 'send-accept-add' neg.pk %}"> موافقة</a>
+                     {% else %}
+                     <a class="btn btn-dark text-white" href="{% url 'send-accept-add' neg.pk %}"> Accept</a>
+
+                     {% endif %}
+                    </div>
+              </div>
+               </div>
+         </div>
+        {% endfor %}
+        {% include 'partials/_pagination.html' with page_obj=books only %}
+      </div>
+
+    </div>
+    
+
+
+</section>
+
+{% endblock content %}

@@ -16,10 +16,18 @@
             <div class="member" data-aos="zoom-in">
               <div class="pic">
              {% include 'accounts/login/_LoginForm.html' %}
+             <div class="text-center">
+              {% if LANGUAGE_CODE == 'ar' %}
+   <a  style="cursor: pointer;">    هل نسيت كلمة السر  </a>
+              {% else %}
+  <a style="cursor: pointer;"> Foregt password? </a>
+              {% endif %}
+            </div>
                 </div>
               </div>
             </div>
           </div>
+       
         </div>
       </div>
     </section>

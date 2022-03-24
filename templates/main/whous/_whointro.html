@@ -1,6 +1,20 @@
-    <section id="pricing" class="pricing section-bg pt-8">
+{% load static %}
+<section id="hero" class="pt-lg-4">
+
+  <div class="container">
+    <div class="row">
+       
+      <div class="col-lg-12 order-1 order-lg-2 hero-img" data-aos="fade-left">
+        <img src="{% static 'assets/img/dark.jpeg' %}" class="img-fluid" alt="">
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<section id="pricing" class="pricing section-bg pt-8">
             <div class="container" >
-             <div class="section-title" data-aos="fade-up">
+             <div class="section-title box" data-aos="fade-up">
                     {% if LANGUAGE_CODE == 'ar' %}
                 <h1 class="mb-1">{{ content.heading_ar |safe}}</h1>
                 <h3 class="mb-5">{{ content.content_ar |safe }}</h3>
@@ -11,30 +25,36 @@
              </div>
                 <div class="row">
 
-          <div class="col-lg-6 col-md-12">
-            <div class="box" data-aos="zoom-in">
-                                {% if LANGUAGE_CODE == 'ar' %}
-                 <h3>{{ content.roaya_heading_ar | safe }}</h3>
-                                    <h5 >{{ content.roaya_sub_ar | safe  }}</h5>
-                                    <p>{{ content.roaya_content_ar | safe  }}</p>
-                {% else %}
-                   <h3>{{ content.roaya_heading_en |capfirst | safe }}</h3>
-                                    <h5 >{{ content.roaya_sub_en |capfirst | safe  }}</h5>
-                                    <p>{{ content.roaya_content_en |capfirst | safe  }}</p>
-                {% endif %}
+          <div class="row justify-ceontent-center box">
+            <div class="col-2">
+              <img src="{% static 'assets/img/roaya.png' %}" class="img-fluid"/>
             </div>
+           <div class="col-10">
+              {% if LANGUAGE_CODE == 'ar' %}
+<h3>{{ content.roaya_heading_ar | safe }}</h3>
+                  <h5 >{{ content.roaya_sub_ar | safe  }}</h5>
+                  <p>{{ content.roaya_content_ar | safe  }}</p>
+{% else %}
+ <h3>{{ content.roaya_heading_en |capfirst | safe }}</h3>
+                  <h5 >{{ content.roaya_sub_en |capfirst | safe  }}</h5>
+                  <p>{{ content.roaya_content_en |capfirst | safe  }}</p>
+{% endif %}
+</div>
           </div>
 
-              <div class="col-lg-6 col-md-12">
-            <div class="box" data-aos="zoom-in" style="height: 29vh;">
-                                {% if LANGUAGE_CODE == 'ar' %}
-                <h3>{{ content.goals_heading_ar | safe  }}</h3>
-                                  <p>{{ content.section_goals_ar | safe  }}</p>
-                {% else %}
-                    <h3>{{ content.goals_heading_en  | safe |capfirst }}</h3>
-                                   <p>{{ content.section_goals_en  | safe |capfirst }}</p>
-                {% endif %}
-            </div>
+              <div class="row box">
+                <div class="col-2">
+                  <img src="{% static 'assets/img/resala.png' %}" class="img-fluid"/>
+                </div>
+            <div class="col-10">
+                {% if LANGUAGE_CODE == 'ar' %}
+<h3>{{ content.goals_heading_ar | safe  }}</h3>
+                  <p>{{ content.section_goals_ar | safe  }}</p>
+{% else %}
+    <h3>{{ content.goals_heading_en  | safe |capfirst }}</h3>
+                   <p>{{ content.section_goals_en  | safe |capfirst }}</p>
+{% endif %}
+</div>
           </div>
 
                 </div>

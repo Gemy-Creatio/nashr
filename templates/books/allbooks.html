@@ -58,20 +58,19 @@
                                                         <hr/>
                                                 <h5 class="text-center"> Price<h5>
                                                     <p>{{ book.translator_fees|safe }}</p>
-                                                    <hr/>
-
-                                                    
+                                                    <hr/>                            
                                   {% endif %}
               </div>
               <div class="card-footer">
                   <div class="text-center">
-                      <a class="btn btn-dark text-white" href="{% url 'add-interest' book.pk %}">تقديم طلب</a>
+                      <a class="btn btn-dark text-white" href="{% url 'neg-book-advertise' book.pk %}">تقديم طلب</a>
                   </div>
               </div>
                </div>
          </div>
         {% endfor %}
       </div>
+      {% include 'partials/_pagination.html' with page_obj=books only %}
 
     </div>
     

@@ -57,7 +57,7 @@
             <img src="{{ content.third_services_logo.url }}" class="logo" />
           </div>
           <h4 class="title">
-            <a href="">{{ content.third_section_Service_title_ar|safe }}</a>
+            <a href="{% url 'book-format' %}">{{ content.third_section_Service_title_ar|safe }}</a>
           </h4>
           <p class="description">{{ content.third_sub_heading_ar|safe }}</p>
         </div>
@@ -148,7 +148,7 @@
             <img src="{{ content.third_services_logo.url }}" class="logo" />
           </div>
           <h4 class="title">
-            <a href=""
+            <a href="{% url 'book-format' %}"
               >{{ content.third_section_Service_title_en|capfirst|safe }}</a
             >
           </h4>
