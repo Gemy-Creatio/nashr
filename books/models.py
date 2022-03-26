@@ -48,6 +48,7 @@ class UserProfile(OrderedModel):
     about_you = RichTextField(null=True)
     city = models.CharField(max_length=255, null=True, blank=True)
     source = models.CharField(max_length=255, null=True, blank=True)
+    creaditCard_number = models.CharField(max_length=255, null=True, blank=True)
     study = models.CharField(max_length=255, null=True, blank=True)
     user = models.OneToOneField(
         User, null=True, on_delete=models.CASCADE, related_name='profile')

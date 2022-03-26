@@ -36,7 +36,7 @@ urlpatterns = [
     path('all/vouchers/<int:pk>', PayVoucher, name='pay-voucher'),
     path('add/book/translate/<int:pk>',
          TranslationRequestView.as_view(), name='complete-book'),
-    path('add/translate/home',
+    path('add/translate/home/<int:pk>',
          HomeTranslationRequestView.as_view(), name='home-advertise'),
     path('all/msgs/home',
          AllMessagesView.as_view(), name='all-msg'),

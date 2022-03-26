@@ -20,6 +20,7 @@ class ProfileForm(forms.ModelForm):
             'study': 'مؤهلك التعليمي',
             'mother_language': 'اللغة الأم',
             'field_concern': 'مجال الاهتمام',
+            'creaditCard_number':'رقم الحساب ',
 
         }
 

@@ -68,6 +68,17 @@ class AddBookView(CreateView):
         return reverse('complete-book', args=(self.object.pk,))
 
 
+
+
+class AddBookUserView(CreateView):
+    model = Book
+    form_class = BookForm
+    template_name = 'books/addBooks.html'
+
+    def get_success_url(self):
+        return reverse('home-advertise', args=(self.object.pk,))
+
+
 class AddUserInfoView(CreateView):
     model = UserProfile
     form_class = ProfileForm

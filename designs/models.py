@@ -51,6 +51,7 @@ class PrintBookRequest(OrderedModel):
     number_of_colors = models.IntegerField(null=True, blank=True)
     number_of_copies = models.IntegerField(null=True, blank=True)
     book = models.FileField(upload_to='books_print/' , null=True , blank=True)
+    user = models.ForeignKey(User , on_delete=models.CASCADE , null=True , blank=True)
     class Meta:
         pass
 

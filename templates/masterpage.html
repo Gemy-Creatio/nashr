@@ -41,11 +41,12 @@
 
 {% include 'partials/_UserMenu.html' %}
 
- {% block content %}
+<main id="main">
+  {% block content %}
 
 {% endblock content %}
 {% include '_footer.html' %}
-
+</main>
 {#{% include 'partials/_mainFooter.html' %}#}
   <a href="https://api.whatsapp.com/send?phone=966531360894" class="go-to-whatsapp d-flex align-items-center justify-content-center"><i class="bi bi-whatsapp"></i></a>
 

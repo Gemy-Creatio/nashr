@@ -84,8 +84,17 @@
 
                   {% endif %}
                 </div>
+                <div class="row d-flex justify-content-between">
+                  <div class="col-4">
+                    {% if LANGUAGE_CODE == 'ar' %}
+                    <p>رقم الحساب</p>
+                    {% else %}
+                    <p>Bank Account Number</p>
+  
+                    {% endif %}
+                  </div>
                 <div class="col-6">
-                  <p>{{ content.profile.about_you | safe }}</p>
+                  <p>{{ content.creditCard_number | safe }}</p>
                 </div>
               </div>
               <div class="row d-flex justify-content-between">

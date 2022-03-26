@@ -242,10 +242,11 @@ class CreateTakeDesignRequest(CreateView):
 
 
 class HomeTranslationRequestView(View):
-    def get(self, request):
+    def get(self, request,pk):
         return render(request, 'services/add-bookadvertise.html')
 
-    def post(self, request):
+    def post(self, request,pk):
+        book = Book.objects.get(pk=pk)
         translator_intro = request.POST.get('translator_intro')
         dedication_page = request.POST.get('dedication_page')
         thank_page = request.POST.get('thank_page')
@@ -260,7 +261,7 @@ class HomeTranslationRequestView(View):
         file = request.FILES['contract']
         fs = FileSystemStorage()
         filename = fs.save(file.name, file)
-        trans = TranslationRequest(translator_introduction=translator_intro, dedication_page=dedication_page,
+        trans = TranslationRequest(book=book,translator_introduction=translator_intro, dedication_page=dedication_page,
                                    thank_you_page=thank_page, intro_page=intro_page, content_pages=content_page, source_page=source_page,
                                    supplements_page=define_page, page_images=draw_page, table_page=table_page, CMYK_page=cmyk_page, note=note, contact=file)
         trans.save()

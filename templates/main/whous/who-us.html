@@ -1,10 +1,7 @@
 {% extends 'masterpage.html' %}
 
 {% block content %}
-<main id="main">
 {% include 'main/whous/_whointro.html' with content=who %}
 {% include 'main/homepage/_FAQ.html' with content=faqs %}
 {% include 'main/whous/_contactUs.html'%}
-
-</main>
 {% endblock content %}

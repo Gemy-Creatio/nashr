@@ -18,6 +18,12 @@ class CreatePrintRequestView(CreateView):
     model = PrintBookRequest
     form_class = PrintBookForm
     template_name = 'books/print_books.html'
+    def form_valid(self, form):
+        request = form.save(commit=True)
+        if request.user.first_name:
+            request.user = self.request.user
+        request.save()
+        return super(CreatePrintRequestView, self).form_valid(form)
 
     def get_success_url(self):
         return reverse('dashboard')
@@ -26,8 +32,8 @@ class CreatePrintRequestView(CreateView):
 
 class AllPrintRequestView(View):
     def get(self ,request):
-        prints = PrintBookRequest.objects.all()
-        paginator = Paginator(prints, 10)
+        prints = PrintBookRequest.objects.exclude(user=request.user)
+        paginator = Paginator(prints, 5)
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
         return render(request , 'designs/all-prints.html' , context={"prints":page_obj})

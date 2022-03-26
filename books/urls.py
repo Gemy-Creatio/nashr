@@ -27,7 +27,8 @@ AllBookAdvertisesNegView ,
 AllBookCopyrightsNegView,
 BooksForPublisherView ,
 AllNegResultsAdvertise ,
-AllNegResultsCopy
+AllNegResultsCopy,
+AddBookUserView
 
 )
 
@@ -83,5 +84,7 @@ urlpatterns = [
          name='copy-neg-results'),
   path('person/neg/results', AllNegResultsAdvertise.as_view(),
          name='advertise-neg-results'),
+ path('book/add/user', AddBookUserView.as_view(),
+         name='add-book-user'),
 
 ]
