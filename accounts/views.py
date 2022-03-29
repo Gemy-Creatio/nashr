@@ -138,7 +138,9 @@ class RegisterRequestServiceView(View):
 
         user = User.objects.create_request_service(email=email, first_name=first_name,
                                                    address=address, password=password, phone=phone)
+        
         if user is not None:
+            ## Code of create service of user after creation
             login(request, user)
             return redirect('home-page')
 

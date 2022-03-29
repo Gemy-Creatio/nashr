@@ -1,0 +1,24 @@
+{% extends 'masterpage.html' %}
+
+{% block content %}
+ 
+<section id="hero" class="pt-lg-4">
+
+    <div class="container">
+      <div class="row">
+         
+        <div class="col-lg-8 order-1 order-lg-2 hero-img" data-aos="fade-left">
+          <img src="{% static 'assets/img/logo.png' %}" class="img-fluid" alt="">
+        </div>
+        <div class="col-lg-4 order-2">
+        </div>
+        {% if LANGUAGE_CODE == 'ar' %}
+          <p class="text-muted text-xxs"> حدث خطأ برجاء المحاولة مرة اخرى</p>
+            {% else %}
+            <p class="text-muted text-xxs"> Error Happend Try Again Later !!     </p>
+            {% endif %}
+      </div>
+    </div>
+  
+  </section>
+{% endblock content %}

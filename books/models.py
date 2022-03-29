@@ -119,6 +119,8 @@ class Book(OrderedModel):
         return self.book_address
 
 
+
+
 class BookDistrubuting(OrderedModel):
     DISTRUB_CHOICES = (
         ('ورقى', 'ورقى'),
@@ -168,9 +170,7 @@ class NegotiationBook(OrderedModel):
         (False, 'لا')
     )
     book = models.ForeignKey(Book, on_delete=models.CASCADE, null=True)
-    author_rights = models.CharField(max_length=255, null=True, blank=True)
-    author_ratio = models.CharField(max_length=255, null=True, blank=True)
-    number_of_copies = models.CharField(max_length=255, null=True, blank=True)
+    notes = models.TextField(max_length=255, null=True, blank=True)
     price = models.IntegerField(null=True, blank=True)
     time_finish = models.CharField(max_length=255, null=True, blank=True)
     user = models.ForeignKey(User , on_delete=models.CASCADE , null=True , blank=True)

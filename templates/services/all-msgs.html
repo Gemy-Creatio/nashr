@@ -9,7 +9,16 @@
 
       {% endif %}
      <div class="text-center ">
-      {% if request.user.user_type == 2 or request.user.is_publisher or request.user.user_type == 7 or request.user.is_printer  %} 
+      {% comment %} {% if request.user.is_translator %}
+      <a class="btn btn-dark text-white" href="{% url 'advertise-neg-results' %}">
+      {% if LANGUAGE_CODE == 'ar' %}
+        المفاوضات
+        {% else %}
+        Negatations
+        {% endif %}
+      <a>
+      {% endif %} {% endcomment %}
+      {% if request.user.user_type == 2 and request.user.is_publisher or request.user.user_type == 7 and request.user.is_printer  %} 
       {% if LANGUAGE_CODE == 'ar' %}
     <a class="btn btn-dark text-white" href="{% url 'copy-neg-results' %}">
       المفاوضات

@@ -1,5 +1,4 @@
 from django.shortcuts import redirect, render
-from django.urls import reverse
 from django.views import View
 from accounts.models import User
 from django.core.files.storage import FileSystemStorage
@@ -16,6 +15,8 @@ from books.models import (
     CopyRightContract,
     AdvertisePresent
 )
+from django.urls import reverse, reverse_lazy
+from django.views.generic.edit import DeleteView
 
 from books.forms import (
     BookForm,
@@ -60,10 +61,12 @@ class AddBookView(CreateView):
     template_name = 'books/addBooks.html'
 
     def form_valid(self, form):
-        book = form.save(commit=True)
-        book.user = self.request.user
-        return super(AddBookView, self).form_valid(form)
-
+        try:
+            book = form.save(commit=True)
+            book.user = self.request.user
+            return super(AddBookView, self).form_valid(form)
+        except:
+            return reverse('error-page')
     def get_success_url(self):
         return reverse('complete-book', args=(self.object.pk,))
 
@@ -98,23 +101,27 @@ class AddBookDistrubView(View):
         return render(request, 'books/add-bookDistub.html')
 
     def post(self, request):
-        author_name = request.POST.get('author_name')
-        address = request.POST.get('address')
-        number_of_pages = request.POST.get('number_of_pages')
-        year_of_release = request.POST.get('year_of_release')
-        book_price = request.POST.get('book_price')
-        time_finish = request.POST.get('time_finish')
-        rights = request.POST.get('rights')
-        author_ratio = request.POST.get('author_ratio')
-        print_copies = request.POST.get('print_copies')
-        time_own = request.POST.get('time_own')
-        price = request.POST.get('price')
-        language = request.POST.get('language')
-        distrub = BookDistrubuting(user=self.request.user, auther_name=author_name, address=address, number_of_pages=number_of_pages, year=year_of_release,
+        try:
+            author_name = request.POST.get('author_name')
+            address = request.POST.get('address')
+            number_of_pages = request.POST.get('number_of_pages')
+            year_of_release = request.POST.get('year_of_release')
+            book_price = request.POST.get('book_price')
+            time_finish = request.POST.get('time_finish')
+            rights = request.POST.get('rights')
+            author_ratio = request.POST.get('author_ratio')
+            print_copies = request.POST.get('print_copies')
+            time_own = request.POST.get('time_own')
+            price = request.POST.get('price')
+            language = request.POST.get('language')
+            distrub = BookDistrubuting(user=self.request.user, auther_name=author_name, address=address, number_of_pages=number_of_pages, year=year_of_release,
                                    language=language, book_price=book_price, time_finish=time_finish,
                                    author_rights=rights, auther_profit=author_ratio, number_of_copies=print_copies, time_own=time_own, price=price)
-        distrub.save()
-        return redirect('dashboard')
+            distrub.save()
+            return redirect('dashboard')
+        except:
+            return reverse('error-page')
+
 
 
 class BookChoicesView(View):
@@ -155,18 +162,17 @@ class NegtiationBookDistrubView(View):
 class NegtiationBookAdvertiseView(View):
     def get(self, request, pk):
         book = Book.objects.get(pk=pk)
-        return render(request, 'books/neg-book.html')
+        return render(request, 'books/neg-book-new.html')
 
     def post(self, request, pk):
         book = Book.objects.get(pk=pk)
-        rights = request.POST.get('rights')
-        ratio = request.POST.get('ratio')
-        copies = request.POST.get('copies')
+        time_finish = request.POST.get('time_finish')
+        notes = request.POST.get('notes')
         price = request.POST.get('price')
-        neg = NegotiationBook(book=book, author_rights=rights,
-                          author_ratio=ratio, number_of_copies=copies, price=price)
+        neg = NegotiationBook(book=book, time_finish=time_finish,
+                          notes=notes,price=price)
         neg.save()
-        return redirect('all-books-contract')
+        return redirect('dashboard')
 
 
 
@@ -257,6 +263,22 @@ class PublisherNeedsProofView(View):
         return render(request, 'services/allneedsproof.html', context={"needs": page_obj})
 
 
+
+
+class DeleteBook(DeleteView):
+    model = Book
+    template_name = 'main/deleteentry.html'
+    success_url = reverse_lazy('all-books-publisher')
+
+
+class AllbooksForPublisher(View):
+    def get(self , request):
+        books = Book.objects.filter(user = request.user)
+        paginator = Paginator(books, 10)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        return render(request ,'books/allbookspublisher.html' , context={"books":page_obj})
+
 class AllWriterNeeds(View):
     def get(self, request):
         needs = PublisherNeeds.objects.filter(needs='كاتب')
@@ -331,7 +353,7 @@ class AcceptAdvertisetNeg(View):
         neg = NegotiationBook.objects.get(pk=pk)
         neg.is_accepted = True
         neg.save()
-        return redirect('neg-all-advertise')
+        return reverse('neg-all-advertise', args=(neg.book.pk,))
 
 
 
@@ -340,9 +362,13 @@ class AcceptCopyNeg(View):
         neg = Negotiation.objects.get(pk=pk)
         neg.is_accepted = True
         neg.save()
-        return redirect('neg-all-copy')
+        return reverse('neg-all-copy',args=(neg.book.pk,))
 
 
+
+# class NegChoices(View):
+#     def get(self ,request):
+#         return render(request , 'books/neg-choices.html')
 
 
 class AllNegResultsAdvertise(View):

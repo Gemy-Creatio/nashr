@@ -20,7 +20,7 @@ class CreatePrintRequestView(CreateView):
     template_name = 'books/print_books.html'
     def form_valid(self, form):
         request = form.save(commit=True)
-        if request.user.first_name:
+        if self.request.user.first_name:
             request.user = self.request.user
         request.save()
         return super(CreatePrintRequestView, self).form_valid(form)
@@ -74,4 +74,6 @@ class CreateFormationRequestView(View):
                                     sub_font_size=sub_font_size , sub_font_color=sub_font_color , ehda_page=ehda_page , thank_page=thank_page , book_intro=book_intro ,
                                      define_page=define_page , intro_page=intro_page , notes=notes , book_file=file)
         format.save()
+        self.request['service_code'] = 3
+        self.request['pk_service'] = self.object.pk
         return redirect('register-service')

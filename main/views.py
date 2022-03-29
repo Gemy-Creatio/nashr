@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from httpx import request
 from main.models import (
     Homepage,
     WhoUS,
@@ -49,3 +50,9 @@ class PersonalPageView(View):
 class FoundationPageView(View):
     def get(self, request):
         return render(request, 'main/membership/foundation.html')
+
+
+
+class ErrorView(View):
+    def get(self ,request):
+        return render(request , 'main/error.html')

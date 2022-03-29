@@ -4,7 +4,8 @@ from main.views import (
     WhopageView,
 ServicesPageView,
 FoundationPageView,
-PersonalPageView
+PersonalPageView ,
+ErrorView
 )
 
 urlpatterns = [
@@ -13,5 +14,6 @@ urlpatterns = [
     path('services', ServicesPageView.as_view(), name='services-page'),
     path('member/foundation', FoundationPageView.as_view(), name='found-page'),
     path('member/peronal', PersonalPageView.as_view(), name='person-page'),
+    path('error', ErrorView.as_view(), name='error-page'),
 
 ]
