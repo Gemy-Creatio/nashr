@@ -17,9 +17,18 @@ from books.forms import (
     ProfileForm,
 )
 
+from designs.models import(
+   BookFormating 
+)
+from services.models import (
+    TranslateService ,
+    SubtitleService,
+    RequestDesignService ,
+    TranslationRequest
 
+)
 from books.models import (
-    FoundtationUserProfile
+    FoundtationUserProfile ,
 )
 
 #
@@ -140,7 +149,31 @@ class RegisterRequestServiceView(View):
                                                    address=address, password=password, phone=phone)
         
         if user is not None:
-            ## Code of create service of user after creation
+            if request.session['service_code'] == 1 :
+                pk = request.session['pk_service']
+                trans_obj = TranslateService.objects.get(pk=pk)
+                trans_obj.user = user
+                trans_obj.save()
+            elif request.session['service_code'] == 2:
+                pk = request.session['pk_service']
+                trans_obj = TranslationRequest.objects.get(pk=pk)
+                trans_obj.user = user
+                trans_obj.save()
+            elif request.session['service_code'] == 3 :
+                pk = request.session['pk_service']
+                design_obj = RequestDesignService.objects.get(pk=pk)
+                design_obj.user = user
+                design_obj.save()
+            elif request.session['service_code'] == 4:
+                pk = request.session['pk_service']
+                format_obj = BookFormating.objects.get(pk=pk)
+                format_obj.user = user
+                format_obj.save()
+            else:
+                pk = request.session['pk_service']
+                sub_obj = SubtitleService.objects.get(pk=pk)
+                sub_obj.user = user
+                sub_obj.save()
             login(request, user)
             return redirect('home-page')
 
@@ -216,6 +249,10 @@ class AddFoundationProfileView(View):
         facility_name = request.POST['facility_name']
         art_agent = request.POST['art_agent']
         id_number = request.POST['id_number']
+        bank_name = request.POST['bank_name']
+        bank_number = request.POST['bank_number']
+
+
         if FoundtationUserProfile.objects.filter(user=request.user).count() > 0:
             rec_updated = FoundtationUserProfile.objects.get(user=request.user)
             rec_updated.recordNumber = recordnumber
@@ -224,7 +261,7 @@ class AddFoundationProfileView(View):
             return redirect('dashboard')
         else:
             rec = FoundtationUserProfile(
-                recordNumber=recordnumber, facility_name=facility_name, user=request.user , id_number=id_number , art_agent=art_agent)
+                recordNumber=recordnumber, facility_name=facility_name, user=request.user , id_number=id_number , art_agent=art_agent , creaditCard_number = bank_number , bank_name=bank_name)
             rec.save()
             return redirect('dashboard')
 

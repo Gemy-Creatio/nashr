@@ -8,6 +8,8 @@ class FoundtationUserProfile(OrderedModel):
     recordNumber = models.CharField(max_length=255, null=True, blank=True)
     facility_name = models.CharField(max_length=255, null=True, blank=True)
     art_agent = models.CharField(max_length=255, null=True, blank=True)
+    creaditCard_number = models.CharField(max_length=255, null=True, blank=True)
+    bank_name =  models.CharField(max_length=255, null=True, blank=True)
     id_number = models.CharField(max_length=255, null=True, blank=True)
 
     user = models.OneToOneField(
@@ -49,6 +51,7 @@ class UserProfile(OrderedModel):
     city = models.CharField(max_length=255, null=True, blank=True)
     source = models.CharField(max_length=255, null=True, blank=True)
     creaditCard_number = models.CharField(max_length=255, null=True, blank=True)
+    bank_name =  models.CharField(max_length=255, null=True, blank=True)
     study = models.CharField(max_length=255, null=True, blank=True)
     user = models.OneToOneField(
         User, null=True, on_delete=models.CASCADE, related_name='profile')
@@ -172,6 +175,7 @@ class NegotiationBook(OrderedModel):
     book = models.ForeignKey(Book, on_delete=models.CASCADE, null=True)
     notes = models.TextField(max_length=255, null=True, blank=True)
     price = models.IntegerField(null=True, blank=True)
+    cv = models.FileField(upload_to='cv/' , null=True , blank=True)
     time_finish = models.CharField(max_length=255, null=True, blank=True)
     user = models.ForeignKey(User , on_delete=models.CASCADE , null=True , blank=True)
     is_accepted = models.BooleanField(null=True , blank=True , default=False , choices=BOOLEAN_CHOICES)

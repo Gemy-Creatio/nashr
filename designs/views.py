@@ -74,6 +74,25 @@ class CreateFormationRequestView(View):
                                     sub_font_size=sub_font_size , sub_font_color=sub_font_color , ehda_page=ehda_page , thank_page=thank_page , book_intro=book_intro ,
                                      define_page=define_page , intro_page=intro_page , notes=notes , book_file=file)
         format.save()
-        self.request['service_code'] = 3
-        self.request['pk_service'] = self.object.pk
+        self.request.session['service_code'] = 3
+        self.request.session['pk_service'] = self.object.pk
         return redirect('register-service')
+
+
+
+
+class TranslatorServicesView(View):
+    def get(self , request):
+        return render(request ,'designs/translator-terms.html')
+
+
+
+class DesignerServicesView(View):
+    def get(self , request):
+        return render(request ,'designs/designer-terms.html')
+
+
+
+class PrinterServiceView(View):
+    def get(self ,request):
+        return render(request , 'designs/printer-terms.html')

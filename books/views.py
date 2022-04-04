@@ -169,7 +169,10 @@ class NegtiationBookAdvertiseView(View):
         time_finish = request.POST.get('time_finish')
         notes = request.POST.get('notes')
         price = request.POST.get('price')
-        neg = NegotiationBook(book=book, time_finish=time_finish,
+        cv = request.FILES['cv']
+        fs = FileSystemStorage()
+        filename = fs.save(cv.name, cv)
+        neg = NegotiationBook(book=book, cv=cv,time_finish=time_finish,
                           notes=notes,price=price)
         neg.save()
         return redirect('dashboard')

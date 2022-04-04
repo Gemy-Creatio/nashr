@@ -102,7 +102,7 @@ def PayVoucher(request, pk):
                 "description": f"{voucher.description}",
                 "bill_id": f"{voucher.pk}",
                 "account_id": request.user.pk,
-                "date": datetime.now(),
+                "date": datetime.today(),
                 "amount": int(voucher.amount)
             }
         }
@@ -160,8 +160,8 @@ class RequestTranslateServiceView(CreateView):
 
     def get_success_url(self):
         if self.request.user.is_anonymous:
-            self.request['service_code'] = 1
-            self.request['pk_service'] = self.object.pk
+            self.request.session['service_code'] = 1
+            self.request.session['pk_service'] = str(self.object.pk)
             return reverse('register-service')
         else:
             return reverse('dashboard')
@@ -183,8 +183,8 @@ class RequestSubtitleServiceView(CreateView):
         if self.request.user != None:
             return reverse('dashboard')
         else:
-            self.request['service_code'] = 5
-            self.request['pk_service'] = self.object.pk
+            self.request.session['service_code'] = 5
+            self.request.session['pk_service'] = self.object.pk
             return reverse('register-service')
 
 
@@ -237,8 +237,8 @@ class RequestDesignServiceView(View):
         if self.request.user.is_anonymous == False:
             design_request.user = self.request.user
         else:
-            self.request['service_code'] = 3
-            self.request['pk_service'] = self.object.pk
+            self.request.session['service_code'] = 3
+            self.request.session['pk_service'] = self.object.pk
         design_request.save()
         return redirect('register-service')
 
@@ -296,8 +296,8 @@ class HomeTranslationRequestView(View):
                                    thank_you_page=thank_page, intro_page=intro_page, content_pages=content_page, source_page=source_page,
                                    supplements_page=define_page, page_images=draw_page, table_page=table_page, CMYK_page=cmyk_page, note=note, contact=file)
         trans.save()
-        self.request['service_code'] = 2
-        self.request['pk_service'] = self.object.pk
+        self.request.session['service_code'] = 2
+        self.request.session['pk_service'] = self.object.pk
         return redirect('register-service')
 
 

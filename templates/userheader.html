@@ -1,0 +1,71 @@
+{% load static %}
+ <nav class="navbar navbar-expand-lg position-absolute top-0 z-index-3 w-100 shadow-none my-3  navbar-transparent mt-4">
+    <div class="container">
+      <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 text-white" href="{% url 'home-page' %}">
+          <img src="{% static 'images/logos/logo.png' %}" class="logo_login" />
+
+      </a>
+      <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon green-khieer mt-2">
+          <span class="navbar-toggler-bar bar1"></span>
+          <span class="navbar-toggler-bar bar2"></span>
+          <span class="navbar-toggler-bar bar3"></span>
+        </span>
+      </button>
+      <div class="collapse navbar-collapse w-100 pt-3 pb-2 py-lg-0" id="navigation">
+       
+
+        <ul class="navbar-nav navbar-nav-hover mx-auto">
+            {% if LANGUAGE_CODE == 'ar' %}
+                    <li><a class=" nav-link me-2 green-khieer active" href="{% url 'home-page' %}">الرئيسية</a></li>
+           <li><a class=" nav-link me-2 green-khieer " href="{% url 'whous-page' %}">من نحن</a></li>
+          <li><a class=" nav-link me-2 green-khieer" href="{% url 'services-page' %}">خدماتنتا</a></li>
+      <li class="dropdown"><a href="#"><span> العضويات      </span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a class=" nav-link me-2 green-khieer" href="{% url 'found-page' %}">عضوية دار نشر </a></li>
+              <li><a class=" nav-link me-2 green-khieer" href="{% url 'person-page' %}">عضوية مترجم</a></li>
+         </ul>
+        </li>
+{% if user.is_authenticated %}
+<li class="dropdown"><a href="#"><span> لوحة التحكم      </span> <i class="bi bi-chevron-down"></i></a>
+  <ul>
+    <li><a class=" nav-link me-2 green-khieer" href="{% url 'dashboard' %}"> لوحة التحكم  </a></li>
+    <li><a class=" nav-link me-2 green-khieer" href="{% url 'logout' %}">تسجيل الخروج </a></li>
+</ul>
+</li>
+
+
+              {% else %}
+              <li><a class=" nav-link me-2 green-khieer" href="{% url 'login' %}">تسجيل دخول</a></li>
+              <li><a class=" nav-link me-2 green-khieer" href="{% url 'register' %}">تسجيل جديد</a></li>
+
+              {% endif %}
+            {% else %}
+     <li><a class=" nav-link me-2 green-khieer active" href="{% url 'home-page' %}">Home</a></li>
+           <li><a class=" nav-link me-2 green-khieer " href="{% url 'whous-page' %}">Who Us</a></li>
+          <li><a class=" nav-link me-2 green-khieer" href="{% url 'services-page' %}">Services</a></li>
+          <li class="dropdown"><a href="#"><span> Membership      </span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a class=" nav-link me-2 green-khieer" href="{% url 'found-page' %}"> Publisher  </a></li>
+              <li><a class=" nav-link me-2 green-khieer" href="{% url 'person-page' %}">Translator </a></li>
+         </ul>
+        </li>
+{% if user.is_authenticated %}
+<li class="dropdown"><a href="#"><span> Dashboard      </span> <i class="bi bi-chevron-down"></i></a>
+  <ul>
+    <li><a class=" nav-link me-2 green-khieer" href="{% url 'dashboard' %}"> Dashboard  </a></li>
+    <li><a class=" nav-link me-2 green-khieer" href="{% url 'logout' %}">Logout </a></li>
+</ul>
+</li>
+              {% else %}
+              <li><a class=" nav-link me-2 green-khieer" href="{% url 'login' %}">Login</a></li>
+              <li><a class=" nav-link me-2 green-khieer" href="{% url 'register' %}">Sign Up</a></li>
+
+              {% endif %}
+            {% endif %}
+            {% include 'partials/_userlanguage.html' %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+

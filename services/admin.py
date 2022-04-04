@@ -8,8 +8,15 @@ from services.models import (
     TranslateService,
     Vouchers ,
     PaidVoucher,
-    PersonWork
+    PersonWork ,
+    ContactRequestServices
 )
+
+
+@admin.register(ContactRequestServices)
+class ContactRequestServicesAdmin(OrderedModelAdmin):
+    list_display = ("__str__",)
+
 
 @admin.register(PersonWork)
 class PersonWorkAdmin(OrderedModelAdmin):

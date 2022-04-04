@@ -21,6 +21,7 @@ class ProfileForm(forms.ModelForm):
             'mother_language': 'اللغة الأم',
             'field_concern': 'مجال الاهتمام',
             'creaditCard_number':'رقم الحساب ',
+            'bank_name':'اسم البنك'
 
         }
 

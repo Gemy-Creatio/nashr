@@ -61,7 +61,29 @@
                   {% endif %}
                 </div>
                 <div class="col-6">
-                  <p>{{ content.found_profile.id_number }}</p>
+                  <p>{{ content.found_profile.facility_name }}</p>
+                </div>
+                <div class="col-4">
+                  {% if LANGUAGE_CODE == 'ar' %}
+                  <p> رقم الحساب </p>
+                  {% else %}
+                  <p>Bank Number</p>
+
+                  {% endif %}
+                </div>
+                <div class="col-6">
+                  <p>{{ content.found_profile.creaditCard_number }}</p>
+                </div>
+                <div class="col-4">
+                  {% if LANGUAGE_CODE == 'ar' %}
+                  <p> اسم البنك </p>
+                  {% else %}
+                  <p>Bank Name</p>
+
+                  {% endif %}
+                </div>
+                <div class="col-6">
+                  <p>{{ content.found_profile.bank_name }}</p>
                 </div>
               </div>
               <div class="row d-flex justify-content-between">

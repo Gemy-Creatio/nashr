@@ -15,7 +15,7 @@
     class="col-lg-10 mt-5 mt-lg-0 d-flex align-items-stretch justify-content-center"
     data-aos="fade-left"
   >
-    <form method="post" role="form" class="form">
+    <form method="post" role="form" class="form"  enctype="multipart/form-data">
       {% csrf_token %}
 
       <div class="form-group row">
@@ -51,8 +51,32 @@
             id="price "
           />
         </div>
+        <div class="col-lg-6 col-12 d-flex flex-column">
+          {% if LANGUAGE_CODE == 'ar' %}
+          <label>السيرة الذاتية   </label>
+          {% else %}
+          <label> Cv</label>
+          <br/>
+          {% endif %}
+          <input type="file" name="cv" id="cv"/>
+        </div>
       </div>
 
+      <div class="col-lg-6 col-12 d-flex flex-column">
+        {% if LANGUAGE_CODE == 'ar' %}
+        <label>للأطلاع على الشروط و الأحكام </label>
+        {% else %}
+        <label> Terms and Services</label>
+        <br/>
+        {% endif %}
+       <a class="btn btn-dark text-white" href="{% url 'translator-terms' %}">
+          {% if LANGUAGE_CODE == 'ar' %}
+             الشروط و الأحكام
+          {% else %}
+Terms and services
+          {% endif %}
+      </a>
+      </div>
       <div class="text-center justify-content-center d-flex">
         {% if LANGUAGE_CODE == 'ar' %}
         <button type="submit">إرسال</button>

@@ -1,0 +1,183 @@
+{% extends 'masterpage.html' %}
+{% load static %}
+
+
+{% block content %}
+<section class="min-vh-40 mb-8">
+    <div class="bg-kheer align-items-start min-vh-50 pt-5 pb-11 m-3 border-radius-lg" style="background-repeat: no-repeat; background-image: url('../../static/assets/img/image-1.png');">
+      <div class="container">
+        <div class="row justify-content-lg-start">
+          <div class="col-lg-5 text-center ">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+              <div class="row mt-lg-n8 mt-md-n8 mt-n8">
+        <div class="col-xl-12 col-lg-12 col-md-12 pt-3 mx-auto">
+          <div class="card z-index-0">
+            <div class="card-body">
+                    {% if LANGUAGE_CODE == 'ar' %}
+                    <h4 class="green-khieer mb-2 mt-5">اتفاقية شروط الخدمات   </h4>
+              <p class="text-lead blue-khieer">
+                هذه الاتفاقية تمثل عقد بين كل من ناشر ويشار إليها فيما بعد بلفظ (” ناشر" – من نحن – أو لنا أو خاص بنا) وأنت ويشار اليه فيما بعد بلفظ (“المصمم” أو “أنت” أو “خاص بكم”.
+                تتضمن هذه الاتفاقية الشروط والأحكام العامة والتي يتم بموجبها استخدامك للمنتجات والخدمات التي تقدمها ناشر والموقع الإلكتروني (ويشار اليها إجمالا بلفظ “الخدمات”).
+               استخدامك لهذه الخدمات يعني التزامك ضمنا بكافة البنود الواردة بهذه الاتفاقية. أما في حالة عدم موافقتك على هذه الشروط والبنود والقيود الواردة بهذا الاتفاق، فهذا يعني أنه من غير المصرح لك باستخدام هذه الخدمات.
+               يمكن أيضا تطبيق بنود إضافية على بعض الخدمات، وبحيث يتم تضمينها بهذا الاتفاق والتي تم تضمينها هنا بالإشارة إلى ما هو مطبق، فعلى سبيل المثال، في حال تسجيلك لدينا، ستطبق عليك كافة بنود الاتفاق الخاص بذلك وبالتالي يتم تضمينها بهذا العقد.
+               المسئوليات:
+                                            </p>
+                                            <h5>عند تسجيلك و/أو استخدامك للخدمات التي نقدمها، فهذا إقرار منك بالتالي:</h5>
+                             <ol>
+                                 <li>يقر بإضافة البيانات في الموقع الإلكتروني صحيحة ويتحمل صحتها أمام المحاكم في المملكة العربية السعودية. </li>
+                                 <li> يقر المصمم أن غلاف الكتاب المترجم يتم تصميمه مطابقاً لغلاف المستخدم للأصل الأجنبي ما لم يتضمن صوراً أو أشكالا تخالف السياسة المتبعة لدينا</li>
+                                    <li>يتم تقديم تصميم أول الغلاف وفي حال عدم إعجاب العميل بالتصميم كلياً، يمكنه طلب تصميم ثاني دون دفع أي مقابل 
+                                        في حال تم العمل بالتصميم الأول يحق له إجراء طلب تعديلات (بحد أقصى أربع تعديلات) وما زاد عن ذلك يتم احتسابه بقيمة (50) خمسين ريال للتصميم الواحد 
+                                        .</li>
+                                        <li> لا يسمح بطلب أي تعديل بعد التعديل النهائي إلا بمقابل يبدأ من (١٠٠) مئة ريال للتعديل الواحد    </li>
+                                            <li>- تقر بالالتزام والاحتفاظ على سرية المعلومات المتبادلة وعدم إفشاء المعلومات والبيانات</li>
+                                                <li>تقر بالالتزام بالتواصل مع العميل داخل منصة ناشر ولا يسمح بالتواصل خارج الموقع الإلكتروني.</li>
+                                                                        </ol>
+           {% else %}
+                       <h4 class="green-khieer mb-2 mt-5">Terms of Services Agreement </h4>
+              <p class="text-lead blue-khieer">
+                This agreement represents a contract between Naashr and is later referred to as " Naashr " - who we are - or us or ours) and is later referred to as "designer", "you" or "your own".
+                This agreement contains the general terms and conditions under which you use the products and services provided by Naashr and the website (generally referred to as "services").
+               Your use of these services implies your commitment to all the terms of this agreement. If you do not agree to these terms, terms and conditions of this agreement, you are not authorized to use these services.
+               Additional terms can also be applied to certain services, so that they are included in this agreement, which are included here by reference to what is in place, for example, if you register with us, all terms of the agreement will apply to you and therefore be included in this contract.
+               Responsibilities:
+               
+                             </p>
+                             <h5>When you register and/or use our services, this is a statement from you: </h5>
+                             <ol>
+                                <li>Recognizes the obligation to maintain the confidentiality of mutual information and not to disclose information and data.</li>
+                                    <li>The designer acknowledges that the cover of the translated book is designed to match the cover used for the foreign origin unless it contains images or forms contrary to our policy. </li>
+                                        <li>The design of the first cover is presented and if the customer does not fully like the design, he/she can request a second design without paying any
+                                            If the first design is introduced, it is entitled to request modifications (up to a maximum of four modifications) and more is calculated at the value of (50) riyals per design
+                                            </li>
+
+                                            <li>After the design is completed and the request is adopted from the customer, the design file is sent in pdf format and in an open psd format except for the design block in addition to high-design and quality images.</li>
+                                                <li>Any amendment after the final amendment is permitted only for a fee starting from (100) riyals per amendment.</li>
+                                                    <li>Recognizes the obligation to maintain the confidentiality of mutual information and not to disclose information and data</li>
+                                                        <li>You are obliged to mention the name of the house if an award is awarded for the translation of the book, which has been approved for translation and is explicitly mentioned in media meetings and in speeches on the occasion of receiving the award.</li>
+                                                            <li>Recognizes the obligation to communicate with the client within Naashr Web-site and does not allow for off-site communication</li>
+                                                                
+
+                            </ol>
+                {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+
+        <div class="row pt-3">
+                    <div class="col-lg-12  mb-lg-0 mb-4">
+            <div class="card">
+                <div class="card-body p-3">
+                    <div class="row">
+                        <div class="col-lg-6 pt-lg-6">
+                            <div class="d-flex flex-column h-100">
+                                    {% if LANGUAGE_CODE == 'ar' %}
+                                <h3 class="mb-1 pt-2 green-khieer text-bold">  شروط الفواتير والسداد:</h3>
+                                 <h6>سيتم اقتطاع ١٥٪ لقاء خدمات ناشر المقدمة من المجموع النهائي في الفاتورة:</h6>
+                                 <h6>السداد: </h6>
+                                <p class="blue-khieer">
+                                    من مسئولياتك التأكد من سريان البيانات المتعلقة بمعلومات السداد الخاصة بك، وكذلك التأكد من أن كافة الفواتير تم سدادها في الوقت المحدد. يجب عليك الموافقة على سداد رسوم الخدمات مقدما.
+                                    يتم اشعارك بصدور فاتورة جديدة، يجب سداد كافة الفواتير خلال هذه الفترة. يؤدي تأخير سداد الفاتورة إلى تعليق أو فصل الخدمة. لن تتمكن من تفعيل الخدمة ما لم يتم سداد المبالغ المستحقة على الفواتير. في حال عدم سداد الرسوم الواردة بهذا الاتفاق، فسنضطر إلى تعليق أو الغاء حسابك واتخاذ الإجراءات اللازمة لتحصيل المبالغ المستحقة بما في ذلك – وعلى سبيل المثال -اللجوء الى الجهات القانونية والقضائية. علما بأن ناشر لن تتعامل مع أي طلبات بفتح خدمات جديدة للعملاء الذين لم يسددوا ما عليهم من رسوم خدمات بحساباتهم.
+                                                                        
+                                </p>
+                                <h6> سداد مستحقات الخدمات :</h6>
+                                <p class="blue-khieer">
+                                    يتم إرسال إشعارات كتذكير تشجيعي لذلك فإن ناشر غير مسؤولة عن أي إيقاف لأي مشروع ترجمة أو إيقاف طلب الخدمة، يتم ارسال الفواتير لسداد مستحقات المترجم خلال (٧ أيام) من تاريخ طلب الدفعة المستحقة.                                </p>
+                          {% else %}
+                           <h3 class="mb-1 pt-2 green-khieer text-bold">Terms of invoices and payments:</h3>
+                            <h6>Payment: </h6>
+                            <h6> 15% will be deducted for Naashr services provided from the final total in the invoice.</h6>
+                                <p class="blue-khieer">
+                                    It is your responsibility to ensure that data on your payment information is valid, as well as to ensure that all invoices are paid on time. You must agree to pay the service fee in advance.
+                                    You are notified of a new invoice; all invoices must be paid during this period. Delaying the payment of the invoice causes the service to be suspended or disconnected. You will not be able to activate the service unless the amounts due on the invoices are paid. If the fees contained in this agreement are not paid, we will have to suspend or cancel your account and take the necessary measures to collect the amounts due, including, for example, recourse to the legal and judicial authorities. A publisher will not deal with any requests to open new services to customers who have not paid their service fees in their accounts.
+                                                                                                        </p>
+                                <h6> Payment of service dues </h6>
+                                <p class="blue-khieer">
+                                    Notifications are sent as an incentive reminder so a publisher is not responsible for any suspension of any translation project or suspension of the service request, invoices are sent to pay the translator's dues within (7 days) of the date of the due payment request.</p>                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-lg-5 ms-auto text-center mt-5 mt-lg-0">
+                            <div class="border-radius-lg h-100">
+                                <div class="position-relative d-flex align-items-center justify-content-center h-100">
+                                    <img class="w-100 position-relative z-index-2 pt-4"
+                                         src="{% static 'assets/img/logo.png' %}" alt="rocket">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+        <div class="row pt-1">
+                                            <div class="col-lg-12  mb-lg-0 mb-4">
+            <div class="card">
+                <div class="card-body p-3">
+                    <div class="row">
+                        <div class="col-lg-6 pt-lg-6">
+                            <div class="d-flex flex-column h-100">
+                                    {% if LANGUAGE_CODE == 'ar' %}
+                                <h3 class="mb-1 pt-2 green-khieer text-bold"> حسم الخلافات التي تنشأ بصدد الفواتير </h3>
+                                <p class="blue-khieer">
+                                    في حال نشأ أي خلاف يتعلق بأي مطالبات مالية أو مبالغ من قبل ناشر أو أي استفسار يتعلق بهذه المطالبات أو المبالغ المتعلقة بحسابك يجب أن يكون ذلك خلال فترة أقصاها (03 يوما).
+                                    المنتجات والخدمات التي لا يمكن استرجاع قيمتها
+                                    لا يمكن استرجاع قيمة رسوم الخدمات التي تم إنجازها بالفعل.
+                                    إنهاء الخدمات
+                                    يحق لناشر إلغاء الخدمات سواء بشكل جزئي أو كلي ودون اخطار منا لك وذلك في الحالات التالية
+                                      في حال عدم سدادك أي رسوم متأخرة
+                                     عدم التزامك بالشروط والبنود الواردة بهذا الاتفاق أو الإخلال بأي منها.
+                                     عدم التزامك بالشروط والبنود الواردة بالخدمات المطلوبة.
+                                    في حال القيام بأي إجراء من شأنه إلحاق الضرر بنا أو إشراك اي جهة أخرى في تحمل أي مسؤولية من أي نوع سواء كانت مالية أو إجرائية أو غيرها وذلك بناء على تقدير ناشر للترجمة المحض.
+                                     بناء عليه وما لم يرد ما ينص على خلاف ذلك بهذا الاتفاق يحق لنا إنهاء الخدمات دون أن يكون لك الحق في استرجاع اي رسوم تم دفعها من طرفك إلى ناشر مع إلزامك بدفع كافة الرسوم والمطالبات المالية المترتبة على هذه الخدمات قبل فترة انهاء الخدمات هذه، كما تحتفظ ناشر للترجمة بكامل حقها في الزامك بدفع كافة الرسوم والمطالبات المالية والنسب المتعلقة بالخدمات للفترة المتبقية فيما يتعلق بالخدمات. 
+                                    
+                                </p>
+                                                                    <h6>تغير الأسعار </h6>
+                                                                    <p class="blue-khieer">
+                                                                        تحتفظ ناشر بحقها في تغيير أسعار أو أي رسوم مفروضة في أي وقت. سيتم تزويدكم بأي تغيير يطرأ على السعر سواء كان ذلك كخطط سنوية أو بعيدة المدى وذلك خلال فترة اشعار أقصاها (30) يوما وذلك قبل فرض الأسعار الجديدة عليك. يتعين عليك متابعة المعلومات التي توجد بنظام الفواتير الخاص بك بشكل دوري عبر طرق التواصل بما في ذلك الإشعارات التي يتم إرسالها أو التي يتم إعلانها بواسطة ناشر.                                                                    </p>
+                                {% else %}
+                             <h3 class="mb-1 pt-2 green-khieer text-bold">Resolving disputes arising in relation to invoices</h3>
+                                        <p class="blue-khieer"> In the event of any dispute relating to any financial claims or amounts by a publisher or any inquiry relating to these claims or amounts relating to your account, this must be within a maximum period (30 days).
+                                            In the event of any dispute relating to any financial claims or amounts by a publisher or any inquiry relating to these claims or amounts relating to your account, this must be within a maximum period (30 days).
+                                            Products and services that cannot be refunded
+                                            Service charges that have already been completed cannot be refunded.
+                                            Termination of services
+                                            Naashr has the right to cancel the services either partially or completely and without notifying you in the following cases
+                                            If you don't pay any late fees
+                                            You do not comply with the terms and conditions of this agreement or violate any of them.
+                                            You do not comply with the terms and conditions of the required services.
+                                            In the event of any action that would harm us or involve any other party in taking any responsibility of any kind, whether financial, procedural or otherwise, at the discretion of Naashr.
+                                            Accordingly, unless otherwise provided for by this agreement, we are entitled to terminate the services without having the right to recover any fees paid by you to Naashr, requiring you to pay all fees and financial claims arising from these services prior to this termination period, and Naashr reserves the full right to pay all fees, financial claims and service ratios for the remainder of the service period.
+                                                                                        </p>
+                                        <h6> Price change</h6>
+                                        <p class="blue-khieer">
+                                            Naashr reserves the right to change prices or any fees charged at any time. You will be provided with any change in price, whether as an annual or long-term plan, within a maximum notice period of (30) days before the new rates are charged to you. You should follow information on your billing system periodically through communication methods, including notifications that are sent or advertised by Naashr.                                        </p>
+                                        {% endif %}
+                            </div>
+                        </div>
+                        <div class="col-lg-5 ms-auto text-center mt-5 mt-lg-0">
+                            <div class="border-radius-lg h-100">
+                                <div class="position-relative d-flex align-items-center justify-content-center h-100">
+                                    <img class="w-100 position-relative z-index-2 pt-4"
+                                         src="{% static 'assets/img/logo.png' %}" alt="rocket">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+
+
+    </div>
+  </section>
+
+
+{% endblock content %}
