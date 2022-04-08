@@ -227,6 +227,8 @@ class BookContract(OrderedModel):
     is_entered = models.BooleanField(
         null=True, blank=True, default=False, choices=BOOLEAN_CHOICES)
     contract_signed = models.FileField(upload_to='contract-signed/' , null=True , blank=True)
+    is_signed = models.BooleanField(
+        null=True, blank=True, default=False, choices=BOOLEAN_CHOICES)
     class Meta:
         pass
 
@@ -251,7 +253,8 @@ class CopyRightContract(OrderedModel):
     is_entered = models.BooleanField(
         null=True, blank=True, default=False, choices=BOOLEAN_CHOICES)
     contract_signed = models.FileField(upload_to='contract-signed/' , null=True , blank=True)
-
+    is_signed = models.BooleanField(
+        null=True, blank=True, default=False, choices=BOOLEAN_CHOICES)
     class Meta:
         pass
 

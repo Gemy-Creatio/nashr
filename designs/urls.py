@@ -29,6 +29,4 @@ urlpatterns = [
     path('copy-rights/terms', CopyrightsTerms.as_view(), name='copyrights-terms') ,
     path('design-cover/terms', DesignCoverTerms.as_view(), name='design-cover-terms') ,
     path('printer-request/terms', PrinterRequestTerms.as_view(), name='printer-request-terms') ,
-
-
 ]

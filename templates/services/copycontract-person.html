@@ -52,6 +52,13 @@
              {% endif %}
             </td>
             <td class="align-middle text-center text-xxs" style="width: 1.2rem">
+              {% if contract.is_accepted == True %}
+              {% if LANGUAGE_CODE == 'ar' %}
+               <p> لقد تمت الموافقة</p>
+               {% else %}
+               <p> Accept had been done </p>
+               {% endif %}
+              {% else %}
               {% if LANGUAGE_CODE == 'ar' %}
               <a class="btn btn-dark text-white" href="{% url 'accept-copy' contract.pk %}"> موافقة </a>
               <p class="text-muted text-xxs"> عدم الضغط على الزر يعنى عدم الموافقة</p>
@@ -59,19 +66,21 @@
               <a class="btn btn-dark text-white" href="{% url 'accept-copy' contract.pk %}"> Accept </a>
               <p class="text-muted text-xxs"> Not press on button means refuse to sign</p>
               {% endif %}
+              {% endif %}
+             
             </td>
             <td class="align-middle text-center text-xxs" style="width: 1.2rem">
               {% if LANGUAGE_CODE == 'ar' %}
-               {% if contract.contract_signed == None  %}
-               <a href="{% url 'sign-contract' %}" class="btn btn-dark text-white"> وقع عقد</a>   
+               {% if contract.is_signed == True %}
+               <p class="text-xxs"> لقد تم توقيع العقد </p>
                {% else %}
-                <p class="text-xxs"> لقد تم توقيع العقد </p>
+               <a href="{% url 'sign-contract' contract.pk %}" class="btn btn-dark text-white"> وقع عقد</a>   
                {% endif %}
              {% else %}
-             {% if contract.contract_signed == None %}
-             <a href="{% url 'sign-contract' %}" class="btn btn-dark text-white"> Upload Contract</a>
-             {% else %}
+             {% if contract.is_signed == True  %}
              <p class="text-xxs"> Contract had been signed </p>
+             {% else %}
+             <a href="{% url 'sign-contract' contract.pk %}" class="btn btn-dark text-white"> Upload Contract</a>
              {% endif %}
              {% endif %}
             </td>
