@@ -324,6 +324,35 @@ class AllBookContractsForUser(View):
         return render(request, 'services/bookcontract-person.html', context={"contracts": page_obj})
 
 
+class AddSignedContract(View):
+    def get(self ,request , pk):
+        render(request , 'services/add-signed-contract.html')
+    def post(self , request , pk):
+        contract = BookContract.objects.get(pk=pk)
+        file = request.FILES['contract']
+        fs = FileSystemStorage()
+        filename = fs.save(file.name, file)
+        contract.contract_signed = file
+        contract.save()
+        return redirect('dashboard')
+
+
+class AddSignedCopyContract(View):
+    def get(self ,request , pk):
+        render(request , 'services/add-signed-copycontract.html')
+    def post(self , request , pk):
+        contract = CopyRightContract.objects.get(pk=pk)
+        file = request.FILES['contract']
+        fs = FileSystemStorage()
+        filename = fs.save(file.name, file)
+        contract.contract_signed = file
+        contract.save()
+        return redirect('dashboard')
+
+
+        
+
+
 class AcceptCopyrightContract(View):
     def get(self, request, pk):
         contract = CopyRightContract.objects.get(pk=pk)

@@ -221,12 +221,12 @@ class BookContract(OrderedModel):
         Book, on_delete=models.CASCADE, null=True, related_name='book_contract')
     author_name = models.ForeignKey(
         User, on_delete=models.CASCADE, null=True, related_name='author_book_contract')
-    contract = models.ImageField(upload_to='contract/')
+    contract = models.FileField(upload_to='contract/', blank=True , null=True)
     is_accepted = models.BooleanField(
         null=True, blank=True, default=False, choices=BOOLEAN_CHOICES)
     is_entered = models.BooleanField(
         null=True, blank=True, default=False, choices=BOOLEAN_CHOICES)
-
+    contract_signed = models.FileField(upload_to='contract-signed/' , null=True , blank=True)
     class Meta:
         pass
 
@@ -250,6 +250,7 @@ class CopyRightContract(OrderedModel):
         null=True, blank=True, default=False, choices=BOOLEAN_CHOICES)
     is_entered = models.BooleanField(
         null=True, blank=True, default=False, choices=BOOLEAN_CHOICES)
+    contract_signed = models.FileField(upload_to='contract-signed/' , null=True , blank=True)
 
     class Meta:
         pass

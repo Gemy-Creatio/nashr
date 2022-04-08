@@ -18,6 +18,8 @@ from services.views import (
     AcceptBookContract ,
     AcceptCopyrightContract,
     AllWorks,
+    AddSignedContract ,
+    AddSignedCopyContract,
 )
 
 urlpatterns = [
@@ -52,4 +54,9 @@ urlpatterns = [
          AcceptCopyrightContract.as_view(), name='accept-copy'),
       path('accept/book-contract/<int:pk>',
          AcceptBookContract.as_view(), name='accept-book'),
+    path('add/book-contract/signed/<int:pk>',
+         AddSignedContract.as_view(), name='sign-contract'),
+     path('add/copy-contract/signed/<int:pk>',
+         AddSignedCopyContract.as_view(), name='copy-sign-contract'),
+
 ]

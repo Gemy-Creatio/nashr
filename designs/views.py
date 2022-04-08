@@ -96,3 +96,32 @@ class DesignerServicesView(View):
 class PrinterServiceView(View):
     def get(self ,request):
         return render(request , 'designs/printer-terms.html')
+
+
+class ProofWriterTerms(View):
+    def get(self ,request):
+        return render(request , 'designs/proof_writer-terms.html')
+
+class CopyrightsTerms(View):
+    def get(self ,request):
+        return render(request , 'designs/copyrights-terms.html')
+
+
+class DesignCoverTerms(View):
+    def get(self ,request):
+        return render(request , 'designs/design_cover-terms.html')
+
+class PrinterRequestTerms(View):
+    def get(self ,request):
+        return render(request , 'designs/printer_request-terms.html')
+
+
+
+
+class BookFormatTerms(View):
+    def get(self ,request):
+        return render(request , 'designs/book_format-terms.html')
+
+class BookAdvertiseTerms(View):
+    def get(self ,request):
+        return render(request , 'designs/book_advertise-terms.html')
