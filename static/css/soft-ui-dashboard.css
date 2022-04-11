@@ -6,7 +6,8 @@
  */
  .logo-footer {
   height: auto !important;
-  width: 5rem !important;
+  width: 2.8rem !important;
+  margin-inline: -0.5rem;
 }
  .contact .form {
   width: 100%;

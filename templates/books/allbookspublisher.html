@@ -34,9 +34,6 @@
             <th class="text-center text-xxs" style="width: 1.2rem">Book</th>
 
             {% endif %}
-            {% if request.user.is_publisher %}
-            <th class="text-center text-xxs" style="width: 0.2rem"></th>
-            {% endif %}
           </tr>
         </thead>
         <tbody>
@@ -52,16 +49,6 @@
  <p class="text-xxs"><a href="{{ book_address }}">Book</a></p>
  {% endif %}
             </td>
-            {% if request.user.is_publisher %}
-            <td class="align-middle text-center text-xxs" style="width: 1.2rem">
-                
-                {% if LANGUAGE_CODE == 'ar' %}
-                <p class="text-xxs"><a class="btn btn-danger text-white" href="{% url 'delete-book' book.pk %}">ازالة</a></p>
- {% else %}
- <p class="text-xxs"><a class="btn btn-danger text-white" href="{% url 'delete-book' book.pk %}">Delete</a></p>
-    {% endif %}
-            </td>
-            {% endif %}
           </tr>
           {% endfor %}
         </tbody>

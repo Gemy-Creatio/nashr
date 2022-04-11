@@ -41,6 +41,7 @@ class SubttileServiceForm(forms.ModelForm):
         model = SubtitleService
         exclude = ('user',)
         labels = {
+            'subtitle_type':'نوع الترجمة',
             'language': 'اللغة',
             'translate_to': 'النص الهدف',
             'filed': 'مجال الفيديو ',

@@ -435,7 +435,8 @@ h1, h2, h3, h4, h5, h6 {
 --------------------------------------------------------------*/
 .logo-footer {
   height: auto !important;
-  width: 5rem !important;
+  width: 2.8rem !important;
+  margin-inline: -0.5rem;
 }
 
 #hero {

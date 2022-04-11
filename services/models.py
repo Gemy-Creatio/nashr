@@ -126,6 +126,12 @@ class TranslateService(OrderedModel):
 
 
 class SubtitleService(OrderedModel):
+    SUBSTITLE_TYPES = (
+        ('دبلجة صوتية' , 'دبلجة صوتية '), 
+        ('ترجمة شاشة' , 'ترجمة شاشة'),
+    )
+    subtitle_type = models.CharField(max_length=255 , null=True , blank=True , choices=SUBSTITLE_TYPES)
+    
     text_file = models.FileField(
         _("Text File"), max_length=255, null=True, blank=True)
     LANGUAGE_CHOICES = (

@@ -180,7 +180,7 @@ class RequestSubtitleServiceView(CreateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        if self.request.user != None:
+        if self.request.user.is_authenticated:
             return reverse('dashboard')
         else:
             self.request.session['service_code'] = 5
@@ -297,7 +297,7 @@ class HomeTranslationRequestView(View):
                                    supplements_page=define_page, page_images=draw_page, table_page=table_page, CMYK_page=cmyk_page, note=note, contact=file)
         trans.save()
         self.request.session['service_code'] = 2
-        self.request.session['pk_service'] = self.object.pk
+        self.request.session['pk_service'] = trans.pk
         return redirect('register-service')
 
 

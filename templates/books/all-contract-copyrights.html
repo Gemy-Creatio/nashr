@@ -1,23 +1,13 @@
-{% extends 'main.html' %} {% block content %}
+{% extends 'main.html' %}
+ {% block content %}
 <section id="services" class="services section-bg">
   <div class="container">
     <div class="section-title aos-init aos-animate" data-aos="fade-up">
       {% if LANGUAGE_CODE == 'ar' %}
       <h2>عقود حقوق النشر</h2>
-      <a
-        class="btn btn-dark text-white"
-        href="{% url 'add-copyright-contract' %}"
-      >
-        إضافة عقد</a
-      >
       {% else %}
       <h2>Copyrights Contracts</h2>
-      <a
-        class="btn btn-dark text-white"
-        href="{% url 'add-copyright-contract' %}"
-      >
-        Add</a
-      >
+     
       {% endif %}
     </div>
 

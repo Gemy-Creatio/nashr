@@ -20,7 +20,7 @@ class CreatePrintRequestView(CreateView):
     template_name = 'books/print_books.html'
     def form_valid(self, form):
         request = form.save(commit=True)
-        if self.request.user.first_name:
+        if self.request.user.is_authenticated:
             request.user = self.request.user
         request.save()
         return super(CreatePrintRequestView, self).form_valid(form)
@@ -75,7 +75,7 @@ class CreateFormationRequestView(View):
                                      define_page=define_page , intro_page=intro_page , notes=notes , book_file=file)
         format.save()
         self.request.session['service_code'] = 3
-        self.request.session['pk_service'] = self.object.pk
+        self.request.session['pk_service'] = format.pk
         return redirect('register-service')
 
 

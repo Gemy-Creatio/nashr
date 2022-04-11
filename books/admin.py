@@ -11,9 +11,20 @@ from books.models import (
     Negotiation,
     FoundtationUserProfile,
     AdvertisePresent,
-    NeedsPresent
+    NeedsPresent ,
+    CopyRightContract ,
+    NegotiationBook ,
+
 
 )
+
+@admin.register(NegotiationBook)
+class NegotiationBookAdmin(OrderedModelAdmin):
+    list_display = ("__str__",)
+
+@admin.register(CopyRightContract)
+class CopyRightContractAdmin(OrderedModelAdmin):
+    list_display = ("__str__",)
 
 
 @admin.register(NeedsPresent)

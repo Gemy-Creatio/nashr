@@ -9,6 +9,7 @@ class PrintBookForm(forms.ModelForm):
     class Meta:
         model = PrintBookRequest
         fields = '__all__'
+        exclude = ('user',)
         # labels = {
         #     # 'book': 'الكتاب',
         #     # 'number_of_pages': 'عدد الصفحات',

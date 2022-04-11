@@ -199,45 +199,41 @@ class AllBookContracts(View):
 
 
 class AddBookContract(View):
-    def get(self, request):
+    def get(self, request , pk):
         books = Book.objects.filter(user=request.user)
-        translators = User.objects.exclude(user_type__in=(1, 2, 7, 8))
-        context = {"books": books, "translators": translators}
+        context = {"books": books}
         return render(request, 'books/addcontract.html', context=context)
 
-    def post(self, request):
+    def post(self, request , pk):
         found = request.user
         book = request.POST.get('book')
-        user = request.POST.get('user')
-        user_obj = User.objects.get(pk=user)
+        user = User.objects.get(pk=pk)
         book_obj = Book.objects.get(pk=book)
         file = request.FILES['contract']
         fs = FileSystemStorage()
         filename = fs.save(file.name, file)
         contract = BookContract(
-            found=found, book=book_obj, author_name=user_obj, contract=file)
+            found=found, book=book_obj, author_name=user, contract=file)
         contract.save()
         return redirect('all-books-contract')
 
 
 class AddCopyRightContract(View):
-    def get(self, request):
+    def get(self, request , pk):
         books = Book.objects.filter(user=request.user)
-        translators = User.objects.filter(user_type=2).exclude(pk = request.user.pk)
-        context = {"books": books, "translators": translators}
+        context = {"books": books}
         return render(request, 'books/addcopyrightscontract.html', context=context)
 
-    def post(self, request):
+    def post(self, request , pk):
         found = request.user
         book = request.POST.get('book')
-        user = request.POST.get('user')
-        user_obj = User.objects.get(pk=user)
+        user = User.objects.get(pk=pk)
         book_obj = Book.objects.get(pk=book)
         file = request.FILES['contract']
         fs = FileSystemStorage()
         filename = fs.save(file.name, file)
         contract = CopyRightContract(
-            found=found, book=book_obj, author_name=user_obj, contract=file)
+            found=found, book=book_obj, author_name=user, contract=file)
         contract.save()
         return reverse('all-contracts-copyrights')
 
@@ -356,7 +352,7 @@ class AcceptAdvertisetNeg(View):
         neg = NegotiationBook.objects.get(pk=pk)
         neg.is_accepted = True
         neg.save()
-        return reverse('neg-all-advertise', args=(neg.book.pk,))
+        return reverse('add-book-contract', args=(neg.user.pk,))
 
 
 
@@ -365,7 +361,7 @@ class AcceptCopyNeg(View):
         neg = Negotiation.objects.get(pk=pk)
         neg.is_accepted = True
         neg.save()
-        return reverse('neg-all-copy',args=(neg.book.pk,))
+        return reverse('add-copyright-contract',args=(neg.user.pk,))
 
 
 

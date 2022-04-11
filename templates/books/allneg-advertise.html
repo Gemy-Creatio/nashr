@@ -38,12 +38,20 @@
               </div>
               <div class="card-footer">
                   <div class="text-center">
-                    {% if LANGUAGE_CODE == 'ar' %}
-                      <a class="btn btn-dark text-white" href="{% url 'send-accept-add' neg.pk %}"> موافقة</a>
-                     {% else %}
-                     <a class="btn btn-dark text-white" href="{% url 'send-accept-add' neg.pk %}"> Accept</a>
+                   {% if neg.is_accepted %}
+                   {% if LANGUAGE_CODE == 'ar' %}
+                   <a class="btn btn-dark text-white" href="{% url 'add-book-contract' neg.pk %}"> اضافة عقد</a>
+                  {% else %}
+                  <a class="btn btn-dark text-white" href="{% url 'add-book-contract' neg.pk %}"> Add Contract</a>
+                  {% endif %}
+                   {% else %}
+                   {% if LANGUAGE_CODE == 'ar' %}
+                   <a class="btn btn-dark text-white" href="{% url 'send-accept-add' neg.pk %}"> موافقة</a>
+                  {% else %}
+                  <a class="btn btn-dark text-white" href="{% url 'send-accept-add' neg.pk %}"> Accept</a>
 
-                     {% endif %}
+                  {% endif %}
+                   {% endif %}
                     </div>
               </div>
                </div>
