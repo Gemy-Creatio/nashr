@@ -30,11 +30,14 @@ from services.models import (
     TranslationRequest,
     SubtitleService,
     PersonWork,
-    ContactRequestServices
+    ContactRequestServices ,
+    RequestBook,
+    NegotiationRequests
 )
 from services.forms import (
     TrnaslateServiceForm,
-    SubttileServiceForm
+    SubttileServiceForm ,
+    RequestBookForm
 )
 from designs.forms import (
     TakeDesignForm
@@ -67,6 +70,10 @@ class AllMessagesView(View):
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
         return render(request, "services/all-msgs.html", context={"msgs": page_obj})
+
+
+
+
 
 
 def PayVoucher(request, pk):
@@ -119,6 +126,10 @@ def PayVoucher(request, pk):
         return redirect('all-vouchers')
 
 
+
+
+
+
 class TranslationRequestView(View):
     def get(self, request, pk):
         return render(request, 'dashboard/addbooktranlation.html')
@@ -167,6 +178,31 @@ class RequestTranslateServiceView(CreateView):
             return reverse('dashboard')
 
 
+class AllBookRequests(View):
+    def get(self, request):
+        reqs = RequestBook.objects.exclude(user=request.user)
+        paginator = Paginator(reqs, 10)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        return render(request, 'services/allRequests.html', context={"reqs": page_obj})
+
+
+class RequestBookView(CreateView):
+    model = RequestBook
+    form_class = RequestBookForm
+    template_name = 'services/request_Book.html'
+
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        if self.request.user.is_authenticated:
+            self.object.user = self.request.user
+        self.object.save()
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('dashboard')
+
+
 class RequestSubtitleServiceView(CreateView):
     model = SubtitleService
     form_class = SubttileServiceForm
@@ -190,7 +226,7 @@ class RequestSubtitleServiceView(CreateView):
 
 class AllBooksForTranslatorView(View):
     def get(slef, request):
-        books = Book.objects.exclude(user=request.user)
+        books = Book.objects.exclude(user=request.user).filter(is_shown=True)
         paginator = Paginator(books, 10)
         page_number = request.GET.get('page')
         page_obj = paginator.get_page(page_number)
@@ -369,3 +405,40 @@ class AcceptBookContract(View):
         contract.is_accepted = True
         contract.save()
         return redirect('all-bookcontract-user')
+
+
+
+
+
+class AllRequestBookForTranslator(View):
+    def get(self , request):
+        requests = RequestBook.objects.filter(user=request.user)
+        paginator = Paginator(requests, 10)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        return render(request , 'services/allrequest-translator.html', context={"reqs":page_obj})
+
+
+
+class allNegsForRequestBook(View):
+    def get(self , request , pk):
+        req = RequestBook.objects.get(pk=pk)
+        negs = NegotiationRequests.objects.filter(book= req)
+        paginator = Paginator(negs, 10)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+        return render(request , 'services/allnegs-translator.html', context={"negs":page_obj})
+
+
+
+class NegtiationBookRequestView(View):
+    def get(self, request, pk):
+        req = RequestBook.objects.get(pk=pk)
+        return render(request, 'services/neg-request.html')
+
+    def post(self, request, pk):
+        book = RequestBook.objects.get(pk=pk)
+        notes = request.POST.get('notes')
+        neg = NegotiationRequests(book=book, user = request.user ,notes=notes)
+        neg.save()
+        return redirect('dashboard')

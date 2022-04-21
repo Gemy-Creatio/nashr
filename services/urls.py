@@ -20,6 +20,12 @@ from services.views import (
     AllWorks,
     AddSignedContract ,
     AddSignedCopyContract,
+    allNegsForRequestBook,
+    AllRequestBookForTranslator,
+    RequestBookView ,
+    AllBookRequests ,
+    NegtiationBookRequestView
+
 )
 
 urlpatterns = [
@@ -54,9 +60,18 @@ urlpatterns = [
          AcceptCopyrightContract.as_view(), name='accept-copy'),
       path('accept/book-contract/<int:pk>',
          AcceptBookContract.as_view(), name='accept-book'),
-    path('add/book-contract/signed/<int:pk>',
+      path('add/book-contract/signed/<int:pk>',
          AddSignedContract.as_view(), name='sign-contract'),
      path('add/copy-contract/signed/<int:pk>',
          AddSignedCopyContract.as_view(), name='copy-sign-contract'),
-
+     path('all/request-books/translators',
+         AllRequestBookForTranslator.as_view(), name='all-requests-trans'),
+     path('all/negs-requests/<int:pk>',
+         allNegsForRequestBook.as_view(), name='requests-negs'),
+     path('request/book',
+         RequestBookView.as_view(), name='add-request-book'),
+     path('all/request/book-publisher',
+         AllBookRequests.as_view(), name='all-request-books'),
+         path('add/negs-requests/<int:pk>',
+         NegtiationBookRequestView.as_view(), name='requests-negs-add'),
 ]

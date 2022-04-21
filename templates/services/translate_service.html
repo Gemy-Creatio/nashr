@@ -355,7 +355,16 @@
           class="form-control"
         />
       </div>
-      <div class="text-center justify-content-center d-flex">
+      <div class="text-center">
+        <a class="btn btn-dark text-white" href="{% url 'design-cover-terms' %}"> 
+              {% if LANGUAGE_CODE == 'ar' %}
+        الشروط و الأحكام
+        {% else %}
+        Terms
+        {% endif %}     
+      </a>
+          </div>
+      <div class="text-center justify-content-center d-flex pt-2">
         {% if LANGUAGE_CODE == 'ar' %}
         <input type="submit" class="btn btn-dark text-white" value="إرسال" />
         {% else %}

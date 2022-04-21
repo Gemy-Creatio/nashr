@@ -1,7 +1,8 @@
 from django import forms
 from services.models import (
     TranslateService,
-    SubtitleService
+    SubtitleService ,
+    RequestBook
 )
 from django.utils.translation import get_language
 
@@ -35,6 +36,20 @@ class TrnaslateServiceForm(forms.ModelForm):
         exclude = ('user',)
         labels = label()
 
+
+
+class RequestBookForm(forms.ModelForm):
+    class Meta:
+        model = RequestBook
+        exclude = ('user', 'is_shown' , 'data_sent')
+        labels = {
+            'publisher_name':'اسم دار النشر',
+            'book_name':'اسم الكتاب',
+            'author_name':'اسم المؤلف ',
+            'year_published':' سنة الأصدار ',
+            'reason':'سبب اختيار الكتاب ',
+            'translator_cv':'السيرة الذاتية',
+        }
 
 class SubttileServiceForm(forms.ModelForm):
     class Meta:

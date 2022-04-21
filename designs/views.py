@@ -109,13 +109,11 @@ class CopyrightsTerms(View):
 
 class DesignCoverTerms(View):
     def get(self ,request):
-        return render(request , 'designs/design_cover-terms.html')
+        return render(request , 'designs/designer-terms.html')
 
 class PrinterRequestTerms(View):
     def get(self ,request):
         return render(request , 'designs/printer_request-terms.html')
-
-
 
 
 class BookFormatTerms(View):

@@ -65,7 +65,7 @@ urlpatterns = [
          name='all-translator-requests'),
   path('all/books/publisher', AllbooksForPublisher.as_view(),
          name='all-books-publisher'),
-
+ 
   path('publisher/choices', BooksForPublisherView.as_view(),
          name='books-publisher-choices'),
 
@@ -89,5 +89,4 @@ urlpatterns = [
          name='advertise-neg-results'),
  path('book/add/user', AddBookUserView.as_view(),
          name='add-book-user'),
-
 ]

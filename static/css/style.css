@@ -11,6 +11,8 @@
 html, body {
   min-height: 100%;
   background-color: #FFFFFF !important;
+  width: auto !important;
+  height: auto !important;
 }
 
 *,
@@ -433,6 +435,9 @@ h1, h2, h3, h4, h5, h6 {
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
+.pt-8 {
+  padding-top: 12rem !important;
+}
 .logo-footer {
   height: auto !important;
   width: 2.8rem !important;
@@ -1434,6 +1439,7 @@ section {
   background: white;
   padding: 0 0 30px 0;
   color: white;
+  position: fixed !important;
   font-size: 14px;
 }
 #footer .footer-top {

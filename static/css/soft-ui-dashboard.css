@@ -4,6 +4,14 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+ .pt-8 {
+  padding-top: 12rem !important;
+}
+
+ .ahlam-card {
+  border-top: 10px solid #344767 !important;
+  border-radius: 15px !important;
+ }
  .logo-footer {
   height: auto !important;
   width: 2.8rem !important;
@@ -5845,7 +5853,7 @@ fieldset:disabled .btn {
 .page-link:focus {
   z-index: 3;
   color: #830866;
-  background-color: #000000;
+  background-color: #344767;
   outline: 0;
   box-shadow: 0 0 0 0.2rem rgba(203, 12, 159, 0.25);
 }
@@ -5857,15 +5865,15 @@ fieldset:disabled .btn {
 .page-item.active .page-link {
   z-index: 3;
   color: #fff;
-  background-color: #000000;
-  border-color: #000000;
+  background-color: #344767;
+  border-color: #344767;
 }
 
 .page-item.disabled .page-link {
-  color: #000000;
+  color: #344767;
   pointer-events: none;
   background-color: #fff;
-  border-color: #000000;
+  border-color: #344767;
 }
 
 .page-link {
@@ -15195,6 +15203,9 @@ fieldset:disabled .btn {
   .pt-lg-12 {
     padding-top: 16rem !important;
   }
+  .pt-lg-14 {
+    padding-top: 42rem !important;
+  }
 
   .pe-lg-0 {
     padding-right: 0 !important;
@@ -20228,6 +20239,10 @@ label,
   box-shadow: 0 0 0 2px rgba(102, 212, 50, 0.65);
 }
 
+.footer {
+  margin: 0 auto;
+    position: sticky !important;
+}
 .footer .nav-link {
   color: #344767;
   font-weight: 400;
@@ -25179,3 +25194,5 @@ pre[class*="language-"] {
 }
 
 /*# sourceMappingURL=dashboard-free.css.map */
+
+

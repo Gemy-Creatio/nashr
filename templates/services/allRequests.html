@@ -1,0 +1,95 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+<section id="contact" class="contact section-bg ">
+    <div class="container justify-content-center">
+
+
+      <div class="row pt-3">
+       
+        {% for req in reqs  %}
+         <div class="col-4 pt-2">
+            <div class="card h-auto ahlam-card">
+                <div class="card-body">
+                  {% if LANGUAGE_CODE == 'ar' %}
+                <div class="d-flex justify-content-between">
+                    <h5 class="text-center"> اسم المؤلف<h5>
+                        <p>{{ req.publisher_name|safe }}</p>
+                        
+                </div>
+                <div class="d-flex justify-content-between">
+                    <h5 class="text-center"> اسم الكتاب<h5>
+                        <p>{{ req.book_name|safe }}</p>
+                </div>
+                <div class="d-flex justify-content-between">
+                          <h5 class="text-center"> اسم المؤلف <h5>
+                              <p>{{ req.author_name|safe }}</p>
+                          </div>
+                          <div class="d-flex justify-content-between">
+                              <h5 class="text-center">سنة  الأصدار<h5>
+                                  <p>{{ req.year_published|safe }}</p>
+                              </div>
+                              <div class="d-flex justify-content-between">
+                                  <h5 class="text-center"> سبب طلب الكتاب    <h5>
+                                    <p>{{ req.reason|safe }}</p>
+                                  </div>
+                                  <div class="d-flex justify-content-between">
+                                    <h5 class="text-center"> السيرة الذاتية للمترجم <h5>
+                                      {% if req.translator_cv.url == None %}
+                                      <p> لا يوجد سيرة ذاتية مرفوعة </p>
+                                      {% else %}
+                                      <a class="btn btn-dark text-white" hred="{{ req.translator_cv }}">CV </a>
+                                      {% endif %}
+                                    </div>
+                                  {% else %}
+                                  <div class="d-flex justify-content-between">
+                                    <h5 class="text-center"> Author Name <h5>
+                                        <p>{{ req.publisher_name|safe }}</p>
+                                        
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <h5 class="text-center">  Book Name<h5>
+                                        <p>{{ req.book_name|safe }}</p>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                          <h5 class="text-center">  Author Name <h5>
+                                              <p>{{ req.author_name|safe }}</p>
+                                          </div>
+                                          <div class="d-flex justify-content-between">
+                                              <h5 class="text-center">Publish Year  <h5>
+                                                  <p>{{ req.year_published|safe }}</p>
+                                              </div>
+                                              <div class="d-flex justify-content-between">
+                                                  <h5 class="text-center"> Reason for request book    <h5>
+                                                    <p>{{ req.reason|safe }}</p>
+                                                  </div>
+                                                  <div class="d-flex justify-content-between">
+                                                    {% if req.translator_cv.url == None %}
+                                                    <p> No CV Avaliable </p>
+                                                    {% else %}
+                                                    <a class="btn btn-dark text-white" hred="{{ req.translator_cv }}">CV </a>
+                                                    {% endif %}
+                                                    </div>                          
+                                  {% endif %}
+              </div>
+              <div class="card-footer">
+                  <div class="text-center">
+                      <a class="btn btn-dark text-white" href="{% url 'requests-negs-add' req.pk %}">تقديم طلب</a>
+                  </div>
+              </div>
+               </div>
+         </div>
+        {% endfor %}
+      </div>
+  <div class="pt-7">
+    {% include 'partials/_pagination.html' with page_obj=reqs only %}
+
+  </div>
+    </div>
+    
+
+
+</section>
+
+{% endblock content %}

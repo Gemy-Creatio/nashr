@@ -43,4 +43,4 @@ class BookForm(forms.ModelForm):
     class Meta:
         model = Book
         fields = '__all__'
-        exclude = ('user', 'is_completed', 'is_open_download', 'dropbox_link')
+        exclude = ('user', 'is_completed', 'is_open_download', 'dropbox_link' , 'is_shown')

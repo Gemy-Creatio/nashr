@@ -1,4 +1,7 @@
-{% extends 'main.html' %} {% load crispy_forms_tags %} {% block content %}
+{% extends 'main.html' %} 
+
+{% load crispy_forms_tags %}
+ {% block content %}
 <section id="contact" class="contact section-bg pt-4">
   <div class="container justify-content-center">
     <div class="section-title" data-aos="fade-up">
@@ -23,8 +26,16 @@
       >
         {{ form|crispy }}
       </div>
-
-      <div class="text-center justify-content-center d-flex">
+      <div class="text-center">
+        <a class="btn btn-dark text-white" href="{% url 'book-advertise-terms' %}"> 
+              {% if LANGUAGE_CODE == 'ar' %}
+        الشروط و الأحكام
+        {% else %}
+        Terms
+        {% endif %}     
+      </a>
+          </div>
+      <div class="text-center justify-content-center d-flex pt-2">
         {% if LANGUAGE_CODE == 'ar' %}
         <button type="submit">التالى</button>
         {% else %}

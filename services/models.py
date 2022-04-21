@@ -215,6 +215,38 @@ class RequestProofReader(OrderedModel):
 
 
 
+
+
+class RequestBook(OrderedModel):
+    user = models.ForeignKey(User , null=True , blank=True , on_delete=models.CASCADE)
+    publisher_name = models.CharField(null=True , blank=True , max_length=255)
+    book_name = models.CharField(null=True , blank=True , max_length=255)
+    author_name =  models.CharField(null=True , blank=True , max_length=255)
+    year_published =  models.CharField(null=True , blank=True , max_length=255)
+    reason =  models.TextField(null=True , blank=True)
+    translator_cv = models.FileField(upload_to='requested-cv/',null=True , blank=True)
+    data_sent = models.DateField(auto_now_add=True , null=True , blank=True)
+    is_shown = models.BooleanField(null=True , blank=True)
+    class Meta:
+        pass
+
+
+
+
+class NegotiationRequests(OrderedModel):
+    BOOLEAN_CHOICES = (
+        (True, 'نعم'),
+        (False, 'لا')
+    )
+    book = models.ForeignKey(RequestBook, on_delete=models.CASCADE, null=True)
+    user =models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    notes = models.TextField(null=True , blank=True)
+    is_accepted = models.BooleanField(null=True , blank=True , default=False , choices=BOOLEAN_CHOICES)
+
+    class Meta:
+        pass
+
+
 class PersonWork(OrderedModel):
     user = models.ForeignKey(User , on_delete=models.CASCADE , null=True , blank=True)
     start_date = models.DateField(null=True , blank=True)

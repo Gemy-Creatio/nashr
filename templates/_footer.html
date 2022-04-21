@@ -1,5 +1,6 @@
 {% load static %}
-<footer class="footer footer-padding">
+{% comment %} <footer class="footer footer-padding pt-8 pt-lg-14"> {% endcomment %}
+  <footer class="footer footer-padding justify-content-center text-center">
     <div class="container">
       <div class="row justify-content-center">
         <p class="mb-0 text-secondary text-center">
@@ -9,10 +10,11 @@
            {% endif %}
        </p>
          <div class="row col-12 text-center  justify-content-center">
-             <img alt="logo" src="{% static 'assets/img/pay/stc_pay.jpeg' %}" class="logo-footer" />
+          <img alt="logo" src="{% static 'assets/img/pay/logos.jpeg' %}" class="img-fluid" style="width:13rem;" />
+             {% comment %} <img alt="logo" src="{% static 'assets/img/pay/stc-pay.jpeg' %}" class="logo-footer" />
             <img alt="logo" src="{% static 'assets/img/pay/mada.png' %}" class="logo-footer" />
             <img alt="logo" src="{% static 'assets/img/pay/master.png' %}" class="logo-footer" />
-            <img alt="logo" src="{% static 'assets/img/pay/visa.png' %}" class="logo-footer" />
+            <img alt="logo" src="{% static 'assets/img/pay/visa.png' %}" class="logo-footer" /> {% endcomment %}
          </div>
       </div>
       <div class="row">

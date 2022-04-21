@@ -18,6 +18,11 @@ class HomepageView(View):
                       {"content": home_content, "faqs": faqs})
 
 
+class PrivacyTermsView(View):
+    def get(self , request):
+        return render(request , 'main/privacy.html')
+
+
 class WhopageView(View):
     def get(self, request):
         who_content = WhoUS.get_solo()

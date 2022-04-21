@@ -5,7 +5,8 @@ from main.views import (
 ServicesPageView,
 FoundationPageView,
 PersonalPageView ,
-ErrorView
+ErrorView ,
+PrivacyTermsView
 )
 
 urlpatterns = [
@@ -15,5 +16,6 @@ urlpatterns = [
     path('member/foundation', FoundationPageView.as_view(), name='found-page'),
     path('member/peronal', PersonalPageView.as_view(), name='person-page'),
     path('error', ErrorView.as_view(), name='error-page'),
+    path('privacy', PrivacyTermsView.as_view(), name='privacy-page'),
 
 ]

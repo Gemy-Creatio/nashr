@@ -114,7 +114,7 @@ class Book(OrderedModel):
         User, on_delete=models.CASCADE, null=True, related_name='books')
     pay_chocies = models.CharField(
         max_length=255, null=True, blank=True, choices=BOOK_PAY_CHOICES)
-
+    is_shown = models.BooleanField(null=True , blank=True ,  default=False)
     class Meta:
         pass
 
