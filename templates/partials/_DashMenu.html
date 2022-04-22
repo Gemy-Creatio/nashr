@@ -1,0 +1,21 @@
+{% load static %}
+{% load i18n %}
+<a class="menu-toggle rounded" href="#"><i class="fas fa-bars menu-bars"></i></a>
+<nav id="sidebar-wrapper">
+    <li class="sidebar-brand"><a href="{% url 'home-page' %}"><img src="{% static 'assets/img/logo.png' %}" class="logo"/></a>
+    </li>
+    {% if request.user.user_type == 2 or request.user.is_publisher %} 
+    {% include 'partials/_publisherMenu.html' %} {% endif %} 
+    {% if request.user.user_type == 5 or request.user.is_designer %} 
+    {% include 'partials/_desginerMenu.html' %} {% endif %}
+     {% if request.user.user_type == 6 or request.user.is_writer %} 
+     {% include 'partials/_writerMenu.html' %} {% endif %} 
+     {% if request.user.user_type == 7 or request.user.is_printer %}
+      {% include 'partials/_printerMenu.html' %} {% endif %} 
+      {% if  request.user.user_type == 8 or request.user.is_request_service %} 
+      {% include 'partials/_requestService.html' %} {% endif %} 
+      {% if request.user.user_type == 3 or request.user.is_translator %} 
+      {% include 'partials/_translatorMenu.html' %} {% endif %}
+      {% if request.user.user_type  == 4 or request.user.is_proof_reader %}
+       {% include 'partials/_proofReaderMenu.html' %} {% endif %}
+</nav>

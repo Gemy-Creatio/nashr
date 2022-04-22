@@ -44,3 +44,15 @@ class BookForm(forms.ModelForm):
         model = Book
         fields = '__all__'
         exclude = ('user', 'is_completed', 'is_open_download', 'dropbox_link' , 'is_shown')
+        labels = {
+            'book_content':'محتوى الكتاب',
+            'book_address':'عنوان الكتاب',
+            'book_language':'لغة الكتاب',
+            'translate_language':'لغة الترجمة',
+            'pages_number':'عدد الصفح',
+            'translator_fees':'أجر الخدمة',
+            'book_category':'تصنيف الكتاب',
+            'project_time':'وقت الأنتهاء',
+            'pay_chocies':'نوعية الدفع',
+            'translator_number':'عدد صفح الترجمة',
+        }

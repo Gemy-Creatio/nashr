@@ -29,12 +29,9 @@
 
     <body id="page-top">
   {% include 'partials/_DashMenu.html' %}
-  <main class="main-content">
-    {% block content %}
+{% block content %}
 
 {% endblock content %}
-  </main>
-
 {% include '_footer.html' %}
  <a href="#" class="go-to-whatsapp"><i class="fab fa-whatsapp"></i></a>
  <script src="{% static 'owlcarousel/jquery.min.js' %}"></script>
@@ -51,3 +48,4 @@
 {% endblock scripts %}
 </body>
 </html>
+
