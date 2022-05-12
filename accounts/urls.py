@@ -15,9 +15,11 @@ RegisterWriterView ,
 RegisterFoundationView ,
 RegisterPersonnalView,
 AddFoundationProfileView ,
-FoundUserDetails
+FoundUserDetails , 
+ResetPasswordView
 )
 from books.views import AddUserInfoView
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('register/translator', RegisterTranslatorView.as_view(), name='register-translator'),
@@ -37,5 +39,12 @@ urlpatterns = [
     path('personal', RegisterPersonnalView.as_view(), name='register-personal'),
     path('add/found/profile', AddFoundationProfileView.as_view(), name='add-found-profile'),
     path('found/profile/<int:pk>', FoundUserDetails.as_view(), name='found-profile'),
+    path('password-reset/', ResetPasswordView.as_view(), name='password_reset'),
+    path('password-reset-confirm/<uidb64>/<token>/',
+         auth_views.PasswordResetConfirmView.as_view(template_name='accounts/reset/password_reset_confirm.html'),
+         name='password_reset_confirm'),
+    path('password-reset-complete/',
+         auth_views.PasswordResetCompleteView.as_view(template_name='accounts/reset/password_reset_complete.html'),
+         name='password_reset_complete'),
 
 ]

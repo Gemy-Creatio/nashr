@@ -50,7 +50,7 @@ class BookForm(forms.ModelForm):
             'book_language':'لغة الكتاب',
             'translate_language':'لغة الترجمة',
             'pages_number':'عدد الصفح',
-            'translator_fees':'أجر الخدمة',
+            'translator_fees':'أجرة المترجم',
             'book_category':'تصنيف الكتاب',
             'project_time':'وقت الأنتهاء',
             'pay_chocies':'نوعية الدفع',

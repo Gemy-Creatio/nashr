@@ -17,12 +17,10 @@
              <div class="section-title box" data-aos="fade-up">
                     {% if LANGUAGE_CODE == 'ar' %}
                 <h1 class="mb-1">{{ content.heading_ar |safe}}</h1>
-                <h3 class="mb-5">{{ content.content_ar |safe }}</h3>
-                <p>أول موقع إلكتروني يخدم قطاع النشر والترجمة في المملكة العربية السعودية                 </p>
+                <h3 class="mb-5">أول موقع إلكتروني يخدم قطاع النشر والترجمة في المملكة العربية السعودية                 </h3>
                 {% else %}
                   <h1 class="mb-1">{{ content.heading_en |safe | capfirst}}</h1>
-                <h3 class="mb-5">{{ content.content_en |safe |capfirst }}</h3>
-                 <p>The first website to serve the publishing and translation sector in Saudi Arabia                </p>
+                 <h3 class="mb-5">The first website to serve the publishing and translation sector in Saudi Arabia                </h3>
                 {% endif %}
              </div>
                 <div class="row">

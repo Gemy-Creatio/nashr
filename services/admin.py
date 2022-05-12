@@ -9,8 +9,19 @@ from services.models import (
     Vouchers ,
     PaidVoucher,
     PersonWork ,
-    ContactRequestServices
+    ContactRequestServices ,
+    RequestBook ,
+    NegotiationRequests
 )
+
+@admin.register(NegotiationRequests)
+class NegotiationRequestsAdmin(OrderedModelAdmin):
+    list_display = ("__str__",)
+
+
+@admin.register(RequestBook)
+class RequestBookAdmin(OrderedModelAdmin):
+    list_display = ("__str__",)
 
 
 @admin.register(ContactRequestServices)

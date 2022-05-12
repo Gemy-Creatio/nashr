@@ -182,7 +182,7 @@ class UserManager(BaseUserManager):
             address=address,
             commit=False,
         )
-        user.is_writer = True
+        user.is_request_service = True
         user.is_active = True
         user.user_type = 8
         user.save(using=self._db)

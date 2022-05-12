@@ -10,12 +10,13 @@ class PrintBookForm(forms.ModelForm):
         model = PrintBookRequest
         fields = '__all__'
         exclude = ('user',)
-        # labels = {
-        #     # 'book': 'الكتاب',
-        #     # 'number_of_pages': 'عدد الصفحات',
-        #     # 'number_of_colors': 'عدد الألوان',
-        #     # 'number_of_copies': 'عدد النسخ',
-        # }
+        labels = {
+            'book': 'الكتاب',
+            'number_of_pages': 'عدد الصفحات',
+            'number_of_colors': 'عدد الألوان',
+            'number_of_copies': 'عدد النسخ',
+            'print_face':'وجة الطباعة',
+        }
 
 
 class TakeDesignForm(forms.ModelForm):

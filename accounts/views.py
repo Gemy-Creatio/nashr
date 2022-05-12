@@ -4,6 +4,9 @@ from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
 from django.views import View
 from django.views.generic import DetailView
+from django.urls import reverse_lazy
+from django.contrib.auth.views import PasswordResetView
+from django.contrib.messages.views import SuccessMessageMixin
 
 from .forms import (
     RegisterForm,
@@ -32,6 +35,18 @@ from books.models import (
 )
 
 #
+
+
+class ResetPasswordView(SuccessMessageMixin, PasswordResetView):
+    template_name = 'accounts/reset/password_reset.html'
+    email_template_name = 'accounts/reset/password_reset_email.html'
+    subject_template_name = 'accounts/reset/password_reset_subject'
+    success_message = "We've emailed you instructions for setting your password, " \
+                      "if an account exists with the email you entered. You should receive them shortly." \
+                      " If you don't receive an email, " \
+                      "please make sure you've entered the address you registered with, and check your spam folder."
+    success_url = reverse_lazy('password_reset')
+
 
 
 class UserDetails(DetailView):

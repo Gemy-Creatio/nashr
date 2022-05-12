@@ -9,7 +9,8 @@
     {% if request.user.user_type == 5 or request.user.is_designer %} 
     {% include 'partials/_desginerMenu.html' %} {% endif %}
      {% if request.user.user_type == 6 or request.user.is_writer %} 
-     {% include 'partials/_writerMenu.html' %} {% endif %} 
+     {% include 'partials/_writerMenu.html' %} 
+     {% endif %} 
      {% if request.user.user_type == 7 or request.user.is_printer %}
       {% include 'partials/_printerMenu.html' %} {% endif %} 
       {% if  request.user.user_type == 8 or request.user.is_request_service %} 
