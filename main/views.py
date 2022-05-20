@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from httpx import request
 from main.models import (
     Homepage,
     WhoUS,
